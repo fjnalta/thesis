@@ -20,7 +20,6 @@ $(eval FILE = $(firstword $^))
 @$(LATEX) -output-directory=$(TEMP_DIR) $(FILE)
 endef
 
-
 all: $(TEMP_DIR) \
 	$(RESULT_DIR)/thesis.pdf
 
