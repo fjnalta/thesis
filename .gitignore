@@ -4,6 +4,9 @@ temp/
 # OSX
 .DS_Store
 
+# VSCode Settings
+.vscode/
+
 # VSCode Latex
 *.aux
 *.bbl
