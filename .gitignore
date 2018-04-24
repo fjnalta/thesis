@@ -22,3 +22,7 @@ temp/
 *.run.xml
 *.synctex.gz
 *.toc
+
+# BibTex
+*.bib.bak
+*.bib.sav
