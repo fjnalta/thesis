@@ -31,7 +31,7 @@ Durch den zunehmenden Einsatz von IT in Unternehmen entstand immer mehr Kommunik
 
 \subsection{4. industrielle Revolution}
 
-Das Ende des 20. Jahrhunderts gilt als der Beginn der 4. industriellen Revolution. Das Kennzeichen dieser Phase ist die zunehmende Digitalisierung. Mit ihr geht die technische Vernetzung physischer Gegenstände, dem \ac{IOT}, einher. Mehr und mehr Geräte oder Gegenstände besitzen die Möglichkeit aktiv durch Datenaustausch oder passiv z. B. mit Hilfe eines Bar- oder QR-Codes mit der digitalen Welt zu kommunizieren und somit eine fortschreitende Automatisierung sowie Individualisierung zu ermöglichen.
+Das Ende des 20. Jahrhunderts gilt als der Beginn der 4. industriellen Revolution. Das Kennzeichen dieser Phase ist die zunehmende Digitalisierung. Mit ihr geht die technische Vernetzung physischer Gegenstände, dem \ac{IOT}, einher. Mehr und mehr Geräte oder Gegenstände besitzen die Möglichkeit aktiv durch Datenaustausch oder passiv z. B. mit Hilfe eines Bar- oder QR-Codes mit der digitalen Welt zu kommunizieren und somit eine fortschreitende Automatisierung sowie Individualisierung zu ermöglichen. 
 
 Im Gegensatz zur Industrie 3.0 sollen Maschinen autonom, auch über Unternehmensgrenzen hinweg, miteinander kommunizieren können um gesamte Geschäftsprozesse zu übernehmen. Dies setzt eine Öffnung der Unternehmen nach außen voraus.
 
@@ -64,7 +64,16 @@ Diese Veränderungen im Wertschöpfungsprozess und die ständige Kommunikation d
 
 \section{Industrie 4.0}
 
-Der Begriff Industrie 4.0 wurde erstmals auf der Hannover Messe 2011 verwendet (\cite{drath2014}) und soll das Ergebnis der 4. industriellen Revolution darstellen. Der Grundgedanke hinter Industrie 4.0 ist die flächendeckende Vernetzung von Informations- und Kommunikationstechnik zu einem Internet der Dinge, Dienste und Daten (\cite{Spath2013}). Diese Vernetzung soll einen ständigen Informationsaustausch zwischen den Komponenten ermöglichen. Jede Komponente des \ac{IOT} soll als \ac{CPS} arbeiten. Ein \ac{CPS} besitzt neben seiner realen Identität eine digitale Identität, über welche es ständig mit anderen \ac{IOT}-Geräten kommunizieren kann. 
+Der Begriff Industrie 4.0 wurde erstmals auf der Hannover Messe 2011 verwendet (\cite{drath2014}) und soll das Ergebnis der 4. industriellen Revolution darstellen. Der Grundgedanke hinter Industrie 4.0 ist die flächendeckende Vernetzung von Informations- und Kommunikationstechnik zu einem Internet der Dinge, Dienste und Daten (\cite{Spath2013}). Diese Vernetzung soll einen ständigen Informationsaustausch zwischen den Komponenten ermöglichen. Jede Komponente des \ac{IOT} soll als \ac{CPS} arbeiten. Ein \ac{CPS} besitzt neben seiner realen Identität eine digitale Identität, über welche es ständig mit anderen \ac{IOT}-Geräten kommunizieren kann. Kunden- und Maschinendaten werden miteinander vernetzt \cite{rami2016}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{internet-der-dinge}
+  \caption{Das Internet der Dinge - \cite{rami2016}}
+  \label{Kap2:Das Internet der Dinge}
+\end{figure}
+
+\clearpage
 
 Für Unternehmen bedeutet dies einen Wechsel von einer linearen Prozesskette hin zu einem vermaschten Netzwerk, in dem jede Komponente mit dem gesamten Netzwerk kommunizieren kann. Dies beinhaltet die Vernetzung der Komponenten auf horizontaler und vertikaler Ebene. Die vertikale Ebene stellt die technischen Komponenten dar und wird durch die Automatisierungspyramide beschrieben. Die horizontale Ebene beschreibt die wirtschaftlichen Geschäfts- bzw. Produktionsprozesse und besteht u. a. aus: Einkauf, Lieferanten, Produktionsplanung, Logistik, Sequenzierung und Lagerverwaltung. Das Ziel ist die Vernetzung aller Beteiligten.
 
@@ -77,7 +86,7 @@ Für Unternehmen bedeutet dies einen Wechsel von einer linearen Prozesskette hin
 
 \clearpage
 
-Aus zeitlichen Gründen wird im Rahmen der Bachelorthesis hauptsächlich die Kommunikation der vertikalen Achse auf technischer Ebene untersucht. 
+TODO - nur Kommunikation auf vertikaler Achse untersucht
 
 \subsection{Automatisierungspyramide}
 Die Automatisierungspyramide stellt die beteiligten Systeme und Softwarekomponenten eines automatisierten Prozesses systematisch dar. Diese beginnen, ausgehend vom Kundenauftrag und der betriebswirtschaftlichen Planung der Produktion auf der Unternehmensebene im \ac{ERP} System. Die Ergebnisse der Planung werden an das \ac{MES} übergeben, welches die verschiedenen Fertigungs- oder Logistikaufträge generiert. Die Aufträge werden anschließend auf der Prozessleit- (\ac{SCADA}), Steuerungs- (\ac{SPS}) und Feldebene (Ein-/Ausgangssignale) bearbeitet.
@@ -94,25 +103,40 @@ Die Automatisierungspyramide stellt die beteiligten Systeme und Softwarekomponen
 Während die oberen Schichten der Pyramide (\ac{ERP} und \ac{MES}) durch Standardkomponenten bzw. -software der IT realisiert werden, zählen die unteren Schichten (Prozessleit- bis Feldebene) zur Automatisierung, welche die Steuerung und Kontrolle der technischen Anlagen übernimmt. Diese werden auch als Shop-Floor-Ebene bezeichnet. Sie sind durch spezielle Hard- und Softwarelösungen umgesetzt. Die Kommunikation dieser Systeme ist u. a. für spezielle Anwendungsfälle wie harte Echtzeitreaktionszeiten mit Verzögerungen <1ms ausgelegt. Die Integration von Sicherheitsmaßnahmen bei der Kommunikation dieser Systeme stellt oft eine große Herausforderung dar.
 
 \subsection{\ac{RAMI4.0}}
-TODO - notwendig? Schichtenmodell, Darstellung eines Assets. nur kurze Beschreibung? wenig Bezug zur Netzwerkkommunikation. Smart Sensors, Kommunikationsfähigkeit eines Assets (aktiv,passiv)
+Um eine flächendeckende Vernetzung zu ermöglichen, muss eine einheitliche Kommunikation geschaffen werden. Die \ac{RAMI4.0} ist eine dreidimensionale Darstellung aller Teilnehmer einer Industrie 4.0 Umgebung und stellt ein Modell einer serviceorientierten Architektur dar. Sie soll eine Verwaltungsschale für Teilnehmer bilden, um eine standardisierte Kommunikation und einfache Inbetriebnahme neuer Komponenten ermöglichen. \cite{rami2016} Die Achsen der \ac{RAMI4.0} bestehen aus:
 
+\begin{itemize}
+  \item Achse 1 - Die Hierarchie zeigt die Anlagen, Maschinen sowie das Endprodukt, welche miteinander Vernetzt sind. In diesem Netzwerk werden Funktionen bereitgestellt und Daten ausgetauscht.
+  \item Achse 2 - Architektur: 
+  \item Achse 3 - Der Produktlebenszyklus wird im Gegensatz zur Industrie 3.0 in das Netzwerk mit eingebunden. Der gesamte Prozess der Produktion, Wartung bis hin zur Verschrottung soll digital erfasst werden.
+\end{itemize}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{rami40}
+  \caption{RAMI 4.0 - \cite{rami2016}}
+  \label{Kap2:RAMI 4.0}
+\end{figure}
 
+\clearpage
 
-\section{Grundprinzipien der sicheren Kommunikation}
-\subsection{Vertraulichkeit/Zugriffsschutz}
-\subsection{(Daten-)Integrität/Änderungsschutz}
-\subsection{Authentizität/Fälschungsschutz}
-\subsection{Verbindlichkeit/Nichtabstreitbarkeit}
-\subsection{Anonymität}
+Jeder Teilnehmer der Architektur wird als Asset bezeichnet und besitzt seine eigene Verwaltungsschale, welche als Schnittstelle zum Austausch von Informationen dient. Die Verwaltungsschale ist der Übergang zwischen der physischen zur digitalen Welt.
 
-TODO - Industrie 4.0 beinhaltet durch die Unternehmensübergreifende Kommunikation außerdem den rechtlichen Rahmen, welcher bei Nichteinhaltung von Verträgen bzgl. Verfügbarkeit, Integrität und Vertraulichkeit gelten kann.
+TODO - genauer auf die einzelnen Komponenten eingehen? Notwendig?
+TODO - siehe DIN 91345
+TODO - Anforderungen an diese Komponenten unterschiedlich
 
 \section{sichere Kommunikation in Industrie 4.0}
-Im Gegensatz zur I3.0, in welcher Daten auf lokaler Ebene oder zwischen einzelnen internen Unternehmensebenen ausgetauscht wurden, stellt in der I4.0 der Austausch von Daten und Informationen über Unternehmensgrenzen hinweg eine wesentliche Herausforderung dar. Dabei findet die Kommunikation nicht mehr über ein Enterprise-Resource-Planning-System (ERP) statt, sondern auch direkt von einer darunterliegenden Ebene, wie z. B. einer Maschine mit ihrem Lieferanten. Durch diese enge Vernetzung können sowohl Menschen, als auch Maschinen die Kommunikationspartner sein.
+Im Gegensatz zur I3.0, in welcher Daten auf lokaler Ebene oder zwischen einzelnen internen Unternehmensebenen ausgetauscht wurden, stellt in der I4.0 der Austausch von Daten und Informationen über Unternehmensgrenzen hinweg eine wesentliche Herausforderung dar. Dabei findet die Kommunikation nicht mehr über ein Enterprise-Resource-Planning-System (ERP) statt, sondern auch direkt von einer darunterliegenden Ebene, wie z. B. einer Maschine mit ihrem Lieferanten. Durch diese enge Vernetzung können sowohl Menschen, als auch Maschinen die Kommunikationspartner sein. Um diese Kommunikation sicher und zuverlässig zu gestalten, müssen die Grundprinzipien der sicheren Kommunikation realisiert werden.
 
-\subsection{M2M-Kommunikation}
-TODO - Maschine 2 Mensch und Maschine 2 Maschine -> M2M Protokolle
+\subsection{Grundprinzipien der sicheren Kommunikation}
+\subsubsection{Vertraulichkeit/Zugriffsschutz}
+\subsubsection{(Daten-)Integrität/Änderungsschutz}
+\subsubsection{Authentizität/Fälschungsschutz}
+\subsubsection{Verbindlichkeit/Nichtabstreitbarkeit}
+\subsubsection{Anonymität}
+
+Industrie 4.0 beinhaltet durch die Unternehmensübergreifende Kommunikation außerdem den rechtlichen Rahmen, welcher bei Nichteinhaltung von Verträgen bzgl. Verfügbarkeit, Integrität und Vertraulichkeit gelten kann.
 
 \subsection{Anforderungen}
 \subsection{Komponenten einer I4.0 Architektur}
@@ -120,8 +144,23 @@ TODO - Maschine 2 Mensch und Maschine 2 Maschine -> M2M Protokolle
 \subsubsection{Smarte Sensoren}
 \subsubsection{TODO}
 
-\subsection{Kommunikationsstrukturen}
-\subsubsection{End2End}
-\subsubsection{Gateways}
-\subsubsection{Publish-Subscribe}
-\subsubsection{Kommunikation mit Netzwerk als Partner}
+\section{Kommunikationsstrukturen in Industrie 4.0 Umgebungen}
+Um die Kommunikation zwischen verschiedenen Teilnehmern zu ermöglichen, ergeben sich in der Praxis unterschiedliche Strukturen. Jede dieser Strukturen bietet, je nach Anwendungsfall und zu erfüllenden Anforderungen, Vor- und Nachteile.
+
+TODO - mehr -> siehe sichere Kommunikation-i4.0
+
+\subsection{End2End}
+Die Komponenten der Industrie 4.0 Umgebung kommunizieren über einen direkten Kanal miteinander. Dies setzt voraus, dass sich beide Teilnehmer in einem Netzwerk befinden, welches die benötigten Dienste wie z. B. \ac{IP} und \ac{DNS} zur Kommunikation bereitstellt. Des weiteren müssen beide Systeme diese Dienste und Protokolle unterstützen.
+
+\subsection{Gateways}
+Um existierende Systeme, welche selbst nicht Industrie 4.0 konform kommunizieren oder zu wenig Rechenleistung besitzen, in die Industrie 4.0 Welt zu integrieren, werden Industrie 4.0 Gateways genutzt. Dabei ist jedoch zu beachten, dass die Systeme hinter den Gateways nicht als Industrie 4.0 Komponenten entwickelt wurden und somit auch keine oder nur wenige dieser Eigenschaften besitzen. Des Weiteren ist es möglich, dass die Kommunikation aus Leistungsgründen oder besonderer Anforderungen über optimierte, proprietäre Protokolle stattfindet. Die Gateways müssen auf die Systeme und deren Protokolle individuell konfiguriert werden, um die Funktionalitäten im Industrie 4.0 Netz bereitstellen zu können, und die Kommunikation zu schützen.
+
+TODO - Trumpf
+
+\subsection{Publish-Subscribe}
+Das Publish-Subscribe Modell bietet die Möglichkeit Informationen an mehrere Teilnehmer zu verteilen. Hierbei melden sich die Empfänger beim Verteiler an und wählen aus, über welche Nachrichtentypen sie informiert werden möchten. Diese Verteilservices nutzen zur besseren Skalierung und Reduzierung der Netzlast häufig Datagramme wie \ac{UDP}. Durch die Nutzung von Datagrammen geht jedoch die Fehlertoleranz verloren. Somit muss entweder dafür gesorgt werden, dass eine sehr zuverlässige Netzwerkinfrastruktur vorhanden ist und hohe Bandbreitenreserven geschaffen werden, um die Dienstgüte (\ac{QoS}) sicherzustellen oder dieses Modell nur für fehlertolerante Kommunikation wie z. B. Audio- und Video-Anwendungen oder Businessprozesse zu nutzen. 
+
+\subsection{Kommunikation mit Netzwerk als Partner}
+Zeitkritische Automatisierungsanwendungen verlangen besondere Netzwerkeigenschaften. Sie können auf Latenz oder Jitter angewiesen sein. Um diese Eigenschaften sicherzustellen, ist es sinnvoll in diese Netze eine Industrie 4.0 Schnittstelle zu integrieren. Somit ist es den Teilnehmern möglich, über die Verwaltungsschale sicherzustellen, dass das Netzwerk die erforderlichen Anforderungen bereitstellt. \cite{sichKom2017}
+
+TODO - Bilder undso -> sichere-kommunikation-i40
