@@ -107,7 +107,7 @@ Um eine flächendeckende Vernetzung zu ermöglichen, muss eine einheitliche Komm
 
 \begin{itemize}
   \item Achse 1 - Die Hierarchie zeigt die Anlagen, Maschinen sowie das Endprodukt, welche miteinander Vernetzt sind. In diesem Netzwerk werden Funktionen bereitgestellt und Daten ausgetauscht.
-  \item Achse 2 - Architektur: 
+  \item Achse 2 - Die Architektur beschreibt - TODO
   \item Achse 3 - Der Produktlebenszyklus wird im Gegensatz zur Industrie 3.0 in das Netzwerk mit eingebunden. Der gesamte Prozess der Produktion, Wartung bis hin zur Verschrottung soll digital erfasst werden.
 \end{itemize}
 
@@ -122,27 +122,31 @@ Um eine flächendeckende Vernetzung zu ermöglichen, muss eine einheitliche Komm
 
 Jeder Teilnehmer der Architektur wird als Asset bezeichnet und besitzt seine eigene Verwaltungsschale, welche als Schnittstelle zum Austausch von Informationen dient. Die Verwaltungsschale ist der Übergang zwischen der physischen zur digitalen Welt.
 
-TODO - genauer auf die einzelnen Komponenten eingehen? Notwendig?
+TODO - genauer auf die einzelnen Komponenten eingehen! - Assets, Architektur, Komponenten, Verwaltungsschale
+TODO - Architektur wichtig SOA beschreiben -> Angriffsvektoren
 TODO - siehe DIN 91345
 TODO - Anforderungen an diese Komponenten unterschiedlich
 
-\section{sichere Kommunikation in Industrie 4.0}
-Im Gegensatz zur I3.0, in welcher Daten auf lokaler Ebene oder zwischen einzelnen internen Unternehmensebenen ausgetauscht wurden, stellt in der I4.0 der Austausch von Daten und Informationen über Unternehmensgrenzen hinweg eine wesentliche Herausforderung dar. Dabei findet die Kommunikation nicht mehr über ein Enterprise-Resource-Planning-System (ERP) statt, sondern auch direkt von einer darunterliegenden Ebene, wie z. B. einer Maschine mit ihrem Lieferanten. Durch diese enge Vernetzung können sowohl Menschen, als auch Maschinen die Kommunikationspartner sein. Um diese Kommunikation sicher und zuverlässig zu gestalten, müssen die Grundprinzipien der sicheren Kommunikation realisiert werden.
+\section{Grundprinzipien der sicheren Kommunikation}
+Die Grundprinzipien der sicheren Kommunikation beschreiben die Schutzziele im Bereich der Informationssicherheit. Diese verdeutlichen den Anspruch an die Sicherheit an ein zu implementierendes System oder ein Netzwerk. Sie stellen einen vereinbarten Umfang gegen Bedrohungen dar, welcher von den Kommunikationspartnern gewährleistet wird und nachgewiesen werden kann. Diese klassischen Schutzziele sind auch für Industrie 4.0 Umgebungen zutreffend. Die weitreichende Vernetzung der Systeme in der Industrie 4.0 erfordert jedoch weitere Schutzziele, um einen rechtskonformen Umgang oder besondere Anforderungen sicherzustellen.
 
-\subsection{Grundprinzipien der sicheren Kommunikation}
-\subsubsection{Vertraulichkeit/Zugriffsschutz}
-\subsubsection{(Daten-)Integrität/Änderungsschutz}
-\subsubsection{Authentizität/Fälschungsschutz}
-\subsubsection{Verbindlichkeit/Nichtabstreitbarkeit}
-\subsubsection{Anonymität}
+\subsection{klassische Schutzziele}
+\begin{itemize}
+  \item Vertraulichkeit/Zugriffsschutz
+  \item (Daten)-Integrität/Änderungsschutz
+  \item Authentizität/Fälschungsschutz
+  \item Verfügbarkeit
+\end{itemize}
 
-Industrie 4.0 beinhaltet durch die Unternehmensübergreifende Kommunikation außerdem den rechtlichen Rahmen, welcher bei Nichteinhaltung von Verträgen bzgl. Verfügbarkeit, Integrität und Vertraulichkeit gelten kann.
+\subsection{weitere Schutzziele}
 
-\subsection{Anforderungen}
-\subsection{Komponenten einer I4.0 Architektur}
-\subsubsection{Assets}
-\subsubsection{Smarte Sensoren}
-\subsubsection{TODO}
+\begin{itemize}
+  \item Verbindlichkeit/Nichtabstreitbarkeit
+  \item Anonymität
+\end{itemize}
+
+TODO - gefällt mir nicht. Muss man die Begriffe erklären?
+TODO - ref. \cite{BMWiSec2016}
 
 \section{Kommunikationsstrukturen in Industrie 4.0 Umgebungen}
 Um die Kommunikation zwischen verschiedenen Teilnehmern zu ermöglichen, ergeben sich in der Praxis unterschiedliche Strukturen. Jede dieser Strukturen bietet, je nach Anwendungsfall und zu erfüllenden Anforderungen, Vor- und Nachteile.
@@ -158,9 +162,24 @@ Um existierende Systeme, welche selbst nicht Industrie 4.0 konform kommunizieren
 TODO - Trumpf
 
 \subsection{Publish-Subscribe}
-Das Publish-Subscribe Modell bietet die Möglichkeit Informationen an mehrere Teilnehmer zu verteilen. Hierbei melden sich die Empfänger beim Verteiler an und wählen aus, über welche Nachrichtentypen sie informiert werden möchten. Diese Verteilservices nutzen zur besseren Skalierung und Reduzierung der Netzlast häufig Datagramme wie \ac{UDP}. Durch die Nutzung von Datagrammen geht jedoch die Fehlertoleranz verloren. Somit muss entweder dafür gesorgt werden, dass eine sehr zuverlässige Netzwerkinfrastruktur vorhanden ist und hohe Bandbreitenreserven geschaffen werden, um die Dienstgüte (\ac{QoS}) sicherzustellen oder dieses Modell nur für fehlertolerante Kommunikation wie z. B. Audio- und Video-Anwendungen oder Businessprozesse zu nutzen. 
+Das Publish-Subscribe Modell bietet die Möglichkeit Informationen an mehrere Teilnehmer zu verteilen. Hierbei melden sich die Empfänger beim Verteiler an und wählen aus, über welche Nachrichtentypen sie informiert werden möchten. Diese Verteildienste nutzen zur besseren Skalierung und Reduzierung der Netzlast häufig Datagramme wie \ac{UDP}. Durch die Nutzung von Datagrammen geht jedoch die Fehlertoleranz verloren. Somit muss entweder dafür gesorgt werden, dass eine sehr zuverlässige Netzwerkinfrastruktur vorhanden ist und hohe Bandbreitenreserven geschaffen werden, um die Dienstgüte (\ac{QoS}) sicherzustellen oder dieses Modell nur für fehlertolerante Kommunikation wie z. B. Audio- und Video-Anwendungen oder Businessprozesse zu nutzen. 
 
 \subsection{Kommunikation mit Netzwerk als Partner}
 Zeitkritische Automatisierungsanwendungen verlangen besondere Netzwerkeigenschaften. Sie können auf Latenz oder Jitter angewiesen sein. Um diese Eigenschaften sicherzustellen, ist es sinnvoll in diese Netze eine Industrie 4.0 Schnittstelle zu integrieren. Somit ist es den Teilnehmern möglich, über die Verwaltungsschale sicherzustellen, dass das Netzwerk die erforderlichen Anforderungen bereitstellt. \cite{sichKom2017}
 
-TODO - Bilder undso -> sichere-kommunikation-i40
+TODO - Bilder -> sichere-kommunikation-i40
+
+\section{Informationsaustausch in Industrie 4.0 Umgebungen}
+Im Gegensatz zur I3.0, in welcher Daten auf lokaler Ebene oder zwischen einzelnen internen Unternehmensebenen ausgetauscht wurden, stellt in der I4.0 der Austausch von Daten und Informationen über Unternehmensgrenzen hinweg eine wesentliche Herausforderung dar. Dabei findet die Kommunikation nicht mehr über ein Enterprise-Resource-Planning-System (ERP) statt, sondern auch direkt von einer darunterliegenden Ebene, wie z. B. einer Maschine mit ihrem Lieferanten. Durch diese enge Vernetzung können sowohl Menschen, als auch Maschinen die Kommunikationspartner sein. Um diese Kommunikation sicher und zuverlässig zu gestalten, müssen auf technischer Ebene Protokolle genutzt werden, welche es ermöglichen die gegebenen Schutzziele zu realisieren, um Schadensfälle zu vermeiden. 
+
+TODO - Die Kommunikation zwischen Maschinen stellt besondere Anforderungen bereit.
+\subsection{M2M-Kommunikation}
+Im Rahmen des \ac{RAMI4.0} wird eine Industrie 4.0 Umgebung als \ac{SOA} beschrieben. Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen.
+
+TODO - Maschine 2 Mensch und Maschine 2 Maschine -> M2M Protokolle
+
+\subsection{OPC UA}
+\subsection{MConnect}
+\subsection{TODO}
+
+\section{Testsystem}
