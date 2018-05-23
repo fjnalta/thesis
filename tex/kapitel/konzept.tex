@@ -39,17 +39,27 @@ Industrie 4.0 Dienste basieren auf IP-Netzen. Sie bilden nach dem OSI-Modell ein
 \subsubsection{zeitkritische Prozesse}
 \subsubsection{Migration vorhandener Systeme}
 
+\subsection{Rechtliche Anforderungen}
+TODO - DSGVO
+
 \section{Komponenten}
 Die beschriebenen Anforderungen müssen, um eine sichere Netzwerkkommunikation zu gewährleisten, von allen beteiligen Komponenten der Umgebung integriert und umgesetzt werden. Industrie 4.0 Umgebungen können in unterschiedlichster Form ausgeprägt sein. Die Umsetzung der Hard- und Softwarekomponenten hängt von den zu übertragenden Daten, dem Übertragungsmedium, der Übertragungsdistanz und vorausgesetzten Dienstgüte ab. Somit werden die zu analysierenden Komponenten in Hard- und Softwarekomponenten gegliedert.
 
 \subsection{Hardware}
 \subsubsection{Übertragungskanal}
+Der Übertragungskanal ist Bestandteil der ersten Schicht des OSI-Schichtenmodells ( Physical Layer ). In Industrie 4.0 Umgebungen ist es notwendig, Daten zu übertragen, um eine räumliche oder zeitliche Distanz zu überbrücken. Je nach Anwendungsfall findet diese Kommunikation über Kupfer- bzw. Glasfaserkabel, Funkübertragung oder ein Speichermedium statt. Je nach Beschaffenheit des Übertragungskanals, ist es notwendig, weitere Maßnahmen zur Sicherheit der Kommunikation zu treffen. 
+
 \subsubsection{Infrastruktur}
+TODO - DMZ, Defense in Depth usw.?
 
 \subsection{Software}
+Jede Komponente einer \ac{ICS}-Umgebung kann Softwareschwachstellen und Sicherheitslücken enthalten. Dabei spielt es keine Rolle, ob es sich um ein komplexes \ac{ICS} handelt oder um einen einfachen Anwendungsserver. Software-Aktualisierungen sowie ein Patch-Management sind für einen sicheren Betrieb notwendig, um Angriffe über Exploits zu verhindern.
+
 \subsubsection{Netzwerkstack}
-\subsubsection{\ac{IoT}-Protokolle}
-\subsubsection{\ac{IIoT}-Protokolle}
+Die Kommunikation zwischen Industrieanlagen findet mehr und mehr auf der Basis von TCP-basierten Netzwerken statt. Das \ac{RAMI4.0} beschreibt Industrie 4.0 Umgebungen als \ac{SOA}. \ac{SOA} beschreibt ein Netzwerk, in welchem von den Teilnehmern Dienste bereitgestellt und genutzt werden können. Die Dienste im Netzwerk werden i. d. R. über eine \ac{REST}-\ac{API} bereitgestellt. Diese Schnittstellen nutzen bereits etablierte Protokolle der \ac{IoT} oder \ac{IIoT} Welt. Im Rahmen der Thesis werden ausgewählte Protokolle auf ihre Standhaftigkeit in Industrie 4.0 Umgebungen geprüft.
+
+\subsubsection{Protokolle}
+\ac{IoT}-Geräte nutzen das Internet als Übertragungsmedium. Somit müssen sie zur Übertragung ihrer Daten Protokolle nutzen, welche die Internet Protocol Suite der \ac{IETF} einhalten. Etablierte Internet-Protokolle wie HTTP und XMPP wurden zur Kommunikation ressourcenreicher Geräte mit hoher Leistung entwickelt und sind für viele Netzwerke mit \ac{IoT}- oder \ac{IIoT}-Endknoten zu komplex, bzw. nicht geeignet. Im Rahmen der 4. industriellen Revolution wurden daher, vor allem für \ac{IIoT} Umgebungen, neue Protokolle entwickelt, welche ressourcensparende, sichere Kommunikation zwischen Maschinen sicherstellen sollen. Im Rahlen der Thesis werden die \ac{IoT}-Protokolle HTTP und XMPP sowie die \ac{IIoT}-Protokolle OPC UA, MQTT, CoAP und DDS mit Bezug auf ihre Netzwerksicherheit analysiert.
 
 \section{Umsetzung}
-TODO - testen im Testsystem
+Bei der Analyse auftretende, mögliche Sicherheitslücken werden in einer vorhandenen, prototypischen Industrie 4.0 Testumgebung implementiert und nachgewiesen. Sicherheitslücken, welche durch Fehlkonfiguration von Software auftreten und keine konzeptionellen Schwachstellen der Software oder deren Protokolle darstellen, sollen in der Testumgebung aktiviert und deaktiviert werden können, um die Auswirkung eines Angriffs auf ein Industrie 4.0 System zu Lehr- und Testzwecken darstellen zu können.
