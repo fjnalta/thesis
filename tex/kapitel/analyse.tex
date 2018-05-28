@@ -1,54 +1,37 @@
 \chapter{Analyse}
 
-\section{Übertragungsmedien}
+\section{Infrastruktur}
 
-Somit können als Übertragungsmedien neben der klassischen Kabelverbindung auch andere (instabile) Kanäle wie Mobilfunk oder Satelliten in Frage kommen. Um die Kommunikation über alle Medien sicher und zuverlässig zu gestalten, müssen auf technischer Ebene Protokolle genutzt werden, welche es ermöglichen die gegebenen Schutzziele zu realisieren.
 
-Des Weiteren müssen die Daten über große Entfernungen hinweg übertragen werden. 
+\subsection{Netzwerk}
+heterogene Netze machen Probleme - Globale Netze haben Latenz, Paketverlust, usw.; müssen Anforderungen gerecht werden.
 
-\subsection{Kabelgebunden}
-\subsection{Funk/instabile Übertragungskanäle}
-\subsubsection{\ac{GSM}}
-\subsubsection{\ac{HSDPA}}
-\subsubsection{\ac{LTE}}
-\subsubsection{\ac{LPWA}}
+\subsubsection{Übertragungsmedium}
+Als Übertragungsmedien können neben der klassischen Kabelverbindung auch andere (instabile) Kanäle wie Mobilfunk oder Satelliten in Frage kommen. Um die Kommunikation über alle Medien sicher und zuverlässig zu gestalten, müssen auf technischer Ebene Protokolle genutzt werden, welche es ermöglichen die gegebenen Schutzziele zu realisieren und die Integrität der Daten bei der Übertragung über große Entfernungen zu gewährleisten.
 
-\section{Integrationsansätze}
-\subsection{Konsolidierung der Netzwerkkommunikation}
+TODO - Übertragungsdistanz - Latenz - Jitter - usw.
+
+\subsubsection{Probleme bei Migration alter Systeme}
+Inkompatibilität - spezielle bzw. proprietäre Protokolle - besondere Anforderungen der Shop-Floor-Ebene - Industrial Ethernet
+
+
+\subsection{Integrationsansätze}
+
+\subsubsection{Konsolidierung der Netzwerkkommunikation}
 TODO - alles spricht OPC UA
 
-\subsection{Gatewaykommunikation}
+Ansatz: Teuer, aufwendig, nicht möglich, da embedded System bzw. keine Ressourcen oder keine Schnittstellen
+
+\subsubsection{Gatewaykommunikation}
 TODO - siehe Trumpf, axoom -> Gateways übersetzen von heterogener Netzwerkkommunikation in Protokollstandard für unternehmensübergreifende bzw. externe Kommunikation.
-Ansatz: Softwareschwachstellen, Softwarefehler, müssen viele Herstellerprotokolle unterstützen - Probleme?
 
-\subsubsection{Security-Komponenten}
-\subsubsection{Router}
-\subsubsection{Gateways}
+Ansatz: Softwareschwachstellen, Softwarefehler, müssen viele Herstellerprotokolle unterstützen - Probleme? - bekommt man Appliance?
 
-\section{Kommunikationsstack}
-\subsection{Physical Layer}
-\subsection{Data Link Layer}
-\subsection{Network Layer}
-\subsection{Transport Layer und End2End Security}
-\subsection{Prozess- und Businesslogik - Application Layer}
-
-\section{Protokolle}
-\subsection{etablierte Kommunikationsprotokolle}
-\subsubsection{HTTP}
-\subsubsection{XMPP}
-\subsubsection{MQTT}
-\subsubsection{CoAP}
-
-\subsection{M2M-Kommunikationsprotokolle}
-\subsubsection{OPC UA}
-\subsubsection{MTConnect}
-\subsection{weitere? PLCOpen, AutomationML}
-
-\section{Probleme bei Migration alter Systeme}
-\subsection{Inkompatibilität}
-\subsection{spezielle bzw. proprietäre Protokolle}
-\subsection{besondere Anforderungen der Shop-Floor-Ebene}
-\subsection{Industrial Ethernet}
+\section{Protokollanalyse}
+\subsection{OPC UA}
+\subsection{DDS}
+\subsection{MQTT}
+\subsection{CoAP}
 
 \section{Angriffsvektoren}
 \subsection{Verschlüsselung}
@@ -65,3 +48,8 @@ TODO - Beschreibung und Einordnung der Defense in Depth Strategie
     \caption{Defense in Depth Strategie - TODO ref. Kuipers,2006}
     \label{Kap3:Defense-in-Depth}
 \end{figure}
+
+\subsection{TODO}
+
+\section{Auswertung der Ergebnisse}
+TODO - Grundlage der Implementierung!

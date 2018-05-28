@@ -3,10 +3,10 @@
 Um die in den Grundlagen beschriebenen Sicherheitsstandards, Protokolle und Integrationslösungen auf ihre Standhaftigkeit in Bezug auf die IT-Schutzziele zu analysieren, werden die Protokolle und Systeme in ihrem Aufbau untersucht und mögliche Schwachstellen herausgearbeitet, daraus hervorgehende Risiken beschrieben und erforderliche Maßnahmen empfohlen. Die \ac{RAMI4.0} beschreibt ein Referenzmodell für Industrie 4.0 Umgebungen. Bereits etablierte Lösungen bestehen aus heterogenen, individuellen Netzwerklandschaften. Um eine Untersuchung der vorhandenen Systeme im neuen Umfeld durchzuführen, müssen verschiedene Faktoren, wie Infrastruktur oder besondere Anforderungen an die Systeme mit einbezogen werden. Das folgende Kapitel dient der Beschreibung der Vorgehensweise bei der Analyse der Netzwerkkommunikation und deren Komponenten.
 
 \section{Anforderungen}
-Die Kommunikation in Industrie 4.0 Umgebungen findet über diverse Übertragungsmedien, Protokolle und Software statt. Um die beteiligten Komponenten auf Schwachstellen zu untersuchen, werden zuerst die Anforderungen für eine sichere Kommunikation herausgearbeitet, um eine Grundlage der Analyse zu schaffen.
+Die Kommunikation in Industrie 4.0 Umgebungen findet über diverse Übertragungsmedien, Protokolle und Software statt. Um die beteiligten Komponenten auf Schwachstellen zu untersuchen, werden zuerst die Anforderungen für eine sichere Kommunikation herausgearbeitet, um eine Grundlage für die Analyse zu schaffen.
 
-\subsection{Grundlegende Anforderungen}
-Aufgrund der sehr unterschiedlichen Einsatzbereiche von Industrie 4.0 Systemen, unterscheiden sich auch dementsprechend deren Anforderungen. Aus den Referenzmodellen \ac{RAMI4.0} und \ac{IIRA} lassen sich grundsätzlich drei grundlegende Anforderungen an den Übertragungskanal ableiten \cite{BMWiNeCon2016}.
+\subsection{grundlegende Anforderungen}
+Aufgrund der unterschiedlichen Einsatzbereiche von Industrie 4.0 Systemen, unterscheiden sich auch dementsprechend deren Anforderungen. Zusätzlich zu den Grundprinzipien der sicheren Kommunikation beschreien die Referenzmodelle \ac{RAMI4.0} und \ac{IIRA} grundsätzlich drei Anforderungen an den Übertragungskanal \cite{BMWiNeCon2016}.
 
 \subsubsection{Sicherheit}
 TODO - Hierunter fallen die Bereiche a) Netzsicherheit und Datensicherheit, b) Sichere Identitäten und c) funktionale Sicherheit. Die Punkte a) und b) werden in der AG3 der Plattform Industrie 4.0 adressiert [6], [7]. Die UAG Netzkommunikation arbeitet bzgl. dieser Punkte mit der AG3 zusammen. Zum Thema „Security und funktionale Sicherheit“ arbeitet die AG3 mit dem DKE-TBINK AK IT Security und Security by Design zusammen. Hinsichtlich funktionaler Sicherheit gibt es Anforderungen von Seiten IEC 61784-3. Diese müssen bei der Definition neuer Systeme berücksichtigt werden.
@@ -18,16 +18,18 @@ TODO - Hierunter fallen die Bereiche a) Netzsicherheit und Datensicherheit, b) S
 \end{itemize}
 
 \subsubsection{Verfügbarkeit}
-Die ständige Verfügbarkeit von Daten und Diensten spielst in der Industrie 4.0 eine bedeutende Rolle, um den Datenaustausch zwischen zwei Kommunikationspartnern im Netz jederzeit zu ermöglichen. Als Verfügbarkeit wird die Wahrscheinlichkeit bezeichnet, dass ein System innerhalb eines bestimmten Zeitraumes erreichbar ist. Ein System gilt als verfügbar, wenn es erreichbar ist und die für es vorgesehenen Aufgaben erledigen kann.
+Die ständige Verfügbarkeit von Daten und Diensten spielt in der Industrie 4.0 eine bedeutende Rolle, um den Datenaustausch zwischen zwei Kommunikationspartnern im Netz jederzeit zu ermöglichen. Als Verfügbarkeit wird die Wahrscheinlichkeit bezeichnet, dass ein System innerhalb eines bestimmten Zeitraumes erreichbar ist. Ein System gilt als verfügbar, wenn es erreichbar ist und die für es vorgesehenen Aufgaben erledigen kann.
 
-Die Verfügbarkeit eines Systems wird in Verfügbarkeitsklassen gegliedert. Diese beschreiben Verfügbarkeitswahrscheinlichkeiten von 99\% ( Verfügbarkeitsklasse 2 ) bis 99,9999\% ( Verfügbarkeitsklasse 6 ). Eine exakte Definition, wann ein System hochverfügbar ist, gibt es nicht - TODO ref. Im Allgemeinen wird ab Verfügbarkeitsklasse 3 ( 99,99\% ) von Hochverfügbarkeit gesprochen. Industrie 4.0 Systeme sind meist Hochverfügbar.
+Die Verfügbarkeit eines Systems wird in Verfügbarkeitsklassen gegliedert. Diese beschreiben Verfügbarkeitswahrscheinlichkeiten von 99\% ( Verfügbarkeitsklasse 2 ) bis 99,9999\% ( Verfügbarkeitsklasse 6 ). Eine exakte Definition, wann ein System hochverfügbar ist, gibt es nicht - TODO ref. Im Allgemeinen wird ab Verfügbarkeitsklasse 3 ( 99,99\% ) von Hochverfügbarkeit gesprochen.
+
+TODO - Verfügbarkeit gewährleisten durch...
 
 \subsubsection{\ac{QoS}}
 TODO - Es ist die originäre Aufgabe der Datenkommunikation, Distanzen zu überwinden - egal wie weit die Kommunikationspartner voneinander entfernt sind: Effizienz- und produktivitätssteigernd ist sowohl die Überwindung von wenigen Zentimetern per Near Field Communication (NFC) als auch die Datenübertragung rund um den Globus durch verschiedene Netze; nicht zu vergessen: Teleservices zur Unterstützung bei Inbetriebnahmen, zum Remote Debugging und zum Fernwirken. Die Qualitätsanforderungen an Kommunikationsnetze (wired und wireless) sind: hochverfügbare, homogene Netze; garantierte Bandbreiten für die sehr unterschiedlichen Anwendungen (Bild 1); verbindliche Dienstgüte (Quality of Service, QoS) [1]; standardisierte Dienste (z.B. mobilfunkproviderübergreifende SMS-Bestätigung). 
 
 TODO - ref. \cite{torscht2014} und IEEE 802.1p
 
-Industrie 4.0 Dienste basieren auf IP-Netzen. Sie bilden nach dem OSI-Modell eine höhere Schicht im Netz. Somit setzt sich die Güte eines Dienstes aus der Übertragungsgüte der unteren Schichten des  OSI-Modells sowie der \ac{QoS}-Parameter des Network Layer ( IP-Ebene ) zusammen. In IP-Netzen wird der Einfluss auf die \ac{QoS} in folgenden Parametern beschrieben:
+Industrie 4.0 Dienste basieren auf IP-Netzen. Sie bilden nach dem TCP/IP Schichtenmodell den Application- und Transport-Layer. Die Güte eines Dienstes setzt sich aus der Übertragungsgüte des Link Layer des TCP/IP Modells sowie der \ac{QoS}-Parameter der IP-Ebene zusammen. In IP-Netzen wird der Einfluss auf die \ac{QoS} in folgenden Parametern beschrieben:
 \begin{itemize}
     \item Latenzzeit: Dauer der Paketübertragung
     \item Jitter: Abweichung der Latenzzeit von ihrem Mittelwert
@@ -35,11 +37,11 @@ Industrie 4.0 Dienste basieren auf IP-Netzen. Sie bilden nach dem OSI-Modell ein
     \item Durchsatz: gemittelte Datenmenge pro Zeiteinheit
 \end{itemize}
 
-\subsection{Besondere Anforderungen}
+\subsection{weitere Anforderungen}
+
 \subsubsection{zeitkritische Prozesse}
 \subsubsection{Migration vorhandener Systeme}
-
-\subsection{Rechtliche Anforderungen}
+\subsubsection{rechtliche Anforderungen}
 TODO - DSGVO
 
 \section{Komponenten}
@@ -47,19 +49,22 @@ Die beschriebenen Anforderungen müssen, um eine sichere Netzwerkkommunikation z
 
 \subsection{Hardware}
 \subsubsection{Übertragungskanal}
-Der Übertragungskanal ist Bestandteil der ersten Schicht des OSI-Schichtenmodells ( Physical Layer ). In Industrie 4.0 Umgebungen ist es notwendig, Daten zu übertragen, um eine räumliche oder zeitliche Distanz zu überbrücken. Je nach Anwendungsfall findet diese Kommunikation über Kupfer- bzw. Glasfaserkabel, Funkübertragung oder ein Speichermedium statt. Je nach Beschaffenheit des Übertragungskanals, ist es notwendig, weitere Maßnahmen zur Sicherheit der Kommunikation zu treffen. 
+Der Übertragungskanal beschreibt die Bitübertragungsschicht. In Industrie 4.0 Umgebungen ist es notwendig, Daten zu übertragen, um eine räumliche oder zeitliche Distanz zu überbrücken. Je nach Anwendungsfall findet diese Kommunikation über Kupfer- bzw. Glasfaserkabel, Funkübertragung oder ein Speichermedium statt. Je nach Beschaffenheit des Übertragungskanals, ist es notwendig, weitere Maßnahmen zur Sicherheit der Kommunikation zu treffen. 
 
-\subsubsection{Infrastruktur}
-TODO - DMZ, Defense in Depth usw.?
+\subsubsection{Netzwerkinfrastruktur}
+TODO -
 
 \subsection{Software}
 Jede Komponente einer \ac{ICS}-Umgebung kann Softwareschwachstellen und Sicherheitslücken enthalten. Dabei spielt es keine Rolle, ob es sich um ein komplexes \ac{ICS} handelt oder um einen einfachen Anwendungsserver. Software-Aktualisierungen sowie ein Patch-Management sind für einen sicheren Betrieb notwendig, um Angriffe über Exploits zu verhindern.
 
 \subsubsection{Netzwerkstack}
-Die Kommunikation zwischen Industrieanlagen findet mehr und mehr auf der Basis von TCP-basierten Netzwerken statt. Das \ac{RAMI4.0} beschreibt Industrie 4.0 Umgebungen als \ac{SOA}. \ac{SOA} beschreibt ein Netzwerk, in welchem von den Teilnehmern Dienste bereitgestellt und genutzt werden können. Die Dienste im Netzwerk werden i. d. R. über eine \ac{REST}-\ac{API} bereitgestellt. Diese Schnittstellen nutzen bereits etablierte Protokolle der \ac{IoT} oder \ac{IIoT} Welt. Im Rahmen der Thesis werden ausgewählte Protokolle auf ihre Standhaftigkeit in Industrie 4.0 Umgebungen geprüft.
+Die Kommunikation zwischen Industrieanlagen findet mehr und mehr auf der Basis von TCP-basierten Netzwerken statt. Das \ac{RAMI4.0} beschreibt Industrie 4.0 Umgebungen als \ac{SOA}. \ac{SOA} beschreibt ein Netzwerk, in welchem von den Teilnehmern Dienste bereitgestellt und genutzt werden können. Die Dienste im Netzwerk werden i. d. R. über eine \ac{REST}-\ac{API} bereitgestellt. Diese Schnittstellen nutzen bereits etablierte Protokolle der \ac{IoT} oder \ac{IIoT} Welt.
 
 \subsubsection{Protokolle}
-\ac{IoT}-Geräte nutzen das Internet als Übertragungsmedium. Somit müssen sie zur Übertragung ihrer Daten Protokolle nutzen, welche die Internet Protocol Suite der \ac{IETF} einhalten. Etablierte Internet-Protokolle wie HTTP und XMPP wurden zur Kommunikation ressourcenreicher Geräte mit hoher Leistung entwickelt und sind für viele Netzwerke mit \ac{IoT}- oder \ac{IIoT}-Endknoten zu komplex, bzw. nicht geeignet. Im Rahmen der 4. industriellen Revolution wurden daher, vor allem für \ac{IIoT} Umgebungen, neue Protokolle entwickelt, welche ressourcensparende, sichere Kommunikation zwischen Maschinen sicherstellen sollen. Im Rahlen der Thesis werden die \ac{IoT}-Protokolle HTTP und XMPP sowie die \ac{IIoT}-Protokolle OPC UA, MQTT, CoAP und DDS mit Bezug auf ihre Netzwerksicherheit analysiert.
+\ac{IoT}-Geräte nutzen das Internet als Übertragungsmedium. Somit müssen sie zur Übertragung ihrer Daten Protokolle nutzen, welche die Internet Protocol Suite der \ac{IETF} einhalten. Etablierte Internet-Protokolle wie HTTP und XMPP wurden zur Kommunikation ressourcenreicher Geräte mit hoher Leistung entwickelt und sind für viele Netzwerke mit \ac{IoT}- oder \ac{IIoT}-Endknoten zu komplex, bzw. nicht geeignet. Im Rahmen der 4. industriellen Revolution wurden daher, vor allem für \ac{IIoT} Umgebungen, neue Protokolle entwickelt, welche ressourcensparende, sichere Kommunikation zwischen Maschinen bereitstellen sollen. 
 
 \section{Umsetzung}
-Bei der Analyse auftretende, mögliche Sicherheitslücken werden in einer vorhandenen, prototypischen Industrie 4.0 Testumgebung implementiert und nachgewiesen. Sicherheitslücken, welche durch Fehlkonfiguration von Software auftreten und keine konzeptionellen Schwachstellen der Software oder deren Protokolle darstellen, sollen in der Testumgebung aktiviert und deaktiviert werden können, um die Auswirkung eines Angriffs auf ein Industrie 4.0 System zu Lehr- und Testzwecken darstellen zu können.
+Bei der Analyse auftretende, mögliche Sicherheitslücken werden in einer vorhandenen, prototypischen Industrie 4.0 Testumgebung \cite{Weber2018} implementiert und nachgewiesen. Sicherheitslücken, welche durch Fehlkonfiguration von Software auftreten und keine konzeptionellen Schwachstellen der Software oder deren Protokolle darstellen, sollen in der Testumgebung aktiviert und deaktiviert werden können, um die Auswirkung eines Angriffs auf ein Industrie 4.0 System zu Lehr- und Testzwecken darstellen zu können.
+
+\section{Abgrenzung}
+Aus zeitlichen Gründen werden in dieser Thesis ausgewählte High Level Protokolle ( Application- und Transport-Layer ) des TCP/IP Referenzmodells und deren Bestandteile mit Bezug auf ihre Netzwerksicherheit analysiert. Es werden die etablierten \ac{IIoT}-Protokolle OPC UA, DDS, MQTT und CoAP sowie deren Bestandteile mit Bezug auf ihre Netzwerksicherheit untersucht. Da die Implementierung zur Darstellung der Schwachstellen im Bereich der Netzwerksicherheit im in TODO - beschriebenen Testsystem durchgeführt wird, liegt der Schwerpunkt der Analyse auf dem Protokoll OPC UA.
