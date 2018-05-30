@@ -16,50 +16,47 @@ Die vierte industrielle Revolution, das \ac{IIoT} und dessen Vielzahl an aktiven
     \item Kompromittierung von Smartphones im Produktionsumfeld - 
 \end{enumerate}
 
+TODO - ref. nach BSI
+
 Um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzziele umzusetzen, ist es notwendig einen größtmöglichen Schutz gegen diese Bedrohungen bereitzustellen. Dafür müssen die Netzwerkinfrastruktur, Integrationsansätze und die eigentliche Kommunikation über die genutzten Protokolle gesichert werden. Dies geschieht u.a. durch die Abschottung von Systemen, die Einschränkung von Zugangsberechtigungen, die Härtung der Sicherheit der genutzten Komponenten, den Einsatz von Verschlüsselungsverfahren und die Schulung der Mitarbeiter um ein Sicherheitsbewusstsein zu schaffen und die Einhaltung von Sicherheitsrichtlinien zu gewährleisten.
 
 \section{Netzwerkinfrastruktur}
-heterogene Netze machen Probleme - Globale Netze haben Latenz, Paketverlust, usw.; müssen Anforderungen gerecht werden.
-
-\subsection{Sicherheitsstrategien}
-\subsubsection{Security by Design}
-TODO - siehe DTAG2016 + Paulus
-
-\subsubsection{Defense in Depth Strategie - TODO (Kuipers,2006)}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=15cm]{defense-in-depth-strategie}
-    \caption{Defense in Depth Strategie - TODO ref. Kuipers,2006}
-    \label{Kap3:Defense-in-Depth}
-\end{figure}
-
-\clearpage
-
-TODO - Beschreibung und Einordnung der Defense in Depth Strategie
+TODO - heterogene Netze machen Probleme - Globale Netze haben Latenz, Paketverlust, usw.; müssen Anforderungen gerecht werden.
 
 \subsection{Übertragungsmedium}
 Als Übertragungsmedien können neben der klassischen Kabelverbindung auch andere (instabile) Kanäle wie Mobilfunk oder Satelliten in Frage kommen. Um die Kommunikation über alle Medien sicher und zuverlässig zu gestalten, müssen auf technischer Ebene Protokolle genutzt werden, welche es ermöglichen die gegebenen Schutzziele zu realisieren und die Integrität der Daten bei der Übertragung über große Entfernungen zu gewährleisten.
 
 TODO - Übertragungsdistanz - Latenz - Jitter - usw.
 
-\subsection{Integrationsansätze}
+\subsection{Defense in Depth Strategie}
+Die Norm IEC 62443 - TODO ref. - beschreibt ein Defense in Depth Konzept, um die IT-Sicherheit der Anlagen, die Netzwerksicherheit und Systemintegrität nach dem Stand der Technik zu schützen. Sie gliedert eine Unternehmensinfrastruktur in multiple und redundante Sicherheitsschichten (Zonen), um ein höchstmögliches Sicherheitsniveau zu erreichen. Die unabhängigen Verteidigungslinien sollen Angriffe verzögern, um Zeit für Gegenmaßnahmen zu gewinnen.
+
+Die Kommunikation erfolgt in separierten Netzsegmenten, welche zusätzlich mit \ac{IDS} nutzen, um Angriffe schnell zu erfassen und Gegenmaßnahmen einleiten zu können. Somit wird der Aufwand, um die Shop-Floor-Ebene zu kompromittieren durch den Einsatz von \ac{DMZ}, \ac{IDS}, Paketfilter und Time Access Control wesentlich erhöht. Zusätzlich ist das "`Zone and Conduit"' Modell eines der zentralen Elemente der Defense in Depth Strategie. Die verschiedenen Zonen können nur mittels spezieller Leitungen (Conduits) miteinander kommunizieren.  
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{defense-in-depth-strategie}
+    \caption{Defense in Depth Strategie - \cite{kuipers2006}}
+    \label{Kap3:Defense-in-Depth}
+\end{figure}
+
+\clearpage
+
+Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
+
+\section{Integrationsansätze}
 TODO - Probleme bei Migration alter Systeme - Inkompatibilität - spezielle bzw. proprietäre Protokolle - besondere Anforderungen der Shop-Floor-Ebene - Industrial Ethernet
 TODO - MPLS -> schlecht
 
-\subsubsection{Konsolidierung der Netzwerkkommunikation}
+\subsection{Konsolidierung der Netzwerkkommunikation}
 TODO - alles spricht OPC UA
-Ansatz: Teuer, aufwendig bzw. nicht möglich, da embedded System bzw. keine Ressourcen oder keine Schnittstellen
+Ansatz: teuer, aufwendig bzw. nicht möglich, da embedded System bzw. keine Ressourcen oder keine Schnittstellen
 
-\subsubsection{Gatewaykommunikation}
+\subsection{Gatewaykommunikation}
 TODO - siehe Trumpf, axoom -> Gateways übersetzen von heterogener Netzwerkkommunikation in Protokollstandard für unternehmensübergreifende bzw. externe Kommunikation.
 Ansatz: Softwareschwachstellen, Softwarefehler, müssen viele Herstellerprotokolle unterstützen - Probleme? - bekommt man Appliance zum Testen?
 
-\section{Protokollanalyse}
-\subsection{OPC UA}
-\subsection{DDS}
-\subsection{MQTT}
-\subsection{CoAP}
+\section{\ac{OPC UA} Protokollanalyse}
 
 \section{Angriffsvektoren}
 \subsection{Verschlüsselung}
@@ -67,8 +64,6 @@ Ansatz: Softwareschwachstellen, Softwarefehler, müssen viele Herstellerprotokol
 \subsection{TODO}
 
 \section{Maßnahmenkatalog}
-
-\subsection{TODO}
 
 \section{Auswertung der Ergebnisse}
 TODO - Grundlage der Implementierung!
