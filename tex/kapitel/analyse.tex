@@ -45,18 +45,61 @@ Die Kommunikation erfolgt in separierten Netzsegmenten, welche zusätzlich mit \
 Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
 
 \section{Integrationsansätze}
-TODO - Probleme bei Migration alter Systeme - Inkompatibilität - spezielle bzw. proprietäre Protokolle - besondere Anforderungen der Shop-Floor-Ebene - Industrial Ethernet
-TODO - MPLS -> schlecht
+Die Grundlage der Industrie 4.0 Kommunikation ist ein standardisierter Datenaustausch über alle Schichten der Automatisierungssysteme hinweg. Dabei stellt der \ac{IEC}-Standard \ac{OPC UA} einen vielversprechenden Ansatz dar einen standardisierten Informationsaustausch über Unternehmensgrenzen hinweg zu ermöglichen. 
+
+Jedoch müssen auch bestehende Systeme in die Industrie 4.0 Kommunikation integriert werden. Dies führt häufig zu Problemen, da diese Systeme proprietäre Protokolle nutzen, besondere Anforderungen wie Echtzeitkommunikation besitzen oder gar keine Schnittstelle bereitstellen.
 
 \subsection{Konsolidierung der Netzwerkkommunikation}
-TODO - alles spricht OPC UA
+TODO - Eine Möglichkeit der Entwicklung zu einer Smart Factory ist die Konsolidierung die Netzwerkkommunikation. Fokus auf OPC UA, da standardisiert.
+TODO - neue Netze/Factories können so geplant werden, dass die Maschinen die benötigten Schnittstellen bereitstellen.
 Ansatz: teuer, aufwendig bzw. nicht möglich, da embedded System bzw. keine Ressourcen oder keine Schnittstellen
 
 \subsection{Gatewaykommunikation}
-TODO - siehe Trumpf, axoom -> Gateways übersetzen von heterogener Netzwerkkommunikation in Protokollstandard für unternehmensübergreifende bzw. externe Kommunikation.
-Ansatz: Softwareschwachstellen, Softwarefehler, müssen viele Herstellerprotokolle unterstützen - Probleme? - bekommt man Appliance zum Testen?
+Eine Alternative zur Umstellung der bestehenden Systeme stellt die Kommunikation über Gateways dar. Hierbei gibt es mehrere Softwarelösungen, welche unterschiedliche Ziele verfolgen. Es werden Systeme zur Anlagenoptimierung (TODO - ref. SePiA.Pro), der Bereitstellung einer offenen, branchenübergreifenden Plattform mit diversen Smart Services wie Datenanalyse und Flottenmanagement (TODO - ref. Siemens Mindsphere, DeviceInsight) und dem herstellerübergreifenden Gerätemanagement (AXOOM) entwickelt \cite{acatec2016}. Die Systeme sammeln und verwalten die Daten der Anlagen an zentraler Stelle und stellen sie im Netzwerk zur Verfügung. Der Einsatzmöglichkeiten dieser Softwarelösungen sind von den vorhandenen Schnittstellen der Anlagen abhängig und benötigen eine individuelle Konfiguration um den unterschiedlichen Anforderungen der Industrielandschaft gerecht zu werden.
+
+Im folgenden Abschnitt wird die Umsetzung der Kommunikation über eine digitale Serviceplattform am Beispiel von AXOOM dargestellt.
+
+\subsubsection{AXOOM}
+TODO - Gründe der Wahl von AXOOM: 
+TODO - 2016 Innovationspreis deutsche Indsutrie
+TODO - unterstützt Optimierung der Wertschöpfungskette -> ERP-, MES Kommunikation über "bekannte", offene Schnittstellen (REST usw.) 
+TODO - unterstützt Anbindung von \ac{IoT}. Analyse und Visualisierung von Daten -> Kommunikation über spezielle Schnittstellen
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{axoom-integration}
+    \caption{AXOOM Netzwerkintegration}
+    \label{Kap3:AXOOM Netzwerkintegration}
+  \end{figure}
+  
+\clearpage
+
+TODO - sichere Kommunikation durch AXOOM Gate - wie? Quellen? -> "Dieses basiert teilweise auf Technologien unseres Partners C-Labs und schafft eine direkte Verbindung zwischen dem Kundennetzwerk und der Cloud. Das AXOOM Gate ist in der Lage, Daten herstellerunabhängig von allen angebundenen Geräten zu sammeln, so dass diese verschlüsselt an die AXOOM Plattform gesendet und dort visualisiert und ausgewertet werden können. Besonderen Schutz bei der Datenübertragung bietet ein mehrstufiges Sicherheits- und Verschlüsselungskonzept auf Komponenten-, Transport-, Applikations- und Anwenderebene. So wird eine genaue Zugriffskontrolle innerhalb der Fabrik sowie auf die Fabrik sichergestellt, unsichere Verbindungen von und nach Außen sind ausgeschlossen."
+
+\subsubsection{Schnittstellen}
+TODO - offene Schnittstellen für Low Level
+TODO - REST usw. für High Level Applicationen
+
+\subsubsection{andere Kriterien}
+TODO - Softwareschwachstellen, Softwarefehler 
+TODO - Herstellerabhängigkeit
+TODO - Kosten der Interfaceentwicklung, usw.
 
 \section{\ac{OPC UA} Protokollanalyse}
+TODO - \ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}, da es eine \ac{SOA} bereitstellt. 
+TODO - vereint Daten und Informationsdienste. 
+TODO - basiert auf IP-Netz -> Angriffsvektoren von IP und genutzten Diensten immer noch zutreffend
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{opcua_rami40}
+    \caption{OPC UA im RAMI 4.0}
+    \label{Kap3:OPC UA im RAMI 4.0}
+  \end{figure}
+  
+\clearpage
+
+Es erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich somit zunehmend auch im Maschinen- und Anlagenbau.
 
 \section{Angriffsvektoren}
 \subsection{Verschlüsselung}
