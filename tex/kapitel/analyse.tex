@@ -1,5 +1,4 @@
 \chapter{Analyse}
-
 \section{Risiken}
 Die vierte industrielle Revolution, das \ac{IIoT} und dessen Vielzahl an aktiven und passiven Elementen stellen in ihrer Komplexität eine große Herausforderung für die IT-Sicherheit dar. Einerseits muss die Sicherheit der laufenden Software, der Infrastruktur, Anwendungs- und Rechnersysteme gewährleistet werden, andererseits muss die Betriebssicherheit der Geräte und Anlagen, welche mit dem Internet verbunden sind sichergestellt werden. Das Management der IT-Sicherheit in Industrie 4.0 Netzen geht über Unternehmensgrenzen hinweg, da Netze und Systeme für Kunden, Lieferanden und Partner bereitgestellt werden \cite{DTAG2016}. Somit hat sich auch die Bedrohungslage der Netze geändert. Das \ac{BSI} beschreibt die Top 10 Bedrohungen und deren Folgen für \ac{ICS} \cite{ICSSec2016}.
 
@@ -17,6 +16,7 @@ Die vierte industrielle Revolution, das \ac{IIoT} und dessen Vielzahl an aktiven
 \end{enumerate}
 
 TODO - ref. nach BSI
+TODO - Bedrohungsanalyse
 
 Um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzziele umzusetzen, ist es notwendig einen größtmöglichen Schutz gegen diese Bedrohungen bereitzustellen. Dafür müssen die Netzwerkinfrastruktur, Integrationsansätze und die eigentliche Kommunikation über die genutzten Protokolle gesichert werden. Dies geschieht u.a. durch die Abschottung von Systemen, die Einschränkung von Zugangsberechtigungen, die Härtung der Sicherheit der genutzten Komponenten, den Einsatz von Verschlüsselungsverfahren und die Schulung der Mitarbeiter um ein Sicherheitsbewusstsein zu schaffen und die Einhaltung von Sicherheitsrichtlinien zu gewährleisten.
 
@@ -45,9 +45,7 @@ Die Kommunikation erfolgt in separierten Netzsegmenten, welche zusätzlich mit \
 Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
 
 \section{Integrationsansätze}
-Die Grundlage der Industrie 4.0 Kommunikation ist ein standardisierter Datenaustausch über alle Schichten der Automatisierungssysteme hinweg. Dabei stellt der \ac{IEC}-Standard \ac{OPC UA} einen vielversprechenden Ansatz dar einen standardisierten Informationsaustausch über Unternehmensgrenzen hinweg zu ermöglichen. 
-
-Jedoch müssen auch bestehende Systeme in die Industrie 4.0 Kommunikation integriert werden. Dies führt häufig zu Problemen, da diese Systeme proprietäre Protokolle nutzen, besondere Anforderungen wie Echtzeitkommunikation besitzen oder gar keine Schnittstelle bereitstellen.
+Die Grundlage der Industrie 4.0 Kommunikation ist ein standardisierter Datenaustausch über alle Schichten der Automatisierungspyramide hinweg. Dabei stellt der \ac{IEC}-Standard \ac{OPC UA} einen vielversprechenden Ansatz für einen standardisierten Informationsaustausch über Unternehmensgrenzen hinweg dar. Jedoch müssen auch bestehende Systeme in die Industrie 4.0 Kommunikation integriert werden. Dies führt häufig zu Problemen, da diese Systeme proprietäre Protokolle nutzen, besondere Anforderungen wie Echtzeitkommunikation besitzen oder gar keine Schnittstelle bereitstellen. Es bestehen grundsätzlich zwei Ansätze zur Integration dieser Anlagen. TODO - ref.
 
 \subsection{Konsolidierung der Netzwerkkommunikation}
 TODO - Eine Möglichkeit der Entwicklung zu einer Smart Factory ist die Konsolidierung die Netzwerkkommunikation. Fokus auf OPC UA, da standardisiert.
@@ -57,7 +55,7 @@ Ansatz: teuer, aufwendig bzw. nicht möglich, da embedded System bzw. keine Ress
 \subsection{Gatewaykommunikation}
 Eine Alternative zur Umstellung der bestehenden Systeme stellt die Kommunikation über Gateways dar. Hierbei gibt es mehrere Softwarelösungen, welche unterschiedliche Ziele verfolgen. Es werden Systeme zur Anlagenoptimierung (TODO - ref. SePiA.Pro), der Bereitstellung einer offenen, branchenübergreifenden Plattform mit diversen Smart Services wie Datenanalyse und Flottenmanagement (TODO - ref. Siemens Mindsphere, DeviceInsight) und dem herstellerübergreifenden Gerätemanagement (AXOOM) entwickelt \cite{acatec2016}. Die Systeme sammeln und verwalten die Daten der Anlagen an zentraler Stelle und stellen sie im Netzwerk zur Verfügung. Der Einsatzmöglichkeiten dieser Softwarelösungen sind von den vorhandenen Schnittstellen der Anlagen abhängig und benötigen eine individuelle Konfiguration um den unterschiedlichen Anforderungen der Industrielandschaft gerecht zu werden.
 
-Im folgenden Abschnitt wird die Umsetzung der Kommunikation über eine digitale Serviceplattform am Beispiel von AXOOM dargestellt.
+TODO - Im folgenden Abschnitt wird die Umsetzung der Kommunikation über eine digitale Serviceplattform am Beispiel von AXOOM dargestellt.
 
 \subsubsection{AXOOM}
 TODO - Gründe der Wahl von AXOOM: 
@@ -78,7 +76,7 @@ TODO - sichere Kommunikation durch AXOOM Gate - wie? Quellen? -> "Dieses basiert
 
 \subsubsection{Schnittstellen}
 TODO - offene Schnittstellen für Low Level
-TODO - REST usw. für High Level Applicationen
+TODO - REST usw. für High Level Applications
 
 \subsubsection{andere Kriterien}
 TODO - Softwareschwachstellen, Softwarefehler 
@@ -86,6 +84,13 @@ TODO - Herstellerabhängigkeit
 TODO - Kosten der Interfaceentwicklung, usw.
 
 \section{\ac{OPC UA} Protokollanalyse}
+
+\subsection{Bedrohungsanalyse}
+TODO - siehe BSI UPC UA Analyse.
+
+\subsection{Darstellung der bzgl. IT-Sicherheit wichtigen Komponenten}
+
+
 TODO - \ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}, da es eine \ac{SOA} bereitstellt. 
 TODO - vereint Daten und Informationsdienste. 
 TODO - basiert auf IP-Netz -> Angriffsvektoren von IP und genutzten Diensten immer noch zutreffend
@@ -99,14 +104,19 @@ TODO - basiert auf IP-Netz -> Angriffsvektoren von IP und genutzten Diensten imm
   
 \clearpage
 
-Es erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich somit zunehmend auch im Maschinen- und Anlagenbau.
-
 \section{Angriffsvektoren}
+\subsection{\ac{OPC UA} Spezifikation}
+\subsubsection{Sicherheitslücken}
+\subsubsection{Widersprüche}
+\subsubsection{}
+
 \subsection{Verschlüsselung}
 \subsection{Paketversand}
 \subsection{TODO}
 
-\section{Maßnahmenkatalog}
-
 \section{Auswertung der Ergebnisse}
-TODO - Grundlage der Implementierung!
+\subsection{Probleme der Spezifikation}
+TODO - Widersprüche in Spezifikation, sonstiges -> Syntaxfehler, usw.
+
+\subsection{Erweiterung des Testsystems}
+TODO - gefundene Schwachstellen bzw. Fehlkonfigurationen sind Grundlage der Implementierung!

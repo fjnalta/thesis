@@ -1,5 +1,4 @@
 \chapter{Grundlagen}
-
 \section{Historie}
 Seit dem Beginn des Industriezeitalters um 1800, welches mit der Mechanisierung (Industrie 1.0) startete, befindet sich die Industrie in einem stetigen Wandel. Sie entwickelte sich um 1900 durch die Massenproduktion zur Industrie 2.0 und in den 1970er Jahren durch die Automatisierung zur Industrie 3.0. Die Einteilung der Industriezeitalter ist durch tiefgreifende Veränderungen im technologischen Fortschritt möglich, welche auch als industrielle Revolution bezeichnet werden. Aktuell befinden wir uns in der Phase der 4. industriellen Revolution.
 
@@ -39,7 +38,7 @@ Im Gegensatz zur Industrie 3.0 sollen Maschinen autonom, auch über Unternehmens
 
 \clearpage
 
-Diese Entwicklung erzeugt durch die ständige Kommunikation eine ernome Menge an Daten, welche den Anforderungen der IT-Sicherheit gerecht werden müssen, um Verbraucher und Unternehmen zu schützen.
+Diese Entwicklung erzeugt durch die ständige Kommunikation eine große Menge an Daten, welche den Anforderungen der IT-Sicherheit gerecht werden müssen, um Verbraucher und Unternehmen zu schützen.
 
 \section{aktueller Stand der Technik}
 Der Prozess der vierten industriellen Revolution ist ein stetiger, nicht abgeschlossener Prozess. Aktuell werden die ersten Smart Factories der Industrie errichtet und erste smarte Einkaufsmöglichkeiten, wie Amazon Go und TODO - siehe Trumpf, für den Endverbraucher geschaffen. Diese Fabriken und Filialen stellen die ersten ihrer Art dar und dienen als Prototypen. Das Ziel des Wandels in der Strukturierung und Organisation der Produktion in Unternehmen ist eine immer weitere Automatisierung der Prozessabwicklung bis hin zu autonom arbeitenden Fabriken. Für kritische Infrastrukturen, wie z. B. im Energie-, Wasser-, Transport- und Gesundheitssektor existiert diese Verbindung bereits.
@@ -54,6 +53,20 @@ Die Umsetzung dieser Innovationen basiert hauptsächlich auf dem Fortschritt der
 \end{itemize}
 
 Diese Veränderungen im Wertschöpfungsprozess und die ständige Kommunikation der Systeme bereiten jedoch auch Probleme. Es entstehen große Mengen an Daten, welche u. a. über einen unsicheren Kanal verbreitet werden sollen. Des weiteren sind viele vorhandene Produktionsanlagen nicht für diese Form von vermaschter Kommunikation entwickelt worden. Diesen Problemen wird aktuell durch die Entwicklung von Industriestandards und \ac{M2M}-Protokollen, wie z. B. die \ac{OPC UA} entgegengewirkt. Um vorhandene Anlagen weiterhin nutzen zu können, werden Gateways genutzt. (TODO Trumpf ref.)
+
+\section{Automatisierungspyramide}
+Die Automatisierungspyramide stellt die beteiligten Systeme und Softwarekomponenten eines automatisierten Prozesses systematisch dar. Diese beginnen, ausgehend vom Kundenauftrag und der betriebswirtschaftlichen Planung der Produktion auf der Unternehmensebene im \ac{ERP} System. Die Ergebnisse der Planung werden an das \ac{MES} übergeben, welches die verschiedenen Fertigungs- oder Logistikaufträge generiert. Die Aufträge werden anschließend auf der Prozessleit- (\ac{SCADA}), Steuerungs- (\ac{SPS}) und Feldebene (Ein-/Ausgangssignale) bearbeitet.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm]{automatisierungspyramide}
+  \caption{Automatisierungspyramide - TODO ref. Langmann,2004}
+  \label{Kap2:Automatisierungspyramide}
+\end{figure}
+
+\clearpage
+
+Während die oberen Schichten der Pyramide (\ac{ERP} und \ac{MES}) durch Standardkomponenten bzw. -software der IT realisiert werden, zählen die unteren Schichten (Prozessleit- bis Feldebene) zur Automatisierung, welche die Steuerung und Kontrolle der technischen Anlagen übernimmt. Diese werden auch als Shop-Floor-Ebene bezeichnet. Sie sind durch spezielle Hard- und Softwarelösungen umgesetzt. Die Kommunikation dieser Systeme ist u. a. für spezielle Anwendungsfälle wie harte Echtzeitkommunikation mit Verzögerungen <1ms ausgelegt. Die Integration von Sicherheitsmaßnahmen bei der Kommunikation dieser Systeme stellt oft eine große Herausforderung dar.
 
 \section{Industrie 4.0}
 Der Begriff Industrie 4.0 wurde erstmals auf der Hannover Messe 2011 verwendet (\cite{drath2014}) und soll das Ergebnis der 4. industriellen Revolution darstellen. Der Grundgedanke hinter Industrie 4.0 ist die flächendeckende Vernetzung von Informations- und Kommunikationstechnik zu einem Internet der Dinge, Dienste und Daten (\cite{Spath2013}). Diese Vernetzung soll einen ständigen Informationsaustausch zwischen den Komponenten ermöglichen. Jede Komponente des \ac{IoT} soll als \ac{CPS} arbeiten. Ein \ac{CPS} besitzt neben seiner realen Identität eine digitale Identität, über welche es ständig mit anderen \ac{IoT}-Geräten kommunizieren kann. Kunden- und Maschinendaten werden miteinander vernetzt \cite{rami2016}.
@@ -83,25 +96,16 @@ Für Unternehmen bedeutet dies einen Wechsel von einer linearen Prozesskette hin
 
 Das \ac{IoT} ist ein wesentlicher Bestandteil der Industrie 4.0, welche Netzwerke aus Systemen, Daten und Dienstleistungen herstellt, in denen diese Komponenten miteinander kommunizieren. Für die Kommunikation haben sich, je nach Anforderungen, verschiedene Protokolle, wie z.B. \ac{HTTP}, \ac{CoAP}, \ac{XMPP} und \ac{MQTT}, etabliert. Jedes dieser Protokolle besitzt für spezifische Anforderungen wie Skalierbarkeit, vorhandene Ressourcen, Echtzeitkommunikation oder Sicherheit Vor- und Nachteile. 
 
-\subsection{Automatisierungspyramide}
-Die Automatisierungspyramide stellt die beteiligten Systeme und Softwarekomponenten eines automatisierten Prozesses systematisch dar. Diese beginnen, ausgehend vom Kundenauftrag und der betriebswirtschaftlichen Planung der Produktion auf der Unternehmensebene im \ac{ERP} System. Die Ergebnisse der Planung werden an das \ac{MES} übergeben, welches die verschiedenen Fertigungs- oder Logistikaufträge generiert. Die Aufträge werden anschließend auf der Prozessleit- (\ac{SCADA}), Steuerungs- (\ac{SPS}) und Feldebene (Ein-/Ausgangssignale) bearbeitet.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=10cm]{automatisierungspyramide}
-  \caption{Automatisierungspyramide - TODO ref. Langmann,2004}
-  \label{Kap2:Automatisierungspyramide}
-\end{figure}
-
-\clearpage
-
-Während die oberen Schichten der Pyramide (\ac{ERP} und \ac{MES}) durch Standardkomponenten bzw. -software der IT realisiert werden, zählen die unteren Schichten (Prozessleit- bis Feldebene) zur Automatisierung, welche die Steuerung und Kontrolle der technischen Anlagen übernimmt. Diese werden auch als Shop-Floor-Ebene bezeichnet. Sie sind durch spezielle Hard- und Softwarelösungen umgesetzt. Die Kommunikation dieser Systeme ist u. a. für spezielle Anwendungsfälle wie harte Echtzeitkommunikation mit Verzögerungen <1ms ausgelegt. Die Integration von Sicherheitsmaßnahmen bei der Kommunikation dieser Systeme stellt oft eine große Herausforderung dar.
+\subsection{Industrial Ethernet}
+TODO - Ethernet für Industrieanlagen
 
 \section{Grundprinzipien der sicheren Kommunikation}
 \label{Grundlagen:Grundprinzipien der sicheren Kommunikation}
 Die Grundprinzipien der sicheren Kommunikation beschreiben die Schutzziele im Bereich der Informationssicherheit. Diese verdeutlichen den Anspruch an die Sicherheit an ein zu implementierendes System oder ein Netzwerk. Sie stellen einen vereinbarten Umfang gegen Bedrohungen dar, welcher von den Kommunikationspartnern gewährleistet wird und nachgewiesen werden kann. Diese klassischen Schutzziele sind auch für Industrie 4.0 Umgebungen zutreffend. Die weitreichende Vernetzung der Systeme in der Industrie 4.0 erfordert jedoch weitere Schutzziele, um einen rechtskonformen Umgang oder besondere Anforderungen sicherzustellen.
 
 \subsection{klassische Schutzziele}
+TODO - Hierunter fallen die Bereiche Netzsicherheit und Datensicherheit, Sichere Identitäten und funktionale Sicherheit. Netzsicherheit und Datensicherheit werden in der AG3 der Plattform Industrie 4.0 adressiert. Die UAG Netzkommunikation arbeitet bzgl. dieser Punkte mit der AG3 zusammen. Zum Thema „Security und funktionale Sicherheit“ arbeitet die AG3 mit dem DKE-TBINK AK IT Security und Security by Design zusammen. Hinsichtlich funktionaler Sicherheit gibt es Anforderungen von Seiten IEC 61784-3. Diese müssen bei der Definition neuer Systeme berücksichtigt werden. - TODO
+
 \begin{itemize}
   \item Vertraulichkeit/Zugriffsschutz
   \item (Daten)-Integrität/Änderungsschutz
@@ -111,14 +115,43 @@ Die Grundprinzipien der sicheren Kommunikation beschreiben die Schutzziele im Be
 
 \subsection{weitere Schutzziele}
 \begin{itemize}
-  \item Verbindlichkeit/Nichtabstreitbarkeit
+  \item Verbindlichkeit/Nichtabstreitbarkeit: TODO - z.B. rechtliche Anforderungen
   \item Anonymität
 \end{itemize}
 
-TODO - gefällt mir nicht. Muss man die Begriffe erklären?
+\section{Anforderungen an Industrie 4.0 Umgebungen}
+Aufgrund der unterschiedlichen Einsatzbereiche von Industrie 4.0 Systemen, unterscheiden sich auch dementsprechend deren Anforderungen. Zusätzlich zu den in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} Grundprinzipien der sicheren Kommunikation beschreiben die Referenzmodelle \ac{RAMI4.0} und \ac{IIRA} grundsätzlich drei Anforderungen an den Übertragungskanal \cite{BMWiNeCon2016}.
+
+\subsection{Sicherheit}
+\begin{itemize}
+    \item Netzsicherheit und Datensicherheit
+    \item Sichere Identitäten
+    \item funktionale Sicherheit
+\end{itemize}
+
+\subsection{Verfügbarkeit}
+Die ständige Verfügbarkeit von Daten und Diensten spielt in der Industrie 4.0 eine bedeutende Rolle, um den Datenaustausch zwischen zwei Kommunikationspartnern im Netz jederzeit zu ermöglichen. Als Verfügbarkeit wird die Wahrscheinlichkeit bezeichnet, dass ein System innerhalb eines bestimmten Zeitraumes erreichbar ist. Ein System gilt als verfügbar, wenn es erreichbar ist und die für es vorgesehenen Aufgaben erledigen kann.
+
+Die Verfügbarkeit eines Systems wird in Verfügbarkeitsklassen gegliedert. Diese beschreiben Verfügbarkeitswahrscheinlichkeiten von 99\% ( Verfügbarkeitsklasse 2 ) bis 99,9999\% ( Verfügbarkeitsklasse 6 ). Eine exakte Definition, wann ein System hochverfügbar ist, gibt es nicht - TODO ref. Im Allgemeinen wird ab Verfügbarkeitsklasse 3 ( 99,99\% ) von Hochverfügbarkeit gesprochen.
+
+TODO - Verfügbarkeit gewährleisten durch...
+
+\subsection{\ac{QoS}}
+TODO - Es ist die originäre Aufgabe der Datenkommunikation, Distanzen zu überwinden - egal wie weit die Kommunikationspartner voneinander entfernt sind: Effizienz- und produktivitätssteigernd ist sowohl die Überwindung von wenigen Zentimetern per Near Field Communication (NFC) als auch die Datenübertragung rund um den Globus durch verschiedene Netze; nicht zu vergessen: Teleservices zur Unterstützung bei Inbetriebnahmen, zum Remote Debugging und zum Fernwirken. Die Qualitätsanforderungen an Kommunikationsnetze (wired und wireless) sind: hochverfügbare, homogene Netze; garantierte Bandbreiten für die sehr unterschiedlichen Anwendungen; verbindliche Dienstgüte (QoS); standardisierte Dienste (z.B. mobilfunkproviderübergreifende SMS-Bestätigung). 
+
+TODO - ref. \cite{torscht2014} und IEEE 802.1p
+
+Industrie 4.0 Dienste basieren auf IP-Netzen. Sie bilden nach dem TCP/IP Schichtenmodell den Application- und Transport-Layer. Die Güte eines Dienstes setzt sich aus der Übertragungsgüte des Link Layer des TCP/IP Modells sowie der \ac{QoS}-Parameter der IP-Ebene zusammen. In IP-Netzen wird der Einfluss auf die \ac{QoS} in folgenden Parametern beschrieben:
+\begin{itemize}
+    \item Latenzzeit: Dauer der Paketübertragung
+    \item Jitter: Abweichung der Latenzzeit von ihrem Mittelwert
+    \item Paketverlustrate: Wahrscheinlichkeit des Verlusts von IP-Paketen während der Übertragung
+    \item Durchsatz: gemittelte Datenmenge pro Zeiteinheit
+\end{itemize}
+
 TODO - ref. \cite{BMWiSec2016}
 
-\subsection{Security by Design}
+\section{Security by Design}
 In der Vergangenheit wurden Sicherheitsmechanismen üblicherweise nachträglich und reaktiv in die Entwicklung von Komponenten mit einbezogen. Industrie 4.0 Umgebungen erfordern umfassende Maßnahmen, um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} beschriebenen Schutzziele zu erfüllen und eine sichere Kommunikation zu gewährleisten. Dies gilt vor allem für Maschinenbau- und Fertigungsunternehmen, welche häufig proprietäre Individualsoftware zur Steuerung der Maschinen einsetzen \cite{DTAG2016}. Aus der Notwendigkeit, Sicherheitsaspekte bereits in die Softwareentwicklung mit einzubeziehen und einen Schutz der Kommunikation zu gewährleisten, hat sich der Begriff Security by Design entwickelt.
 
 Die Methoden und Ziele der Angreifer stehen jedoch auch unter einem ständigen Wandel. Somit ist es nicht möglich, eine Securityimplementierung zu entwickeln und diese wiederholt einzusetzen. Vielmehr ist es notwendig, die Sicherheit durch Security by Design so weit als möglich proaktiv herzustellen und gleichzeitig im Schadensfall flexibel und rasch zu reagieren, um das Schadensausmaß zu begrenzen. Es sind Maßnahmen zur Prävention, Detektion und Reaktion erforderlich. TODO - ref. Umsetzungsstrategie Industrie 4.0
@@ -148,7 +181,8 @@ Im Gegensatz zur Industrie 3.0, in welcher Daten auf lokaler Ebene oder zwischen
 Des Weiteren findet die Kommunikation in der Industrie 4.0 nicht mehr über einzelne, vorgegebene Schnittstellen statt, sondern direkt von den Produktionssystemen, also den unteren Ebenen der Automatisierungspyramide. Um dies zu ermöglichen, ist es notwendig, eine einheitliche Kommunikation durch Normen und Standards herzustellen, um eine unternehmensübergreifende Kommunikation dieser Shop-Floor IT zu ermöglichen. 
 
 \subsection{TCP/IP Referenzmodell}
-Das TCP/IP Referenzmodell ist ein Schichtenmodell, welches die vier Schichten der Internetprotokollfamilie beschreibt. Sie setzen sich aus Application-, Transport-, Internet- und Link-Layer zusammen. Die Schichten des TCP/IP Referenzmodells überlagern sich mit den Schichten des ISO/OSI Referenzmodells.
+\label{Grundlagen:TCP/IP Referenzmodell}
+Unternehmensübergreifende Kommunikation in Industrie 4.0 Umgebungen findet im wesentlichen über IP-Netze statt. Diese basieren auf dem TCP/IP Referenzmodell, welches ein Schichtenmodell ist und die vier Schichten der Internetprotokollfamilie beschreibt. Sie setzen sich aus Application-, Transport-, Internet- und Link-Layer zusammen. Die Schichten des TCP/IP Referenzmodells überlagern sich mit den Schichten des ISO/OSI Referenzmodells. 
 
 \subsubsection{Application Layer}
 Die Anwendungsschicht ist für die Übertragung der Nutzdaten zwischen verschiedenen Anwendungen zuständig. Dabei kann es sich um entfernte Anwendungen handeln. Diese sollen sich für den Benutzer verhalten, als würden sie lokal ausgeführt werden.
@@ -166,7 +200,7 @@ Die Internetschicht wird genutzt, um Daten von einem Teilnehmer im Netzwerk zum 
 \subsubsection{Link Layer}
 Der Bitübertragungsschicht beschreibt die Topologie des Netzwerks. Sie stellt die physikalische Verbindung der Netzwerkteilnehmer zur Verfügung.
 
-TODO - Bild Interenetprotokollfamilie
+TODO - Bild Internetprotokollfamilie
 
 \subsection{Industrie 4.0 Referenzarchitekturen}
 \subsubsection{\ac{RAMI4.0}}
@@ -205,14 +239,21 @@ TODO
 TODO - Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen.
 
 \subsubsection{\ac{OPC UA}}
-TODO
+TODO - Allgemeines -> Historie, SOA, RAMI, M2M-Protokoll
+
+Es erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich somit zunehmend auch im Maschinen- und Anlagenbau.
+
+TODO - Architektur
+TODO - Komponenten
+TODO - Kommunikation
+TODO - Sicherheit
 
 \subsubsection{DDS}
-TODO
+TODO - 
 
 \section{Testsystem}
 \label{Grundlagen:Testsystem}
-Die aus der Analyse hervorgehenden möglichen Schwachstellen im Bereich der Netzwerksicherheit und deren Auswirkungen werden anhand eines vorhandenen, prototypischen Industrie 4.0 Testsystems \cite{Weber2018} veranschaulicht. Das vorhandene System setzt die drei Schichten der Software-Architektur (Verteilungs-, Baustein- und Laufzeitschicht) nach Starke / Hruschka um. Die Netzwekkommunikation wird über das Protokoll \ac{OPC UA} realisiert, welches die Anforderungen der Industrie 4.0 und \ac{RAMI4.0} umsetzt.
+Die aus der Analyse hervorgehenden möglichen Schwachstellen und Bedrohungen im Bereich der Netzwerksicherheit in Industrie 4.0 Umgebungen und deren Auswirkungen sollen anhand eines vorhandenen, prototypischen Industrie 4.0 Testsystems \cite{Weber2018} veranschaulicht werden. Das vorhandene System setzt die drei Schichten der Software-Architektur (Verteilungs-, Baustein- und Laufzeitschicht) nach Starke / Hruschka um. Die Netzwekkommunikation wird über das Protokoll \ac{OPC UA} realisiert, welches die Anforderungen der Industrie 4.0 und \ac{RAMI4.0} umsetzt.
 
 \subsection{Architektur}
 Das vorhandene System ist, aufgrund der vorgesehenen Einsatzgebiete Lehre, Integrations- und Sicherheitstests, als \ac{VM} umgesetzt worden. Dies ermöglicht es die Testinfrastruktur vom restlichen Netz zu kapseln. Das Betriebssystem der \ac{VM} stellt eine Firewall bereit, welche unerwünschten Netzwerktraffic von oder zu dem System verhindert. Um eine gute Erweiterbarkeit der Testumgebung und Modularisierung der Komponenten zu erreichen, werden die einzelnen Industrie 4.0 Komponenten mit Hilfe der Containerlösung Docker isoliert ausgeführt, verwaltet und deren Netzwerkkommunikation sichergestellt. Durch den zusätzlichen Einsatz des Deploymentsystems Kubernetes wird ein verteiltes Ausführen des Systems ermöglicht und somit eine gute Skalierbarkeit erreicht. 
