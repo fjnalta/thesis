@@ -239,21 +239,39 @@ TODO
 TODO - Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen.
 
 \subsubsection{\ac{OPC UA}}
-TODO - Allgemeines -> Historie, SOA, RAMI, M2M-Protokoll
+Die \ac{OPC UA} ist ein plattformunabhängiger \ac{IEC} Standard, welcher die \ac{M2M}-Kommunikation zwischen unterschiedlichen Geräten und Systemen der Industrie über verschiedene Netzwerktopologien bereitstellt. Der Standard definiert eine \ac{SOA} und ermöglicht eine robuste und sichere eine Ende zu Ende Kommunikation über das Client-Server Modell. Im Jahr 2018 wurde der Standard zusätzlich um ein Publish-Subscribe Modell erweitert \cite{hoppe2018}. \ac{OPC UA} erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich somit zunehmend im Maschinen- und Anlagenbau.
 
-Es erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich somit zunehmend auch im Maschinen- und Anlagenbau.
+Der Standard wird in 14 Spezifikationen beschrieben, welche sich in die Bereiche Core, Access Type und Utility unterteilen lassen. Dabei stellen die Spezifikationen 1-7 sowie 14 die Kernfunktionalitäten des Standards dar. Sie beschreiben die Struktur des OPC Addressraums und der Dienste, die darauf operieren. Die Spezifikationen 8-11 wenden diese Kernfunktionalitäten auf spezifische OPC COM Spezifikationen, wie \ac{DA}, \ac{AE} und \ac{HDA} an. Die Teile 12 und 13 beinhalten Mechanismen zur Discovery von Systemen und beschreiben Möglichkeiten der Datenaggregation. Im folgenden Abschnitt werden die für die Sicherheit der Netzwerkkommunikation erforderlichen Komponenten genauer beschrieben.
 
-TODO - Architektur
-TODO - Komponenten
-TODO - Kommunikation
-TODO - Sicherheit
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{opcua-spezifikation}
+  \caption{OPC UA Multi-Part Specification - \cite{opcpt1}} 
+  \label{Kap2:OPC UA Multi-Part Specification}
+\end{figure}
+
+\clearpage
+
+\paragraph{Architektur}
+\paragraph{Client-Server Modell}
+TODO
+
+\paragraph{Publish-Subscribe Modell}
+Das Publish-Subscribe Modell ermöglicht die Nutzung von \ac{OPC UA} in \ac{WAN} Umgebungen durch die Verwendung von Protokollen wie \ac{MQTT} und \ac{AMQP}, während die Ende zu Ende Sicherheit und die standardisierte Datenmodellierung erhalten bleiben. Das Publish-Subscribe Modell ermöglicht die Verwendung des fehlertoleranten Datagramms \ac{UDP}, wodurch geringe Latenzen ermöglicht werden können. 
+
+\paragraph{Verwaltungsschale}
+\paragraph{Zugriff auf Methoden und Attribute}
+
+\paragraph{Komponenten}
+\paragraph{Kommunikation}
+\paragraph{Sicherheit}
 
 \subsubsection{DDS}
 TODO - 
 
 \section{Testsystem}
 \label{Grundlagen:Testsystem}
-Die aus der Analyse hervorgehenden möglichen Schwachstellen und Bedrohungen im Bereich der Netzwerksicherheit in Industrie 4.0 Umgebungen und deren Auswirkungen sollen anhand eines vorhandenen, prototypischen Industrie 4.0 Testsystems \cite{Weber2018} veranschaulicht werden. Das vorhandene System setzt die drei Schichten der Software-Architektur (Verteilungs-, Baustein- und Laufzeitschicht) nach Starke / Hruschka um. Die Netzwekkommunikation wird über das Protokoll \ac{OPC UA} realisiert, welches die Anforderungen der Industrie 4.0 und \ac{RAMI4.0} umsetzt.
+Die aus der Analyse hervorgehenden möglichen Schwachstellen und Bedrohungen im Bereich der Netzwerksicherheit in Industrie 4.0 Umgebungen und deren Auswirkungen sollen anhand eines vorhandenen, prototypischen Industrie 4.0 Testsystems \cite{Weber2018} veranschaulicht werden. Das vorhandene System setzt die drei Schichten der Software-Architektur (Verteilungs-, Baustein- und Laufzeitschicht) nach Starke / Hruschka um. Die Netzwerkkommunikation wird über das Protokoll \ac{OPC UA} realisiert, welches die Anforderungen der Industrie 4.0 und \ac{RAMI4.0} umsetzt.
 
 \subsection{Architektur}
 Das vorhandene System ist, aufgrund der vorgesehenen Einsatzgebiete Lehre, Integrations- und Sicherheitstests, als \ac{VM} umgesetzt worden. Dies ermöglicht es die Testinfrastruktur vom restlichen Netz zu kapseln. Das Betriebssystem der \ac{VM} stellt eine Firewall bereit, welche unerwünschten Netzwerktraffic von oder zu dem System verhindert. Um eine gute Erweiterbarkeit der Testumgebung und Modularisierung der Komponenten zu erreichen, werden die einzelnen Industrie 4.0 Komponenten mit Hilfe der Containerlösung Docker isoliert ausgeführt, verwaltet und deren Netzwerkkommunikation sichergestellt. Durch den zusätzlichen Einsatz des Deploymentsystems Kubernetes wird ein verteiltes Ausführen des Systems ermöglicht und somit eine gute Skalierbarkeit erreicht. 
