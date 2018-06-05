@@ -40,6 +40,8 @@ Im Gegensatz zur Industrie 3.0 sollen Maschinen autonom, auch über Unternehmens
 
 Diese Entwicklung erzeugt durch die ständige Kommunikation eine große Menge an Daten, welche den Anforderungen der IT-Sicherheit gerecht werden müssen, um Verbraucher und Unternehmen zu schützen.
 
+TODO - bis hierhin auf einen Absatz kürzen -> uninteressant!
+
 \section{aktueller Stand der Technik}
 Der Prozess der vierten industriellen Revolution ist ein stetiger, nicht abgeschlossener Prozess. Aktuell werden die ersten Smart Factories der Industrie errichtet und erste smarte Einkaufsmöglichkeiten, wie Amazon Go und TODO - siehe Trumpf, für den Endverbraucher geschaffen. Diese Fabriken und Filialen stellen die ersten ihrer Art dar und dienen als Prototypen. Das Ziel des Wandels in der Strukturierung und Organisation der Produktion in Unternehmen ist eine immer weitere Automatisierung der Prozessabwicklung bis hin zu autonom arbeitenden Fabriken. Für kritische Infrastrukturen, wie z. B. im Energie-, Wasser-, Transport- und Gesundheitssektor existiert diese Verbindung bereits.
 
@@ -201,6 +203,7 @@ Die Internetschicht wird genutzt, um Daten von einem Teilnehmer im Netzwerk zum 
 Der Bitübertragungsschicht beschreibt die Topologie des Netzwerks. Sie stellt die physikalische Verbindung der Netzwerkteilnehmer zur Verfügung.
 
 TODO - Bild Internetprotokollfamilie
+TODO - Mit Bild nur kurz erklären und referenzieren, Überschriften entfernen.
 
 \subsection{Industrie 4.0 Referenzarchitekturen}
 \subsubsection{\ac{RAMI4.0}}
@@ -223,7 +226,7 @@ Um eine flächendeckende Vernetzung zu ermöglichen, muss eine einheitliche Komm
 
 Nach dem \ac{RAMI4.0} stellt der Communication Layer das Bindeglied zwischen dem Integration Layer, welcher Eigenschaften der physischen Welt für Computersysteme erreichbar macht, und dem Information Layer, welcher die Funktionsbezogenen Daten beinhaltet, dar. \cite{BMWiNeCon2016} 
 
-TODO - Kommunikation beschreiben
+TODO - Kommunikation beschreiben - Assets, Verwaltungsschale
 
 Jeder Teilnehmer der Architektur wird als Asset bezeichnet und besitzt seine eigene Verwaltungsschale, welche als Schnittstelle zum Austausch von Informationen dient. Die Verwaltungsschale ist der Übergang zwischen der physischen zur digitalen Welt.
 
@@ -233,15 +236,18 @@ TODO - siehe DIN 91345
 TODO - Anforderungen an diese Komponenten unterschiedlich
 
 \subsubsection{IIRA}
-TODO
+TODO - IIC
+TODO - IIRA Konnektivitätsmerkmale
+TODO - im Rahmen der BA nicht weiter behandelt, da Testsystem auf RAMI aufbaut.
+TODO - Die industrielle Internet-­Referenzarchitektur – kurz IIRA – des IIC beschreibt die Konnektivitätsmerkmale von industriellen Internet-Systemen (IIS). Diese beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und ‚Quality of Service’ (QoS)
 
 \subsection{Protokollstandards}
-TODO - Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen.
+Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen. Hierbei haben sich bzgl. der Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} die \ac{M2M}-Kommunikationsstandards \ac{OPC UA} und \ac{DDS} etabliert.
 
 \subsubsection{\ac{OPC UA}}
-Die \ac{OPC UA} ist ein plattformunabhängiger \ac{IEC} Standard, welcher die \ac{M2M}-Kommunikation zwischen unterschiedlichen Geräten und Systemen der Industrie über verschiedene Netzwerktopologien bereitstellt. Der Standard definiert eine \ac{SOA} und ermöglicht eine robuste und sichere eine Ende zu Ende Kommunikation über das Client-Server Modell. Im Jahr 2018 wurde der Standard zusätzlich um ein Publish-Subscribe Modell erweitert \cite{hoppe2018}. \ac{OPC UA} erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich somit zunehmend im Maschinen- und Anlagenbau.
+Die \ac{OPC UA} ist ein plattformunabhängiger \ac{IEC} Standard, welcher die \ac{M2M}-Kommunikation zwischen unterschiedlichen Geräten und Systemen der Industrie über verschiedene Netzwerktopologien bereitstellt. Der Standard basiert auf dem Informationsmodell, definiert eine \ac{SOA} und ermöglicht eine robuste und sichere eine Ende zu Ende Kommunikation nach den Vorschriften der TODO ref. - DIN. Er erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich zunehmend im Maschinen- und Anlagenbau.
 
-Der Standard wird in 14 Spezifikationen beschrieben, welche sich in die Bereiche Core, Access Type und Utility unterteilen lassen. Dabei stellen die Spezifikationen 1-7 sowie 14 die Kernfunktionalitäten des Standards dar. Sie beschreiben die Struktur des OPC Addressraums und der Dienste, die darauf operieren. Die Spezifikationen 8-11 wenden diese Kernfunktionalitäten auf spezifische OPC COM Spezifikationen, wie \ac{DA}, \ac{AE} und \ac{HDA} an. Die Teile 12 und 13 beinhalten Mechanismen zur Discovery von Systemen und beschreiben Möglichkeiten der Datenaggregation. Im folgenden Abschnitt werden die für die Sicherheit der Netzwerkkommunikation erforderlichen Komponenten genauer beschrieben.
+Der Standard wird in 14 geschichteten Spezifikationen beschrieben, welche sich in die Bereiche Core, Access Type und Utility unterteilen lassen. Dabei stellen die Spezifikationen 1-7 sowie 14 die Kernfunktionalitäten des Standards dar. Sie beschreiben die Struktur des OPC Addressraums und der Dienste, die darauf operieren. Die Spezifikationen 8-11 wenden diese Kernfunktionalitäten auf spezifische OPC COM Spezifikationen, wie \ac{DA}, \ac{AE} und \ac{HDA} an. Die Teile 12 und 13 beinhalten Mechanismen zur Discovery von Systemen und beschreiben Möglichkeiten der Datenaggregation.
 
 \begin{figure}[h]
   \centering
@@ -252,22 +258,43 @@ Der Standard wird in 14 Spezifikationen beschrieben, welche sich in die Bereiche
 
 \clearpage
 
-\paragraph{Architektur}
-\paragraph{Client-Server Modell}
-TODO
+Die \ac{OPC UA} stellt ein Informationsmodell mit Hilfe einer \ac{SOA} bereit. Das Lesen- und Schreiben von Daten in Industrie 4.0 Umgebungen findet durch die Verwaltungsschale der Komponenten statt. Diese wird im \ac{OPC UA} Stack durch den Addressraum beschrieben. Der Adressraum wird zur Speicherung von Knoten, deren Attribute und Referenzen zu anderen Knoten genutzt. Der Addressraum und das Informationsmodell von \ac{OPC UA} werden in den Spezifikationsteilen 3 \cite{opcpc3} und 5 \cite{opcpt5} beschrieben.
 
-\paragraph{Publish-Subscribe Modell}
-Das Publish-Subscribe Modell ermöglicht die Nutzung von \ac{OPC UA} in \ac{WAN} Umgebungen durch die Verwendung von Protokollen wie \ac{MQTT} und \ac{AMQP}, während die Ende zu Ende Sicherheit und die standardisierte Datenmodellierung erhalten bleiben. Das Publish-Subscribe Modell ermöglicht die Verwendung des fehlertoleranten Datagramms \ac{UDP}, wodurch geringe Latenzen ermöglicht werden können. 
+Im folgenden Abschnitt wird sich auf die Darstellung der Bestandteile von \ac{OPC UA}, welche an der Netzwerkkommunikation beteiligt sind, beschränkt.
 
-\paragraph{Verwaltungsschale}
-\paragraph{Zugriff auf Methoden und Attribute}
+\paragraph{Kommunikationsmodell}\mbox{}\\
+\ac{OPC UA} ermöglicht die Kommunikation der Assets über ein Client-Server Pattern. Die Architektur setzt sich dabei aus einem \ac{OPC UA} Client und einem \ac{OPC UA} Server zusammen. Der \ac{OPC UA} Server stellt verschiedene Funktionen bereit, auf welche der \ac{OPC UA} Client mit Hilfe eines Request zugreifen kann. Des Weiteren ist es möglich durch einen Request des \ac{OPC UA} Clients ein Element des Servers beobachten zu lassen, um bei Änderungen vom Server benachrichtigt zu werden. Um die Kommunikation zwischen \ac{OPC UA} Servern zu gewährleisten, ist es möglich einen \ac{OPC UA} Client in einen \ac{OPC UA} Server zu integrieren. In der Grafik \autoref{Kap2:OPC UA Client-Server Architektur} wird das Client-Server Pattern der \ac{OPC UA} Spezifikation schematisch dargestellt. Die linke Seite der Grafik beschreibt die Kommunikation zwischen einem Client und einem Server mit eingebettetem Client. In der rechten Seite der Grafik findet die Kommunikation zwischen dem eingebetteten Client und einem \ac{OPC UA} Server statt.
 
-\paragraph{Komponenten}
-\paragraph{Kommunikation}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{opcuaclient-server}
+  \caption{OPC UA Client-Server Architektur - \cite{opcpt1}} 
+  \label{Kap2:OPC UA Client-Server Architektur}
+\end{figure}
+
+Im Jahr 2018 wurde der Standard zusätzlich um eine Spezifikation für das Publish-Subscribe Pattern - TODO ref. - erweitert \cite{hoppe2018}. Das Publish-Subscribe Modell ermöglicht die Nutzung von \ac{OPC UA} in \ac{WAN} Umgebungen durch die Verwendung von Protokollen wie \ac{MQTT} und \ac{AMQP}, während die Ende zu Ende Sicherheit und die standardisierte Datenmodellierung erhalten bleiben. Das Publish-Subscribe Modell ermöglicht die Verwendung des fehlertoleranten Datagramms \ac{UDP}, wodurch geringe Latenzen ermöglicht werden können. 
+
+\paragraph{Kommunikationswege}\mbox{}\\
+Die Kommunikation zwischen \ac{OPC UA} Komponenten findet auf der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells statt und basiert auf dem Protokoll \ac{TCP}/\ac{IP}. Grundsätzlich stellt \ac{OPC UA} die drei Kommunikationswege Binary, Hybrid und Webservice bereit.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{opcuaprotocol}
+  \caption{OPC UA Kommunikationswege} 
+  \label{Kap2:OPC UA Kommunikationswege}
+\end{figure}
+
+\clearpage
+
+TODO - Binary
+TODO - Hybrid
+TODO - Webservice
+
 \paragraph{Sicherheit}
+TODO - siehe OPC UA Part 2
 
-\subsubsection{DDS}
-TODO - 
+\subsubsection{\ac{DDS}}
+\ac{DDS} ist ein offener Standard der \ac{OMG} und stellt eine \ac{MOM} zur Kommunikation in hochdynamischen verteilten Systemen dar. Er wurde für niedrige Latenzzeiten, einen hohen Datendurchsatz und eine skalierbare, belastbase und sichere Datenverteilung entwickelt, um die Kommunikation in Steuerungs- und Kontrollaufgaben zu realisieren. Der beschriebene Standard deckt alle Anforderungen der \ac{IIRA} ab und hat sich bereits in industriellen Systemen etabliert. Gegenüber \ac{OPC UA} beschreibt \ac{DDS} eine dezentralisierte Architektur. Es bietet ein Konnektivitäts-Framework, welches ein Kommunikationsparadigma basierend auf einem Shared Data Model, einen Standard für die Definition domain-spezifischer Informationsmodelle, ein starkes Sicherheitsmodell, Discovery und reichhal­tige APIs beinhaltet. Die Kommunikation findet direkt vom Publisher zum Subscriber statt. Dabei werden Latenzzeiten reduziert und durch die Nutzung von Multicast die Netzlast beim Bereitstellen von Informationen an viele Empfänger gering gehalten. Es ist möglich die \ac{MOM} \ac{DDS} in eine \ac{OPC UA} Architektur zu integrieren und mit dem Informationsmodell nutzen.
 
 \section{Testsystem}
 \label{Grundlagen:Testsystem}
