@@ -236,10 +236,37 @@ TODO - siehe DIN 91345
 TODO - Anforderungen an diese Komponenten unterschiedlich
 
 \subsubsection{IIRA}
-TODO - IIC
-TODO - IIRA Konnektivitätsmerkmale
-TODO - im Rahmen der BA nicht weiter behandelt, da Testsystem auf RAMI aufbaut.
-TODO - Die industrielle Internet-­Referenzarchitektur – kurz IIRA – des IIC beschreibt die Konnektivitätsmerkmale von industriellen Internet-Systemen (IIS). Diese beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und ‚Quality of Service’ (QoS)
+Das \ac{IIC} veröffentlichte im Jahr 2015 die \ac{IIRA}. Sie beschreibt eine standardbasierte, offene Referenzarchitektur für \ac{IIoT}, welches auf dem \ac{IIAF} basiert. Das \ac{IIAF} unterstützt die Unternehmen bei der Entwicklung, Dokumentation, Kommunikation und Bereitstellung von Systemen im \ac{IIoT} Bereich \cite{iira2017}. Die Beschreibung der Architektur findet mit einem hohen Maß an Abstraktion statt, um das breite Feld der verschiedenen Industrielösungen abdecken zu können und standardisierte Vorgehensweisen bereitzustellen.
+
+TODO - Diese beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und ‚Quality of Service’ (QoS)
+
+\paragraph{Framework}\mbox{}\\
+Das \ac{IIAF} folgt der Vorgehensweise des ISO/IEC/IEEE Standard 42010:2011 Systems and Software Engineering–Architecture Description. Concern, Stakeholder und Viewpoint werden als Architecture Frame dargestellt. Die Views und Models als ihre Architecture Representations.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{iiaf}
+  \caption{IIRA - Architekturframework} 
+  \label{Kap2:IIRA - Architekturframework}
+\end{figure}
+
+\clearpage
+
+\paragraph{Referenzarchitektur}\mbox{}\\
+Die \ac{IIRA} ist das Ergebnis der Anwendung des \ac{IIAF} auf die \ac{IIoT} Systeme eines Unternehmens. Sie beschreibt bekannte Risiken beim Betrieb von \ac{IIoT} Systemen in verschiedensten Industriebereichen und Klassifiziert diese mit ihren zugehörigen Stakeholdern in Viewpoints. Anschließend dient die Referenzarchitektur der Beschreibung, Analyse und Behebung dieser Bedenken/Risiken in den einzelnen Viewpoints.
+
+Abbildung \autoref{Kap2:IIAF/IIRA - Übersicht} beschreibt die grundlegende Idee und den Aufbau der \ac{IIRA}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{iira}
+  \caption{IIAF/IIRA - Übersicht} 
+  \label{Kap2:IIAF/IIRA - Übersicht}
+\end{figure}
+
+\clearpage
+
+Aus zeitlichen Gründen wird im Rahmen der Thesis nicht weiter auf die Referenzarchitektur \ac{IIRA} eingegangen. Aufgrund des vorhandenen Testsystems und der dort genutzten Standards und Technologien wird die in der IEC 62541 beschriebene Architektur \ac{RAMI4.0} zur Analyse genutzt.
 
 \subsection{Protokollstandards}
 Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen. Hierbei haben sich bzgl. der Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} die \ac{M2M}-Kommunikationsstandards \ac{OPC UA} und \ac{DDS} etabliert.
