@@ -57,6 +57,7 @@ Die Umsetzung dieser Innovationen basiert hauptsächlich auf dem Fortschritt der
 Diese Veränderungen im Wertschöpfungsprozess und die ständige Kommunikation der Systeme bereiten jedoch auch Probleme. Es entstehen große Mengen an Daten, welche u. a. über einen unsicheren Kanal verbreitet werden sollen. Des weiteren sind viele vorhandene Produktionsanlagen nicht für diese Form von vermaschter Kommunikation entwickelt worden. Diesen Problemen wird aktuell durch die Entwicklung von Industriestandards und \ac{M2M}-Protokollen, wie z. B. die \ac{OPC UA} entgegengewirkt. Um vorhandene Anlagen weiterhin nutzen zu können, werden Gateways genutzt. (TODO Trumpf ref.)
 
 \section{Automatisierungspyramide}
+\label{Grundlagen:Automatisierungspyramide}
 Die Automatisierungspyramide stellt die beteiligten Systeme und Softwarekomponenten eines automatisierten Prozesses systematisch dar. Diese beginnen, ausgehend vom Kundenauftrag und der betriebswirtschaftlichen Planung der Produktion auf der Unternehmensebene im \ac{ERP} System. Die Ergebnisse der Planung werden an das \ac{MES} übergeben, welches die verschiedenen Fertigungs- oder Logistikaufträge generiert. Die Aufträge werden anschließend auf der Prozessleit- (\ac{SCADA}), Steuerungs- (\ac{SPS}) und Feldebene (Ein-/Ausgangssignale) bearbeitet.
 
 \begin{figure}[h]
@@ -86,7 +87,7 @@ Für Unternehmen bedeutet dies einen Wechsel von einer linearen Prozesskette hin
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{horizontaleVertikaleIntegration}
+  \includegraphics[width=15cm]{horizontalevertikaleIntegration}
   \caption{horizontale und vertikale Integration - TODO ref. HP Industry-of-things siehe bookmark}
   \label{Kap2:horizontale und vertikale Integration}
 \end{figure}
@@ -138,21 +139,6 @@ Die Verfügbarkeit eines Systems wird in Verfügbarkeitsklassen gegliedert. Dies
 
 TODO - Verfügbarkeit gewährleisten durch...
 
-\subsection{\ac{QoS}}
-TODO - Es ist die originäre Aufgabe der Datenkommunikation, Distanzen zu überwinden - egal wie weit die Kommunikationspartner voneinander entfernt sind: Effizienz- und produktivitätssteigernd ist sowohl die Überwindung von wenigen Zentimetern per Near Field Communication (NFC) als auch die Datenübertragung rund um den Globus durch verschiedene Netze; nicht zu vergessen: Teleservices zur Unterstützung bei Inbetriebnahmen, zum Remote Debugging und zum Fernwirken. Die Qualitätsanforderungen an Kommunikationsnetze (wired und wireless) sind: hochverfügbare, homogene Netze; garantierte Bandbreiten für die sehr unterschiedlichen Anwendungen; verbindliche Dienstgüte (QoS); standardisierte Dienste (z.B. mobilfunkproviderübergreifende SMS-Bestätigung). 
-
-TODO - ref. \cite{torscht2014} und IEEE 802.1p
-
-Industrie 4.0 Dienste basieren auf IP-Netzen. Sie bilden nach dem TCP/IP Schichtenmodell den Application- und Transport-Layer. Die Güte eines Dienstes setzt sich aus der Übertragungsgüte des Link Layer des TCP/IP Modells sowie der \ac{QoS}-Parameter der IP-Ebene zusammen. In IP-Netzen wird der Einfluss auf die \ac{QoS} in folgenden Parametern beschrieben:
-\begin{itemize}
-    \item Latenzzeit: Dauer der Paketübertragung
-    \item Jitter: Abweichung der Latenzzeit von ihrem Mittelwert
-    \item Paketverlustrate: Wahrscheinlichkeit des Verlusts von IP-Paketen während der Übertragung
-    \item Durchsatz: gemittelte Datenmenge pro Zeiteinheit
-\end{itemize}
-
-TODO - ref. \cite{BMWiSec2016}
-
 \section{Security by Design}
 In der Vergangenheit wurden Sicherheitsmechanismen üblicherweise nachträglich und reaktiv in die Entwicklung von Komponenten mit einbezogen. Industrie 4.0 Umgebungen erfordern umfassende Maßnahmen, um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} beschriebenen Schutzziele zu erfüllen und eine sichere Kommunikation zu gewährleisten. Dies gilt vor allem für Maschinenbau- und Fertigungsunternehmen, welche häufig proprietäre Individualsoftware zur Steuerung der Maschinen einsetzen \cite{DTAG2016}. Aus der Notwendigkeit, Sicherheitsaspekte bereits in die Softwareentwicklung mit einzubeziehen und einen Schutz der Kommunikation zu gewährleisten, hat sich der Begriff Security by Design entwickelt.
 
@@ -178,6 +164,7 @@ Zeitkritische Automatisierungsanwendungen verlangen besondere Netzwerkeigenschaf
 TODO - Bilder -> sichere-kommunikation-i40
 
 \section{Normen und Standards}
+\label{Grundlagen:Normen und Standards}
 Im Gegensatz zur Industrie 3.0, in welcher Daten auf lokaler Ebene oder zwischen einzelnen internen Unternehmensebenen ausgetauscht wurden, stellt der Datenaustausch und Informationsfluss im vermaschten Industrie 4.0 Netzwerk einen wesentlichen Bestandteil dar. Aktuell gibt es zwei Architekturmodelle zur Umsetzung von Industrie 4.0 Umgebungen. Diese setzen sich aus dem von der Platform Industrie 4.0 entwickelten \ac{RAMI4.0} und der \ac{IIRA} der \ac{IIC} zusammen. Beide Modelle verfolgen verschiedene Integrationsansätze.
 
 Des Weiteren findet die Kommunikation in der Industrie 4.0 nicht mehr über einzelne, vorgegebene Schnittstellen statt, sondern direkt von den Produktionssystemen, also den unteren Ebenen der Automatisierungspyramide. Um dies zu ermöglichen, ist es notwendig, eine einheitliche Kommunikation durch Normen und Standards herzustellen, um eine unternehmensübergreifende Kommunikation dieser Shop-Floor IT zu ermöglichen. 
@@ -265,8 +252,6 @@ Abbildung \autoref{Kap2:IIAF/IIRA - Übersicht} beschreibt die grundlegende Idee
 \end{figure}
 
 \clearpage
-
-Aus zeitlichen Gründen wird im Rahmen der Thesis nicht weiter auf die Referenzarchitektur \ac{IIRA} eingegangen. Aufgrund des vorhandenen Testsystems und der dort genutzten Standards und Technologien wird die in der IEC 62541 beschriebene Architektur \ac{RAMI4.0} zur Analyse genutzt.
 
 \subsection{Protokollstandards}
 Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen. Hierbei haben sich bzgl. der Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} die \ac{M2M}-Kommunikationsstandards \ac{OPC UA} und \ac{DDS} etabliert.
