@@ -28,17 +28,33 @@ Aus zeitlichen Gründen wird keine weitere Analyse der verschiedenen Übertragun
 Die Netzzugangsschicht beinhaltet als einzige Schicht des \ac{TCP}/\ac{IP} Referenzmodells nicht nur die verwendeten Protokolle zur Signalübertragung, sondern auch die physikalischen Gegebenheiten des Übertragungsmediums. Die Sicherheit dieser Netzwerkschicht beinhaltet somit nicht nur die verwendeten Techniken, sondern auch die physische Sicherheit der Systeme. Sie wird durch den Zugang zur Hardware dargestellt und besitzt eine große Bedeutung, um unbefugte Eingriffe in das Netzwerk zu verhindern. Die Sicherheit dieser Systeme wird durch die physikalische Abschottung mit Hilfe von abschließbaren Serverschränken, genereller Zugangskontrolle sowie der Abschaltung von Ports an Netzwerkkomponenten oder Endsystemen gewährleistet. (\cite{sichKom2017})
 
 \subsection{Topologie}
-TODO - Sterntopologie, geschichtetes Netzwerk
-TODO - Ansatz: ARP und DHCP Spoofing in Bridge
+Die Topologie eines Netzwerks bestimmt den physikalischen Weg der Netzwerkpakete über die Leitungen. In der Industrie werden je nach Anwendungsfall verschiedene Topologien, wie Punkt-zu-Punkt-, Bus-, Stern- oder auch Hybride-, zur Kommunikation im Netzwerk genutzt. Jede dieser Netzstrukturen bietet Vor- und Nachteile bzgl. Durchsatz, Administrationsaufwand und Skalierbarkeit (\cite{burke2013}). Um die Grundidee der Industrie 4.0, die unternehmensübergreifende, intelligente Vernetzung von Produktionsressourcen umzusetzen, ist eine einheitliche Kommunikation notwendig. Industrie 4.0 Netze kommunizieren über \ac{TCP}/\ac{IP} Verbindungen und basieren auf dem \textit{Ethernet}\footnote{Link zu IEEE Ethernet} Protokoll. Sie werden in über Gateways miteinander verbundenen Sterntopologien realisiert. Die Topologie eines Netzwerks bietet Schnittstellen, um Einfluss auf das Netzwerk zu nehmen. Selbst unbefugter Zugriff auf der untersten Schicht des \ac{TCP}/\ac{IP} Referenzmodells kann die Sicherheit der Datenübertragung oder die Funktionsweise des Netzwerks beeinträchtigen.
+
+Im folgenden Abschnitt werden anhand des Testsystems \cite{Weber2018} Auswirkungen von Manipulation des Netzwerks auf der Netzzugangsschicht in zwei Anwendungsszenarien dargestellt und Möglichkeiten des Schutz gegen diese Angriffe beschrieben.
+
+\subsubsection{Anwendungsszenario - \ac{ARP} Spoofing}
+TODO - verfälschter Ethernetrahmen -> MAC Manipulation - MitM
+TODO - Schutz durch statische Tabellen, \ac{IDS}
+
+\subsubsection{Anwendungsszenario - DHCP Spoofing/Snooping}
+DHCP Spoofing -> Vortäuschen eines DHCP, schneller Leases verteilen als vorhandener DHCP -> MitM
+TODO - impl. 2. DHCP Server implementieren
+DHCP Snooping -> theor. Verteidigung gegen Spoofing, Switches erlauben nur bestimmten Ports DHCP Traffic zu versenden
+
+TODO - Ansatz: Berechnung von Latenzzeiten, RTT, Auswirkungen aufzeigen, Congestion Window, Sliding Window
+
+\subsection{vertikale Integration bestehender Komponenten}
+TODO - Feldbus, SPS, Anlagensteuerung (SCADA) -> Bindeglied zu IP-Netzen
+TODO - Ansatz: OPC UA Clients sind Gateways in Testumgebung -> Verweis auf Analyse in höheren Schichten
+TODO - Vieles in Praxis nicht umsetzbar darum größtmöglicher Schutz durch Abschottung.
+
+\section{Internetschicht}
+TODO - IPv4, IPv6 (Netzwerkschicht)
 
 \subsection{\ac{QoS}}
-Eine Industrie 4.0 Netzwerkinfrastruktur kann aufgrund der unterschiedlichen Anforderungen an die Systeme auf verschiedenste Weisen ausgeprägt sein. Die Heterogenität der Komponenten im Netzwerk und deren Kommunikation auf der vertikalen Ebene der Automatisierungspyramide \autoref{Grundlagen:Automatisierungspyramide} stellen eine Herausforderung für die Sicherheit der Datenübertragung dar und können die Umsetzung eines Netzwerks beeinflussen. Des Weiteren erstrecken sich Industrie 4.0 Umgebungen über weite Distanzen (\ac{MAN}, \ac{WAN}, \ac{GAN}) und sind somit auch von physikalischen Gegebenheiten wie Latenz und Jitter betroffen. Diese Erscheinungen müssen berücksichtigt werden, um eine fehler- und verlustfreie, sichere Kommunikation zu gewährleisten.
+Eine Industrie 4.0 Netzwerkinfrastruktur kann aufgrund der unterschiedlichen Anforderungen an die Systeme auf verschiedenste Weisen ausgeprägt sein. Die Heterogenität der Komponenten im Netzwerk und deren Anforderungen an die Kommunikation auf der vertikalen Ebene der Automatisierungspyramide \autoref{Grundlagen:Automatisierungspyramide} stellen eine Herausforderung für die Sicherheit der Datenübertragung dar und können die Umsetzung eines Netzwerks beeinflussen. Des Weiteren erstrecken sich Industrie 4.0 Umgebungen über weite Distanzen (\ac{MAN}, \ac{WAN}, \ac{GAN}) und sind somit auch von physikalischen Gegebenheiten wie Latenz und Jitter betroffen. Diese Erscheinungen müssen berücksichtigt werden, um eine fehler- und verlustfreie, sichere Kommunikation zu gewährleisten.
 
-TODO - Es ist die originäre Aufgabe der Datenkommunikation, Distanzen zu überwinden - egal wie weit die Kommunikationspartner voneinander entfernt sind: Effizienz- und produktivitätssteigernd ist sowohl die Überwindung von wenigen Zentimetern per Near Field Communication (NFC) als auch die Datenübertragung rund um den Globus durch verschiedene Netze; nicht zu vergessen: Teleservices zur Unterstützung bei Inbetriebnahmen, zum Remote Debugging und zum Fernwirken. Die Qualitätsanforderungen an Kommunikationsnetze (wired und wireless) sind: hochverfügbare, homogene Netze; garantierte Bandbreiten für die sehr unterschiedlichen Anwendungen; verbindliche Dienstgüte (QoS); standardisierte Dienste (z.B. mobilfunkproviderübergreifende SMS-Bestätigung). 
-
-TODO - ref. \cite{torscht2014} und IEEE 802.1p
-
-Die Güte eines Dienstes setzt sich aus der Übertragungsgüte der Netzzugangsschicht sowie der \ac{QoS}-Parameter der IP-Ebene zusammen. In IP-Netzen wird der Einfluss auf die \ac{QoS} in folgenden Parametern beschrieben:
+Für die Beurteilung und Bereitstellung der Dienstgüte in \ac{IP}-Netzen müssen die Übertragungsgüte der Netzzugangsschicht sowie die übertragungstechnischen Parameter der Internetschicht (\ac{IP}-Ebene) betrachtet werden. In IP-Netzen wird der Einfluss auf die \ac{QoS} in den folgenden Parametern beschrieben:
 \begin{itemize}
     \item Latenzzeit: Dauer der Paketübertragung
     \item Jitter: Abweichung der Latenzzeit von ihrem Mittelwert
@@ -46,38 +62,10 @@ Die Güte eines Dienstes setzt sich aus der Übertragungsgüte der Netzzugangssc
     \item Durchsatz: gemittelte Datenmenge pro Zeiteinheit
 \end{itemize}
 
-TODO - ref. \cite{BMWiSec2016}
-
-TODO - kann man was berechnen. - Beispiel
-TODO - Ansatz: Berechnung von Latenzzeiten, Auswirkungen aufzeigen, Congestion Window, Sliding Window
-
-\subsection{vertikale Integration bestehender Komponenten}
-TODO - Feldbus, SPS, Anlagensteuerung (SCADA) -> Bindeglied zu IP-Netzen
-TODO - Ansatz: OPC UA Clients sind Gateways in Testumgebung -> Verweis auf Analyse in höheren Schichten
-
-TODO - Vieles in Praxis nicht umsetzbar darum größtmöglicher Schutz durch Abschottung.
-
-\subsection{Defense in Depth}
-Auf der Netzzugangsschicht fallen, wie auf allen anderen Schichten, Betriebsdaten an, welche genutzt werden können, um Angriffe oder unregelmäßige Aktivitäten im Netzwerk zu erkennen. Es kann protokolliert werden, wann ein Gerät mit den Netzwerk verbunden war und welche Pakete andere Netzwerkteilnehmer von diesem Gerät erhalten haben (\cite{sichKom2017}). Die Norm IEC 62443\footnote{ref. IEC 62443} definiert die Defense in Depth Strategie. Sie stellt ein Konzept bereit, um die IT-Sicherheit der Anlagen, die Netzwerksicherheit und Systemintegrität nach dem Stand der Technik zu schützen. Sie gliedert eine Unternehmensinfrastruktur in multiple und redundante Sicherheitsschichten (Zonen), um ein höchstmögliches Sicherheitsniveau zu erreichen. Die unabhängigen Verteidigungslinien sollen Angriffe verzögern, um Zeit für Gegenmaßnahmen zu gewinnen. Die Kommunikation erfolgt in separierten Netzsegmenten, welche zusätzlich mit \ac{IDS} nutzen, um Angriffe schnell zu erfassen und Gegenmaßnahmen einleiten zu können. Somit wird der Aufwand, um die unteren Netzwerkebenen zu kompromittieren durch den Einsatz von \ac{DMZ}, \ac{IDS}, Paketfilter und Time Access Control wesentlich erhöht. Zusätzlich ist das "`Zone and Conduit"' Modell eines der zentralen Elemente der Defense in Depth Strategie. Die verschiedenen Zonen können nur mittels spezieller Leitungen (Conduits) miteinander kommunizieren.  
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=15cm]{defense-in-depth-strategie}
-    \caption{Defense in Depth Strategie - \cite{kuipers2006}}
-    \label{Kap3:Defense-in-Depth}
-\end{figure}
-
-\clearpage
-
-Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
-
-\section{Internetschicht}
-TODO - IPv4, IPv6 (Netzwerkschicht)
-
-
+TODO - ref. \cite{torscht2014} und IEEE 802.1p
 
 \section{Transport- und Anwendungsschicht}
-TODO - DDS und OPC UA dominant
+TODO - DDS und OPC UA
 TODO - Ansatz: Wireshark an Bridge der Testumgebung im Sternnetzwerk und Druckerkomponente oder andere manipulieren; andere Protokolle von Feldebene an Switch auslesen; vielleicht hier nur beschreiben und in den höheren Schichten durchführen mit CoAP oder MQTT -> OPC UA Komponenten sind Gateway
 
 \subsection{Integrationsansätze}
@@ -150,6 +138,20 @@ TODO - basiert auf IP-Netz -> Angriffsvektoren von IP und genutzten Diensten imm
 
 \section{weitere Schutzmaßnahmen}
 TODO - Applikationssicherheit != Netzwerksicherheit != Betriebssystemsicherheit
+
+\subsection{Defense in Depth}
+Auf der Netzzugangsschicht fallen, wie auf allen anderen Schichten, Betriebsdaten an, welche genutzt werden können, um Angriffe oder unregelmäßige Aktivitäten im Netzwerk zu erkennen. Es kann protokolliert werden, wann ein Gerät mit den Netzwerk verbunden war und welche Pakete andere Netzwerkteilnehmer von diesem Gerät erhalten haben (\cite{sichKom2017}). Die Norm IEC 62443\footnote{ref. IEC 62443} definiert die Defense in Depth Strategie. Sie stellt ein Konzept bereit, um die IT-Sicherheit der Anlagen, die Netzwerksicherheit und Systemintegrität nach dem Stand der Technik zu schützen. Sie gliedert eine Unternehmensinfrastruktur in multiple und redundante Sicherheitsschichten (Zonen), um ein höchstmögliches Sicherheitsniveau zu erreichen. Die unabhängigen Verteidigungslinien sollen Angriffe verzögern, um Zeit für Gegenmaßnahmen zu gewinnen. Die Kommunikation erfolgt in separierten Netzsegmenten, welche zusätzlich mit \ac{IDS} nutzen, um Angriffe schnell zu erfassen und Gegenmaßnahmen einleiten zu können. Somit wird der Aufwand, um die unteren Netzwerkebenen zu kompromittieren durch den Einsatz von \ac{DMZ}, \ac{IDS}, Paketfilter und Time Access Control wesentlich erhöht. Zusätzlich ist das "`Zone and Conduit"' Modell eines der zentralen Elemente der Defense in Depth Strategie. Die verschiedenen Zonen können nur mittels spezieller Leitungen (Conduits) miteinander kommunizieren.  
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{defense-in-depth-strategie}
+    \caption{Defense in Depth Strategie - \cite{kuipers2006}}
+    \label{Kap3:Defense-in-Depth}
+\end{figure}
+
+\clearpage
+
+Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
 
 \section{Angriffsvektoren}
 \subsection{\ac{OPC UA} Spezifikation}
