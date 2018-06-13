@@ -30,17 +30,7 @@ Die Netzzugangsschicht beinhaltet als einzige Schicht des \ac{TCP}/\ac{IP} Refer
 \subsection{Topologie}
 Die Topologie eines Netzwerks bestimmt den physikalischen Weg der Netzwerkpakete über die Leitungen. In der Industrie werden je nach Anwendungsfall verschiedene Topologien, wie Punkt-zu-Punkt-, Bus-, Stern- oder auch Hybride-, zur Kommunikation im Netzwerk genutzt. Jede dieser Netzstrukturen bietet Vor- und Nachteile bzgl. Durchsatz, Administrationsaufwand und Skalierbarkeit (\cite{burke2013}). Um die Grundidee der Industrie 4.0, die unternehmensübergreifende, intelligente Vernetzung von Produktionsressourcen umzusetzen, ist eine einheitliche Kommunikation notwendig. Industrie 4.0 Netze kommunizieren über \ac{TCP}/\ac{IP} Verbindungen und basieren auf dem \textit{Ethernet}\footnote{Link zu IEEE Ethernet} Protokoll. Sie werden in über Gateways miteinander verbundenen Sterntopologien realisiert. Die Topologie eines Netzwerks bietet Schnittstellen, um Einfluss auf das Netzwerk zu nehmen. Selbst unbefugter Zugriff auf der untersten Schicht des \ac{TCP}/\ac{IP} Referenzmodells kann die Sicherheit der Datenübertragung oder die Funktionsweise des Netzwerks beeinträchtigen.
 
-Im folgenden Abschnitt werden anhand des Testsystems \cite{Weber2018} Auswirkungen von Manipulation des Netzwerks auf der Netzzugangsschicht in zwei Anwendungsszenarien dargestellt und Möglichkeiten des Schutz gegen diese Angriffe beschrieben.
-
-\subsubsection{Anwendungsszenario - \ac{ARP} Spoofing}
-TODO - verfälschter Ethernetrahmen -> MAC Manipulation - MitM
-TODO - Schutz durch statische Tabellen, \ac{IDS}
-
-\subsubsection{Anwendungsszenario - DHCP Spoofing/Snooping}
-DHCP Spoofing -> Vortäuschen eines DHCP, schneller Leases verteilen als vorhandener DHCP -> MitM
-TODO - impl. 2. DHCP Server implementieren
-DHCP Snooping -> theor. Verteidigung gegen Spoofing, Switches erlauben nur bestimmten Ports DHCP Traffic zu versenden
-
+TODO - Beschreibung von Angriffen durch Eingriff auf Hardware; Verweis auf Anwendungsszenario in Internetschicht.
 TODO - Ansatz: Berechnung von Latenzzeiten, RTT, Auswirkungen aufzeigen, Congestion Window, Sliding Window
 
 \subsection{vertikale Integration bestehender Komponenten}
@@ -49,7 +39,52 @@ TODO - Ansatz: OPC UA Clients sind Gateways in Testumgebung -> Verweis auf Analy
 TODO - Vieles in Praxis nicht umsetzbar darum größtmöglicher Schutz durch Abschottung.
 
 \section{Internetschicht}
-TODO - IPv4, IPv6 (Netzwerkschicht)
+Auf der Internetschicht findet die Vermittlung der Datenpakete zwischen den Teilnehmern im Netzwerk statt. Auf dieser Schicht hat sich, mit dem Siegeszug des Internets, \ac{IP} zum Standard für Netzwerkübergreifende Rechnerkommunikation durchgesetzt (\cite{meinel2011}). Dies gilt auch für die immer komplexer werdenden Industrienetzwerke und die Industrie 4.0.
+
+Zu den Aufgaben der Internetschicht gehört das Bereitstellen von Adressen, das Routing, die Fragmentierung von Datenpaketen zur Übertragung im Netzwerk sowie die Sicherstellung der Dienstgüte. Um Routing und Adressvergabe in \ac{IP}-Netzen zu realisieren, werden die Dienste \ac{DNS} und \ac{DHCP} genutzt. Das \ac{IPAM} und die Zuordnung der physikalischen Hardware zur logischen \ac{IP}-Adresse erfolgt mit Hilfe des \ac{ARP}. Da die Kommunikation in einem \ac{IP}-Netz ohne diese Dienste und Protokolle nicht möglich ist, stellen sie einen wichtigen Bestandteil der Kommunikation im Netzwerk da und müssen vor Sabotage geschützt werden.
+
+\subsection{\ac{DNS}}
+\ac{DNS} wird von der \ac{IETF} in den \ac{RFC} 1034\footnote{Domain Names – Concepts and Facilities}, 1035\footnote{Domain Names – Implementation and Specification}, 2181\footnote{Clarifications to the DNS Specification} und 2782\footnote{A DNS RR for specifying the location of services (DNS SRV)} beschrieben und verwaltet. Es stellt einen hierarchischen Verzeichnisdienst für \ac{IP}-Netze zur Verfügung. 
+
+Eine der Hauptaufgaben des \ac{DNS} ist der \textit{forward lookup}. Hierbei werden Domain- bzw. Hostnamen in \ac{IP}-Adressen übersetzt. Das Zusammenspiel eines hierarchischen Verzeichnisdienstes und der Namensauflösung bietet Angriffsfläche zum Eingriff auf die Kommunikation im Netzwerk. Im folgenden werden bekannte Angriffsformen auf den \ac{DNS} Dienst und deren Auswirkungen auf das Netzwerk beschrieben.
+
+\subsubsection{\ac{DNS} Spoofing}
+Die Angriffsmethode des \ac{DNS} Spoofing verfolgt, wie \textit{Cache Poisoning}\footnote{Cache Poisoning - iwas}, das Ziel gefälschte \ac{RR} in den \ac{DNS} Cache des Opfers einzuschleusen. Während das \textit{Cache Poisoning} aus einer Softwareschwachstelle hervorging, bei der zusätzliche, gefälschte \ac{DNS} Einträge zu korrekten \ac{DNS} Antworten hinzugefügt wurden und somit der Cache eines Nameservers kompromittiert wird, befindet sich der Angriffsvektor beim \ac{DNS} Spoofing in der Fälschung von \ac{DNS} Antworten. Der Header der Netzwerkpakete werden mit Hilfe von \textit{IP Spoofing}\footnote{IP Spoofing bezeichnet das Versenden von IP Paketen mit gefälschter Absender-IP} so manipuliert, dass sie vorgeblich vom \textit{authorativen} Nameserver stammen. 
+
+Um \ac{DNS} Spoofing erfolgreich durchzuführen muss die gefälschte \ac{DNS} Response des Angreifers vor der Antwort des zuständigen Nameservers beim angegriffenen \ac{DNS} Resolver eintreffen. Sobald der physikalische Zugang zum Netzwerk gewährleistet ist, können die Latenzzeiten der gefälschten Pakete im Netzwerk sehr gering gehalten werden. Ist dies nicht möglich, kann mit Hilfe eines \ac{DoS} bzw. \ac{DDoS} Angriffs (siehe \autoref{Analyse:DoS/DDos}) auf den zuständigen Nameserver, dessen Antwortzeit beeinflusst werden. Des weiteren muss die ID im \ac{DNS} Header mit der des Request übereinstimmen. Dies kann am Testsystem am Beispiel der Namensauflösung des \ac{OPC UA} Discovery Servers mit Hilfe des Netzwerkanalysetools Wireshark\footnote{Link zu Wireshark} nachgewiesen werden.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{dns-response-request}
+    \caption{Wireshark - ID im DNS Header}
+    \label{Analyse:DNS Request Response}
+  \end{figure}
+  
+\clearpage
+
+In der Darstellung ist auf der linken Seite ein DNS Request des \ac{OPC UA} Discovery Servers und dessen DNS Header mit ID zu erkennen. Auf der rechten Seite ist die Antwort des im Netzwerk vorhandenen authorativen Nameservers zu sehen. 
+
+Schutzmaßnahmen sind DNSSEC und zufällige Informationen
+Die Auswirkungen eines solchen Angriffs ...
+
+\subsubsection{DNS Amplification}
+
+
+\subsubsection{\ac{DoS}/\ac{DDoS}}
+\label{Analyse:DoS/DDos}
+
+\subsubsection{DNS Fast Fluxing}
+Im Gegensatz zu den bisher beschriebenen Angriffsformen wird das Fast Fluxing zur Spionage von Daten genutzt.
+
+\subsection{DHCP}
+
+
+
+In Kapitel \autoref{Impl:DHCP Spoofing} wird die Erweiterung des Testsystems (\cite{Weber2018}) beschrieben und Auswirkungen eines Eingriffs auf das Netzwerk in der Netzzugangsschicht und gleichzeitige Manipulation der Internetschicht des \ac{TCP}/\ac{IP} Referenzmodells dargestellt.
+
+\subsection{ARP}
+
+
 
 \subsection{\ac{QoS}}
 Eine Industrie 4.0 Netzwerkinfrastruktur kann aufgrund der unterschiedlichen Anforderungen an die Systeme auf verschiedenste Weisen ausgeprägt sein. Die Heterogenität der Komponenten im Netzwerk und deren Anforderungen an die Kommunikation auf der vertikalen Ebene der Automatisierungspyramide \autoref{Grundlagen:Automatisierungspyramide} stellen eine Herausforderung für die Sicherheit der Datenübertragung dar und können die Umsetzung eines Netzwerks beeinflussen. Des Weiteren erstrecken sich Industrie 4.0 Umgebungen über weite Distanzen (\ac{MAN}, \ac{WAN}, \ac{GAN}) und sind somit auch von physikalischen Gegebenheiten wie Latenz und Jitter betroffen. Diese Erscheinungen müssen berücksichtigt werden, um eine fehler- und verlustfreie, sichere Kommunikation zu gewährleisten.
@@ -64,7 +99,33 @@ Für die Beurteilung und Bereitstellung der Dienstgüte in \ac{IP}-Netzen müsse
 
 TODO - ref. \cite{torscht2014} und IEEE 802.1p
 
-\section{Transport- und Anwendungsschicht}
+\subsection{IPsec}
+Die Internetschicht bietet mit IPsec eine Möglichkeit den Datenfluss, im Vergleich zu anderen Verschlüsselungsverfahren, die Kommunikation bereits auf der Internetschicht des \ac{TCP}/\ac{IP} Referenzmodells zu sichern.
+
+\section{Transportschicht}
+\subsection{TCP}
+\subsection{UDP}
+
+\subsection{Kommunikationsstrukturen in Industrie 4.0 Umgebungen}
+Um die Kommunikation zwischen verschiedenen Teilnehmern zu ermöglichen, ergeben sich in der Praxis unterschiedliche Strukturen. Jede dieser Strukturen bietet, je nach Anwendungsfall und zu erfüllenden Anforderungen, Vor- und Nachteile.
+
+\subsubsection{End2End}
+Die Komponenten der Industrie 4.0 Umgebung kommunizieren über einen direkten Kanal miteinander. Dies setzt voraus, dass sich beide Teilnehmer in einem Netzwerk befinden, welches die benötigten Dienste wie z. B. \ac{IP} und \ac{DNS} zur Kommunikation bereitstellt. Des weiteren müssen beide Systeme diese Dienste und Protokolle unterstützen.
+
+\subsubsection{Gateways}
+Um existierende Systeme, welche selbst nicht Industrie 4.0 konform kommunizieren oder zu wenig Rechenleistung besitzen, in die Industrie 4.0 Welt zu integrieren, werden Industrie 4.0 Gateways genutzt. Dabei ist jedoch zu beachten, dass die Systeme hinter den Gateways nicht als Industrie 4.0 Komponenten entwickelt wurden und somit auch keine oder nur wenige dieser Eigenschaften besitzen. Des Weiteren ist es möglich, dass die Kommunikation aus Leistungsgründen oder besonderer Anforderungen über optimierte, proprietäre Protokolle stattfindet. Die Gateways müssen auf die Systeme und deren Protokolle individuell konfiguriert werden, um die Funktionalitäten im Industrie 4.0 Netz bereitstellen zu können, und die Kommunikation zu schützen.
+
+\subsubsection{Publish-Subscribe}
+Das Publish-Subscribe Modell bietet die Möglichkeit Informationen an mehrere Teilnehmer zu verteilen. Hierbei melden sich die Empfänger beim Verteiler an und wählen aus, über welche Nachrichtentypen sie informiert werden möchten. Diese Verteildienste nutzen zur besseren Skalierung und Reduzierung der Netzlast häufig Datagramme wie \ac{UDP}. Durch die Nutzung von Datagrammen geht jedoch die Fehlertoleranz verloren. Somit muss entweder dafür gesorgt werden, dass eine sehr zuverlässige Netzwerkinfrastruktur vorhanden ist und hohe Bandbreitenreserven geschaffen werden, um die Dienstgüte (\ac{QoS}) sicherzustellen oder dieses Modell nur für fehlertolerante Kommunikation wie z. B. Audio- und Video-Anwendungen oder Businessprozesse zu nutzen. 
+
+\subsubsection{Kommunikation mit Netzwerk als Partner}
+Zeitkritische Automatisierungsanwendungen verlangen besondere Netzwerkeigenschaften. Sie können auf Latenz oder Jitter angewiesen sein. Um diese Eigenschaften sicherzustellen, ist es sinnvoll in diese Netze eine Industrie 4.0 Schnittstelle zu integrieren. Somit ist es den Teilnehmern möglich, über die Verwaltungsschale sicherzustellen, dass das Netzwerk die erforderlichen Anforderungen bereitstellt. \cite{sichKom2017}
+
+TODO - Bilder -> sichere-kommunikation-i40
+TODO - mehr Analyse.
+TODO - Verweis auf \autoref{Analyse:Anwendungsschicht}, da Tests mit OPC UA auch Transportschicht umfassen. -> PubSub, Client-Server = UDP/TCP
+
+\section{Anwendungsschicht}
 TODO - DDS und OPC UA
 TODO - Ansatz: Wireshark an Bridge der Testumgebung im Sternnetzwerk und Druckerkomponente oder andere manipulieren; andere Protokolle von Feldebene an Switch auslesen; vielleicht hier nur beschreiben und in den höheren Schichten durchführen mit CoAP oder MQTT -> OPC UA Komponenten sind Gateway
 

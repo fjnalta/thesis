@@ -1,5 +1,17 @@
 \chapter{Implementierung}
+
 TODO - um die Komplexität des Systems gering zu halten werden die vorhandenen Komponenten NodeJS, Angular, Docker, ... zur Implementierung der Funktionalitäten im Bereich der Netzwerksicherheit weiterhin genutzt und erweitert.
+
+\section{DHCP Spoofing}
+\label{Impl:DHCP Spoofing}
+DHCP Spoofing -> Vortäuschen eines DHCP, schneller Leases verteilen als vorhandener DHCP -> MitM
+TODO - impl. 2. DHCP Server implementieren
+DHCP Snooping -> theor. Verteidigung gegen Spoofing, Switches erlauben nur bestimmten Ports DHCP Traffic zu versenden
+
+\section{Anwendungsszenario - \ac{ARP} Spoofing}
+TODO - verfälschter Ethernetrahmen -> MAC Manipulation - MitM
+TODO - Schutz durch statische Tabellen, \ac{IDS}
+
 
 TODO - Zertifikatstests
 TODO - Fuzzing
