@@ -89,9 +89,29 @@ Die folgende Abbildung stellt einen \ac{DDoS} Angriff durchgeführt durch \ac{DN
   
 \clearpage
 
-Diese Form des Angriffs kann aus dem internen Netz sowie von extern auf öffentlich zugängliche Systeme durchgeführt werden. \ac{DoS} Attacken stellen besonders für Industrie 4.0 Netzwerke, deren komplexe Kommunikation und Anforderungen eine hohe Bedrohung dar. Durch den erheblichen \ac{BAF} können diese Angriffe mit wenig Bandbreite beim Angreifer durchgeführt werden und gleichzeitig das Netzwerk des Opfers voll auslasten. Dies wird im folgenden anhand einer Grafik dargestellt. 
+Diese Form des Angriffs kann aus dem internen Netz sowie von extern auf öffentlich zugängliche Systeme durchgeführt werden. \ac{DoS} Attacken stellen besonders für Industrie 4.0 Netzwerke, deren komplexe Kommunikation und Anforderungen eine hohe Bedrohung dar. Durch den erheblichen \ac{BAF} können diese Angriffe mit wenig Bandbreite beim Angreifer durchgeführt werden und gleichzeitig das Netzwerk des Opfers voll auslasten. Wie in Abbildung \autoref{Analyse:DNS Amplification am Beispiel von isc.org} dargestellt, kann durch die Abfrage der Zone isc.org eine 3385 Byte große Antwort vom Nameserver provoziert werden. 
 
-TODO - Beschreibung -> Plot Netzlast Angreifer - Netzlast Opfer - Skalierung
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{dig-dnsamplification}
+    \caption{DNS Amplification am Beispiel von isc.org}
+    \label{Analyse:DNS Amplification am Beispiel von isc.org}
+  \end{figure}
+  
+\clearpage
+
+Dies führt zu einem \ac{BAF} von ca. 56. Die folgende Grafik stellt einen Angriff mit diesem \ac{BAF} dar. Auf der X-Achse ist die Anzahl der gesendeten Pakete dargestellt, die Y-Achse zeigt die Last des Netzwerkes in Gigabit auf. Die Kurven beschreiben das Netz des Angreifers sowie des Opfers.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{gnuplot-dnsamplification}
+    \caption{Netzlast bei DNS Amplification}
+    \label{Analyse:Netzlast bei DNS Amplification}
+  \end{figure}
+  
+\clearpage
+
+Auf der Darstellung ist zu erkennen, dass bei diesem Angriff eine lineare Steigerung der Netzlast in beiden Netzen vorliegt. Entscheidend ist jedoch der \ac{BAF}, welcher das Verhältnis zwischen der Lastzunahme im Angreifer- und Opfernetz beschreibt. Es ist zu erkennen, dass beim Versandt von 35000 Paketen im Quellnetzwerk nur ca. 0.016 Gigabit Daten transferiert werden müssen, dafür aber knapp 1 Gigabit an Daten in das Zielnetzwerk übertragen werden und dort für eine erhebliche Last sorgen.
 
 Der \ac{DNS} bietet weitere Angriffsmöglichkeiten wie \ac{DNS} Fast Fluxing oder \ac{DNS} Information Leakage. Diese Angriffe dienen zum \textit{Phishing} von Daten oder der Spionage der Netzwerkstruktur. Sie nehmen initial keinen Einfluss auf den Netzwerkverkehr und dienen der Vorbereitung von Folgeangriffen und dem Sammeln von Informationen. Die Angriffsformen werden in \cite{Ledermueller2009} näher beschrieben. Die Analyse der Sicherheit der Netzwerkkommunikation beschränkt sich auf Angriffe, welche direkten Einfluss in die Kommunikation im Netzwerk haben. Weitere Formen der \ac{DoS}/\ac{DDoS} Angriffe finden auf Transportschicht \autoref{Analyse:Transportschicht} durch \textit{SYN-Flooding} oder auf Anwendungsschicht \autoref{Analyse:Anwendungsschicht} zur Negierung eines Speziellen Dienstes statt.
 
@@ -116,34 +136,43 @@ TODO - Die Internetschicht bietet mit IPsec eine Möglichkeit den Datenfluss, im
 
 \section{Transportschicht}
 \label{Analyse:Transportschicht}
-TODO - Einleitung -> Protokolle der Transportschicht hängen von Kommunikationsstruktur und Anforderungen ab.
+Während auf der Netzwerkschicht allein das Protokoll \ac{IP} die Basis für die Vernetzung und Adressierung von Industrie 4.0 Systemen darstellt, wird das Protokoll der Transportschicht durch die Anforderungen an das Netzwerk bestimmt. Der wesentliche Teil der Kommunikation in der Industrie 4.0 erfolgt über ein \ac{IP} Netzwerk, welches zum Datentransport das Protokoll \ac{TCP} für \textit{End2End} (\autoref{Grundlagen:End2End}) Kommunikation nutzt (\cite{sichKom2017}). Wie in \autoref{Grundlagen:Kommunikationsstrukturen} beschrieben, bieten sich in der Praxis bei besonderen Anforderungen wie der Verteilung von Informationen im Netzwerk oder zeitkritischen Automatisierungsanwendungen jedoch auch andere Strukturen für die Kommunikation wie \textit{Publish-Subscribe} (\autoref{Grundlagen:Publish-Subscribe}) in Verbindung mit dem Datagramm \ac{UDP} an. 
 
-\subsection{Kommunikationsstrukturen in Industrie 4.0 Umgebungen}
-Um die Kommunikation zwischen verschiedenen Teilnehmern zu ermöglichen, ergeben sich in der Praxis unterschiedliche Strukturen. Jede dieser Strukturen bietet, je nach Anwendungsfall und zu erfüllenden Anforderungen, Vor- und Nachteile.
-
-\subsubsection{End2End}
-Die Komponenten der Industrie 4.0 Umgebung kommunizieren über einen direkten Kanal miteinander. Dies setzt voraus, dass sich beide Teilnehmer in einem Netzwerk befinden, welches die benötigten Dienste wie z. B. \ac{IP} und \ac{DNS} zur Kommunikation bereitstellt. Des weiteren müssen beide Systeme diese Dienste und Protokolle unterstützen.
-
-\subsubsection{Gateways}
-Um existierende Systeme, welche selbst nicht Industrie 4.0 konform kommunizieren oder zu wenig Rechenleistung besitzen, in die Industrie 4.0 Welt zu integrieren, werden Industrie 4.0 Gateways genutzt. Dabei ist jedoch zu beachten, dass die Systeme hinter den Gateways nicht als Industrie 4.0 Komponenten entwickelt wurden und somit auch keine oder nur wenige dieser Eigenschaften besitzen. Des Weiteren ist es möglich, dass die Kommunikation aus Leistungsgründen oder besonderer Anforderungen über optimierte, proprietäre Protokolle stattfindet. Die Gateways müssen auf die Systeme und deren Protokolle individuell konfiguriert werden, um die Funktionalitäten im Industrie 4.0 Netz bereitstellen zu können, und die Kommunikation zu schützen.
-
-\subsubsection{Publish-Subscribe}
-Das Publish-Subscribe Modell bietet die Möglichkeit Informationen an mehrere Teilnehmer zu verteilen. Hierbei melden sich die Empfänger beim Verteiler an und wählen aus, über welche Nachrichtentypen sie informiert werden möchten. Diese Verteildienste nutzen zur besseren Skalierung und Reduzierung der Netzlast häufig Datagramme wie \ac{UDP}. Durch die Nutzung von Datagrammen geht jedoch die Fehlertoleranz verloren. Somit muss entweder dafür gesorgt werden, dass eine sehr zuverlässige Netzwerkinfrastruktur vorhanden ist und hohe Bandbreitenreserven geschaffen werden, um die Dienstgüte (\ac{QoS}) sicherzustellen oder dieses Modell nur für fehlertolerante Kommunikation wie z. B. Audio- und Video-Anwendungen oder Businessprozesse zu nutzen. 
-
-\subsubsection{Kommunikation mit Netzwerk als Partner}
-Zeitkritische Automatisierungsanwendungen verlangen besondere Netzwerkeigenschaften. Sie können auf Latenz oder Jitter angewiesen sein. Um diese Eigenschaften sicherzustellen, ist es sinnvoll in diese Netze eine Industrie 4.0 Schnittstelle zu integrieren. Somit ist es den Teilnehmern möglich, über die Verwaltungsschale sicherzustellen, dass das Netzwerk die erforderlichen Anforderungen bereitstellt. \cite{sichKom2017}
-
-TODO - Bilder -> sichere-kommunikation-i40
-TODO - mehr Analyse.
+Das Protokoll \ac{TCP} sowie das Datagramm \ac{UDP} sind für die Übertragung der Segmente im Netzwerk sowie das Multi-/Demultiplexing verantwortlich. Dabei spielt der Inhalt der zu übertragenden \textit{payload} keine Rolle. Die Analyse der Sicherheit im Netzwerk auf dieser Schicht des \ac{TCP}/\ac{IP} Referenzmodells beschränkt sich somit ausschließlich auf die Form der Datenübertragung sowie der dafür genutzten Netzlast.
 
 \subsection{TCP}
-\subsection{UDP}
+Das Protokoll \ac{TCP}\footnote{\cite{TCP}} verfolgt das Prinzip eines \textit{guaranteed delivery} und stellt eine zuverlässige Datenübertragung zwischen zwei \textit{Hosts} bereit. Hierzu werden verschiedene Mechanismen zur Segmentierung der Daten, dem Verbindungsmanagement sowie der Fehler- und Flusskontrolle bereitgestellt. Diese Mechanismen, welche durch den Aufbau des des \ac{TCP} Headers und die Nutzung von Timeouts und Algorithmen realisiert werden, sind für den Erfolg des Protokolls für zuverlässige, paketorientierte \textit{End2End} Kommunikation verantwortlich.
 
+Ein wichtiger Bestandteil des \ac{TCP} Verbindungsmanagements und der Fehlerkontrolle stellt der 3-Wege-Handshake beim Verbindungsaufbau sowie -abbau dar. Er wird mittels der \textit{Sequence-} und \textit{Acknowledgementnumber} sowie den zugehörigen \textit{Flags} des \ac{TCP} Headers (\ac{SYN}, \ac{SYN-ACK}, \ac{ACK}, \ac{FIN}) realisiert. Während des Verbindungsaufbaus werden die Adresse des Clients sowie der Status der Verbindung im Speicher gehalten. Die folgende Abbildung zeigt schematisch den Ablauf eines \ac{TCP} Verbindungsaufbaus zwischen Client und Server. Der Client sendet zuerst eine Paket mit SYN-Flag zum Server. Dieser bestätigt das eingetroffene Paket des Clients mit dem SYN-ACK Flag, inkrementiert die Sequenznummer x in seinem \textit{acknowledgment number} Segment\footnote{text} und erzeugt eine neue Sequenznummer für das Antwortpaket. Der Verbindungsaufbau wird durch die Bestätigung des SYN-ACK Pakets durch den Client und den Empfang des ACK Pakets vom Server abgeschlossen. Die initiale Sequenznummer x des SYN Pakets sowie die initiale Sequenznummer y des SYN-ACK Pakets können von den Beteiligten frei bestimmt werden.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{tcp-verbindungsaufbau}
+    \caption{TCP Verbindungsaufbau}
+    \label{Analyse:TCP Verbindungsaufbau}
+  \end{figure}
+  
+\clearpage
+
+\subsubsection{SYN-Flood}
+Der Mechanismus des 3-Wege-Handshakes kann durch einen SYN-Flood Angriff ausgenutzt werden und somit die Netz- und Systemlast manipuliert werden. Der SYN-Flood stellt eine Form des \ac{DoS} bzw. \ac{DDoS} Angriffs dar. Dabei werden zu einem gezielten \ac{TCP} Dienst viele Pakete mit gesetztem SYN \textit{Flag} gesendet, um einen Verbindungsaufbau zum Server vorzutäuschen. Nach Erhalt des Pakets sendet der Server dem Client ein SYN-ACK Paket um den Verbindungsaufbau zu initiieren und wartet auf Bestätigung. Diese Bestätigung wird vom Angreifer unterschlagen. Somit bleiben auf dem angegriffenen System Ressourcen dieser halb offenen Verbindung bis zum erreichen eines Timouts belegt. Ein verteilter Angriff auf ein System kann dessen Ressourcen schnell komplett beanspruchen und somit zur Ablehnung jeglicher weiterer Verbindungen führen.
+
+Die Kritikalität dieses Angriffs liegt in der Unausgewogenheit der benötigten Ressourcen zwischen Angreifer und Opfer. Es benötigt nur wenig Rechenaufwand und Bandbreite um ein 20 Byte großen \ac{TCP}-SYN Header mit entsprechender \textit{payload} zu erzeugen und zu versenden, jedoch viele Ressourcen um sich durch eine Echtzeitanalyse der Pakete durch eine Firewall oder SYN-Cookies vor diesen Angriffen zu schützen. Diese werden aufgrund ihrer Ressourcenbelastung aus wirtschaftlichen Gründen meist nur minimal oder gar nicht umgesetzt.
+
+Der Mechanismus der SYN-Cookies wird auf dem Server implementiert. Hierbei werden in die initiale Sequenznummer des vom Server gesendeten SYN-ACK Pakets die Informationen Zeitstempel, \ac{IP} Adresse und Port von Client und Server kodiert, welche normalerweise in einer Tabelle im Speicher gehalten werden müssten. Somit ist ein überlaufen der Tabelle unmöglich, da sie nicht vorhanden ist. Jedoch benötigt jede Kodierung und Dekodierung Systemressourcen. Ein ausreichend großer Angriff auf das System kann somit trotzdem die gesamten Systemressourcen beanspruchen und somit das Ziel eines \ac{DDoS} Angriffs, die Negierung eines Dienstes, erfüllen.
+
+Dedizierte Firewalls können mit Hilfe von \ac{IDS} die Pakete beim Eintreffen im Netzwerk analysieren, Angriffe erkennen und Verbindungen dieser Quelladressen blockieren.
+
+\subsubsection{Sockets}
+TODO - Sockets blockieren
+
+\subsection{UDP}
 TODO - Verweis auf \autoref{Analyse:Anwendungsschicht}, da Tests mit OPC UA auch Transportschicht umfassen. -> PubSub, Client-Server = UDP/TCP
 
 \section{Anwendungsschicht}
 \label{Analyse:Anwendungsschicht}
 TODO - Einleitung
+TODO - Slowloris
 
 \subsection{Integrationsansätze}
 Die Grundlage der Industrie 4.0 Kommunikation ist ein standardisierter Datenaustausch über alle Schichten der Automatisierungspyramide hinweg. Dabei stellt der \ac{IEC}-Standard \ac{OPC UA} einen vielversprechenden Ansatz für einen standardisierten Informationsaustausch über Unternehmensgrenzen hinweg dar. Jedoch müssen auch bestehende Systeme in die Industrie 4.0 Kommunikation integriert werden. Dies führt häufig zu Problemen, da diese Systeme proprietäre Protokolle nutzen, besondere Anforderungen wie Echtzeitkommunikation besitzen oder gar keine Schnittstelle bereitstellen. Es bestehen grundsätzlich zwei Ansätze zur Integration dieser Anlagen. TODO - ref.
@@ -170,6 +199,7 @@ TODO - Herstellerabhängigkeit
 TODO - Kosten der Interfaceentwicklung, usw.
 
 \subsection{DHCP}
+Hilfs- und Anwendungsprotokolle -> ARP, DHCP
 TODO - Beschreibung
 
 In Kapitel \autoref{Impl:DHCP Spoofing} wird die Erweiterung des Testsystems (\cite{Weber2018}) beschrieben und Auswirkungen eines Eingriffs auf das Netzwerk in der Netzzugangsschicht und gleichzeitige Manipulation des \ac{DHCP} der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells dargestellt.
@@ -225,6 +255,3 @@ Auf der Netzzugangsschicht fallen, wie auf allen anderen Schichten, Betriebsdate
 \clearpage
 
 Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
-
-\section{Auswertung der Ergebnisse}
-TODO
