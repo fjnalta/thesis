@@ -17,7 +17,7 @@ Die vierte industrielle Revolution, das \ac{IIoT} und dessen Vielzahl an aktiven
     \item Kompromittierung von Smartphones im Produktionsumfeld
 \end{enumerate}
 
-TODO - mehr, Einordnung
+TODO - Einordnung - Bezug auf Analyse
 
 Um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzziele umzusetzen, ist es notwendig einen größtmöglichen Schutz gegen diese Bedrohungen bereitzustellen. Die Sicherheit eines Gesamtsystems kann nicht nur an einer einzigen Stelle im Kommunikationsstack hergestellt und gewährleistet werden. Es müssen alle Stellen des Kommunikationsstacks gegen Bedrohungen abgesichert werden (\cite{sichKom2017}). Dafür müssen die Netzwerkinfrastruktur und die eigentliche Kommunikation im Netzwerk gesichert werden. Dies geschieht durch die Abschottung von Systemen, die Einschränkung von Zugangsberechtigungen, die Härtung der Sicherheit der genutzten Komponenten sowie den Einsatz von geeigneten Netzwerkprotokollen und Verschlüsselungsverfahren.
 
@@ -44,6 +44,7 @@ TODO - REST usw. für High Level Applications
 TODO - Softwareschwachstellen, Softwarefehler 
 TODO - Herstellerabhängigkeit
 TODO - Kosten der Interfaceentwicklung, usw.
+TODO - AXOOM Absatz unnötig
 
 \section{Netzzugangsschicht}
 Die Netzzugangsschicht stellt die erste Instanz der Kommunikation in einem Netzwerk dar. Sie beinhaltet das Übertragungsmedium sowie die Topologie, in welcher die Kommunikation stattfindet. Das Übertragungsmedium bestimmt die Form der Signalübertragung. In Industrie 4.0 Netzen können neben der klassischen Kabelverbindung auch andere (instabile) Kanäle wie Mobilfunk oder Satelliten in Frage kommen. Um die Kommunikation über alle Medien sicher und zuverlässig zu gestalten, müssen auf technischer Ebene Protokolle genutzt werden, welche es ermöglichen die gegebenen Schutzziele zu realisieren und die Integrität der Daten bei der Übertragung über große Entfernungen zu gewährleisten. Dominante Technologien dieser Schicht sind \ac{IEEE} 802.3 (Ethernet)\footnote{Link zu IEEE 802.3}, \ac{IEEE} 802.11 (Wireless LAN)\footnote{Link zu IEEE 802.11} und \ac{IEEE} 802.15.4\footnote{Link zu IEEE 802.15.4} (\cite{sichKom2017}).
@@ -63,7 +64,8 @@ TODO - Ansatz: Berechnung von Latenzzeiten, RTT, Auswirkungen aufzeigen, Congest
 \label{Analyse:VLAN}
 TODO - Taggen von Frames, da keine Kommunikation im Schichtenmodell zwischen den Schichten stattfindet. Somit QoS schwierig, da es von allen Hardwarekomponenten unterstützt werden muss und nicht nur auf Anwendungsebene funktionieren kann.
 
-\subsection{ARP}
+\subsection{\ac{ARP}}
+\label{Analyse:ARP}
 TODO - praktisch nur wenn Tool vorhanden ist.
 
 \subsection{vertikale Integration bestehender Komponenten}
@@ -74,10 +76,7 @@ TODO - Vieles in Praxis nicht umsetzbar darum größtmöglicher Schutz durch Abs
 \section{Internetschicht}
 Auf der Internetschicht findet die Vermittlung der Datenpakete zwischen den Teilnehmern im Netzwerk statt. Auf dieser Schicht hat sich, mit dem Siegeszug des Internets, \ac{IP} zum Standard für Netzwerkübergreifende Rechnerkommunikation durchgesetzt (\cite{meinel2011}). Dies gilt auch für die immer komplexer werdenden Industrienetzwerke und die Industrie 4.0.
 
-Zu den Aufgaben der Internetschicht gehört das Bereitstellen von Adressen, das Routing, die Fragmentierung von Datenpaketen zur Übertragung im Netzwerk sowie die Sicherstellung der Dienstgüte. Um Routing und Adressvergabe in \ac{IP}-Netzen zu realisieren, werden die Dienste \ac{DNS} und \ac{DHCP} genutzt. Das \ac{IPAM} und die Zuordnung der physikalischen Hardware zur logischen \ac{IP}-Adresse erfolgt mit Hilfe des \ac{ARP}. Da die Kommunikation in einem \ac{IP}-Netz ohne diese Dienste und Protokolle nicht möglich ist, stellen sie einen wichtigen Bestandteil der Kommunikation im Netzwerk da und müssen vor Sabotage geschützt werden.
-
-\subsection{IPAM}
-TODO - IPAM
+Zu den Aufgaben der Internetschicht gehört das Bereitstellen von Adressen, das Routing, die Fragmentierung von Datenpaketen zur Übertragung im Netzwerk sowie die Sicherstellung der Dienstgüte. Um Routing und Adressvergabe in \ac{IP}-Netzen zu realisieren, werden die Dienste \ac{DNS} (\autoref{Analyse:DNS}) und \ac{DHCP} (\autoref{Analyse:DHCP}) genutzt. Das \ac{IPAM} und die Zuordnung der physikalischen Hardware zur logischen \ac{IP}-Adresse erfolgt mit Hilfe des \ac{ARP}. Da die Kommunikation in einem \ac{IP}-Netz ohne diese Dienste und Protokolle nicht möglich ist, stellen sie einen wichtigen Bestandteil im Netzwerk dar und müssen vor Sabotage geschützt werden. 
 
 \subsection{\ac{QoS}}
 Eine Industrie 4.0 Netzwerkinfrastruktur kann aufgrund der unterschiedlichen Anforderungen an die Systeme auf verschiedenste Weisen ausgeprägt sein. Die Heterogenität der Komponenten im Netzwerk und deren Anforderungen an die Kommunikation auf der vertikalen Ebene der Automatisierungspyramide \autoref{Grundlagen:Automatisierungspyramide} stellen eine Herausforderung für die Sicherheit der Datenübertragung dar und können die Umsetzung eines Netzwerks beeinflussen. Des Weiteren erstrecken sich Industrie 4.0 Umgebungen über weite Distanzen (\ac{MAN}, \ac{WAN}, \ac{GAN}) und sind somit auch von physikalischen Gegebenheiten wie Latenz und Jitter betroffen. Diese Erscheinungen müssen berücksichtigt werden, um eine fehler- und verlustfreie, sichere Kommunikation zu gewährleisten \cite{torscht2014}.
@@ -101,7 +100,7 @@ Während auf der Netzwerkschicht allein das Protokoll \ac{IP} die Basis für die
 Das Protokoll \ac{TCP} sowie das Datagramm \ac{UDP} sind für die Übertragung der Segmente im Netzwerk sowie das Multi-/Demultiplexing verantwortlich. Dabei spielt der Inhalt der zu übertragenden \textit{payload} keine Rolle. Die Analyse der Sicherheit im Netzwerk auf dieser Schicht des \ac{TCP}/\ac{IP} Referenzmodells beschränkt sich somit ausschließlich auf die Form der Datenübertragung sowie der dafür genutzten Netzlast.
 
 \subsection{\ac{TCP}}
-Das Protokoll \ac{TCP}\footnote{\cite{TCP}} verfolgt das Prinzip eines \textit{guaranteed delivery} und stellt eine zuverlässige Datenübertragung zwischen zwei \textit{Hosts} bereit. Hierzu werden verschiedene Mechanismen zur Segmentierung der Daten, dem Verbindungsmanagement sowie der Fehler- und Flusskontrolle bereitgestellt. Diese Mechanismen, welche durch den Aufbau des des \ac{TCP} Headers und die Nutzung von Timeouts und Algorithmen realisiert werden, sind für den Erfolg des Protokolls für zuverlässige, paketorientierte \textit{End2End} Kommunikation verantwortlich.
+Das Protokoll \ac{TCP}\footnote{\cite{TCP}} verfolgt das Prinzip eines \textit{guaranteed delivery} und stellt eine zuverlässige Datenübertragung zwischen zwei \textit{Hosts} (Unicast) bereit. Hierzu werden verschiedene Mechanismen zur Segmentierung der Daten, dem Verbindungsmanagement sowie der Fehler- und Flusskontrolle bereitgestellt. Diese Mechanismen, welche durch den Aufbau des des \ac{TCP} Headers und die Nutzung von Timeouts und Algorithmen realisiert werden, sind für den Erfolg des Protokolls für zuverlässige, paketorientierte \textit{End2End} Kommunikation verantwortlich.
 
 Ein wichtiger Bestandteil des \ac{TCP} Verbindungsmanagements und der Fehlerkontrolle stellt der 3-Wege-Handshake beim Verbindungsaufbau sowie -abbau dar. Er wird mittels der \textit{Sequence-} und \textit{Acknowledgementnumber} sowie den zugehörigen \textit{Flags} des \ac{TCP} Headers (\ac{SYN}, \ac{SYN-ACK}, \ac{ACK}, \ac{FIN}) realisiert. Während des Verbindungsaufbaus werden die Adresse des Clients sowie der Status der Verbindung im Speicher gehalten. Die folgende Abbildung zeigt schematisch den Ablauf eines \ac{TCP} Verbindungsaufbaus zwischen Client und Server. Der Client sendet zuerst eine Paket mit SYN-Flag zum Server. Dieser bestätigt das eingetroffene Paket des Clients mit dem SYN-ACK Flag, inkrementiert die Sequenznummer x in seinem \textit{acknowledgment number} Segment\footnote{text} und erzeugt eine neue Sequenznummer für das Antwortpaket. Der Verbindungsaufbau wird durch die Bestätigung des SYN-ACK Pakets durch den Client und den Empfang des ACK Pakets vom Server abgeschlossen. Die initiale Sequenznummer x des SYN Pakets sowie die initiale Sequenznummer y des SYN-ACK Pakets können von den Beteiligten frei bestimmt werden.
 
@@ -134,18 +133,18 @@ Diese Form des \ac{DoS} Angriffs wurde am vorhandenen Industrie 4.0 Testsystem (
 
 TODO - In Abbildung XY ist zu erkennen - asymmetrischer Angriff - Monitoring Ressourcenauslastung - RAM bleibt nach dem Angriff weiterhin belegt -> nur Systemneustart gibt Speicher wieder frei 
 TODO - Diagramm als Zusammenfassung der Implementierung
+TODO - Ergebnisse beschreiben
 
 \subsection{\ac{UDP}}
 \ac{UDP}\footnote{Link - https://tools.ietf.org/html/rfc768} ist ein verbindungsloses\footnote{verbindungslos - TODO}, nicht-zuverlässiges\footnote{nicht zuverlässig - TODO} Übertragungsprotokoll. Der \ac{UDP} Header ist im Gegensatz zum \ac{TCP} Header (20 Bytes) nur 8 Byte lang und bietet somit einen sehr geringen \textit{Overhead}\footnote{Overhead - TODO} beim Versenden von \ac{IP} Paketen. \ac{UDP} wurde als Alternative zu \ac{TCP} entwickelt, um die Kommunikation mit niedrigeren Latenzen für Dienste wie \ac{SNMP} oder \ac{DNS}oder \ac{VoIP} zu ermöglichen (\cite{UDP2003}). Es wird auf den für die Latenz kritischen 3-Wege-Handshake verzichtet und das \textit{Fire-and-Forget}\footnote{Fire-and-Forget - TODO} Prinzip angewandt, wobei keine Verbindung zwischen zwei Kommunikationspartnern hergestellt wird, sondern die Pakete ohne Flusskontrolle vom Sender zum Empfänger gesendet werden.
 
-\ac{UDP} findet in vielen Industrienetzen Einsatz als Transportprotokoll. Es bietet sich, vorallem durch seine Simplizität und den geringen Overhead im Netzwerk für die Informationsverteilung über das Publish-Subscribe Pattern an. Diese Form der Informationsverteilung über \ac{UDP} wird in \autoref{Analyse:OPCUA} mit Bezug auf das Protokoll \ac{OPC UA} analysiert.
+\ac{UDP} findet in vielen Industrienetzen Einsatz als Transportprotokoll. Es bietet sich, vor allem durch seine Simplizität und den geringen Overhead im Netzwerk für die Informationsverteilung mit niedrigen Latenzzeiten an. Durch die Broad- und Multicast Funktionalitäten des \ac{UDP} ist es möglich über das Publish-Subscribe Pattern zu kommunizieren und somit die Netzlast bei eine großen Anzahl von Empfängern gering zu halten. Diese Form der Informationsverteilung über \ac{UDP} wird in \autoref{Analyse:OPCUA} mit Bezug auf das Protokoll \ac{OPC UA} analysiert.
 
-\ac{UDP} führt keine Validierung der Absenderadresse im Paketheader durch (\cite{UDP2003}). Dies ermöglicht die Anwendung von \ac{IP} Spoofing. \ac{IP} Spoofing kann genutzt werden, \ac{DDoS} Angriffe auf ein System durchzuführen. Eine Analyse des Netzwerkdienstes \ac{DNS}, welcher auf der Nutzung des Transportprotokolls \ac{UDP} basiert, wird in Kapitel \autoref{Analyse:DNS} beschrieben und durchgeführt.
+\ac{UDP} führt keine Validierung der Absenderadresse im Paketheader durch (\cite{UDP2003}). Dies ermöglicht die Anwendung von \ac{IP} Spoofing. \ac{IP} Spoofing kann genutzt werden, um \ac{DoS} bzw. \ac{DDoS} Angriffe auf ein System durchzuführen. Eine Analyse des Netzwerkdienstes \ac{DNS}, welcher auf der Nutzung des Transportprotokolls \ac{UDP} basiert, wird in Kapitel \autoref{Analyse:DNS} beschrieben und durchgeführt.
 
 \section{Anwendungsschicht}
 \label{Analyse:Anwendungsschicht}
-TODO - Einleitung
-TODO - Slowloris
+Die Netzwerkkommunikation der Anwendungsschicht in Industrie 4.0 Umgebungen basiert auf dem \ac{IP} der Internetschicht. Um die Integration und Verwaltung der Netzwerkteilnehmer zu erleichtern, werden \ac{IP} basierende Dienste wie \ac{DNS} für die Namensauflösung sowie \ac{DHCP} für die Adressvergabe und das Routing genutzt. Des Weiteren wird sie in Industrieumgebungen durch eine Vielzahl von Protokollen beschrieben. Bestehende Lösungen des \ac{IoT} nutzen Protokolle wie \ac{HTTP}, \ac{XMPP} oder \ac{SMTP} zur Kommunikation über das Netzwerk. In der \ac{M2M} Kommunikation des \ac{IIoT} haben sich die Protokolle und Standards \ac{OPC UA}, \ac{DDS}, \ac{MQTT} und \ac{CoAP} für unterschiedliche Anforderungen an die Netze und deren Teilnehmer hervorgetan. 
 
 \subsection{\ac{DNS}}
 \label{Analyse:DNS}
@@ -215,17 +214,17 @@ TODO - Schutzmaßnahmen sind DNSSEC und zufällige Informationen \label{Analyse:
 TODO - Die Auswirkungen eines solchen Angriffs ...
 TODO - Sicherheitsmaßnahmen siehe \cite{Ledermueller2009}
 
-\subsection{DHCP}
-Hilfs- und Anwendungsprotokolle -> ARP, DHCP
-TODO - Beschreibung
+\subsection{\ac{DHCP}}
+\label{Analyse:DHCP}
+\ac{DHCP} ist von der \ac{IETF} im \ac{RFC} 2131\footnote{Link - https://www.ietf.org/rfc/rfc2131.txt} definiert. Es stellt ein Framework zur Bereitstellung von \textit{Host} Konfigurationsparamertern in einem \ac{TCP}/\ac{IP} Netzwerk dar. Dazu gehören die \ac{IP} Adresse, Netzmaske, Gateway sowie zuständiger \ac{DNS} des Clients. Da ein neuer Client im Netzwerk keine Informationen über die vorhandenen Clients und dessen Topologie besitzt, muss er, um die Konfigurationsparameter für das Netzwerk zu erhalten (\ac{DHCP} Discover), über einen Broadcast im Netz nach Adress-Angeboten fragen. Dieser findet über das Transportprotokoll \ac{UDP} statt über die Ports 67 (Server) und 68 (Client) statt.
 
-In Kapitel \autoref{Impl:DHCP Spoofing} wird die Erweiterung des Testsystems (\cite{Weber2018}) beschrieben und Auswirkungen eines Eingriffs auf das Netzwerk in der Netzzugangsschicht und gleichzeitige Manipulation des \ac{DHCP} der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells dargestellt.
+Der Mangel an Informationen bei der initialen Verbindung eines Clients im Netzwerk, kann von einem Angreifer genutzt werden, um die Netzwerkkonfiguration zu manipulieren. Da der Broadcast des Clients an das gesamte Netzwerk versandt wird, ist es dem Angreifer möglich selbst auf diese Anfrage zu antworten. Hierzu wird die Technik des Spoofing in Verbindung mit \ac{ARP} Poisoning oder einem zusätzlichen \ac{DHCP} Server (Rogue \ac{DHCP}), welcher vom Angreifer kontrolliert wird, im Netzwerk genutzt. In diesem Fall muss es dem Angreifer nur gelingen schneller auf den \ac{DHCP} Discover bzw. \ac{DHCP} Request des Clients zu antworten als der zuständige \ac{DHCP} Server. Somit ist es möglich die Netzwerkkonfiguration des Clients zu manipulieren.
 
-\subsection{LDAP}
-TODO 
+In Kapitel \autoref{Impl:DHCP Spoofing} wird die Erweiterung des Testsystems (\cite{Weber2018}) um einen zusätzlichen \ac{DHCP} Server im Netzwerk durchgeführt, um mögliche Auswirkungen auf den Netzwerkverkehr an einem praktischen Beispiel darzustellen. Durch die Implementierung eines weiteren \ac{DHCP} Servers im Netzwerk wird ein Eingriff auf das Netzwerk in der Netzzugangsschicht und die gleichzeitige Manipulation des \ac{DHCP} der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells beschrieben.
 
-\subsection{\ac{DDS}}
-TODO - Beschreibung
+Ein Angriff auf das \ac{DHCP} in Netzwerken kann weitreichende folgen für die Netzwerksicherheit mit sich bringen. Durch die Änderung der Client-Adressen und Subnetze kann es zu \ac{IP} Adresskonflikten im Netzwerk kommen oder die Kommunikation beschränkt bzw. stillgelegt werden. Weitreichendere Auswirkungen auf die Netzwerksicherheit stellt das Umlenken des Datenverkehrs durch Manipulation der \ac{DNS}- bzw. Gateway-Parameter dar. Hierbei kann der gesamte Netzwerkverkehr eines Clients umgelenkt werden, um einen \ac{MitM} Angriff durchzuführen und den Netzwerkverkehr auszulesen.
+
+Da das \ac{IP} Hilfsprotokoll \ac{DHCP} keine Sicherheitsmaßnahmen zur Verhinderung dieser Angriffe mit sich bringt, ist es notwendig sich vor diesen Bedrohungen schon auf den unteren Schichten des \ac{TCP}/\ac{IP} Referenzmodells zu schützen. Eine in der Industrie weit verbreitete Technik zum verhindern von Angriffen auf das \ac{DHCP} wird bereits in der Netzzugangsschicht umgesetzt. Netzwerkkomponenten wie Router und Swichtes werden mit Hilfe von \ac{DHCP} Snooping konfiguriert, welches es ermöglicht \ac{DHCP} Nachrichten zu überwachen und diese nur von vertrauenswürdigen Ports in das Netzwerk weiterzuleiten. Somit werden \ac{DHCP} Pakete, welche von einem im Netzwerk eingeschleusten Rogue-DHCP im Netzwerk verteilt werden sollen direkt verworfen und nehmen keinen Einfluss auf das bestehende Netzwerk.
 
 \subsection{\ac{OPC UA}}
 \label{Analyse:OPCUA}
@@ -239,17 +238,19 @@ TODO - The OPC UA specifications are layered to isolate the core design from the
 In addition, several protocols are defined:
 \begin{itemize}
     \item OPC UA TCP
-    \item HTTPS
+    \item HTTPS - TLS Die Verschlüsselungsprotokolle \ac{TLS} für \ac{TCP} und \ac{DTLS} für \ac{UDP} sind oberhalb der Transportschicht und unterhalb der Anwendungsprotokolle angesiedelt. TODO - Ansatz: secure mode in OPCUA
     \item WebSockets
 \end{itemize}
 
 TODO - ref. OPC Pt. 1
 TODO - \ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}, da es eine \ac{SOA} bereitstellt. 
 TODO - vereint Daten und Informationsdienste. 
+TODO - PKI
 
 \subsubsection{Client-Server}
 \subsubsection{Publish-Subscribe}
 pubsub -> teilnehmer müssen nicht erreichbar sein
+\ac{DTLS}
 
 \begin{figure}[h]
     \centering
@@ -259,11 +260,8 @@ pubsub -> teilnehmer müssen nicht erreichbar sein
   \end{figure}
 \clearpage
 
-\subsection{\ac{MQTT}}
+\subsection{\ac{MQTT}/\ac{CoAP}}
 TODO - Ansatz: Wireshark an Bridge der Testumgebung im Sternnetzwerk und Druckerkomponente oder andere manipulieren; andere Protokolle von Feldebene an Switch auslesen; vielleicht hier nur beschreiben und in den höheren Schichten durchführen mit CoAP oder MQTT -> OPC UA Komponenten sind Gateway
-
-\subsection{\ac{CoAP}}
-TODO 
 
 \section{Schutzmaßnahmen}
 TODO 

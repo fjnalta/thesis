@@ -1,8 +1,8 @@
 \chapter{Implementierung}
-
-TODO - Zusätzlichen Docker bereitstellen der Interface + Tools zur Durchführung bereitstellt!
-
 TODO - um die Komplexität des Systems gering zu halten werden die vorhandenen Komponenten NodeJS, Angular, Docker, ... zur Implementierung der Funktionalitäten im Bereich der Netzwerksicherheit weiterhin genutzt und erweitert.
+
+\section{Interface}
+TODO - Zusätzlichen Docker bereitstellen der Interface + Tools zur Durchführung bereitstellt?
 
 \section{\ac{DoS}/\ac{DDoS}}
 \subsection{Sockstress}
@@ -11,7 +11,7 @@ TODO - Ansatz: Kann am Testsystem durchgeführt werden. - sockstress implementie
 TODO - https://github.com/defuse/sockstress
 
 \section{\ac{MitM}}
-\subsection{DHCP Spoofing}
+\subsection{\ac{DHCP} Spoofing}
 \label{Impl:DHCP Spoofing}
 DHCP Spoofing -> Vortäuschen eines DHCP, schneller Leases verteilen als vorhandener DHCP -> MitM
 TODO - impl. 2. DHCP Server implementieren
@@ -21,13 +21,15 @@ DHCP Snooping -> theor. Verteidigung gegen Spoofing, Switches erlauben nur besti
 TODO - verfälschter Ethernetrahmen -> MAC Manipulation - MitM
 TODO - Schutz durch statische Tabellen, \ac{IDS}
 
-\section{TODO}
+\subsection{Sniffing}
+TODO - Anschluss neuer virtueller Geräte über Gateway
+TODO - MQTT, CoAP
 
+\section{Fehlkonfiguration}
+\subsection{OPC UA Secure Mode}
+
+\section{weitere Sicherheitstests}
 TODO - Zertifikatstests
 TODO - Fuzzing
 TODO - Logging
 TODO - Mustererkennung
-TODO - Schwachstellen in implementierten Protokollen
-TODO - Anschluss neuer virtueller Geräte über Gateway
-TODO - gefundene Schwachstellen bzw. Fehlkonfigurationen sind Grundlage der Implementierung!
-TODO - Analyse dient als Basis zur Wahl der Implementierung und Darstellung der Auswirkungen am Testsystem.
