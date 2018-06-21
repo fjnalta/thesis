@@ -167,38 +167,18 @@ Um eine flächendeckende Vernetzung zu ermöglichen, muss eine einheitliche Komm
 
 \clearpage
 
-Nach dem \ac{RAMI4.0} stellt der Communication Layer das Bindeglied zwischen dem Integration Layer, welcher Eigenschaften der physischen Welt für Computersysteme erreichbar macht, und dem Information Layer, welcher die Funktionsbezogenen Daten beinhaltet, dar. \cite{BMWiNeCon2016} 
+Nach dem \ac{RAMI4.0} stellt der Communication Layer das Bindeglied zwischen dem Integration Layer, welcher Eigenschaften der physischen Welt für Computersysteme erreichbar macht, und dem Information Layer, welcher die Funktionsbezogenen Daten beinhaltet, dar (\cite{BMWiNeCon2016}). Jeder Teilnehmer der Architektur wird als Asset bezeichnet und besitzt seine eigene Verwaltungsschale, welche als Schnittstelle zum Austausch von Informationen dient. Die Verwaltungsschale ist der Übergang zwischen der physischen zur digitalen Welt.
 
 TODO - Kommunikation beschreiben - Assets, Verwaltungsschale
-
-Jeder Teilnehmer der Architektur wird als Asset bezeichnet und besitzt seine eigene Verwaltungsschale, welche als Schnittstelle zum Austausch von Informationen dient. Die Verwaltungsschale ist der Übergang zwischen der physischen zur digitalen Welt.
-
 TODO - genauer auf die einzelnen Komponenten eingehen! - Assets, Architektur, Komponenten, Verwaltungsschale
 TODO - Architektur wichtig SOA beschreiben -> Angriffsvektoren
 TODO - siehe DIN 91345
 TODO - Anforderungen an diese Komponenten unterschiedlich
 
 \subsubsection{IIRA}
-Das \ac{IIC} veröffentlichte im Jahr 2015 die \ac{IIRA}. Sie beschreibt eine standardbasierte, offene Referenzarchitektur für \ac{IIoT}, welches auf dem \ac{IIAF} basiert. Das \ac{IIAF} unterstützt die Unternehmen bei der Entwicklung, Dokumentation, Kommunikation und Bereitstellung von Systemen im \ac{IIoT} Bereich \cite{iira2017}. Die Beschreibung der Architektur findet mit einem hohen Maß an Abstraktion statt, um das breite Feld der verschiedenen Industrielösungen abdecken zu können und standardisierte Vorgehensweisen bereitzustellen.
+Das \ac{IIC} veröffentlichte im Jahr 2015 die \ac{IIRA}. Sie beschreibt eine standardbasierte, offene Referenzarchitektur für \ac{IIoT}, welches auf dem \ac{IIAF} basiert. Das \ac{IIAF} unterstützt die Unternehmen bei der Entwicklung, Dokumentation, Kommunikation und Bereitstellung von Systemen im \ac{IIoT} Bereich \cite{iira2017}. Die Beschreibung der Architektur findet mit einem hohen Maß an Abstraktion statt, um das breite Feld der verschiedenen Industrielösungen abdecken zu können und standardisierte Vorgehensweisen zu ermöglichen. Das \ac{IIAF} folgt der Vorgehensweise des ISO/IEC/IEEE Standard 42010:2011\footnote{ISO/IEC/IEEE Standard 42010:2011 - Systems and Software Engineering–Architecture Description}. Die Anforderungen beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und \ac{QoS}.
 
-TODO - Diese beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und ‚Quality of Service’ (QoS)
-
-\paragraph{Framework}\mbox{}\\
-Das \ac{IIAF} folgt der Vorgehensweise des ISO/IEC/IEEE Standard 42010:2011 Systems and Software Engineering–Architecture Description. Concern, Stakeholder und Viewpoint werden als Architecture Frame dargestellt. Die Views und Models als ihre Architecture Representations.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm]{iiaf}
-  \caption{IIRA - Architekturframework} 
-  \label{Kap2:IIRA - Architekturframework}
-\end{figure}
-
-\clearpage
-
-\paragraph{Referenzarchitektur}\mbox{}\\
-Die \ac{IIRA} ist das Ergebnis der Anwendung des \ac{IIAF} auf die \ac{IIoT} Systeme eines Unternehmens. Sie beschreibt bekannte Risiken beim Betrieb von \ac{IIoT} Systemen in verschiedensten Industriebereichen und Klassifiziert diese mit ihren zugehörigen Stakeholdern in Viewpoints. Anschließend dient die Referenzarchitektur der Beschreibung, Analyse und Behebung dieser Bedenken/Risiken in den einzelnen Viewpoints.
-
-Abbildung \autoref{Kap2:IIAF/IIRA - Übersicht} beschreibt die grundlegende Idee und den Aufbau der \ac{IIRA}.
+Die \ac{IIRA} ist das Ergebnis der Anwendung des \ac{IIAF} auf die \ac{IIoT} Systeme eines Unternehmens. Sie beschreibt bekannte Risiken beim Betrieb von \ac{IIoT} Systemen in verschiedensten Industriebereichen und Klassifiziert diese mit ihren zugehörigen Stakeholdern in Viewpoints. Anschließend dient die Referenzarchitektur der Beschreibung, Analyse und Behebung dieser Bedenken/Risiken in den einzelnen Viewpoints. \autoref{Kap2:IIAF/IIRA - Übersicht} beschreibt die grundlegende Idee und den Aufbau der \ac{IIRA}.
 
 \begin{figure}[h]
   \centering
@@ -213,9 +193,9 @@ Abbildung \autoref{Kap2:IIAF/IIRA - Übersicht} beschreibt die grundlegende Idee
 Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen. Hierbei haben sich bzgl. der Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} die \ac{M2M}-Kommunikationsstandards \ac{OPC UA} und \ac{DDS} etabliert.
 
 \subsubsection{\ac{OPC UA}}
-Die \ac{OPC UA} ist ein plattformunabhängiger \ac{IEC} Standard, welcher die \ac{M2M}-Kommunikation zwischen unterschiedlichen Geräten und Systemen der Industrie über verschiedene Netzwerktopologien bereitstellt. Der Standard basiert auf dem Informationsmodell, definiert eine \ac{SOA} und ermöglicht eine robuste und sichere eine Ende zu Ende Kommunikation nach den Vorschriften der TODO ref. - DIN. Er erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich zunehmend im Maschinen- und Anlagenbau.
+TODO - \ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}. Es vereint Daten- und Informationsdienste und stellt einen sicheren, zuverlässigen und plattformübergreifenden Informationsaustausch zwischen unterschiedlichen Geräten und Systemen der Industrie bereit. Es wird die Kommunikation über die verschiedenen Schichten der Anwendungspyramide von der Feldebene bis zur Unternehmensebene ermöglicht (\cite{OPCWegbereiter2014}). \ac{OPC UA} stellt ein Informationsmodell mit Hilfe einer \ac{SOA} bereit, erfüllt die Anforderungen des \ac{RAMI4.0} und etabliert sich zunehmend im Maschinen- und Anlagenbau.
 
-Der Standard wird in 14 geschichteten Spezifikationen beschrieben, welche sich in die Bereiche Core, Access Type und Utility unterteilen lassen. Dabei stellen die Spezifikationen 1-7 sowie 14 die Kernfunktionalitäten des Standards dar. Sie beschreiben die Struktur des OPC Addressraums und der Dienste, die darauf operieren. Die Spezifikationen 8-11 wenden diese Kernfunktionalitäten auf spezifische OPC COM Spezifikationen, wie \ac{DA}, \ac{AE} und \ac{HDA} an. Die Teile 12 und 13 beinhalten Mechanismen zur Discovery von Systemen und beschreiben Möglichkeiten der Datenaggregation.
+\ac{OPC UA} wird in 14 geschichteten Spezifikationen beschrieben, welche sich in die Bereiche \textit{Core}, \textit{Access Type} und \textit{Utility} unterteilen lassen. Dabei stellen die Spezifikationen 1-7 sowie 14 die Kernfunktionalitäten des Architekturmodells dar. Sie beschreiben die Struktur des OPC Addressraums und der Dienste, die darauf operieren. Die Spezifikationen 8-11 wenden diese Kernfunktionalitäten auf spezifische \ac{OPC COM} Spezifikationen, wie \ac{DA}, \ac{AE} und \ac{HDA} an. Die Teile 12 und 13 beinhalten Mechanismen zur Discovery von Systemen und beschreiben Möglichkeiten der Datenaggregation.
 
 \begin{figure}[h]
   \centering
@@ -226,12 +206,9 @@ Der Standard wird in 14 geschichteten Spezifikationen beschrieben, welche sich i
 
 \clearpage
 
-Die \ac{OPC UA} stellt ein Informationsmodell mit Hilfe einer \ac{SOA} bereit. Das Lesen- und Schreiben von Daten in Industrie 4.0 Umgebungen findet durch die Verwaltungsschale der Komponenten statt. Diese wird im \ac{OPC UA} Stack durch den Addressraum beschrieben. Der Adressraum wird zur Speicherung von Knoten, deren Attribute und Referenzen zu anderen Knoten genutzt. Der Addressraum und das Informationsmodell von \ac{OPC UA} werden in den Spezifikationsteilen 3 \cite{opcpc3} und 5 \cite{opcpt5} beschrieben.
+Das Lesen- und Schreiben von Daten und die Kommunikation in Industrie 4.0 Umgebungen findet nach \ac{RAMI4.0} durch die Verwaltungsschale der Komponenten statt. Diese wird im \ac{OPC UA} Stack durch den Adressraum beschrieben. Der Adressraum wird zur Speicherung von Knoten, deren Attribute und Referenzen zu anderen Knoten genutzt. Der Addressraum und das Informationsmodell von \ac{OPC UA} werden in den Spezifikationen 3 \cite{opcpc3} und 5 \cite{opcpt5} definiert.
 
-Im folgenden Abschnitt wird sich auf die Darstellung der Bestandteile von \ac{OPC UA}, welche an der Netzwerkkommunikation beteiligt sind, beschränkt.
-
-\paragraph{Kommunikationsmodell}\mbox{}\\
-\ac{OPC UA} ermöglicht die Kommunikation der Assets über ein Client-Server Pattern. Die Architektur setzt sich dabei aus einem \ac{OPC UA} Client und einem \ac{OPC UA} Server zusammen. Der \ac{OPC UA} Server stellt verschiedene Funktionen bereit, auf welche der \ac{OPC UA} Client mit Hilfe eines Request zugreifen kann. Des Weiteren ist es möglich durch einen Request des \ac{OPC UA} Clients ein Element des Servers beobachten zu lassen, um bei Änderungen vom Server benachrichtigt zu werden. Um die Kommunikation zwischen \ac{OPC UA} Servern zu gewährleisten, ist es möglich einen \ac{OPC UA} Client in einen \ac{OPC UA} Server zu integrieren. In der Grafik \autoref{Kap2:OPC UA Client-Server Architektur} wird das Client-Server Pattern der \ac{OPC UA} Spezifikation schematisch dargestellt. Die linke Seite der Grafik beschreibt die Kommunikation zwischen einem Client und einem Server mit eingebettetem Client. In der rechten Seite der Grafik findet die Kommunikation zwischen dem eingebetteten Client und einem \ac{OPC UA} Server statt.
+\ac{OPC UA} ermöglicht die Kommunikation der Assets über ein Client-Server Pattern. Die Architektur setzt sich dabei aus einem \ac{OPC UA} Client und einem \ac{OPC UA} Server zusammen. Der \ac{OPC UA} Server stellt verschiedene Funktionen bereit, auf welche der \ac{OPC UA} Client mit Hilfe eines Request zugreifen kann. Des Weiteren ist es möglich durch einen Request des \ac{OPC UA} Clients ein Element des Servers beobachten zu lassen, um bei Änderungen vom Server benachrichtigt zu werden. Um die Kommunikation zwischen \ac{OPC UA} Servern zu gewährleisten, wird ein \ac{OPC UA} Client in einen \ac{OPC UA} Server integriert. In der Grafik \autoref{Kap2:OPC UA Client-Server Architektur} wird das Client-Server Pattern der \ac{OPC UA} Spezifikation schematisch dargestellt. Die linke Seite der Grafik beschreibt die Kommunikation zwischen einem Client und einem Server mit eingebettetem Client. In der rechten Seite der Grafik findet die Kommunikation zwischen dem eingebetteten Client und einem \ac{OPC UA} Server statt.
 
 \begin{figure}[h]
   \centering
@@ -240,36 +217,13 @@ Im folgenden Abschnitt wird sich auf die Darstellung der Bestandteile von \ac{OP
   \label{Kap2:OPC UA Client-Server Architektur}
 \end{figure}
 
-Im Jahr 2018 wurde der Standard zusätzlich um eine Spezifikation für das Publish-Subscribe Pattern - TODO ref. - erweitert \cite{hoppe2018}. Das Publish-Subscribe Modell ermöglicht die Nutzung von \ac{OPC UA} in \ac{WAN} Umgebungen durch die Verwendung von Protokollen wie \ac{MQTT} und \ac{AMQP}, während die Ende zu Ende Sicherheit und die standardisierte Datenmodellierung erhalten bleiben. Das Publish-Subscribe Modell ermöglicht die Verwendung des fehlertoleranten Datagramms \ac{UDP}, wodurch geringe Latenzen ermöglicht werden können. 
-
-\paragraph{Kommunikationswege}\mbox{}\\
-Die Kommunikation zwischen \ac{OPC UA} Komponenten findet auf der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells statt und basiert auf dem Protokoll \ac{TCP}/\ac{IP}. Grundsätzlich stellt \ac{OPC UA} die drei Kommunikationswege Binary, Hybrid und Webservice bereit.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm]{opcuaprotocol}
-  \caption{OPC UA Kommunikationswege} 
-  \label{Kap2:OPC UA Kommunikationswege}
-\end{figure}
-
-\clearpage
-
-TODO - Binary
-TODO - Hybrid
-TODO - Webservice
+Im Jahr 2018 wurde der Standard zusätzlich um eine Spezifikation für das Publish-Subscribe Modell erweitert (\cite{hoppe2018}). Das Publish-Subscribe Modell ermöglicht die Nutzung von \ac{OPC UA} in \ac{WAN} Umgebungen und die Verwendung von Protokollen wie \ac{MQTT} und \ac{AMQP}, während die Ende zu Ende Sicherheit und die standardisierte Datenmodellierung erhalten bleiben. Im Publish-Subscribe Modell wird das fehlertolerante Datagramm \ac{UDP} als Transportprotokoll verwendet, wodurch geringe Latenzen bei der Kommunikation ermöglicht werden.
 
 \subsubsection{\ac{DDS}}
-\ac{DDS} ist ein weiterer offener Standard der \ac{OMG} und stellt eine \ac{MOM} zur Kommunikation in hochdynamischen verteilten Systemen dar. Er wurde für niedrige Latenzzeiten, einen hohen Datendurchsatz und eine skalierbare, belastbase und sichere Datenverteilung entwickelt, um die Kommunikation in Steuerungs- und Kontrollaufgaben zu realisieren. Der beschriebene Standard deckt alle Anforderungen der \ac{IIRA} ab und hat sich bereits in industriellen Systemen etabliert. Gegenüber \ac{OPC UA} beschreibt \ac{DDS} eine dezentralisierte Architektur. Es bietet ein Konnektivitäts-Framework, welches ein Kommunikationsparadigma basierend auf einem Shared Data Model, einen Standard für die Definition domain-spezifischer Informationsmodelle, ein starkes Sicherheitsmodell, Discovery und reichhal­tige APIs beinhaltet. Die Kommunikation findet direkt vom Publisher zum Subscriber statt. Dabei werden Latenzzeiten reduziert und durch die Nutzung von Multicast die Netzlast beim Bereitstellen von Informationen an viele Empfänger gering gehalten. Es ist möglich die \ac{MOM} \ac{DDS} in eine \ac{OPC UA} Architektur zu integrieren und mit dem Informationsmodell nutzen.
-
-\subsection{Security by Design}
-In der Vergangenheit wurden Sicherheitsmechanismen üblicherweise nachträglich und reaktiv in die Entwicklung von Komponenten mit einbezogen. Industrie 4.0 Umgebungen erfordern umfassende Maßnahmen, um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} beschriebenen Schutzziele zu erfüllen und eine sichere Kommunikation zu gewährleisten. Dies gilt vor allem für Maschinenbau- und Fertigungsunternehmen, welche häufig proprietäre Individualsoftware zur Steuerung der Maschinen einsetzen \cite{DTAG2016}. Aus der Notwendigkeit, Sicherheitsaspekte bereits in die Softwareentwicklung mit einzubeziehen und einen Schutz der Kommunikation zu gewährleisten, hat sich der Begriff Security by Design entwickelt.
-
-Die Methoden und Ziele der Angreifer stehen jedoch auch unter einem ständigen Wandel. Somit ist es nicht möglich, eine Sicherheitsimplementierung zu entwickeln und diese wiederholt einzusetzen. Vielmehr ist es notwendig, die Sicherheit durch \textit{Security by Design} so weit als möglich proaktiv herzustellen und gleichzeitig im Schadensfall flexibel und rasch zu reagieren, um das Schadensausmaß zu begrenzen. Es sind Maßnahmen zur Prävention, Detektion und Reaktion erforderlich. TODO - ref. Umsetzungsstrategie Industrie 4.0
+\ac{DDS} ist ein weiterer offener Standard der \ac{OMG} und stellt eine \ac{MOM} zur Kommunikation in hochdynamischen verteilten Systemen dar. Er wurde für niedrige Latenzzeiten, einen hohen Datendurchsatz und eine skalierbare, belastbase und sichere Datenverteilung entwickelt, um die Kommunikation in Steuerungs- und Kontrollaufgaben zu realisieren. Der beschriebene Standard deckt alle Anforderungen der \ac{IIRA} ab und hat sich bereits in industriellen Systemen etabliert. Gegenüber \ac{OPC UA} beschreibt \ac{DDS} eine dezentralisierte Architektur. Es bietet ein Konnektivitäts-Framework, welches ein Kommunikationsparadigma basierend auf einem Shared Data Model, einen Standard für die Definition domain-spezifischer Informationsmodelle, ein starkes Sicherheitsmodell, Discovery und reichhal­tige APIs beinhaltet. Die Kommunikation findet direkt vom Publisher zum Subscriber statt. Dabei werden Latenzzeiten reduziert und durch die Nutzung von Broad- und Multicast die Netzlast beim Bereitstellen von Informationen an viele Empfänger gering gehalten. Es ist möglich die \ac{MOM} \ac{DDS} in eine \ac{OPC UA} Architektur zu integrieren und mit dem Informationsmodell nutzen.
 
 \section{Anforderungen an Industrie 4.0 Umgebungen}
-Aufgrund der unterschiedlichen Einsatzbereiche von Industrie 4.0 Systemen, unterscheiden sich auch dementsprechend deren Anforderungen. Um eine sichere Kommunikation in diesen Umgebungen bereitzustellen dienen die Grundprinzipien der sicheren Kommunikation. Die Referenzmodelle \ac{RAMI4.0} und \ac{IIRA} beschreiben grundsätzlich drei Anforderungen an den Übertragungskanal: Sicherheit, Verfügbarkeit und Dienstequalität \cite{BMWiNeCon2016}.
-
-Um eine Analyse der Netzwerkkommunikation in Industrie 4.0 Umgebungen durchführen zu können werden im folgenden die Grundprinzipien der sicheren Kommunikation sowie die in den Referenzmodellen \ac{RAMI4.0} und \ac{IIRA} Anforderungen beschrieben.
+Aufgrund der unterschiedlichen Einsatzbereiche von Industrie 4.0 Systemen, unterscheiden sich auch dementsprechend deren Anforderungen. Um eine sichere Kommunikation in diesen Umgebungen bereitzustellen dienen die Grundprinzipien der sicheren Kommunikation. Die Referenzmodelle \ac{RAMI4.0} und \ac{IIRA} beschreiben ebenfalls drei Anforderungen an den Übertragungskanal: Sicherheit, Verfügbarkeit und \ac{QoS} (\cite{BMWiNeCon2016}).
 
 \subsection{Grundprinzipien der sicheren Kommunikation}
 \label{Grundlagen:Grundprinzipien der sicheren Kommunikation}
@@ -292,8 +246,7 @@ TODO - Hierunter fallen die Bereiche Netzsicherheit und Datensicherheit, Sichere
   \item Anonymität
 \end{itemize}
 
-\subsection{Anforderungen der Referenzmodelle \ac{RAMI4.0} und \ac{IIRA}}
-
+\subsection{Anforderungen der Referenzmodelle}
 \subsubsection{Sicherheit}
 \begin{itemize}
     \item Netzsicherheit und Datensicherheit
@@ -308,8 +261,13 @@ Die Verfügbarkeit eines Systems wird in Verfügbarkeitsklassen gegliedert. Dies
 
 TODO - Verfügbarkeit gewährleisten durch...
 
-\subsubsection{Dienstequalität (\ac{QoS})}
+\subsubsection{\ac{QoS}}
 TODO - \ac{QoS}
+
+\subsection{Security by Design}
+In der Vergangenheit wurden Sicherheitsmechanismen üblicherweise nachträglich und reaktiv in die Entwicklung von Komponenten mit einbezogen. Industrie 4.0 Umgebungen erfordern umfassende Maßnahmen, um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} beschriebenen Schutzziele zu erfüllen und eine sichere Kommunikation zu gewährleisten. Dies gilt vor allem für Maschinenbau- und Fertigungsunternehmen, welche häufig proprietäre Individualsoftware zur Steuerung der Maschinen einsetzen \cite{DTAG2016}. Aus der Notwendigkeit, Sicherheitsaspekte bereits in die Softwareentwicklung mit einzubeziehen und einen Schutz der Kommunikation zu gewährleisten, hat sich der Begriff Security by Design entwickelt.
+
+Die Methoden und Ziele der Angreifer stehen jedoch auch unter einem ständigen Wandel. Somit ist es nicht möglich, eine Sicherheitsimplementierung zu entwickeln und diese wiederholt einzusetzen. Vielmehr ist es notwendig, die Sicherheit durch \textit{Security by Design} so weit als möglich proaktiv herzustellen und gleichzeitig im Schadensfall flexibel und rasch zu reagieren, um das Schadensausmaß zu begrenzen. Es sind Maßnahmen zur Prävention, Detektion und Reaktion erforderlich (\cite{Umsetzung2015}). Die Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} sowie die in den Architekturmodellen genutzten Techniken \ac{OPC UA} und \ac{DDS} haben das Konzept des \textit{Security by Design} in ihre Kernbestandteile mit aufgenommen.
 
 \section{Testsystem}
 \label{Grundlagen:Testsystem}

@@ -228,37 +228,52 @@ Da das \ac{IP} Hilfsprotokoll \ac{DHCP} keine Sicherheitsmaßnahmen zur Verhinde
 
 \subsection{\ac{OPC UA}}
 \label{Analyse:OPCUA}
-TODO - siehe BSI UPC UA Analyse.
-TODO - The OPC UA specifications are layered to isolate the core design from the underlying computing technology and network transport. This allows OPC UA to be mapped to future technologies as necessary, without negating the basic design. Mappings and data encodings are described in Part 6. Three data encodings are defined:
-\begin{itemize}
-    \item XML/Text
-    \item UA Binary
-    \item JSON
-\end{itemize}
-In addition, several protocols are defined:
-\begin{itemize}
-    \item OPC UA TCP
-    \item HTTPS - TLS Die Verschlüsselungsprotokolle \ac{TLS} für \ac{TCP} und \ac{DTLS} für \ac{UDP} sind oberhalb der Transportschicht und unterhalb der Anwendungsprotokolle angesiedelt. TODO - Ansatz: secure mode in OPCUA
-    \item WebSockets
-\end{itemize}
+Die Kommunikation zwischen \ac{OPC UA} Komponenten findet auf der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells statt. \ac{OPC UA} stellt eine vertikale Verbindung der Kommunikationspartner auf allen Ebenen der Automatisierungspyramide her. Aufgrund der Öffnung von Unternehmen nach außen, den immer höheren Informationsbedarf und die direkte Kommunikation mit Händler und Kunden ist \ac{OPC UA} ein attraktives Ziel für Industriespionage und Sabotage des Netzwerks (\cite{opcuapt2}). 
 
-TODO - ref. OPC Pt. 1
-TODO - \ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}, da es eine \ac{SOA} bereitstellt. 
-TODO - vereint Daten und Informationsdienste. 
-TODO - PKI
+\ac{OPC UA} wurde als Client-Server Architektur entwickelt.
+TODO - PublishSubscribe
+OPC UA PubSub opens new application fields for OPC UA. The following are some example uses for
+PubSub:
+• Configurable peer to peer communication between controllers and between controllers and HMIs. The peers are not directly connected and do not even need to know about the existence of each other. The data exchange often requires a fixed time-window; it may be point-to-point or a multi-point connection.
+• Asynchronous workflows. For example, an order processing application can place an order on a message queue or an enterprise service bus. From there it can be processed by one or more workers.
+• Logging to multiple systems. For example, sensors or actuators can write logs to a monitoring system, an HMI, an archive application for later querying, and so on.
+• Servers representing services or devices can stream data to applications hosted in the cloud. For example, backend servers, big data analytics for system optimization and predictive maintenance. PubSub is not bound to a particular messaging system. Rather it can be mapped to various different systems as illustrated with two examples:
+• PubSub with UDP may be well-suited in production environments for frequent transmissions of small amounts of data. It also allows data exchange in one-to-one and one-to-many configurations.
+• The use of established messaging protocols (e.g. the ISO/IEC AMQP 1.0 protocol) with JSON data encoding supports the cloud integration path and readily allows handling of the information in modern stream and batch analytics systems.
 
-\subsubsection{Client-Server}
-\subsubsection{Publish-Subscribe}
-pubsub -> teilnehmer müssen nicht erreichbar sein
-\ac{DTLS}
+Um eine Unterstützung unterschiedlichster Systeme zu erreichen, stellt \ac{OPC UA} verschiedene Protokolle für unterschiedliche Anforderungen zur Kommunikation zwischen den Komponenten bereit. Das \ac{OPC UA} Binary Protokoll wird für Kommunikation mit optimierter Geschwindigkeit und Durchsatz genutzt. Des Weiteren kann die Kommunikation auch auf Basis von Webservices und den Protokollen \ac{HTTP} und \ac{SOAP} sowie in einer hybriden Form beider durchgeführt werden.
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=15cm]{opcua_rami40}
-    \caption{OPC UA im RAMI 4.0}
-    \label{Kap3:OPC UA im RAMI 4.0}
-  \end{figure}
+  \centering
+  \includegraphics[width=10cm]{opcuaprotocol}
+  \caption{OPC UA Kommunikationswege} 
+  \label{Kap2:OPC UA Kommunikationswege}
+\end{figure}
+
 \clearpage
+
+Das \ac{UACP} beschreibt ein abstraktes Protokoll zur Herstellung einer Vollduplexverbindung in einer Client-Server Architektur. Implementierungen dieses Protokolls können über jede Middleware, welche den Austausch von Nachrichten im Vollduplexverfahren über \ac{TCP}/\ac{IP} und \textit{Websockets} unterstützt, durchgeführt werden. Somit ist das von \ac{OPC UA} genutzte Anwendungsprotokoll für die Zukunft flexibel. Die Spezifikation des abstrakten Protokolls \ac{UACP} wird im 5. Teil der \ac{OPC UA} Spezifikation\footnote{OPC Unified Architecture Specification Part 6: Mappings (\cite{opcpt5})} beschrieben und beinhaltet die Form der Nachricht, den Verbindungsaufbau, die Kommunikation und die Fehlerbehandlung.
+
+Die beschriebenen Protokolle bilden mit ihren Sicherheitsmechanismen die Grundlage für eine sichere Datenübertragung. Die Form der Datenübertragung über \ac{SOAP}/\ac{HTTP} wurde ab Version 1.03 der Spezifikation als veraltet angesehen, da es in der Industrie nicht umgesetzt wurde (\cite{opcpt5}). Die Protokolle \ac{OPC UA} \ac{TCP} und die Hybridform aus den Protokollen \ac{OPC UA} und \ac{HTTPS} werden im folgenden auf ihre Standhaftigkeit bzgl. der Sicherheitsanforderungen in Industrie 4.0 Umgebungen analysiert.
+
+\subsubsection{\ac{OPC UA} \ac{TCP}}
+
+
+\subsubsection{\ac{OPC UA} \ac{HTTPS}}
+TODO - Ansatz: secure mode in OPCUA
+
+
+\subsubsection{Konfiguration}
+\ac{OPC UA} stellt aufgrund der verschiedenen Anforderungen der Industrie 4.0 Systeme mehrere Sicherheitskonfigurationen zur Informationsübertragung zur Verfügung. Dies ist möglich, da die Verwendung von Verschlüsselungsalgorithmen und Kodierungsverfahren Ressourcen benötigt und Latenzen verursacht, welche unter Umständen nicht vorhanden sind oder nicht geleistet werden können. Eine Fehlkonfiguration des Protokolls kann erhebliche Auswirkungen auf den Betrieb des Netzwerks und der Assets haben sowie die Integrität der Daten gefährden.
+
+Mit Hilfe des vorhandenen Testsystems wurden verschiedene Szenarien der Fehlkonfiguration der \ac{OPC UA} Architektur durchgeführt und die Auswirkungen auf die Kommunikation im Netzwerk untersucht. Die Implementierung der benötigten Komponenten wird in \autoref{Impl:Fehlkonfiguration} beschrieben.
+
+TODO - Ergebnisse der Fehlkonfiguration SecurityMode
+
+\subsubsection{Weitere Sicherheitsbestandteile}
+TODO - PKI, Zertifikatsmanagement, Zeitsynchronisation, Kerberos, OAuth2, 
+TODO - siehe BSI UPC UA Analyse.
+,
 
 \subsection{\ac{MQTT}/\ac{CoAP}}
 TODO - Ansatz: Wireshark an Bridge der Testumgebung im Sternnetzwerk und Druckerkomponente oder andere manipulieren; andere Protokolle von Feldebene an Switch auslesen; vielleicht hier nur beschreiben und in den höheren Schichten durchführen mit CoAP oder MQTT -> OPC UA Komponenten sind Gateway
