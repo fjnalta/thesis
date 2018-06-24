@@ -1,38 +1,45 @@
 \chapter{Implementierung}
-TODO - um die Komplexität des Systems gering zu halten werden die vorhandenen Komponenten NodeJS, Angular, Docker, ... zur Implementierung der Funktionalitäten im Bereich der Netzwerksicherheit weiterhin genutzt und erweitert.
+Die prototypische Implementierung von verschiedenen Angriffsformen im Industrie 4.0 Testsystem wird genutzt, um die Analyse der in \autoref{Analyse} beschriebenen Bedrohungsszenarien und deren Auswirkungen an einem vorhandenen System zu testen und deren Einfluss auf die Netzwerkkommunikation zu bewerten. Mit der Implementierung der Angriffe wird die im Konzept (\autoref{Konzept}) beschriebene Vorgehensweise validiert. Die Auswahl der implementierten Angriffsformen wird vom Testsystem und dessen Infrastruktur bzw. Umsetzung bestimmt. Aus zeitlichen Gründen und aufgrund von Beschränkungen durch das Testsystem (siehe \autoref{Konzept:Anpassungen}) werden nicht alle analysierten Angriffe in der Praxis implementiert.
 
-\section{Interface}
-TODO - Zusätzlichen Docker bereitstellen der Interface + Tools zur Durchführung bereitstellt?
+Die Implementierung umfasst die Erweiterung und Anpassung des vorhandenen Systems. Die vorhandene Implementierung über das Protokoll \ac{OPC UA} wird angepasst, um die Kommunikation über den \textit{Secure Channel} mit Hilfe verschiedener Sicherheitsprofile zu analysieren. Hierbei wird eine unverschlüsselte sowie verschlüsselte Kommunikation zwischen \ac{OPC UA} Client und Server bereitgestellt.
 
-\section{\ac{DoS}/\ac{DDoS}}
+Das Testsystem wurde um einen zusätzlichen \ac{OPC UA} Produktionsserver erweitert. Dieser dient als Gateway zur Kommunikation mit einer Komponente, welche das Protokoll \ac{MQTT} zur Nachrichtenübermittlung nutzt. Das Szenario dient der Analyse eines weiteren \ac{IIoT} Protokolls in Verbindung mit einer \ac{OPC UA} Umgebung.
+
+Des Weiteren wurde ein zusätzliches System bereitgestellt, welches verschiedene Angriffsmöglichkeiten auf das vorhandene Netzwerk bereitstellt. Hierbei handelt es sich um bekannte Angriffsformen, welche Bezug auf die in \autoref{Analyse:Bedrohungen} genannten Bedrohungen auf Industrie 4.0 Umgebungen nehmen.
+
+Ausgeschlossen von der Implementierung sind die Angriffsformen des \ac{DHCP} und \ac{ARP} Spoofing. Diese wären, wie in \autoref{Konzept:Anpassungen} beschrieben nur mit erheblichem Mehraufwand möglich, da ein gesamtes Netzwerk mit eigenem \ac{DHCP} und \ac{DNS} bereitgestellt werden müsste, welchen Zonen und automatische DNS Updates konfiguriert werden müssten. Außerdem stellt die vorhandene Netzwerk-Infrastruktur des Testsystems mit der genutzten Docker Bridge\footnote{text} die Funktionalitäten eines \ac{MitM} Angriffs und somit die Möglichkeit der Paketanalyse im Netzwerk bereits bereit.
+
+Eine \ac{PKI} sowie \ac{IdM} wird im vorhandenen Testsystem nicht umgesetzt, da das genutzte NodeJS Modul \textit{node-opcua}\footnote{LINK} das Zertifikatsmanagement zum aktuellen Stand nicht implementiert\footnote{TODO - Link - Github}.
+
+\section{Software}
+Beim verwendeten Softwarestack wurde sich weitestgehend am Testsystem (\cite{Weber2018}) orientiert, um die Kompatibilität zu bestehenden Komponenten zu gewährleisten und weiterhin ein durch Container flexibles System bereitzustellen. Für die Analyse der Netzwerkkommunikation benötigte Änderungen der Software wurden am Quellcode vorgenommen. Weitere Komponenten wurden in zusätzlichen Docker Containern implementiert.
+
+\section{Erweiterung des Testsystems}
+\subsection{\ac{OPC UA} Secure Channel}
+\label{Impl:OPC UA Secure Channel}
+Um die Verwendung verschiedener Sicherheitsrichtlinien im \ac{OPC UA} Secure Channel bereitzustellen muss die Form des Verbindungsaufbaus der vorhandenen \ac{OPC UA} Clients im Quellcode geändert werden. Die \ac{OPC UA} Server des Testsystems stellen die verschiedenen Sicherheitsprofile \textit{None}, \textit{Basic128Rsa15}, \textit{Basic256} und \textit{Basic256Sha256} bereit. Diese beinhalten den für die Nachrichtenübermittlung genutzten Verschlüsselungsalgorithmus. Bei der Übertragung der Daten im Secure Channel wird der \ac{OPC UA} MessageSecurityMode auf das Sicherheitsprofil angewandt. Hierbei stehen die Optionen NONE, SIGN und SIGNANDENCRYPT zur Verfügung. Im Vorhandenen Testsystem werden keine Zertifikate verwaltet. Das Signieren der Nachrichten mit dem privaten Schlüssel des Absenders ermöglicht einen Zuwachs der Sicherheit der Netzwerkkommunikation, da dies die Integrität der Nachrichten sicherstellt. Im gegebenen System wurde eine Verschlüsselung der Nachricht auf Anwendungsebene durch den Algorithmus \textit{Basic256Sha256} implementiert.
+
+Der Quellcode der \ac{OPC UA} Clients in den Containern \textit{scheduler} und \textit{control} wurde so angepasst, dass eine Aktivierung und Deaktivierung der Verschlüsselung in der Konfigurationsdatei \textit{config.json} der jeweiligen Server vorgenommen werden kann. Zur Anwendung einer Konfigurationsänderung ist ein erneutes Bauen sowie der Neustart des Containers notwendig\footnote{TODO - siehe Repo Readme}.
+
+\subsection{externe Komponente}
+TODO 
+
+\section{Angriffsszenarien}
+Die verschiedenen Angriffsszenarien wurden wie auch die Erweiterung des Systems um eine externe Komponente in einem zusätzlichen Docker Container realisiert. Der Container stellt im interaktiven Homeverzeichniss Scripte bereit, um verschiedene Angriffe auf den Netzwerkstack des Testsystems durchzuführen.
+
+TODO - vielleicht Interface
+
+\subsection{SYN-Flood}
 \subsection{Sockstress}
-\label{Impl:Sockstress}
-TODO - Ansatz: Kann am Testsystem durchgeführt werden. - sockstress implementierung - Diagramm Auslastung
-TODO - https://github.com/defuse/sockstress
+\subsection{\ac{DNS} Amplification}
 
-\section{\ac{MitM}}
-\subsection{\ac{DHCP} Spoofing}
-\label{Impl:DHCP Spoofing}
-DHCP Spoofing -> Vortäuschen eines DHCP, schneller Leases verteilen als vorhandener DHCP -> MitM
-TODO - impl. 2. DHCP Server implementieren
-DHCP Snooping -> theor. Verteidigung gegen Spoofing, Switches erlauben nur bestimmten Ports DHCP Traffic zu versenden
 
-\subsection{\ac{ARP} Spoofing}
-TODO - verfälschter Ethernetrahmen -> MAC Manipulation - MitM
-TODO - Schutz durch statische Tabellen, \ac{IDS}
+\section{Quellcode}
+Der erstellte Quellcode ist im öffentlichen GitHub Repository\footnote{https://github.com/fjnalta/i40-testbed} unter der \ac{MIT} Lizenz verfügbar. Das Lizenzierungsmodell erlaubt die freie Nutzung und Änderung der Software durch Dritte.
 
-\subsection{Sniffing}
-TODO - Anschluss neuer virtueller Geräte über Gateway
-TODO - MQTT, CoAP
+Die in (\cite{Weber2018}) beschriebene Verzeichnisstruktur des genutzten Testsystems wurde beim erstellten Fork beibehalten. Das Wurzelverzeichnis des Testsystems befindet sich im im Ordner "testbed" des GitHub Repository https://github.com/fjnalta/thesis. Im Ordner "dockers" befindet sich für jede Komponente der Umgebung ein weiteres Verzeichnis. In diesen liegen die Container, der Quellcode, deren Dockerfile sowie eine Beschreibung der Funktionsweise der jeweiligen Komponente.
 
-\section{Fehlkonfiguration}
-\label{Impl:Fehlkonfiguration}
-\subsection{OPC UA Secure Mode}
-TODO - Logging
+Es wurden Scripte zur Installation, Konfiguration sowie Verwaltung der zusätzlichen Docker Container geschrieben. Diese wurden im Ordner "scripts" abgelegt.
 
-\subsection{unsichere TLS Cipher Suite}
-TODO - Zertifikatstests
-
-\section{weitere Sicherheitstests}
-TODO - Fuzzing
-TODO - Mustererkennung
+\section{Dokumentation}
+Die Dokumentation der implementierten Komponenten, deren Inbetriebnahme und Funktionsweise findet neben der schriftlichen Ausarbeitung in den jeweiligen \textit{Readme} Dateien des Repositories https://github.com/fjnalta/thesis im Verzeichnis "testbed" und dessen Unterverzeichnissen statt. Des Weiteren wurde der Quellcode der Software mit Kommentaren versehen, um eine Nutzung des Testsystems auch ohne die schriftliche Ausarbeitung zu ermöglichen.

@@ -1,4 +1,5 @@
 \chapter{Konzept}
+\label{Konzept}
 TODO - Konzept komplett überarbeiten. Siehe 1. Absatz Analyse z.B.
 
 Um die in den Grundlagen beschriebenen Sicherheitsstandards, Protokolle und Integrationslösungen auf ihre Standhaftigkeit in Bezug auf die IT-Schutzziele zu analysieren, werden die Protokolle und Systeme in ihrem Aufbau untersucht und mögliche Schwachstellen herausgearbeitet, daraus hervorgehende Risiken beschrieben und erforderliche Maßnahmen empfohlen. Die \ac{RAMI4.0} beschreibt ein Referenzmodell für Industrie 4.0 Umgebungen. Bereits etablierte Lösungen bestehen aus heterogenen, individuellen Netzwerklandschaften. Um eine Untersuchung der vorhandenen Systeme im neuen Umfeld durchzuführen, müssen verschiedene Faktoren, wie Infrastruktur oder besondere Anforderungen an die Systeme mit einbezogen werden. Das folgende Kapitel dient der Beschreibung der Vorgehensweise bei der Analyse der Netzwerkkommunikation und deren Komponenten.
@@ -25,7 +26,12 @@ Die Kommunikation zwischen Industrieanlagen findet mehr und mehr auf der Basis v
 TODO - CoAP, MQTT
 
 \section{Abgrenzung}
+\label{Konzept:Abgrenzung}
 Die \ac{IIRA} ist ein anerkannter, in der Industrie verbreiteter Standard. Da die Analyse der Netzwerksicherheit am in \autoref{Grundlagen:Testsystem} beschriebenen Testsystem durchgeführt werden soll, welches den Kommunikationsstandard \ac{OPC UA} implementiert, wird sich im weiteren Verlauf der Thesis ausschließlich auf die in der IEC 62541 beschriebene Architektur \ac{RAMI4.0} als Referenzmodell zur Analyse bezogen. Es werden Bedrohungen in Industrie 4.0 Umgebungen beschrieben, eine Analyse der Übertragungsmedien und Infrastruktur durchgeführt und die im Testsystem verwendeten Protokolle mit Bezug auf ihre Anforderungen im Bereich der Netzwerksicherheit untersucht. Um verschiedene Praxisszenarien darzustellen, wird das Testsystem um für die Analyse benötigte, zusätzliche Komponenten erweitert. 
+
+\section{Anpassungen}
+\label{Konzept:Anpassungen}
+TODO GEHT NIX DOCKER
 
 \section{Vorgehensweise}
 Die Analyse der Netzwerkkommunikation der unteren Schichten (Internet- und Link Layer) des im \autoref{Grundlagen:TCP/IP Referenzmodell} beschriebenen TCP/IP Referenzmodells wird auf Basis der in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} erläuterten Schutzziele durchgeführt. Die oberen Schichten (Transport- und Application Layer) werden in der Testumgebung durch das \ac{M2M}-Protokoll \ac{OPC UA} realisiert. Hierbei dient die Spezifikation des Protokolls als Grundlage der Analyse. Aus der Spezifikation ergeben sich die bei der Kommunikation für die IT-Sicherheit zuständigen Komponenten von \ac{OPC UA}. Diese werden nach des Anforderungen des TODO - ref. BSI ICS Security Kompendium und FIRST CVSS v2.0 - auf Sicherheitslücken und Widersprüche untersucht. Bei der Analyse auftretende, mögliche Schwachstellen werden in einer vorhandenen, prototypischen Industrie 4.0 Testumgebung \cite{Weber2018} implementiert und nachgewiesen. Sicherheitslücken, welche durch Fehlkonfiguration auftreten und keine konzeptionellen Schwachstellen der Software oder deren Protokolle darstellen, sollen in der Testumgebung aktiviert und deaktiviert werden können, um die Auswirkung eines Angriffs auf ein Industrie 4.0 System zu Lehr- und Testzwecken darstellen zu können.

@@ -1,7 +1,9 @@
 \chapter{Analyse}
+\label{Analyse}
 Im folgenden Kapitel wird die Analyse der Netzwerksicherheit in Industrie 4.0 Umgebungen durchgeführt. Zuerst wird eine Beschreibung und Einordnung der Bedrohungen von Industrie 4.0 Systemen anhand der in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzziele und der aktuellen Industriestandards \autoref{Grundlagen:Normen und Standards} durchgeführt. Anschließend werden, aufgrund der bestehenden Infrastruktur und der Heterogenität der Netzwerklandschaft der Industrie, verschiedene Integrationsansätze für einen standardisierten Datenaustausch beschrieben. Die dabei etablierten Techniken und Protokolle des \ac{IoT} und \ac{IIoT} sowie neue \ac{M2M} Kommunikationswege der Industrie 4.0 werden dann nach den Schichten des \ac{TCP}/\ac{IP} Referenzmodells untersucht, um eine strukturierte Vorgehensweise zu ermöglichen und ein ganzheitliches Bild der Netzwerkkommunikation zu erhalten. Die Analyse wird mit Hilfe des Industrie 4.0 Testsystems (\cite{Weber2018}) durchgeführt. Dieses wird genutzt und erweitert, um unterschiedliche Szenarien darzustellen und die Sicherheit der Netzwerkkommunikation mit Hilfe verschiedener Softwaretools und Vorgehensweisen zu analysieren.
 
 \section{Bedrohungen}
+\label{Analyse:Bedrohungen}
 Die vierte industrielle Revolution, das \ac{IIoT} und dessen Vielzahl an aktiven und passiven Elementen stellen in ihrer Komplexität eine große Herausforderung für die IT-Sicherheit dar. Einerseits muss die Sicherheit der laufenden Software, der Infrastruktur, Anwendungs- und Rechnersysteme gewährleistet werden, andererseits muss die Betriebssicherheit der Geräte und Anlagen, welche mit dem Internet verbunden sind sichergestellt werden. Das Management der IT-Sicherheit in Industrie 4.0 Netzen geht über Unternehmensgrenzen hinweg, da Netze und Systeme für Kunden, Lieferanden und Partner bereitgestellt werden (\cite{DTAG2016}). Somit hat sich auch die Bedrohungslage der Netze geändert. Das \ac{BSI} beschreibt die Top 10 Bedrohungen und deren Folgen für \ac{ICS} in \cite{ICSSec2016}.
 
 \begin{enumerate}
@@ -229,9 +231,9 @@ Da das \ac{IP} Hilfsprotokoll \ac{DHCP} keine Sicherheitsmaßnahmen zur Verhinde
 
 \subsection{\ac{OPC UA}}
 \label{Analyse:OPCUA}
-Die Kommunikation zwischen \ac{OPC UA} Komponenten findet auf der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells statt. \ac{OPC UA} stellt eine vertikale Verbindung der Kommunikationspartner auf allen Ebenen der Automatisierungspyramide her. Aufgrund der Öffnung von Unternehmen nach außen, den immer höheren Informationsbedarf und die direkte Kommunikation mit Händler und Kunden ist \ac{OPC UA} ein attraktives Ziel für Industriespionage und Sabotage des Netzwerks (\cite{opcuapt2}). 
+Die Kommunikation zwischen \ac{OPC UA} Komponenten findet auf der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells statt. \ac{OPC UA} stellt eine vertikale Verbindung der Kommunikationspartner auf allen Ebenen der Automatisierungspyramide her. Aufgrund der Öffnung von Unternehmen nach außen, den immer höheren Informationsbedarf und die direkte Kommunikation mit Händler und Kunden ist \ac{OPC UA} ein attraktives Ziel für Industriespionage und Sabotage des Netzwerks (\cite{opcpt2}). 
 
-\ac{OPC UA} wurde als Client-Server Architektur entwickelt. Um \ac{OPC UA} auch in Systemen der unteren Ebenen der Automatisierungspyramide, wie Kleinsteuerungen, Sensoren und Low-End-Embedded-Systeme, einsetzen zu können, werden meist geringe Latenzen in den Netzwerken und ein geringer Overhead aufgrund von Ressourcenmangel sowie die Kommunikation mit mehreren Partnern benötigt. Diese Anforderungen werden von dem im Jahr 2018 veröffentlichten 14 Teil der \ac{OPC UA} Spezifikation \textit{Publish Subscribe} adressiert. Das \textit{Publish Subscribe} Modell wird mit Hilfe des Transportprotokolls \ac{UDP} umgesetzt und ermöglicht den Multi- und Broadcast sowie die Möglichekit der häufigen Übertragung von kleinen Datenmengen um \textit{Logging} oder \textit{Monitoring} durchzuführen, ohne das Netzwerk durch einen 3-Wege-Handshake bei jedem Verbindungsaufbau zusätzlich zu belasten (\cite{opcuapt1}).
+\ac{OPC UA} wurde als Client-Server Architektur entwickelt. Um \ac{OPC UA} auch in Systemen der unteren Ebenen der Automatisierungspyramide, wie Kleinsteuerungen, Sensoren und Low-End-Embedded-Systeme, einsetzen zu können, werden meist geringe Latenzen in den Netzwerken und ein geringer Overhead aufgrund von Ressourcenmangel sowie die Kommunikation mit mehreren Partnern benötigt. Diese Anforderungen werden von dem im Jahr 2018 veröffentlichten 14 Teil der \ac{OPC UA} Spezifikation \textit{Publish Subscribe} adressiert. Das \textit{Publish Subscribe} Modell wird mit Hilfe des Transportprotokolls \ac{UDP} umgesetzt und ermöglicht den Multi- und Broadcast sowie die Möglichekit der häufigen Übertragung von kleinen Datenmengen um \textit{Logging} oder \textit{Monitoring} durchzuführen, ohne das Netzwerk durch einen 3-Wege-Handshake bei jedem Verbindungsaufbau zusätzlich zu belasten (\cite{opcpt1}).
 
 Aus zeitlichen Gründen wird sich im weiteren Verlauf der Thesis auf die Sicherheit der Netzwerkkommunikation im etablierten \ac{OPC UA} \textit{Client Server} Modell beschränkt.
 
@@ -254,9 +256,7 @@ In \autoref{Kap2:OPC UA Kommunikationswege} ist dargestellt, dass \ac{OPC UA} ve
 Die beschriebenen Protokollstacks bilden mit ihren Sicherheitsmechanismen die Grundlage für eine sichere Datenübertragung. Die Form der Datenübertragung über \ac{SOAP}/\ac{HTTP} wurde ab Version 1.03 der Spezifikation als veraltet angesehen, da es in der Industrie nicht umgesetzt wurde (\cite{opcpt5}). Die Protokolle \ac{UA} Binary über \ac{TCP} und die Hybridform aus den Protokollen \ac{UA} Binary und \ac{HTTPS} Webservice werden im folgenden auf ihre Standhaftigkeit bzgl. der Sicherheitsanforderungen in Industrie 4.0 Umgebungen analysiert.
 
 \subsubsection{\ac{UA} Binary über \ac{TCP}}
-Das \ac{UA} Binary Protokoll über \ac{TCP} wird für Kommunikation mit optimierter Geschwindigkeit und Durchsatz genutzt. Es besitzt den geringsten Overhead sowie Ressourcenverbrauch, da kein zusätzlicher Parser für \ac{HTTP} oder \ac{XML} genutzt werden muss und somit die Systemlast gering gehalten werden kann. Zur Kommunikation wird standardmäßig der Port 4840 genutzt. Die sichere Kommunikation wird erst auf Nachrichtenebene durch die \ac{UA} Secure Conversation hergestellt. Für die Transportebene gelten durch das genutzte Protkoll \ac{TCP} weiterhin die Bedrohungen von \autoref{Analyse:TCP}.
-
-Die \ac{UA} Secure Conversation stellt den \textit{Secure Channel} anhand des gesetzten \textit{SecurityMode} her (\cite{opcpt2}). Die Form des \textit{Secure Channel} wird durch den in der gewählen \textit{Security Mode} bestimmt und in \autoref{Analyse:Application Layer Security} näher beschrieben. Bei der Verwendung der \textit{Security Policy} None wird ein \textit{Secure Channel} hergestellt, welcher jedoch keine Sicherheitsprofile bereitstellt (\cite{opcpt7}).
+Das \ac{UA} Binary Protokoll über \ac{TCP} wird für Kommunikation mit optimierter Geschwindigkeit und Durchsatz genutzt. Es besitzt den geringsten Overhead sowie Ressourcenverbrauch, da kein zusätzlicher Parser für \ac{HTTP} oder \ac{XML} genutzt werden muss und somit die Systemlast gering gehalten werden kann. Zur Kommunikation wird standardmäßig der Port 4840 genutzt. Die sichere Kommunikation wird erst auf Nachrichtenebene durch die \ac{UA} Secure Conversation hergestellt (siehe \autoref{Analyse:Application Layer Security}). Für die Transportebene gelten durch das genutzte Protkoll \ac{TCP} weiterhin die Bedrohungen von \autoref{Analyse:TCP}.
 
 \subsubsection{\ac{UA} Binary über \ac{HTTPS}}
 Die Hybridform der Kommunikation über einen \ac{HTTPS} Webservice mit Hilfe der \ac{UA} Binary Protokolls vereint die Vorteile des Ressourcenschonenden \ac{UA} Binary Protokolls über \ac{TCP} und die weitreichende Kompatibilität eines Webservice. Die Sicherheit der Netzwerkkommunikation wird bereits auf der Transportebene mit Hilfe von \ac{TLS} hergestellt.
@@ -265,15 +265,68 @@ Die Transportsicherheit wird mit \ac{TLS} 1.2 und der Cipher Suite \textit{TLS R
 
 Eine weitere Bedrohung stellt das genrelle Verfahren der Ausstellung von Zertifikaten bereit. Diese Zertifikate werden von Dienstleistern ausgestellt, welche als vertrauenswürdig eingestuft und als Root-\ac{CA} bezeichnet werden. Die Herstellung der Vertrauenswürdigkeit eines Ausstellers liegt im Ermessen des Softwareherstellers und dessen Aufnahme in die Liste vertrauenswürdiger \ac{CA}.
 
-TODO - Ergebnisse der Zertifikatstests
+TODO - zu dünn
+
+Die Kommunikation des Protokolls \ac{OPC UA} über Webservices und \ac{HTTP} bzw. \ac{HTTPS} wird im Rahmen dieser Thesis nicht weiter bearbeitet, da die Implementierung des im Testsystem genutzten NodeJS Moduls node-opcua unvollständig ist.
 
 \subsubsection{Application Layer Security}
 \label{Analyse:Application Layer Security}
-\ac{OPC UA} stellt aufgrund der verschiedenen Anforderungen der Industrie 4.0 Systeme mehrere Sicherheitskonfigurationen zur Informationsübertragung zur Verfügung. Dies ist möglich, da die Verwendung von Verschlüsselungsalgorithmen und Kodierungsverfahren Ressourcen benötigt und Latenzen verursacht, welche unter Umständen nicht vorhanden sind oder nicht geleistet werden können. Eine Fehlkonfiguration des Protokolls kann erhebliche Auswirkungen auf den Betrieb des Netzwerks und der Assets haben sowie die Integrität der Daten gefährden.
+\ac{OPC UA} stellt aufgrund der verschiedenen Anforderungen der Industrie an ihre Systeme mehrere Sicherheitskonfigurationen zur Informationsübertragung zur Verfügung. Dies ist notwendig, da die Verwendung von Verschlüsselungsalgorithmen und Kodierungsverfahren Ressourcen benötigt und Latenzen verursacht, welche unter Umständen nicht vorhanden sind oder nicht geleistet werden können. Eine Fehlkonfiguration des Protokolls kann jedoch auch Auswirkungen auf den Betrieb des Netzwerks und der Komponenten haben sowie die Integrität der Daten gefährden.
 
-Mit Hilfe des vorhandenen Testsystems wurden verschiedene Szenarien der Fehlkonfiguration der \ac{OPC UA} Architektur durchgeführt und die Auswirkungen auf die Kommunikation im Netzwerk untersucht. Die Implementierung der benötigten Komponenten wird in \autoref{Impl:Fehlkonfiguration} beschrieben.
+\ac{OPC UA} verifiziert vor dem Austausch von Nachrichten zwischen zwei Komponenten, ob ein SecureChannel vorhanden ist, über welchen die Daten übertragen werden. Dieser wird vom bestehenden Netzwerkstack und den genutzten niedrigeren Protokollen bereitgestellt (\cite{opcpt1}). Die \ac{UA} Secure Conversation besteht aus dem \textit{Secure Channel} und der Session und desssen gesetzten \textit{SecurityMode} (\cite{opcpt2}). Die Form der Nachrichten im \textit{Secure Channel} wird durch den in der gewählen \textit{Security Mode} bestimmt. Bei der Verwendung der \textit{Security Policy} None wird ein \textit{Secure Channel} hergestellt, welcher jedoch keine Sicherheitsprofile bereitstellt (\cite{opcpt7}). Dies wird in \autoref{Analyse:OPC UA Secure Channel} dargestellt.
 
-TODO - Ergebnisse der Fehlkonfiguration SecurityMode
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm]{opcua-securechannel}
+  \caption{OPC UA Secure Channel} 
+  \label{Analyse:OPC UA Secure Channel}
+\end{figure}
+
+\clearpage
+
+Mit Hilfe des vorhandenen Testsystems (\cite{Weber2018}) kann dieses Verhalten nachgewiesen werden. Hierfür wurde das Netzwerkanalysetool Wireshark\footnote{TODO - WIRESHARK} genutzt, um an der Netzwerkbrücke der Docker Container den Netzwerkverkehr zwischen den Komponenten abzuhören. In Verbindung mit dem \ac{OPC UA} \textit{Secure Channel} wurde das System erweitert, um verschiedene Sicherheitsprofile für die Kommunikation bereitzustellen. Die Erweiterung des Systems wird in \autoref{Impl:Analyse:OPC UA Secure Channel} beschrieben.
+
+Die folgenden Abbildungen zeigen die Ergebnisse der Paketanalyse mit der vorhandenen \text{Security Policies} "none". Der \ac{OPC UA} Client des Control Containers, welcher die Liste der im Netzwerk vorhandenen \ac{OPC UA} Server abfrägt besitzt die \ac{IP}-Adresse 172.18.0.6, der Container des Discoveryservers die \ac{IP}-Adresse 172.18.0.2. In \autoref{Analyse:opcua-secure-none-req} ist der Request des Control Containers zum Aufbau eines \textit{Secure Channel} dargestellt. Die verwendete \textit{Security Policy} ist im Bereich SecurityPolicyUri des \ac{OPC UA} Protokolls beschrieben. In \autoref{Analyse:opcua-secure-none-res} ist die Antwort des \ac{OPC UA} Discoveryservers im \textit{Secure Channel} dargestellt. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{opcua-secure-none-req}
+  \caption{Paketanalyse OPC UA - Client Request bei Sicherheitsprofil "none"} 
+  \label{Analyse:opcua-secure-none-req}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{opcua-secure-none-res}
+  \caption{Paketanalyse OPC UA - Server Response bei Sicherheitsprofil "none"} 
+  \label{Analyse:opcua-secure-none-res}
+\end{figure}
+
+\clearpage
+
+Es ist zu erkennen, dass die Kommunikation, obwohl der \textit{Secure Channel} genutzt wird, nicht verschlüsselt ist. Die Endpunkte sowie deren Adressen und bereitgestellte Methoden können aus den Paketen ausgelesen werden.
+
+Im Folgenden wird erneut das Abfragen des Control Containers aller im Netzwerk vorhandenen Endpunkte beim Discoveryserver beschrieben, jedoch wird das Sicherheitsprofil "Basic256Sha256" mit dem \textit{MessageSecurityMode} "SIGNANDENCRYPT" genutzt. Der \ac{OPC UA} Client besitzt die \ac{IP}-Adresse 172.18.0.7. Der Discoveryserver weiterhin die Adresse 172.18.0.2. \autoref{Analyse:opcua-secure-sha-req} zeigt den Request, \autoref{Analyse:opcua-secure-sha-res} die verschlüsselte Response im \textit{Secure Channel}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{opcua-secure-sha-req}
+  \caption{Paketanalyse OPC UA - Client Request bei Sicherheitsprofil "Basic256Sha256" und MessageSecurityMode "SIGNANDENCRYPT"} 
+  \label{Analyse:opcua-secure-sha-req}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{opcua-secure-sha-res}
+  \caption{Paketanalyse OPCUA - Server Response bei Sicherheitsprofil "Basic256Sha256" und MessageSecurityMode "SIGNANDENCRYPT"} 
+  \label{Analyse:opcua-secure-sha-res}
+\end{figure}
+
+\clearpage
+
+Es ist zu erkennen, dass der gesamte Netzwerkverkehr im \textit{Secure Channel} durch ein Zertifikat signiert sowie durch den Algorithmus SHA256 verschlüsselt wurde. Die Integrität und Vertraulichkeit während der Kommunikation im Netzwerk ist gewährleistet.
+
+Es ist zu Beachten, dass - TODO Rechenleistung erhöht sich -> Verschlüsselungsalgorithmen werden unsicher -> OPC ist flexibel für zukunft und anforderungen
 
 \subsubsection{weitere Sicherheitsbestandteile}
 TODO - PKI 
