@@ -3,6 +3,7 @@
 'use strict'
 var coap = require('coap');
 var server = coap.createServer();
+var config = require('./config');
 
 server.on('request', function(req, res) {
     //var obj = JSON.parse(req.payload);
@@ -12,7 +13,7 @@ server.on('request', function(req, res) {
 });
 
 // the default CoAP port is 5683
-server.listen(function() {
+server.listen(config.port, config.ip, function() {
     //console.log('Server listening on Port 5683');
 });
 
