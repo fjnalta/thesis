@@ -37,6 +37,14 @@ TODO GEHT NIX DOCKER
 Die Analyse der Netzwerkkommunikation der unteren Schichten (Internet- und Link Layer) des im \autoref{Grundlagen:TCP/IP Referenzmodell} beschriebenen TCP/IP Referenzmodells wird auf Basis der in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} erläuterten Schutzziele durchgeführt. Die oberen Schichten (Transport- und Application Layer) werden in der Testumgebung durch das \ac{M2M}-Protokoll \ac{OPC UA} realisiert. Hierbei dient die Spezifikation des Protokolls als Grundlage der Analyse. Aus der Spezifikation ergeben sich die bei der Kommunikation für die IT-Sicherheit zuständigen Komponenten von \ac{OPC UA}. Diese werden nach des Anforderungen des TODO - ref. BSI ICS Security Kompendium und FIRST CVSS v2.0 - auf Sicherheitslücken und Widersprüche untersucht. Bei der Analyse auftretende, mögliche Schwachstellen werden in einer vorhandenen, prototypischen Industrie 4.0 Testumgebung \cite{Weber2018} implementiert und nachgewiesen. Sicherheitslücken, welche durch Fehlkonfiguration auftreten und keine konzeptionellen Schwachstellen der Software oder deren Protokolle darstellen, sollen in der Testumgebung aktiviert und deaktiviert werden können, um die Auswirkung eines Angriffs auf ein Industrie 4.0 System zu Lehr- und Testzwecken darstellen zu können.
 
 \section{Fehlgeschlagene Konzepte/Konzeptwahl}
+TODO
+
+Die prototypische Implementierung von verschiedenen Angriffsformen im Industrie 4.0 Testsystem wird genutzt, um die Analyse der in \autoref{Analyse} beschriebenen Bedrohungsszenarien und deren Auswirkungen an einem vorhandenen System zu testen und deren Einfluss auf die Netzwerkkommunikation zu bewerten. Mit der Implementierung der Angriffe wird die im Konzept (\autoref{Konzept}) beschriebene Vorgehensweise validiert. Die Auswahl der implementierten Angriffsformen wird vom Testsystem und dessen Infrastruktur bzw. Umsetzung bestimmt. Aus zeitlichen Gründen und aufgrund von Beschränkungen durch das Testsystem (siehe \autoref{Konzept:Anpassungen}) werden nicht alle analysierten Angriffe in der Praxis implementiert.
+
+Eine \ac{PKI} sowie \ac{IdM} wird im vorhandenen Testsystem nicht umgesetzt, da das genutzte NodeJS Modul \textit{node-opcua}\footnote{LINK} das Zertifikatsmanagement zum aktuellen Stand nicht implementiert\footnote{TODO - Link - Github}.
+
+Ausgeschlossen von der Implementierung sind die Angriffsformen des \ac{DHCP} und \ac{ARP} Spoofing. Diese wären, wie in \autoref{Konzept:Anpassungen} beschrieben nur mit erheblichem Mehraufwand möglich, da ein gesamtes Netzwerk mit eigenem \ac{DHCP} und \ac{DNS} bereitgestellt werden müsste, welchen Zonen und automatische DNS Updates konfiguriert werden müssten. Außerdem stellt die vorhandene Netzwerk-Infrastruktur des Testsystems mit der genutzten Docker Bridge\footnote{text} die Funktionalitäten eines \ac{MitM} Angriffs und somit die Möglichkeit der Paketanalyse im Netzwerk bereits bereit.
+
 
 \begin{figure}[h]
     \centering
