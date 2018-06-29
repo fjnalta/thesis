@@ -1,13 +1,21 @@
 \chapter{Anwendungsszenarien}
 \label{Anwendungsszenarien}
+Aufgrund der in \autoref{Analyse} gewonnenen Erkenntnisse wurden verschiedene Anwendungsszenarien zur Erweiterung des Testsystems herausgearbeitet.
 
-\section{Implementierung OPC UA Sicherheitsprofil}
+TODO - Tabelle
+
+Die Umsetzung priorisierter Anwendungsszenarien wie SYN-Flood, \ac{DNS} Amplifictation und Sockstress war aus zeitlichen Gründen nicht möglich, da die Manipulation des Netzwerks und dessen Kommunikation im gegebenen Testsystem aufgrund der genutzten Software nur begrenzt möglich war und somit die Bereitstellung einer Netzwerkinfrastruktur wesentlicher Bestandteil der Thesis war. Dies wird in \autoref{Konzept:Abgrenzung} und \autoref{Konzept:verworfene Konzepte} näher erläutert.
+
+Nach Abwägung der Faktoren zeitlicher Aufwand, Umsetzbarkeit und Darstellungsmöglichkeit des Angriffs, wurde sich für die folgenden Anwendungsszenarien entschieden.
+
+\section{\ac{OPC UA} Kommunikation}
+\label{Anwendungsszenarien:OPC UA Kommunikation}
 1. Erweiterung OPC UA
 
-\section{MitM mit Hilfe eines Rogue DHCP}
+\section{\ac{MitM}}
+\label{Anwendungsszenarien:MitM}
 2. MitM - Gateway
 
 \section{Manipulation von ungesichertem Netzwerkverkehr}
+\label{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr}
 3. CoAP - Manipulation
-
-TODO - SYN-Flood, Sockstress, DNS Amplification aus zeitlichen Gründen nicht implementiert, da die Bereitstellung der Netzwerkinfrastruktur wesentlicher Bestandteil der Thesis war. - Verweis auf Ausblick

@@ -1,65 +1,133 @@
 \chapter{Konzept}
 \label{Konzept}
-TODO - Konzept komplett überarbeiten. Siehe 1. Absatz Analyse z.B.
+Im folgenden Kapitel wird das entwickelte Konzept zur Erweiterung des Testsystems (\cite{Weber2018}) beschrieben. Das Konzept wurde entwickelt, um anhand der in \autoref{Analyse} gewonnenen Erkenntnisse, verschiedene Angriffsformen in einer Industrie 4.0 Netzwerkumgebungen und deren Einfluss auf das System und die Netzwerkkommunikation demonstrieren zu können. Da die entstehende Integration und Implementierung des Konzepts für Test- und Lehrzwecke genutzt werden soll, in Zukunft um weitere Funktionalitäten erweitert werden soll und flexibel Einsetzbar sein soll, stehen die Aspekte Portabilität, Skalierbarkeit und Erweiterbarkeit bei der Entwicklung des Konzepts im Vordergrund.
 
-Um die in den Grundlagen beschriebenen Sicherheitsstandards, Protokolle und Integrationslösungen auf ihre Standhaftigkeit in Bezug auf die IT-Schutzziele zu analysieren, werden die Protokolle und Systeme in ihrem Aufbau untersucht und mögliche Schwachstellen herausgearbeitet, daraus hervorgehende Risiken beschrieben und erforderliche Maßnahmen empfohlen. Die \ac{RAMI4.0} beschreibt ein Referenzmodell für Industrie 4.0 Umgebungen. Bereits etablierte Lösungen bestehen aus heterogenen, individuellen Netzwerklandschaften. Um eine Untersuchung der vorhandenen Systeme im neuen Umfeld durchzuführen, müssen verschiedene Faktoren, wie Infrastruktur oder besondere Anforderungen an die Systeme mit einbezogen werden. Das folgende Kapitel dient der Beschreibung der Vorgehensweise bei der Analyse der Netzwerkkommunikation und deren Komponenten.
+Das Konzept beinhaltet die Darstellung der Verteilungs-, Baustein- und Laufzeitsicht. Dabei wird die entwickelte Netzwerkinfrastruktur, die einzelnen Komponenten sowie die Gesamtfunktionalität des Systems beschrieben.
 
-\section{Komponenten}
-Die beschriebenen Anforderungen müssen, um eine sichere Netzwerkkommunikation zu gewährleisten, von allen beteiligen Komponenten der Umgebung integriert und umgesetzt werden. Industrie 4.0 Umgebungen können in unterschiedlichster Form ausgeprägt sein. Die Umsetzung der Hard- und Softwarekomponenten hängt von den zu übertragenden Daten, dem Übertragungsmedium, der Übertragungsdistanz und vorausgesetzten Dienstgüte ab. Die zu analysierenden Komponenten werden in Hard- und Softwarekomponenten gegliedert.
+Um eine ganzheitliche Infrastruktur mit den grundlegenden Netzwerkdiensten bereitstellen zu können, kann die Kommunikation der Systeme nicht auf der Abstraktionsebene des Docker Containernetzwerks stattfinden. Das \ac{IPAM} im Netzwerk sowie die gewünschten Dienste \ac{DHCP} und \ac{DNS} können dort nicht ausreichend konfiguriert werden. Es mussten im Laufe der Entwicklung, aufgrund des gegebenen Systems und der genutzten Software, mehrere Konzepte zur Umsetzung verschiedener Anwendungsszenarien verworfen werden. Diese werden in \autoref{Konzept:verworfene Konzepte} kurz beschrieben. Die Softwarebeschränkungen und deren Auswirkungen auf die Umsetzung des Konzepts sowie der Integration werden in \autoref{Konzept:Anpassungen} erläutert.
 
-\subsection{Hardware}
+\section{Verteilungssicht}
+Die Skalierbarkeit und Erweiterbarkeit des Testsystems wird auf der Verteilungssicht durch die Nutzung einer \ac{VM} und deren Docker Container realisiert. Um die Heterogenität des Systems gering zu halten, jedoch ein vollwertiges Netzwerk abbilden zu können, werden der vorhandenen Grundstruktur des Testsystems (\cite{Weber2018}) \ac{VM} zwei weitere Maschinen hinzugefügt.
 
-TODO
+Die \ac{VM}s simulieren, im Gegensatz zur Containervirtualisierung ein vollständiges System sowie dessen Hardware. Dies ermöglicht eine weitgehende Kontrolle über die Netzwerkschnittstellen und die Konfiguration gekapselter Netzwerkinfrastrukturen. Diese Vorteile werden genutzt, um die Netzwerkkommunikation mit Hilfe von virtuellen, internen Netzwerken auf der Abstraktionsebene der \ac{VM}s durchzuführen.
 
-\subsubsection{Übertragungskanal}
-Der Übertragungskanal beschreibt die Bitübertragungsschicht. In Industrie 4.0 Umgebungen ist es notwendig, Daten zu übertragen, um eine räumliche oder zeitliche Distanz zu überbrücken. Je nach Anwendungsfall findet diese Kommunikation über Kupfer- bzw. Glasfaserkabel, Funkübertragung oder ein Speichermedium statt. Je nach Beschaffenheit des Übertragungskanals, ist es notwendig, weitere Maßnahmen zur Sicherheit der Kommunikation zu treffen. Aufgrund der Durchführung der Analyse in einem virtuellen Testsystem, werden die Auswirkungen der Form des Übertragungskanals bei der Analyse der Kommunikation nicht beachtet.
+Das Konzept der Netzwerkinfrastruktur ist in \autoref{Konzept:Netzwerkkonzept} in Anlehnung an ein \ac{UML}-Verteilungsdiagramm dargestellt. Zur Umsetzung der in \autoref{Anwendungsszenarien} beschrieben Szenarien, ist es notwendig den Netzwerkdienst \ac{DHCP} bereitzustellen. Dieser wird, zusammen mit dem Dienst \ac{DNS} im Netzwerk "`i40-network"' bereitgestellt. Das zusätzliche Netzwerk "`i40-monitoring"' wird genutzt, um die Netzwerkkommunikation über ein Gateway umzusetzen und somit einen \ac{MitM} Angriff durchführen zu können. Die Kommunikation zwischen den Netzwerken wird über Router realisiert.
 
-\subsection{Software}
-Jede Komponente einer \ac{ICS}-Umgebung kann Softwareschwachstellen und Sicherheitslücken enthalten. Dabei spielt es keine Rolle, ob es sich um ein komplexes \ac{ICS} handelt oder um einen einfachen Anwendungsserver. Software-Aktualisierungen sowie ein Patch-Management sind für einen sicheren Betrieb notwendig, um Angriffe über Exploits zu verhindern. 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{netzwerk}
+  \caption{Netzwerkinfrastruktur} 
+  \label{Konzept:Netzwerkkonzept}
+\end{figure}
 
-\subsubsection{Netzwerkstack}
-Die Kommunikation zwischen Industrieanlagen findet mehr und mehr auf der Basis von TCP-basierten Netzwerken statt. Das \ac{RAMI4.0} beschreibt Industrie 4.0 Umgebungen als \ac{SOA}. \ac{SOA} beschreibt ein Netzwerk, in welchem von den Teilnehmern Dienste bereitgestellt und genutzt werden können. Die Dienste im Netzwerk werden i. d. R. über eine \ac{REST}-\ac{API} bereitgestellt. Diese Schnittstellen nutzen bereits etablierte Protokolle der \ac{IoT} oder \ac{IIoT} Welt.
+\clearpage
 
-\subsubsection{Protokolle}
-\ac{IoT}-Geräte nutzen das Internet als Übertragungsmedium. Somit müssen sie zur Übertragung ihrer Daten Protokolle nutzen, welche die Internet Protocol Suite der \ac{IETF} einhalten. Etablierte Internet-Protokolle wie HTTP und XMPP wurden zur Kommunikation ressourcenreicher Geräte mit hoher Leistung entwickelt und sind für viele Netzwerke mit \ac{IoT}- oder \ac{IIoT}-Endknoten zu komplex, bzw. nicht geeignet. Im Rahmen der 4. industriellen Revolution wurden daher, vor allem für \ac{IIoT} Umgebungen, neue Protokolle entwickelt, welche ressourcensparende, sichere Kommunikation zwischen Maschinen bereitstellen sollen. 
+Die Kapselung und Sicherheit des Testsystems ist durch die Erweiterung um zusätzliche \ac{VM}s und Dienste weiterhin gegeben. Die Kommunikation mit dem Hostsystem und externen Netzen findet ausschließlich über die Netzwerkschnittstelle des Routers statt und dient der Installation und Konfiguration der Komponenten. Diese kann im Betrieb deaktiviert werden, um eine vollständige Isolation der Umgebung zu erzielen.
 
-TODO - CoAP, MQTT
+Durch die Konfigurationsmöglichkeiten der Hardware und des Netzwerks ist eine weitere Kapselung der Netzwerke mit Hilfe von \ac{VLAN} auf der Netzzugangssicht umsetzbar. Dies wird im Rahmen der Thesis jedoch aus zeitlichen Gründen nicht weiter bearbeitet.
 
-\section{Abgrenzung}
-\label{Konzept:Abgrenzung}
-Die \ac{IIRA} ist ein anerkannter, in der Industrie verbreiteter Standard. Da die Analyse der Netzwerksicherheit am in \autoref{Grundlagen:Testsystem} beschriebenen Testsystem durchgeführt werden soll, welches den Kommunikationsstandard \ac{OPC UA} implementiert, wird sich im weiteren Verlauf der Thesis ausschließlich auf die in der IEC 62541 beschriebene Architektur \ac{RAMI4.0} als Referenzmodell zur Analyse bezogen. Es werden Bedrohungen in Industrie 4.0 Umgebungen beschrieben, eine Analyse der Übertragungsmedien und Infrastruktur durchgeführt und die im Testsystem verwendeten Protokolle mit Bezug auf ihre Anforderungen im Bereich der Netzwerksicherheit untersucht. Um verschiedene Praxisszenarien darzustellen, wird das Testsystem um für die Analyse benötigte, zusätzliche Komponenten erweitert. 
+\subsection{Industrienetzwerk}
+Das Industrienetzwerk "`i40-network"' stellt den zentralen Bestandteil der Architektur dar. Dieses Netzwerk wird von den Diensten \ac{DHCP} und \ac{DNS} verwaltet und beinhaltet das Industrie 4.0 Produktionssystem und dessen Docker Sub-Architektur sowie die Sensor Komponente, welche Daten zum \ac{CoAP} Monitoring liefert. Der Netzwerkverkehr sowie die Verwaltung des Containernetzwerks wird vom Docker Dienst und dessen Netzwerkbrücke übernommen. Die Kommunikation mit dem Monitoringnetzwerk sowie mit externen Netzen wird mit Hilfe von \ac{IP} Forwarding und \ac{NAT} hergestellt. Der Rogue \ac{DHCP} Server befindet sich ebenfalls in diesem Netz und dient der Manipulation des für das Netzwerk \textit{authorativen} \ac{DHCP} Servers. Die Umsetzung dieses Netzwerks, der beinhalteten Dienste und der vollständigen Kontrolle über diese ist die Basis für die Durchführung der Anwendungsszenarien.
+
+\subsection{Monitoring-Netzwerk}
+Das Netzwerk "`i40-monitoring"' simuliert ein zusätzliches Netzwerk, welches Dienste zur Analyse und Überwachung der Komponenten im Netzwerk bereitstellen soll. Im beschriebenen Konzept besitzt das Monitoring-Netzwerk ausschließlich eine Komponente zur Überwachung der gesendeten Daten des im "`i40-network"' vorhandenen Sensors. Eine weitere Ausführung der Komponenten im Netzwerk hätte keinen Einfluss auf die gewählten Anwendungsszenarien (\autoref{Anwendungsszenarien:MitM} und \autoref{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr}) gehabt, da die Kommunikation über ein Gateway der ausschlaggebende Faktor für die Integration des zusätzlichen Netzwerks war. Aus diesem Grund wurde auch kein \ac{DHCP} und \ac{DNS} für das Netzwerk konfiguriert. Die Adressvergabe verläuft statisch.
+
+\subsection{Containernetzwerk}
+Das Containernetzwerk beschreibt das grundlegende Testsystem und wird in \cite{Weber2018} beschrieben. Die bereitgestellten Container der Industrie 4.0 Umgebung werden durch den Docker Server verwaltet. Dieser übernimmt das \ac{IPAM} sowie den \ac{DNS}. Die Kommunikation zwischen den Container sowie mit dem Hostsystem findet über eine Software-Bridge\footnote{TODO - eine Bridge ...} statt. Diese Form der Netzwerkkommunikation ermöglicht es das Anwendungsszenario \autoref{Anwendungsszenarien:OPC UA Kommunikation} durchzuführen. Die Software-Bridge nimmt den gesamten Netzwerkverkehr entgegen und leitet ihn weiter. Somit ist es möglich diesen vom System, welches die Container verwaltet, zentral zu untersuchen.
+
+\section{Bausteinsicht}
+Die aus den Anwendungsszenarien (\autoref{Anwendungsszenarien}) hervorgehenden Anforderungen müssen durch die Komponenten im System umgesetzt werden. Hinzu kommt, dass die beschriebenen Netzwerke durch erforderlichen Dienste verwaltet werden müssen, um die Kommunikation der Komponenten zu gewährleisten. Die logische Darstellung der Verteilungssicht unterscheidet sich grundlegend von der Umsetzung der Komponenten in der Bausteinsicht. Die Virtualisierung der Maschinen erlaubt es mehrere Komponenten auf einem System zusammenzufassen und mit mehreren Netzwerkschnittstellen in verschiedenen Netzen auszustatten, um multiple Systeme darstellen zu können.
+
+In \autoref{Konzept:Virtuelle Maschinen} werden die \ac{VM}s sowie deren Dienste und Schnittstellen in die Netzwerke dargestellt. Die Dienste \ac{DHCP}, \ac{DNS} im Netzwerk "`i40-network"' sowie die generellen Routingfunktionalitäten werden von der \ac{VM} "`mgmt"' bereitgestellt. Des Weiteren wird dort der \ac{CoAP} Server umgesetzt, welcher sich im Netzwerk "`i40-monitoring"' befindet. Die \ac{VM} "`i40"' beinhaltet die Komponenten zur Manipulation des Netzwerks sowie das Containernetzwerk. Der \ac{CoAP} Client des Netzwerk "`i40-network"' wird auf der \ac{VM} "`comp"' ausgeführt.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{vm}
+  \caption{Virtuelle Maschinen und Dienste} 
+  \label{Konzept:Virtuelle Maschinen}
+\end{figure}
+
+\subsection{Router}
+Die Routingfunktionalitäten werden auf der \ac{VM} "`mgmt"' umgesetzt. Die \ac{VM} besitzt in jedem Netzwerk ein Interface, welches als Schnittstelle dient und zur Weiterleitung der Pakete genutzt wird. Die \ac{VM} "`mgmt"' ist die einzige Komponente der Architektur, welche eine Verbindung zum Hostsystem besitzt. Die Weiterleitung der Pakete wird auf der Internetschicht des \ac{TCP}/\ac{IP} Referenzmodells mit Hilfe von \ac{IP}v4 Forwarding und \ac{NAT} umgesetzt. Durch das Routing zum Hostsystem ist eine Verbindung der anderen, gekapselten Maschinen sowie zukünftiger Maschinen für Installations- und Konfigurationszwecke in externe Netzwerke möglich. Um die Sicherheit des Netzwerkverkehrs sicherzustellen dürfen nur Pakete von Verbindungen, welche aus einem der internen Netze initiiert wurden weitergeleitet werden. \autoref{Konzept:Routerkomponente} stellt die Schnittstellen der Komponente dar.  
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{router}
+  \caption{Routerkomponente} 
+  \label{Konzept:Routerkomponente}
+\end{figure}
+
+\subsection{\ac{DHCP} Server/\ac{DNS} Server}
+Die Dienste \ac{DHCP} und \ac{DNS} werden zusammen auf der \ac{VM} "`mgmt"' konfiguriert stellen ihre Dienste im Netzwerk "`i40-network"' bereit, indem sie auf die zuständige Schnittstelle gebunden werden. Zur Umsetzung der Anwendungsszenarien \autoref{Anwendungsszenarien:MitM} und \autoref{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr} liegt der Fokus der bereitzustellenden Funktionalität auf dem \ac{DHCP} Server. Dieser muss den weiteren Komponenten im Netzwerk beim \ac{DHCP} \textit{discover}, welcher über einen Broadcast\footnote{TODO Broadcast} durchgeführt wird, eine Netzwerkkonfiguration bereitstellen. Dabei ist die Vergabe eines Standardgateways für die spätere Durchführung des \ac{MitM} Anwendungsszenario essentiell. Das \ac{IPAM} sowie die Konfiguration des \ac{DNS} und dessen dynamische Zonenaktualisierungen spielen bei der Umsetzung des Angriffs nur eine nebensächliche Rolle. Sie werden jedoch trotzdem umgesetzt, da die Konfiguration des \ac{IPAM} und der \textit{address range} der \ac{DHCP} \textit{leases} eine Möglichkeit gibt den Wechsel des \ac{DHCP} Servers zu Lehrzwecken visualisieren zu können. Die Bereitstellung eines mit dem \ac{DHCP} Server kompatiblen \ac{DNS} Servers vereinfacht durch die Namensauflösung die Verwaltung der virtuellen Maschinen in der Testumgebung und ermöglicht eine Skalierbare Erweiterung des Systems. Die Verwaltung eines separaten \ac{DNS} Servers ermöglicht die Umsetzung weiterer Anwendungsszenarien und die Analyse des Sicherheitsmechanismus \ac{DNSSEC} am Testsystem. Diese Anwendungsmöglichkeiten sind kein Bestandteil der Thesis und werden im folgenden nicht weiter erläutert. Sie bieten jedoch Ansatzmöglichkeiten für zusätzliche Erweiterungen am System und werden in \autoref{Ausblick} näher beschrieben.
+
+\autoref{Konzept:DHCP und DNS Server} zeigt die Komponenten \ac{DHCP} Server und \ac{DNS} Server und die genutzten Schnittstellen in Bezug auf das Gesamtsystem. Beide Dienste werden auf das Netzwerkinterface des Netzwerks "`i40-network"' gebunden. Somit werden die Dienste ausschließlich im beschriebenen Netzwerk bereitgestellt.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{dhcpdns}
+  \caption{DHCP und DNS Server} 
+  \label{Konzept:DHCP und DNS Server}
+\end{figure}
+
+\subsection{\ac{CoAP} Client/\ac{CoAP} Server}
+Die Komponenten \ac{CoAP} Client und \ac{CoAP} Server dienen der Erweiterung des Testsystems um ein weiteres \ac{IIoT} Protokoll zur Darstellung des in \autoref{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr} beschriebenen Szenarios. Die Komponenten simulieren einen Temperatursensor sowie ein Monitoringsystem, welches ein Webinterface zur Darstellung der gemessenen Temperatur besitzt. Der \ac{CoAP} Client wird auf der \ac{VM} "`comp"' realisiert und befindet sich im Netzwerk "`i40-network"'. Er sendet die gemessenen Daten zum zuständigen \ac{CoAP} Server im Netzwerk "`i40-monitoring"'. Der \ac{CoAP} Server wird, da er den einzigen Dienst in diesem Netzwerk darstellt, auf der \ac{VM} "`mgmt"' bereitgestellt. Die \ac{VM} "`mgmt"' besitzt bereits ein Interface im Netzwerk "`i40-monitoring"'. Der Dienst kann auf die Adresse der Schnittstelle gebunden werden. Es muss keine weitere \ac{VM} zum Netzwerk hinzugefügt werden.
+
+\autoref{Konzept:CoAP Client} und \autoref{Konzept:CoAP Server} visualisieren die Bestandteile der betroffenen Komponenten, deren bereitgestellte Dienste und die genutzten Schnittstellen.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{coapClient}
+  \caption{CoAP Client} 
+  \label{Konzept:CoAP Client}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{coapServer}
+  \caption{CoAP Server} 
+  \label{Konzept:CoAP Server}
+\end{figure}
+
+\subsection{Rogue \ac{DHCP} Server}
+Die Bereitstellung des Rogue \ac{DHCP} Servers findet auf der bestehenden \ac{VM} "`i40"' statt. Die bestehende virtuelle Maschine stellt bereits Tools zu Analyse der Netzwerkkommunikation für das Dockernetzwerk bereit. Eine Erweiterung dieses Systems ermöglicht es die bereitgestellten Anwendungen zur Analyse in den Anwendungsszenarien des Netzwerks der \ac{VM}s ebenfalls zu nutzen. Dies wird durch die Trennung der Netzwerkschnittstellen ermöglicht. Die Analyse der Pakete findet fortan auf der Schnittstelle "`enp0s8"' statt der Docker Netzwerkbrücke statt. Um die Netzwerkpakete der anderen Teilnehmer über die Schnittstelle der \ac{VM} zu leiten, muss die Maschine selbst als Gateway für die Kommunikation zwischen den Netzen genutzt werden. Der Rogue \ac{DHCP} Server ermöglicht die Änderung des Standardgateways bei Erneuerung des \ac{DHCP} \textit{lease} der Client und kann somit den Verkehr auf das lokale System umleiten. \autoref{rogueDhcp} zeigt die Eingliederung des Dienstes in das vorhandene System. Der Dienst muss im Netzwerk "`i40-network"' agieren und wird somit auf das Interface "`enp0s8"' gebunden.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{rogueDhcp}
+  \caption{Rogue DHCP Server} 
+  \label{Konzept:Rogue DHCP Server}
+\end{figure}
+
+\subsection{\ac{CoAP} Manipulationssystem}
+Das \ac{CoAP} Manipulationssystem wird genutzt, um das \ac{CoAP} Monitoringsystem durch falsche bzw. unzulässige Netzwerkpakete zu beeinflussen. Es wird ebenfalls auf der \ac{VM} "`i40"' bereitgestellt. Dies ermöglicht die weiterhin die zentrale Verwaltung des Systems und die Durchführung der Anwendungsszenarien. Eine Bereitstellung des Manipulationsdienstes auf dem gleichen System wie der Rogue \ac{DHCP} Server und die Anwendungen zur Netzwerkanalyse ist sinnvoll, da die Umleitung der Netzwerkpakete durch den Rogue \ac{DHCP} Server und die anschließende Analyse des Verkehrs die Grundlage für die Manipulation des Monitoringsystems darstellt und voneinander abhängig ist.
+
+Das \ac{CoAP} Manipulationssystem versendet Netzwerkpakete mit gefälschten Daten zum \ac{CoAP} Monitoringsystem. Diese werden über die Netzwerkschnittstelle "`enp0s8"' in das "`i40-network"' versandt. Die Verbindung in das Netzwerk "`i40-monitoring"' wird über die Routingfunktionalitäten der \ac{VM} "`mgmt"' bereitgestellt. \autoref{Konzept:CoAP Manipulationssystem} beschreibt den Aufbau der Komponente.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{coapManipulation}
+  \caption{CoAP Manipulationssystem} 
+  \label{Konzept:CoAP Manipulationssystem}
+\end{figure}
+
+\subsection{Docker Service}
+An der Netzwerkkonfiguration sowie am auf der \ac{VM} "`i40"' bereitgestellten Docker Service wurden keine Änderungen vorgenommen. Die genutzte Konfiguration des Dienstes ist in \cite{Weber2018} erläutert. Eine Integration der neuen Komponenten als zusätzliche Container im bestehenden Netzwerk war nicht möglich, da dies die Analyse des Netzwerks durch die Netzwerkimplementierung der Software Docker verfälscht bzw. verhindert. Eine genaue Beschreibung der Beschränkungen, welche bei der Umsetzung des Systems zum Tragen kamen, wird in \autoref{Konzept:Softwarebeschränkungen} durchgeführt.
+
+\section{Laufzeitsicht}
+TODO - Sequenzdiagramme
+1. OPC UA Netzwerktraffic in Docker Netzwerk
+2. CoAP Traffic mit DHCP
+3. CoAP Traffic mit Rogue DHCP
+4. CoAP Manipulation
 
 \section{Anpassungen}
 \label{Konzept:Anpassungen}
-TODO GEHT NIX DOCKER
-
-\section{Vorgehensweise}
-Die Analyse der Netzwerkkommunikation der unteren Schichten (Internet- und Link Layer) des im \autoref{Grundlagen:TCP/IP Referenzmodell} beschriebenen TCP/IP Referenzmodells wird auf Basis der in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} erläuterten Schutzziele durchgeführt. Die oberen Schichten (Transport- und Application Layer) werden in der Testumgebung durch das \ac{M2M}-Protokoll \ac{OPC UA} realisiert. Hierbei dient die Spezifikation des Protokolls als Grundlage der Analyse. Aus der Spezifikation ergeben sich die bei der Kommunikation für die IT-Sicherheit zuständigen Komponenten von \ac{OPC UA}. Diese werden nach des Anforderungen des TODO - ref. BSI ICS Security Kompendium und FIRST CVSS v2.0 - auf Sicherheitslücken und Widersprüche untersucht. Bei der Analyse auftretende, mögliche Schwachstellen werden in einer vorhandenen, prototypischen Industrie 4.0 Testumgebung \cite{Weber2018} implementiert und nachgewiesen. Sicherheitslücken, welche durch Fehlkonfiguration auftreten und keine konzeptionellen Schwachstellen der Software oder deren Protokolle darstellen, sollen in der Testumgebung aktiviert und deaktiviert werden können, um die Auswirkung eines Angriffs auf ein Industrie 4.0 System zu Lehr- und Testzwecken darstellen zu können.
-
-\section{Fehlgeschlagene Konzepte/Konzeptwahl}
 TODO
 
-Die prototypische Implementierung von verschiedenen Angriffsformen im Industrie 4.0 Testsystem wird genutzt, um die Analyse der in \autoref{Analyse} beschriebenen Bedrohungsszenarien und deren Auswirkungen an einem vorhandenen System zu testen und deren Einfluss auf die Netzwerkkommunikation zu bewerten. Mit der Implementierung der Angriffe wird die im Konzept (\autoref{Konzept}) beschriebene Vorgehensweise validiert. Die Auswahl der implementierten Angriffsformen wird vom Testsystem und dessen Infrastruktur bzw. Umsetzung bestimmt. Aus zeitlichen Gründen und aufgrund von Beschränkungen durch das Testsystem (siehe \autoref{Konzept:Anpassungen}) werden nicht alle analysierten Angriffe in der Praxis implementiert.
+\subsection{Softwarebeschränkungen}
+\label{Konzept:Softwarebeschränkungen}
+TODO
 
-Eine \ac{PKI} sowie \ac{IdM} wird im vorhandenen Testsystem nicht umgesetzt, da das genutzte NodeJS Modul \textit{node-opcua}\footnote{LINK} das Zertifikatsmanagement zum aktuellen Stand nicht implementiert\footnote{TODO - Link - Github}.
-
-Ausgeschlossen von der Implementierung sind die Angriffsformen des \ac{DHCP} und \ac{ARP} Spoofing. Diese wären, wie in \autoref{Konzept:Anpassungen} beschrieben nur mit erheblichem Mehraufwand möglich, da ein gesamtes Netzwerk mit eigenem \ac{DHCP} und \ac{DNS} bereitgestellt werden müsste, welchen Zonen und automatische DNS Updates konfiguriert werden müssten. Außerdem stellt die vorhandene Netzwerk-Infrastruktur des Testsystems mit der genutzten Docker Bridge\footnote{text} die Funktionalitäten eines \ac{MitM} Angriffs und somit die Möglichkeit der Paketanalyse im Netzwerk bereits bereit.
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=15cm]{netzwerk}
-    \caption{Netzwerkinfrastruktur} 
-    \label{Konzept:Netzwerkkonzept}
-  \end{figure}
-  
-  \clearpage
-
-  \begin{figure}[h]
-    \centering
-    \includegraphics[width=15cm]{vm}
-    \caption{Kommunikation der virtuellen Maschinen} 
-    \label{Konzept:VMKommunikation}
-  \end{figure}
-  
-  \clearpage
+\subsection{verworfene Konzepte}
+\label{Konzept:verworfene Konzepte}
+TODO
