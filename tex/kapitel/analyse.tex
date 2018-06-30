@@ -1,6 +1,6 @@
 \chapter{Analyse}
 \label{Analyse}
-Im folgenden Kapitel wird die Analyse der Netzwerksicherheit in Industrie 4.0 Umgebungen durchgeführt. Zuerst wird eine Beschreibung und Einordnung der Bedrohungen von Industrie 4.0 Systemen anhand der in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzziele und der aktuellen Industriestandards \autoref{Grundlagen:Normen und Standards} durchgeführt. Anschließend werden, aufgrund der bestehenden Infrastruktur und der Heterogenität der Netzwerklandschaft der Industrie, verschiedene Integrationsansätze für einen standardisierten Datenaustausch beschrieben. Die dabei etablierten Techniken und Protokolle des \ac{IoT} und \ac{IIoT} sowie neue \ac{M2M} Kommunikationswege der Industrie 4.0 werden nach den Schichten des \ac{TCP}/\ac{IP} Referenzmodells untersucht, um eine strukturierte Vorgehensweise zu ermöglichen und ein ganzheitliches Bild der Netzwerkkommunikation zu erhalten. Die Analyse wird mit Hilfe des Industrie 4.0 Testsystems (\cite{Weber2018}) durchgeführt. Dieses wird genutzt und erweitert, um unterschiedliche Szenarien darzustellen und die Sicherheit der Netzwerkkommunikation mit Hilfe verschiedener Softwaretools und Vorgehensweisen zu analysieren.
+Im folgenden Kapitel wird die Analyse der Netzwerksicherheit in Industrie 4.0 Umgebungen durchgeführt. Zuerst wird eine Beschreibung und Einordnung der Bedrohungen von Industrie 4.0 Systemen anhand der in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzziele und der aktuellen Industriestandards \autoref{Grundlagen:Normen und Standards} durchgeführt. Anschließend werden, aufgrund der bestehenden Infrastruktur und der Heterogenität der Netzwerklandschaft der Industrie, verschiedene Integrationsansätze für einen standardisierten Datenaustausch beschrieben. Die dabei etablierten Techniken und Protokolle des \ac{IoT} und \ac{IIoT} sowie neue \ac{M2M} Kommunikationswege der Industrie 4.0 werden nach den Schichten des \ac{TCP}/\ac{IP} Referenzmodells untersucht, um eine strukturierte Vorgehensweise zu ermöglichen und ein ganzheitliches Bild der Netzwerkkommunikation zu erhalten. Die Ergebnisse der Analyse sollen genutzt werden, um verschiedene Anwendungsszenarien am Industrie 4.0 Testsystem (\cite{Weber2018}) durchzuführen.
 
 \section{Bedrohungen}
 \label{Analyse:Bedrohungen}
@@ -19,7 +19,7 @@ Die vierte industrielle Revolution, das \ac{IIoT} und dessen Vielzahl an aktiven
     \item Kompromittierung von Smartphones im Produktionsumfeld
 \end{enumerate}
 
-TODO - Einordnung - Bezug auf Analyse
+TODO - Einordnung - Bezug auf Anwendungsszenarien
 
 Um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzziele umzusetzen, ist es notwendig einen größtmöglichen Schutz gegen diese Bedrohungen bereitzustellen. Die Sicherheit eines Gesamtsystems kann nicht nur an einer einzigen Stelle im Kommunikationsstack hergestellt und gewährleistet werden. Es müssen alle Stellen des Kommunikationsstacks gegen Bedrohungen abgesichert werden (\cite{sichKom2017}). Dafür müssen die Netzwerkinfrastruktur und die eigentliche Kommunikation im Netzwerk gesichert werden. Dies geschieht durch die Abschottung von Systemen, die Einschränkung von Zugangsberechtigungen, die Härtung der Sicherheit der genutzten Komponenten sowie den Einsatz von geeigneten Netzwerkprotokollen und Verschlüsselungsverfahren.
 
@@ -34,19 +34,8 @@ Ansatz: teuer, aufwendig bzw. nicht möglich, da embedded System bzw. keine Ress
 \subsection{Gatewaykommunikation}
 Eine Alternative zur Umstellung der bestehenden Systeme stellt die Kommunikation über Gateways dar. Hierbei gibt es mehrere Softwarelösungen, welche unterschiedliche Ziele verfolgen. Es werden Systeme zur Anlagenoptimierung (TODO - ref. SePiA.Pro), der Bereitstellung einer offenen, branchenübergreifenden Plattform mit diversen Smart Services wie Datenanalyse und Flottenmanagement (TODO - ref. Siemens Mindsphere, DeviceInsight) und dem herstellerübergreifenden Gerätemanagement (AXOOM) entwickelt \cite{acatec2016}. Die Systeme sammeln und verwalten die Daten der Anlagen an zentraler Stelle und stellen sie im Netzwerk zur Verfügung. Der Einsatzmöglichkeiten dieser Softwarelösungen sind von den vorhandenen Schnittstellen der Anlagen abhängig und benötigen eine individuelle Konfiguration um den unterschiedlichen Anforderungen der Industrielandschaft gerecht zu werden.
 
-TODO - Im folgenden Abschnitt wird die Umsetzung der Kommunikation über eine digitale Serviceplattform am Beispiel von AXOOM dargestellt. eher nicht!
-
-\subsubsection{AXOOM}
-TODO - 2016 Innovationspreis deutsche Indsutrie
-TODO - unterstützt Optimierung der Wertschöpfungskette -> ERP-, MES Kommunikation über "bekannte", offene Schnittstellen (REST usw.) 
-TODO - unterstützt Anbindung von \ac{IoT}. Analyse und Visualisierung von Daten -> Kommunikation über spezielle Schnittstellen
-TODO - sichere Kommunikation durch AXOOM Gate - wie? Quellen? -> "Dieses basiert teilweise auf Technologien unseres Partners C-Labs und schafft eine direkte Verbindung zwischen dem Kundennetzwerk und der Cloud. Das AXOOM Gate ist in der Lage, Daten herstellerunabhängig von allen angebundenen Geräten zu sammeln, so dass diese verschlüsselt an die AXOOM Plattform gesendet und dort visualisiert und ausgewertet werden können. Besonderen Schutz bei der Datenübertragung bietet ein mehrstufiges Sicherheits- und Verschlüsselungskonzept auf Komponenten-, Transport-, Applikations- und Anwenderebene. So wird eine genaue Zugriffskontrolle innerhalb der Fabrik sowie auf die Fabrik sichergestellt, unsichere Verbindungen von und nach Außen sind ausgeschlossen."
-TODO - offene Schnittstellen für Low Level
-TODO - REST usw. für High Level Applications
 TODO - Softwareschwachstellen, Softwarefehler 
 TODO - Herstellerabhängigkeit
-TODO - Kosten der Interfaceentwicklung, usw.
-TODO - AXOOM Absatz unnötig
 
 \section{Netzzugangsschicht}
 Die Netzzugangsschicht stellt die erste Instanz der Kommunikation in einem Netzwerk dar. Sie beinhaltet das Übertragungsmedium sowie die Topologie, in welcher die Kommunikation stattfindet. Das Übertragungsmedium bestimmt die Form der Signalübertragung. In Industrie 4.0 Netzen können neben der klassischen Kabelverbindung auch andere (instabile) Kanäle wie Mobilfunk oder Satelliten in Frage kommen. Um die Kommunikation über alle Medien sicher und zuverlässig zu gestalten, müssen auf technischer Ebene Protokolle genutzt werden, welche es ermöglichen die gegebenen Schutzziele zu realisieren und die Integrität der Daten bei der Übertragung über große Entfernungen zu gewährleisten. Dominante Technologien dieser Schicht sind \ac{IEEE} 802.3 (Ethernet)\footnote{Link zu IEEE 802.3}, \ac{IEEE} 802.11 (Wireless LAN)\footnote{Link zu IEEE 802.11} und \ac{IEEE} 802.15.4\footnote{Link zu IEEE 802.15.4} (\cite{sichKom2017}).
@@ -210,6 +199,8 @@ Dies führt zu einem \ac{BAF} von ca. 56. Die folgende Grafik stellt einen Angri
   
 \clearpage
 
+TODO - Skalierung der Grafik
+
 Auf der Darstellung ist zu erkennen, dass bei diesem Angriff eine lineare Steigerung der Netzlast in beiden Netzen vorliegt. Entscheidend ist jedoch der \ac{BAF}, welcher das Verhältnis zwischen der Lastzunahme im Angreifer- und Opfernetz beschreibt. Es ist zu erkennen, dass beim Versandt von 35000 Paketen im Quellnetzwerk nur ca. 0.016 Gigabit Daten transferiert werden müssen, dafür aber knapp 1 Gigabit an Daten in das Zielnetzwerk übertragen werden und dort für eine erhebliche Last sorgen.
 
 Der \ac{DNS} bietet weitere Angriffsmöglichkeiten wie \ac{DNS} Fast Fluxing oder \ac{DNS} Information Leakage. Diese Angriffe dienen zum \textit{Phishing} von Daten oder der Spionage der Netzwerkstruktur. Sie nehmen initial keinen Einfluss auf den Netzwerkverkehr und dienen der Vorbereitung von Folgeangriffen und dem Sammeln von Informationen. Die Angriffsformen werden in \cite{Ledermueller2009} näher beschrieben. Die Analyse der Sicherheit der Netzwerkkommunikation beschränkt sich auf Angriffe, welche direkten Einfluss in die Kommunikation im Netzwerk haben. Weitere Formen der \ac{DoS}/\ac{DDoS} Angriffe finden auf Transportschicht \autoref{Analyse:Transportschicht} durch \textit{SYN-Flooding} oder auf Anwendungsschicht \autoref{Analyse:Anwendungsschicht} zur Negierung eines Speziellen Dienstes statt.
@@ -224,9 +215,9 @@ TODO - Sicherheitsmaßnahmen siehe \cite{Ledermueller2009}
 
 Der Mangel an Informationen bei der initialen Verbindung eines Clients im Netzwerk, kann von einem Angreifer genutzt werden, um die Netzwerkkonfiguration zu manipulieren. Da der Broadcast des Clients an das gesamte Netzwerk versandt wird, ist es dem Angreifer möglich selbst auf diese Anfrage zu antworten. Hierzu wird die Technik des Spoofing in Verbindung mit \ac{ARP} Poisoning oder einem zusätzlichen \ac{DHCP} Server (Rogue \ac{DHCP}), welcher vom Angreifer kontrolliert wird, im Netzwerk genutzt. In diesem Fall muss es dem Angreifer nur gelingen schneller auf den \ac{DHCP} Discover bzw. \ac{DHCP} Request des Clients zu antworten als der zuständige \ac{DHCP} Server. Somit ist es möglich die Netzwerkkonfiguration des Clients zu manipulieren.
 
-In Kapitel \autoref{Impl:DHCP Spoofing} wird die Erweiterung des Testsystems (\cite{Weber2018}) um einen zusätzlichen \ac{DHCP} Server im Netzwerk durchgeführt, um mögliche Auswirkungen auf den Netzwerkverkehr an einem praktischen Beispiel darzustellen. Durch die Implementierung eines weiteren \ac{DHCP} Servers im Netzwerk wird ein Eingriff auf das Netzwerk in der Netzzugangsschicht und die gleichzeitige Manipulation des \ac{DHCP} der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells beschrieben.
+Ein Angriff auf das \ac{DHCP} in Netzwerken kann weitreichende folgen für die Netzwerksicherheit mit sich bringen. Durch die Änderung der Client-Adressen und Subnetze kann es zu \ac{IP} Adresskonflikten im Netzwerk kommen oder die Kommunikation beschränkt bzw. stillgelegt werden. Größere Auswirkungen auf die Netzwerksicherheit stellt das Umlenken des Datenverkehrs durch Manipulation der \ac{DNS}- bzw. Gateway-Parameter dar. Hierbei kann der gesamte Netzwerkverkehr eines Clients umgelenkt werden, um einen \ac{MitM} Angriff durchzuführen und den Netzwerkverkehr auszulesen.
 
-Ein Angriff auf das \ac{DHCP} in Netzwerken kann weitreichende folgen für die Netzwerksicherheit mit sich bringen. Durch die Änderung der Client-Adressen und Subnetze kann es zu \ac{IP} Adresskonflikten im Netzwerk kommen oder die Kommunikation beschränkt bzw. stillgelegt werden. Weitreichendere Auswirkungen auf die Netzwerksicherheit stellt das Umlenken des Datenverkehrs durch Manipulation der \ac{DNS}- bzw. Gateway-Parameter dar. Hierbei kann der gesamte Netzwerkverkehr eines Clients umgelenkt werden, um einen \ac{MitM} Angriff durchzuführen und den Netzwerkverkehr auszulesen.
+In Kapitel \autoref{Umsetzung:Netzwerkverwaltung} wird die Erweiterung des Testsystems (\cite{Weber2018}) um einen zusätzlichen \ac{DHCP} Server im Netzwerk durchgeführt, um mögliche Auswirkungen auf den Netzwerkverkehr an einem praktischen Beispiel darzustellen. Durch die Implementierung eines weiteren \ac{DHCP} Servers im Netzwerk wird ein Eingriff auf das Netzwerk in der Netzzugangsschicht und die gleichzeitige Manipulation des \ac{DHCP} der Anwendungsschicht des \ac{TCP}/\ac{IP} Referenzmodells beschrieben.
 
 Da das \ac{IP} Hilfsprotokoll \ac{DHCP} keine Sicherheitsmaßnahmen zur Verhinderung dieser Angriffe mit sich bringt, ist es notwendig sich vor diesen Bedrohungen schon auf den unteren Schichten des \ac{TCP}/\ac{IP} Referenzmodells zu schützen. Eine in der Industrie weit verbreitete Technik zum verhindern von Angriffen auf das \ac{DHCP} wird bereits in der Netzzugangsschicht umgesetzt. Netzwerkkomponenten wie Router und Swichtes werden mit Hilfe von \ac{DHCP} Snooping konfiguriert, welches es ermöglicht \ac{DHCP} Nachrichten zu überwachen und diese nur von vertrauenswürdigen Ports in das Netzwerk weiterzuleiten. Somit werden \ac{DHCP} Pakete, welche von einem im Netzwerk eingeschleusten Rogue-DHCP im Netzwerk verteilt werden sollen direkt verworfen und nehmen keinen Einfluss auf das bestehende Netzwerk.
 
@@ -274,7 +265,7 @@ Die Kommunikation des Protokolls \ac{OPC UA} über Webservices und \ac{HTTP} bzw
 \label{Analyse:Application Layer Security}
 \ac{OPC UA} stellt aufgrund der verschiedenen Anforderungen der Industrie an ihre Systeme mehrere Sicherheitskonfigurationen zur Informationsübertragung zur Verfügung. Dies ist notwendig, da die Verwendung von Verschlüsselungsalgorithmen und Kodierungsverfahren Ressourcen benötigt und Latenzen verursacht, welche unter Umständen nicht vorhanden sind oder nicht geleistet werden können. Eine Fehlkonfiguration des Protokolls kann jedoch auch Auswirkungen auf den Betrieb des Netzwerks und der Komponenten haben sowie die Integrität der Daten gefährden.
 
-\ac{OPC UA} verifiziert vor dem Austausch von Nachrichten zwischen zwei Komponenten, ob ein SecureChannel vorhanden ist, über welchen die Daten übertragen werden. Dieser wird vom bestehenden Netzwerkstack und den genutzten niedrigeren Protokollen bereitgestellt (\cite{opcpt1}). Die \ac{UA} Secure Conversation besteht aus dem \textit{Secure Channel} und der Session und desssen gesetzten \textit{SecurityMode} (\cite{opcpt2}). Die Form der Nachrichten im \textit{Secure Channel} wird durch den in der gewählen \textit{Security Mode} bestimmt. Bei der Verwendung der \textit{Security Policy} None wird ein \textit{Secure Channel} hergestellt, welcher jedoch keine Sicherheitsprofile bereitstellt (\cite{opcpt7}). Dies wird in \autoref{Analyse:OPC UA Secure Channel} dargestellt.
+\ac{OPC UA} verifiziert vor dem Austausch von Nachrichten zwischen zwei Komponenten, ob ein \textit{Secure Channel} vorhanden ist, über welchen die Daten übertragen werden. Dieser wird vom bestehenden Netzwerkstack und den genutzten niedrigeren Protokollen bereitgestellt (\cite{opcpt1}). Die \ac{UA} \textit{Secure Conversation} besteht aus dem \textit{Secure Channel}, der Session und dessen gesetztem \textit{SecurityMode} (\cite{opcpt2}). Die Form der Nachrichten im \textit{Secure Channel} wird durch die \textit{Security Policy} im gewählten \textit{Security Mode} bestimmt. Bei der Verwendung der \textit{Security Policy} "`none"' wird ein \textit{Secure Channel} hergestellt, welcher jedoch keine Sicherheitsprofile bereitstellt (\cite{opcpt7}). Dies wird in \autoref{Analyse:OPC UA Secure Channel} dargestellt.
 
 \begin{figure}[h]
   \centering
@@ -285,49 +276,7 @@ Die Kommunikation des Protokolls \ac{OPC UA} über Webservices und \ac{HTTP} bzw
 
 \clearpage
 
-Mit Hilfe des vorhandenen Testsystems (\cite{Weber2018}) kann dieses Verhalten nachgewiesen werden. Hierfür wurde das Netzwerkanalysetool Wireshark\footnote{TODO - WIRESHARK} genutzt, um an der Netzwerkbrücke der Docker Container den Netzwerkverkehr zwischen den Komponenten abzuhören. In Verbindung mit dem \ac{OPC UA} \textit{Secure Channel} wurde das System erweitert, um verschiedene Sicherheitsprofile für die Kommunikation bereitzustellen. Die Erweiterung des Systems wird in \autoref{Impl:Analyse:OPC UA Secure Channel} beschrieben.
-
-Die folgenden Abbildungen zeigen die Ergebnisse der Paketanalyse mit der vorhandenen \text{Security Policies} "none". Der \ac{OPC UA} Client des Control Containers, welcher die Liste der im Netzwerk vorhandenen \ac{OPC UA} Server abfrägt besitzt die \ac{IP}-Adresse 172.18.0.6, der Container des Discoveryservers die \ac{IP}-Adresse 172.18.0.2. In \autoref{Analyse:opcua-secure-none-req} ist der Request des Control Containers zum Aufbau eines \textit{Secure Channel} dargestellt. Die verwendete \textit{Security Policy} ist im Bereich SecurityPolicyUri des \ac{OPC UA} Protokolls beschrieben. In \autoref{Analyse:opcua-secure-none-res} ist die Antwort des \ac{OPC UA} Discoveryservers im \textit{Secure Channel} dargestellt. 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm]{opcua-secure-none-req}
-  \caption{Paketanalyse OPC UA - Client Request bei Sicherheitsprofil "none"} 
-  \label{Analyse:opcua-secure-none-req}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm]{opcua-secure-none-res}
-  \caption{Paketanalyse OPC UA - Server Response bei Sicherheitsprofil "none"} 
-  \label{Analyse:opcua-secure-none-res}
-\end{figure}
-
-\clearpage
-
-Es ist zu erkennen, dass die Kommunikation, obwohl der \textit{Secure Channel} genutzt wird, nicht verschlüsselt ist. Die Endpunkte sowie deren Adressen und bereitgestellte Methoden können aus den Paketen ausgelesen werden.
-
-Im Folgenden wird erneut das Abfragen des Control Containers aller im Netzwerk vorhandenen Endpunkte beim Discoveryserver beschrieben, jedoch wird das Sicherheitsprofil "Basic256Sha256" mit dem \textit{MessageSecurityMode} "SIGNANDENCRYPT" genutzt. Der \ac{OPC UA} Client besitzt die \ac{IP}-Adresse 172.18.0.7. Der Discoveryserver weiterhin die Adresse 172.18.0.2. \autoref{Analyse:opcua-secure-sha-req} zeigt den Request, \autoref{Analyse:opcua-secure-sha-res} die verschlüsselte Response im \textit{Secure Channel}.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm]{opcua-secure-sha-req}
-  \caption{Paketanalyse OPC UA - Client Request bei Sicherheitsprofil "Basic256Sha256" und MessageSecurityMode "SIGNANDENCRYPT"} 
-  \label{Analyse:opcua-secure-sha-req}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm]{opcua-secure-sha-res}
-  \caption{Paketanalyse OPCUA - Server Response bei Sicherheitsprofil "Basic256Sha256" und MessageSecurityMode "SIGNANDENCRYPT"} 
-  \label{Analyse:opcua-secure-sha-res}
-\end{figure}
-
-\clearpage
-
-Es ist zu erkennen, dass der gesamte Netzwerkverkehr im \textit{Secure Channel} durch ein Zertifikat signiert sowie durch den Algorithmus SHA256 verschlüsselt wurde. Die Integrität und Vertraulichkeit während der Kommunikation im Netzwerk ist gewährleistet.
-
-Es ist zu Beachten, dass - TODO Rechenleistung erhöht sich -> Verschlüsselungsalgorithmen werden unsicher -> OPC ist flexibel für zukunft und anforderungen
+TODO Rechenleistung erhöht sich -> Verschlüsselungsalgorithmen werden unsicher -> OPC ist flexibel für Zukunft und Anforderungen
 
 \subsubsection{weitere Sicherheitsbestandteile}
 TODO - PKI 
@@ -362,30 +311,7 @@ Auf der Netzzugangsschicht fallen, wie auf allen anderen Schichten, Betriebsdate
 
 Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
 
-
 \section{Zwischenfazit}
-TODO - Ergebnisse beschreiben -> grundlage des Konzepts
+TODO - Ergebnisse beschreiben -> Auswahl der Anwendungsszenarien, grundlage des Konzepts
 
 Die beschriebenen Anforderungen müssen, um eine sichere Netzwerkkommunikation zu gewährleisten, von allen beteiligen Komponenten der Umgebung integriert und umgesetzt werden. Industrie 4.0 Umgebungen können in unterschiedlichster Form ausgeprägt sein. Die Umsetzung der Hard- und Softwarekomponenten hängt von den zu übertragenden Daten, dem Übertragungsmedium, der Übertragungsdistanz und vorausgesetzten Dienstgüte ab.
-
-TODO - Um die in den Grundlagen beschriebenen Sicherheitsstandards, Protokolle und Integrationslösungen auf ihre Standhaftigkeit in Bezug auf die IT-Schutzziele zu analysieren, werden die Protokolle und Systeme in ihrem Aufbau untersucht und mögliche Schwachstellen herausgearbeitet, daraus hervorgehende Risiken beschrieben und erforderliche Maßnahmen empfohlen. Die \ac{RAMI4.0} beschreibt ein Referenzmodell für Industrie 4.0 Umgebungen. Bereits etablierte Lösungen bestehen aus heterogenen, individuellen Netzwerklandschaften. Um eine Untersuchung der vorhandenen Systeme im neuen Umfeld durchzuführen, müssen verschiedene Faktoren, wie Infrastruktur oder besondere Anforderungen an die Systeme mit einbezogen werden. Das folgende Kapitel dient der Beschreibung der Vorgehensweise bei der Analyse der Netzwerkkommunikation und deren Komponenten.
-
-\section{Abgrenzung}
-\label{Konzept:Abgrenzung}
-Die \ac{IIRA} ist ein anerkannter, in der Industrie verbreiteter Standard. Da die Analyse der Netzwerksicherheit am in \autoref{Grundlagen:Testsystem} beschriebenen Testsystem durchgeführt werden soll, welches den Kommunikationsstandard \ac{OPC UA} implementiert, wird sich im weiteren Verlauf der Thesis ausschließlich auf die in der IEC 62541 beschriebene Architektur \ac{RAMI4.0} als Referenzmodell zur Analyse bezogen. Es werden Bedrohungen in Industrie 4.0 Umgebungen beschrieben, eine Analyse der Übertragungsmedien und Infrastruktur durchgeführt und die im Testsystem verwendeten Protokolle mit Bezug auf ihre Anforderungen im Bereich der Netzwerksicherheit untersucht. Um verschiedene Praxisszenarien darzustellen, wird das Testsystem um für die Analyse benötigte, zusätzliche Komponenten erweitert. 
-
-\section{TODO}
-\subsubsection{Übertragungskanal}
-Der Übertragungskanal beschreibt die Bitübertragungsschicht. In Industrie 4.0 Umgebungen ist es notwendig, Daten zu übertragen, um eine räumliche oder zeitliche Distanz zu überbrücken. Je nach Anwendungsfall findet diese Kommunikation über Kupfer- bzw. Glasfaserkabel, Funkübertragung oder ein Speichermedium statt. Je nach Beschaffenheit des Übertragungskanals, ist es notwendig, weitere Maßnahmen zur Sicherheit der Kommunikation zu treffen. Aufgrund der Durchführung der Analyse in einem virtuellen Testsystem, werden die Auswirkungen der Form des Übertragungskanals bei der Analyse der Kommunikation nicht beachtet.
-
-\subsection{Software}
-Jede Komponente einer \ac{ICS}-Umgebung kann Softwareschwachstellen und Sicherheitslücken enthalten. Dabei spielt es keine Rolle, ob es sich um ein komplexes \ac{ICS} handelt oder um einen einfachen Anwendungsserver. Software-Aktualisierungen sowie ein Patch-Management sind für einen sicheren Betrieb notwendig, um Angriffe über Exploits zu verhindern. 
-
-\subsubsection{Netzwerkstack}
-Die Kommunikation zwischen Industrieanlagen findet mehr und mehr auf der Basis von TCP-basierten Netzwerken statt. Das \ac{RAMI4.0} beschreibt Industrie 4.0 Umgebungen als \ac{SOA}. \ac{SOA} beschreibt ein Netzwerk, in welchem von den Teilnehmern Dienste bereitgestellt und genutzt werden können. Die Dienste im Netzwerk werden i. d. R. über eine \ac{REST}-\ac{API} bereitgestellt. Diese Schnittstellen nutzen bereits etablierte Protokolle der \ac{IoT} oder \ac{IIoT} Welt.
-
-\subsubsection{Protokolle}
-\ac{IoT}-Geräte nutzen das Internet als Übertragungsmedium. Somit müssen sie zur Übertragung ihrer Daten Protokolle nutzen, welche die Internet Protocol Suite der \ac{IETF} einhalten. Etablierte Internet-Protokolle wie HTTP und XMPP wurden zur Kommunikation ressourcenreicher Geräte mit hoher Leistung entwickelt und sind für viele Netzwerke mit \ac{IoT}- oder \ac{IIoT}-Endknoten zu komplex, bzw. nicht geeignet. Im Rahmen der 4. industriellen Revolution wurden daher, vor allem für \ac{IIoT} Umgebungen, neue Protokolle entwickelt, welche ressourcensparende, sichere Kommunikation zwischen Maschinen bereitstellen sollen. 
-
-\section{Vorgehensweise}
-Die Analyse der Netzwerkkommunikation der unteren Schichten (Internet- und Link Layer) des im \autoref{Grundlagen:TCP/IP Referenzmodell} beschriebenen TCP/IP Referenzmodells wird auf Basis der in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} erläuterten Schutzziele durchgeführt. Die oberen Schichten (Transport- und Application Layer) werden in der Testumgebung durch das \ac{M2M}-Protokoll \ac{OPC UA} realisiert. Hierbei dient die Spezifikation des Protokolls als Grundlage der Analyse. Aus der Spezifikation ergeben sich die bei der Kommunikation für die IT-Sicherheit zuständigen Komponenten von \ac{OPC UA}. Diese werden nach des Anforderungen des TODO - ref. BSI ICS Security Kompendium und FIRST CVSS v2.0 - auf Sicherheitslücken und Widersprüche untersucht. Bei der Analyse auftretende, mögliche Schwachstellen werden in einer vorhandenen, prototypischen Industrie 4.0 Testumgebung \cite{Weber2018} implementiert und nachgewiesen. Sicherheitslücken, welche durch Fehlkonfiguration auftreten und keine konzeptionellen Schwachstellen der Software oder deren Protokolle darstellen, sollen in der Testumgebung aktiviert und deaktiviert werden können, um die Auswirkung eines Angriffs auf ein Industrie 4.0 System zu Lehr- und Testzwecken darstellen zu können.

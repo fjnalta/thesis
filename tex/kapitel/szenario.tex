@@ -4,18 +4,18 @@ Aufgrund der in \autoref{Analyse} gewonnenen Erkenntnisse wurden verschiedene An
 
 TODO - Tabelle
 
-Die Umsetzung priorisierter Anwendungsszenarien wie SYN-Flood, \ac{DNS} Amplifictation und Sockstress war aus zeitlichen Gründen nicht möglich, da die Manipulation des Netzwerks und dessen Kommunikation im gegebenen Testsystem aufgrund der genutzten Software nur begrenzt möglich war und somit die Bereitstellung einer Netzwerkinfrastruktur wesentlicher Bestandteil der Thesis war. Dies wird in \autoref{Konzept:Abgrenzung} und \autoref{Konzept:verworfene Konzepte} näher erläutert.
+Die Umsetzung priorisierter Anwendungsszenarien wie SYN-Flood, \ac{ARP} Spoofing oder \ac{DNS} Amplifictation war aus zeitlichen Gründen nicht möglich, da die Manipulation des Netzwerks und dessen Kommunikation im gegebenen Testsystem aufgrund der genutzten Software nur begrenzt möglich war und somit die Bereitstellung einer Netzwerkinfrastruktur wesentlicher Bestandteil der Thesis war. Dies wird in \autoref{Konzept:Anpassungen} näher erläutert.
 
-Nach Abwägung der Faktoren zeitlicher Aufwand, Umsetzbarkeit und Darstellungsmöglichkeit des Angriffs, wurde sich für die folgenden Anwendungsszenarien entschieden.
+Nach Abwägung der Faktoren zeitlicher Aufwand, Umsetzbarkeit und Darstellungsmöglichkeit und Mehrwert für das System, wurde sich für die folgenden Anwendungsszenarien entschieden.
 
 \section{\ac{OPC UA} Kommunikation}
 \label{Anwendungsszenarien:OPC UA Kommunikation}
-1. Erweiterung OPC UA
+Die Kommunikation des \ac{OPC UA} Protokolls findet laut Spezifikation, wie in \autoref{Analyse:Application Layer Security} beschrieben, immer im \textit{Secure Channel} statt. Der \textit{Secure Channel} stellt verschiedene \textit{Security Policies} für unterschiedliche Anwendungsfälle zur Verfügung. Administratoren müssen abwägen in wie Fern Ressourcen und Latenz für die Absicherung der Kommunikation im Netzwerk gewährleistet werden können. Die Kommunikation zwischen \ac{OPC UA} Komponenten und die verschiedenen Sicherheitsprofile können im vorhandenen Testsystem (\cite{Weber2018}) untersucht werden. Hierfür wird das Netzwerkanalysetool Wireshark\footnote{Link: https://www.wireshark.org/} genutzt, um den Netzwerkverkehr zwischen den Komponenten abzuhören. In Verbindung mit dem \ac{OPC UA} \textit{Secure Channel} wird das System erweitert, um verschiedene Sicherheitsprofile für die Kommunikation bereitzustellen und somit die Auswirkungen einer Fehlkonfiguration darstellen zu können.
 
 \section{\ac{MitM}}
 \label{Anwendungsszenarien:MitM}
-2. MitM - Gateway
+Im vorhandenen System soll die Darstellung eines \ac{MitM} Angriffs ermöglicht werden. Dieser wird mit Hilfe eines Rogue \ac{DHCP} Servers durchgeführt. Es soll ermöglicht werden, die Netzwerkkonfiguration einer Komponente so zu Manipulieren, um die Kommunikation mithören zu können. Dies beinhaltet die Bereitstellung einer Netzwerkinfrastruktur inklusive \ac{DHCP} und \ac{DNS}.
 
 \section{Manipulation von ungesichertem Netzwerkverkehr}
 \label{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr}
-3. CoAP - Manipulation
+Im dritten Anwendungsszenario sollen die durch den durchgeführten \ac{MitM} Angriff gewonnenen Informationen genutzt werden, um die Funktionalität eines weiteren Systems im Netzwerk zu stören und somit direkt Einfluss auf einen Prozess in einem Industrienetzwerk nehmen. Aufgrund der in \autoref{Grundlagen:IoT/IIoT} beschriebenen Faktoren und der immer weiteren Vernetzung ressourcenschwacher Komponenten soll das Anwendungsszenario anhand einer minimalen \ac{IIoT} Komponente am Protokoll \ac{CoAP} durchgeführt werden.
