@@ -22,6 +22,7 @@ Zuerst wurde die Netzwerkkonfiguration aller vorhandener virtueller Maschinen wi
 Die Installation und Konfiguration aller Komponenten sowie deren Konfigurationsdateien werden in den jeweiligen Readme Dateien des Git Repositories\footnote{TODO - Mein Git} detailliert beschrieben.
 
 \subsection{Netzwerkverwaltung}
+\label{Umsetzung:Netzwerkverwaltung}
 Um die grundlegenden Netzwerkdienste in den internen Netzwerken bereitzustellen und die Kommunikation anderer Netzwerkteilnehmer mit externen Netzen wie dem Internet zur Installation und Konfiguration weiterer Software zu ermöglichen, wurde mit der Installation und Konfiguration der \ac{VM} "`mgmt"' begonnen.
 
 Nach dem Start dem \ac{VM} wurde der Hostname zur Namensauflösung auf dem System geändert. Anschließend wurde die Netzwerkkonfiguration aller Adapter durchgeführt und den Schnittstellen der internen Netzwerke die statischen \ac{IP} Adressen 10.0.0.1 und 10.0.10.1 zugewiesen. Der Adapter zum Hostsystem bleibt unverändert. Auf der \ac{IP} Adresse 10.0.0.1 werden für das Netzwerk "`i40-network"' die Dienste \ac{DHCP} und \ac{DNS} konfiguriert. Für das Netzwerk "`i40-monitoring"' wird kein \ac{DHCP} konfiguriert, da nur zwei Komponenten im Netzwerk vorhanden sind und die Form der Adressvergabe in diesem Netzwerk keinen Einfluss auf die Umsetzung des Konzepts hat. 
