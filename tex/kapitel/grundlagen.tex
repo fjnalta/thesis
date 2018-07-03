@@ -104,9 +104,13 @@ TODO - mehr Analyse.
 \label{Grundlagen:IoT/IIoT}
 \ac{IoT} beschreibt ein verbraucherorientiertes Konzept für die Nutzung von digitalisierten und vernetzten Systemen. Hierbei werden die physischen Systeme virtuell abgebildet. Dies wird genutzt, um die Effektivität der Systeme zu verbessern und intelligente Services zu nutzen. Das \ac{IIoT} beschreibt den Gebrauch von \ac{IoT}-Technologien im industriellen Raum.
 
-Das \ac{IoT} ist ein wesentlicher Bestandteil der Industrie 4.0, welche Netzwerke aus Systemen, Daten und Dienstleistungen herstellt, in denen diese Komponenten miteinander kommunizieren. Für die Kommunikation haben sich, je nach Anforderungen, verschiedene Protokolle, wie z.B. \ac{HTTP}, \ac{CoAP}, \ac{XMPP} und \ac{MQTT}, etabliert. Jedes dieser Protokolle besitzt für spezifische Anforderungen wie Skalierbarkeit, vorhandene Ressourcen, Echtzeitkommunikation oder Sicherheit Vor- und Nachteile. 
+Das \ac{IoT} ist ein wesentlicher Bestandteil der Industrie 4.0, welche Netzwerke aus Systemen, Daten und Dienstleistungen herstellt, in denen diese Komponenten miteinander kommunizieren. Für die Kommunikation haben sich, je nach Anforderungen, verschiedene Protokolle, wie \ac{HTTP} und \ac{XMPP} etabliert. Jedes dieser Protokolle besitzt für spezifische Anforderungen wie Skalierbarkeit, vorhandene Ressourcen, Echtzeitkommunikation oder Sicherheit Vor- und Nachteile. 
 
 TODO - \ac{IIoT}
+Im \ac{IIoT} stellt vorallem die M2M-Kommunikation eine wichtige Rolle dar.
+Das Protokoll \ac{CoAP} wird im Rahmen des \ac{IETF} im RFC 7252\footnote{Link - https://tools.ietf.org/html/rfc7252} standadisiert.
+\ac{CoAP}, \ac{MQTT}
+und erfüllt die Bedinungen für \ac{M2M} Kommunikation in 
 
 \section{Normen und Standards}
 \label{Grundlagen:Normen und Standards}
@@ -140,6 +144,7 @@ TODO - Mit Bild nur kurz erklären und referenzieren, Überschriften entfernen.
 
 \subsection{Industrie 4.0 Referenzarchitekturen}
 \subsubsection{\ac{RAMI4.0}}
+\label{Grundlagen:RAMI4.0}
 Um eine flächendeckende Vernetzung zu ermöglichen, muss eine einheitliche Kommunikation geschaffen werden. Die \ac{RAMI4.0} ist eine dreidimensionale Darstellung aller Teilnehmer einer Industrie 4.0 Umgebung und stellt ein Modell einer \ac{SOA} dar. Sie soll eine Verwaltungsschale für Teilnehmer bilden, um eine standardisierte Kommunikation und einfache Inbetriebnahme neuer Komponenten ermöglichen. \cite{rami2016} Die Achsen des \ac{RAMI4.0} bestehen aus:
 
 \begin{itemize}
@@ -166,6 +171,7 @@ TODO - siehe DIN 91345
 TODO - Anforderungen an diese Komponenten unterschiedlich
 
 \subsubsection{IIRA}
+\label{Grundlagen:IIRA}
 Das \ac{IIC} veröffentlichte im Jahr 2015 die \ac{IIRA}. Sie beschreibt eine standardbasierte, offene Referenzarchitektur für \ac{IIoT}, welches auf dem \ac{IIAF} basiert. Das \ac{IIAF} unterstützt die Unternehmen bei der Entwicklung, Dokumentation, Kommunikation und Bereitstellung von Systemen im \ac{IIoT} Bereich (\cite{iira2017}). Die Beschreibung der Architektur findet mit einem hohen Maß an Abstraktion statt, um das breite Feld der verschiedenen Industrielösungen abdecken zu können und standardisierte Vorgehensweisen zu ermöglichen. Das \ac{IIAF} folgt der Vorgehensweise des ISO/IEC/IEEE Standard 42010:2011\footnote{ISO/IEC/IEEE Standard 42010:2011 - Systems and Software Engineering–Architecture Description}. Die Anforderungen beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und \ac{QoS}.
 
 Die \ac{IIRA} ist das Ergebnis der Anwendung des \ac{IIAF} auf die \ac{IIoT} Systeme eines Unternehmens. Sie beschreibt bekannte Risiken beim Betrieb von \ac{IIoT} Systemen in verschiedensten Industriebereichen und Klassifiziert diese mit ihren zugehörigen Stakeholdern in Viewpoints. Anschließend dient die Referenzarchitektur der Beschreibung, Analyse und Behebung dieser Bedenken/Risiken in den einzelnen Viewpoints. \autoref{Kap2:IIAF/IIRA - Übersicht} beschreibt die grundlegende Idee und den Aufbau der \ac{IIRA}.
@@ -185,7 +191,11 @@ Die \ac{IIRA} ist ein anerkannter, in der Industrie verbreiteter Standard. Da di
 Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen. Hierbei haben sich bzgl. der Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} die \ac{M2M}-Kommunikationsstandards \ac{OPC UA} und \ac{DDS} etabliert.
 
 \subsubsection{\ac{OPC UA}}
-\ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}. Es vereint Daten- und Informationsdienste und stellt einen sicheren, zuverlässigen und plattformübergreifenden Informationsaustausch zwischen unterschiedlichen Geräten und Systemen der Industrie bereit. Es wird die Kommunikation über die verschiedenen Schichten der Anwendungspyramide von der Feldebene bis zur Unternehmensebene ermöglicht. \ac{OPC UA} stellt ein Informationsmodell mit Hilfe einer \ac{SOA} bereit, erfüllt die Anforderungen des \ac{RAMI4.0}, etabliert sich zunehmend im Maschinen- und Anlagenbau und somit bietet einen vielversprechenden Ansatz für einen standardisierten Informationsaustausch über Unternehmensgrenzen hinweg. (\cite{OPCWegbereiter2014})
+\ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}. Es vereint Daten- und Informationsdienste und stellt einen sicheren, zuverlässigen und plattformübergreifenden Informationsaustausch zwischen unterschiedlichen Geräten und Systemen der Industrie bereit. Die \ac{OPC UA} ermöglicht die Kommunikation über die verschiedenen Schichten der Automatisierungspyramide von der Feldebene bis zur Unternehmensebene. 
+
+\ac{OPC UA} wurde ursprünglich als Client-Server Architektur entwickelt. Um \ac{OPC UA} besser in Systemen der unteren Ebenen der Automatisierungspyramide, wie Kleinsteuerungen, Sensoren und Low-End-Embedded-Systeme, einsetzen zu können, werden meist geringe Latenzen in den Netzwerken und ein geringer Overhead aufgrund von Ressourcenmangel sowie die Kommunikation mit mehreren Partnern benötigt. Diese Anforderungen wurden von dem im Jahr 2018 veröffentlichten 14. Teil der \ac{OPC UA} Spezifikation \textit{Publish Subscribe} adressiert. Das \textit{Publish Subscribe} Modell wird mit Hilfe des Transportprotokolls \ac{UDP} umgesetzt und ermöglicht den Multi- und Broadcast sowie die Möglichkeit der häufigen Übertragung von kleinen Datenmengen um \textit{Logging} oder \textit{Monitoring} durchzuführen, ohne das Netzwerk durch einen 3-Wege-Handshake bei jedem Verbindungsaufbau zusätzlich zu belasten (\cite{opcpt1}).
+
+\ac{OPC UA} stellt ein Informationsmodell mit Hilfe einer \ac{SOA} bereit, erfüllt die Anforderungen des \ac{RAMI4.0}, etabliert sich zunehmend im Maschinen- und Anlagenbau und bietet einen vielversprechenden Ansatz für einen standardisierten Informationsaustausch über Unternehmensgrenzen hinweg (\cite{OPCWegbereiter2014}). Aufgrund dessen stellt es auch ein attraktives Ziel für Industriespionage und die Sabotage von Industrienetzen bereit (\cite{opcpt2}). 
 
 \ac{OPC UA} wird in 14 geschichteten Spezifikationen beschrieben, welche sich in die Bereiche \textit{Core}, \textit{Access Type} und \textit{Utility} unterteilen lassen. Dabei stellen die Spezifikationen 1-7 sowie 14 die Kernfunktionalitäten des Architekturmodells dar. Sie beschreiben die Struktur des OPC Addressraums und der Dienste, die darauf operieren. Die Spezifikationen 8-11 wenden diese Kernfunktionalitäten auf spezifische \ac{OPC COM} Spezifikationen, wie \ac{DA}, \ac{AE} und \ac{HDA} an. Die Teile 12 und 13 beinhalten Mechanismen zur Discovery von Systemen und beschreiben Möglichkeiten der Datenaggregation.
 
@@ -262,6 +272,7 @@ TODO - Verfügbarkeit gewährleisten durch...
 TODO - \ac{QoS}
 
 \subsection{Security by Design}
+\label{Grundlagen:Security by Design}
 In der Vergangenheit wurden Sicherheitsmechanismen üblicherweise nachträglich und reaktiv in die Entwicklung von Komponenten mit einbezogen. Industrie 4.0 Umgebungen erfordern umfassende Maßnahmen, um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} beschriebenen Schutzziele zu erfüllen und eine sichere Kommunikation zu gewährleisten. Dies gilt vor allem für Maschinenbau- und Fertigungsunternehmen, welche häufig proprietäre Individualsoftware zur Steuerung der Maschinen einsetzen \cite{DTAG2016}. Aus der Notwendigkeit, Sicherheitsaspekte bereits in die Softwareentwicklung mit einzubeziehen und einen Schutz der Kommunikation zu gewährleisten, hat sich der Begriff Security by Design entwickelt.
 
 Die Methoden und Ziele der Angreifer stehen jedoch auch unter einem ständigen Wandel. Somit ist es nicht möglich, eine Sicherheitsimplementierung zu entwickeln und diese wiederholt einzusetzen. Vielmehr ist es notwendig, die Sicherheit durch \textit{Security by Design} so weit als möglich proaktiv herzustellen und gleichzeitig im Schadensfall flexibel zu reagieren, um das Schadensausmaß zu begrenzen. Es sind Maßnahmen zur Prävention, Detektion und Reaktion erforderlich (\cite{Umsetzung2015}). Die Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} sowie die in den Architekturmodellen genutzten Techniken \ac{OPC UA} und \ac{DDS} haben das Konzept des \textit{Security by Design} in ihre Kernbestandteile mit aufgenommen (\cite{iirasec2017} und \cite{opcpt2}).
