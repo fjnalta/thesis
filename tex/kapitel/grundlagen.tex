@@ -42,7 +42,7 @@ Die Automatisierungspyramide (\autoref{Grundlagen:Automatisierungspyramide-img})
 \clearpage
 
 \section{Industrie 4.0}
-Der Begriff Industrie 4.0 wurde erstmals auf der Hannover Messe 2011 verwendet (\cite{drath2014}) und soll das Ergebnis der 4. industriellen Revolution darstellen. Der Grundgedanke hinter Industrie 4.0 ist die flächendeckende Vernetzung von Informations- und Kommunikationstechnik zu einem Internet der Dinge, Dienste und Daten (\cite{Spath2013}). Diese Vernetzung soll einen ständigen Informationsaustausch zwischen den Komponenten ermöglichen. Jede Komponente des \ac{IoT} soll als \ac{CPS} arbeiten. Ein \ac{CPS} besitzt neben seiner realen Identität eine digitale Identität, über welche es ständig mit anderen \ac{IoT}-Geräten kommunizieren kann. Kunden- und Maschinendaten werden miteinander vernetzt (\cite{rami2016}). Dieser Prozess beschreibt auch einen Wandel in der Strukturierung und Organisation der Produktion in Unternehmen. Durch die fortschreitende Automatisierung wird die Umsetzung einer immer höheren Individualisierung bei geringerer produzierter Stückzahl rentabel. \autoref{Grundlagen:Das Internet der Dinge} zeigt die Vernetzung der verschiedenen Industriesektoren und Komponenten über das \ac{IoT}.
+Der Begriff Industrie 4.0 wurde erstmals auf der Hannover Messe 2011 verwendet (\cite{drath2014}) und soll das Ergebnis der 4. industriellen Revolution darstellen. Der Grundgedanke hinter Industrie 4.0 ist die flächendeckende Vernetzung von Informations- und Kommunikationstechnik zu einem Internet der Dinge, Dienste und Daten (\cite{spath2013}). Diese Vernetzung soll einen ständigen Informationsaustausch zwischen den Komponenten ermöglichen. Jede Komponente des \ac{IoT} soll als \ac{CPS} arbeiten. Ein \ac{CPS} besitzt neben seiner realen Identität eine digitale Identität, über welche es ständig mit anderen \ac{IoT}-Geräten kommunizieren kann. Kunden- und Maschinendaten werden miteinander vernetzt (\cite{rami2016}). Dieser Prozess beschreibt auch einen Wandel in der Strukturierung und Organisation der Produktion in Unternehmen. Durch die fortschreitende Automatisierung wird die Umsetzung einer immer höheren Individualisierung bei geringerer produzierter Stückzahl rentabel. \autoref{Grundlagen:Das Internet der Dinge} zeigt die Vernetzung der verschiedenen Industriesektoren und Komponenten über das \ac{IoT}.
 
 \begin{figure}[h]
   \centering
@@ -97,7 +97,7 @@ Der \textit{Implementation Viewpoint} beinhaltet die Technologien zur Umsetzung 
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{iira}
+  \includegraphics[width=10cm]{iira}
   \caption{Die Grundebenen der IIRA} 
   \label{Grundlagen:IIAF/IIRA - Übersicht}
 \end{figure}
@@ -145,7 +145,7 @@ Die Kommunikation in Industrie 4.0 Umgebungen findet nicht mehr über einzelne, 
 
 \clearpage
 
-Das Lesen- und Schreiben von Daten und die Kommunikation in Industrie 4.0 Umgebungen findet nach \ac{RAMI4.0} durch die Verwaltungsschale der Komponenten statt. Diese wird im \ac{OPC UA} Stack durch den Adressraum beschrieben. Der Adressraum wird zur Speicherung von Knoten, deren Attribute und Referenzen zu anderen Knoten genutzt. Der Addressraum und das Informationsmodell von \ac{OPC UA} werden in den Spezifikationen 3 \cite{opcpc3} und 5 \cite{opcpt5} definiert.
+Das Lesen- und Schreiben von Daten und die Kommunikation in Industrie 4.0 Umgebungen findet nach \ac{RAMI4.0} durch die Verwaltungsschale der Komponenten statt. Diese wird im \ac{OPC UA} Stack durch den Adressraum beschrieben. Der Adressraum wird zur Speicherung von Knoten, deren Attribute und Referenzen zu anderen Knoten genutzt. Der Addressraum und das Informationsmodell von \ac{OPC UA} werden in den Spezifikationen 3 \cite{opcpt3} und 5 \cite{opcpt5} definiert.
 
 \ac{OPC UA} ermöglicht die Kommunikation der Assets über ein Client-Server Pattern. Die Architektur setzt sich dabei aus einem \ac{OPC UA} Client und einem \ac{OPC UA} Server zusammen. Der \ac{OPC UA} Server stellt verschiedene Funktionen bereit, auf welche der \ac{OPC UA} Client mit Hilfe eines Request zugreifen kann. Des Weiteren ist es möglich durch einen Request des \ac{OPC UA} Clients ein Element des Servers beobachten zu lassen, um bei Änderungen vom Server benachrichtigt zu werden. Um die Kommunikation zwischen \ac{OPC UA} Servern zu gewährleisten, wird ein \ac{OPC UA} Client in einen \ac{OPC UA} Server integriert. In der Grafik \autoref{Kap2:OPC UA Client-Server Architektur} wird das Client-Server Pattern der \ac{OPC UA} Spezifikation schematisch dargestellt. Die linke Seite der Grafik beschreibt die Kommunikation zwischen einem Client und einem Server mit eingebettetem Client. In der rechten Seite der Grafik findet die Kommunikation zwischen dem eingebetteten Client und einem \ac{OPC UA} Server statt.
 
@@ -232,15 +232,10 @@ Das Konzept \textit{Security by Design} wird von \ac{RAMI4.0} und \ac{IIRA} sowi
 \section{Testsystem}
 \label{Grundlagen:Testsystem}
 TODO - kürzer
+
 Die aus der Analyse hervorgehenden möglichen Schwachstellen und Bedrohungen im Bereich der Netzwerksicherheit in Industrie 4.0 Umgebungen und deren Auswirkungen sollen anhand eines vorhandenen, prototypischen Industrie 4.0 Testsystems (\cite{Weber2018}) veranschaulicht werden. Das vorhandene System setzt die drei Schichten der Software-Architektur (Verteilungs-, Baustein- und Laufzeitschicht) nach Starke / Hruschka um. Die Netzwerkkommunikation wird über das Protokoll \ac{OPC UA} realisiert, welches die Anforderungen der Industrie 4.0 und \ac{RAMI4.0} umsetzt.
 
-\subsection{Architektur}
-Das vorhandene System ist, aufgrund der vorgesehenen Einsatzgebiete Lehre, Integrations- und Sicherheitstests, als \ac{VM} umgesetzt worden. Dies ermöglicht es die Testinfrastruktur vom restlichen Netz zu kapseln. Das Betriebssystem der \ac{VM} stellt eine Firewall bereit, welche unerwünschten Netzwerktraffic von oder zu dem System verhindert. Um eine gute Erweiterbarkeit der Testumgebung und Modularisierung der Komponenten zu erreichen, werden die einzelnen Industrie 4.0 Komponenten mit Hilfe der Containerlösung Docker isoliert ausgeführt, verwaltet und deren Netzwerkkommunikation sichergestellt. Durch den zusätzlichen Einsatz des Deploymentsystems Kubernetes wird ein verteiltes Ausführen des Systems ermöglicht und somit eine gute Skalierbarkeit erreicht. 
+TODO - Architektur
+Das vorhandene System ist, aufgrund der vorgesehenen Einsatzgebiete Lehre, Integrations- und Sicherheitstests, als \ac{VM} umgesetzt worden. Dies ermöglicht es die Testinfrastruktur vom restlichen Netz zu kapseln. Das Betriebssystem der \ac{VM} stellt eine Firewall bereit, welche unerwünschten Netzwerktraffic von oder zu dem System verhindert. Um eine gute Erweiterbarkeit der Testumgebung und Modularisierung der Komponenten zu erreichen, werden die einzelnen Industrie 4.0 Komponenten mit Hilfe der Containerlösung Docker isoliert ausgeführt, verwaltet und deren Netzwerkkommunikation sichergestellt. Durch den zusätzlichen Einsatz des Deploymentsystems Kubernetes wird ein verteiltes Ausführen des Systems ermöglicht und somit eine gute Skalierbarkeit erreicht.
 
-\subsection{Komponenten}
-\subsubsection{Repository}
-\subsubsection{Discovery Server}
-\subsubsection{\ac{PKI}}
-\subsubsection{Identity Provider}
-\subsubsection{Verwaltungsinterface}
-\subsubsection{Scheduler}
+TODO - Komponenten: Repository, Discovery Server, Verwaltungsinterface, Scheduler
