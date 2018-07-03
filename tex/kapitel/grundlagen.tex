@@ -8,187 +8,124 @@ Die Erforschung der Elektrizität im 19. Jahrhundert war der Auslöser der 2. in
 
 Die 3. industrielle Revolution fand in den 1970er Jahren statt. Sie ist durch eine sukzessive (Teil-) Automatisierung der Prozesse und durch den Einzug der IT in die Industrie- und Verbraucherwelt geprägt. In den 1940er Jahren wurden die ersten Rechenmaschinen und programmierbare Steuerungen in Unternehmen eingesetzt. In den 1970er Jahren zog der Computer auch in den Privatbereich ein, wurde zunehmend beliebter und schaffte einen neuen Industriezweig. Der Fertigungsprozess in Fabriken wurde mehr und mehr von Maschinen übernommen. Durch den zunehmenden Einsatz von IT in Unternehmen entstand immer mehr Kommunikation zwischen Menschen und Maschinen. Diese Kommunikation und die anfallenden Daten wurden jedoch nur unternehmensintern verarbeitet. Es gab nur wenige Schnittstellen nach außen.
 
-Das Ende des 20. Jahrhunderts gilt als der Beginn der 4. industriellen Revolution. Das Kennzeichen dieser Phase ist die zunehmende Digitalisierung. Mit ihr geht die technische Vernetzung physischer Gegenstände, dem \ac{IoT}, einher. Mehr und mehr Geräte oder Gegenstände besitzen die Möglichkeit aktiv durch Datenaustausch oder passiv z. B. mit Hilfe eines Bar- oder QR-Codes mit der digitalen Welt zu kommunizieren und somit eine fortschreitende Automatisierung sowie Individualisierung zu ermöglichen. 
-
-Im Gegensatz zur Industrie 3.0 sollen Maschinen autonom, auch über Unternehmensgrenzen hinweg, miteinander kommunizieren können um gesamte Geschäftsprozesse zu übernehmen. Dies setzt eine Öffnung der Unternehmen nach außen voraus und erzeugt durch die ständige Kommunikation eine große Menge an Daten, welche den Anforderungen der IT-Sicherheit gerecht werden müssen, um Verbraucher und Unternehmen zu schützen. In \autoref{Grundlagen:Industrie4.0-Kommunikation} werden die Kommunikationsbeziehungen in der Industrie 4.0 und die Öffnung der Unternehmen nach Außen dargestellt.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm]{kommunikationsbeziehungen-i40}
-  \caption{Kommunikationsbeziehungen in einer Industrie 4.0 Umgebung - TODO ref. sichere Unternehmensübergreifende Kommunikation}
-  \label{Grundlagen:Industrie4.0-Kommunikation}
-\end{figure}
-
-\clearpage
-
-\section{aktueller Stand der Technik}
-Der Prozess der vierten industriellen Revolution ist ein stetiger, nicht abgeschlossener Prozess. Aktuell werden die ersten Smart Factories der Industrie errichtet und erste smarte Einkaufsmöglichkeiten, wie Amazon Go und TODO - siehe Trumpf, für den Endverbraucher geschaffen. Diese Fabriken und Filialen stellen die ersten ihrer Art dar und dienen als Prototypen. Das Ziel des Wandels in der Strukturierung und Organisation der Produktion in Unternehmen ist eine immer weitere Automatisierung der Prozessabwicklung bis hin zu autonom arbeitenden Fabriken. Für kritische Infrastrukturen, wie z. B. im Energie-, Wasser-, Transport- und Gesundheitssektor existiert diese Verbindung bereits.
-
-Die Umsetzung dieser Innovationen basiert hauptsächlich auf dem Fortschritt der \ac{IT} und dem Einzug der Internet-Technologien in die Industrie. Diese Entwicklung macht es möglich immer schneller Informationen auszutauschen, größere Datenmengen zu analysieren und diese zu verarbeiten. In der Industrie entstehen dadurch u. a. die folgenden Chancen:
+Das Ende des 20. Jahrhunderts gilt als der Beginn der 4. industriellen Revolution. Das Kennzeichen dieser Phase ist die zunehmende Digitalisierung und der Einzug der Internet-Technologien in die Industrie. Mit ihr geht die technische Vernetzung physischer Gegenstände, dem \ac{IoT}, einher. Mehr und mehr Geräte oder Gegenstände besitzen die Möglichkeit aktiv über eine Netzwerkschnittstelle oder passiv mit Hilfe eines Bar- oder QR-Codes mit der digitalen Welt zu kommunizieren und somit eine fortschreitende Automatisierung und Individualisierung zu ermöglichen. Diese Entwicklung macht es möglich immer schneller Informationen auszutauschen, größere Datenmengen zu analysieren und diese zu verarbeiten. In der Industrie entstehen dadurch u. a. die folgenden Chancen:
 
 \begin{itemize}
   \item Die Kommunikationsinfrastruktur wird in Zukunft in Produktionssystemen so preiswert sein, dass sie sinnvoll für Konfiguration, Service, Diagnose, Bedienung und Wartung genutzt werden kann.
   \item Die Produktionssysteme werden mehr und mehr mit einem Netz verbunden, erhalten dort eine digitale Identität, werden somit such- und analysierbar und besitzen die Möglichkeit Daten über sich selbst zu veröffentlichen. 
   \item Maschinen und Anlagen speichern ihre Zustände in ihrer digitalen Identität im Netz. Diese Zustände sind aktuell, aktualisierbar und zunehmend vollständig. Sind im Netzwerk viele solcher Identitäten vorhanden, können die Daten effizient abgerufen und ausgetauscht werden.
-  \item Softwaredienste werden über das Netz verknüpft werden und können somit automatisiert individuelle Aufgaben durch die direkte Kommunikation der Systeme erledigen. Eine solche individuelle Wertschöpfung war bisher nur unwirtschaftlich oder gar nicht möglich.
+  \item Softwaredienste werden über das Netz verknüpft und können somit automatisiert individuelle Aufgaben durch die direkte Kommunikation der Systeme erledigen. Eine solche individuelle Wertschöpfung war bisher nur unwirtschaftlich oder gar nicht möglich.
 \end{itemize}
 
-Diese Veränderungen im Wertschöpfungsprozess und die ständige Kommunikation der Systeme bereiten jedoch auch Probleme. Es entstehen große Mengen an Daten, welche u. a. über einen unsicheren Kanal verbreitet werden sollen. Des weiteren sind viele vorhandene Produktionsanlagen nicht für diese Form von vermaschter Kommunikation entwickelt worden. Diesen Problemen wird aktuell durch die Entwicklung von Industriestandards und \ac{M2M}-Protokollen, wie z. B. die \ac{OPC UA} entgegengewirkt. Um vorhandene Anlagen weiterhin nutzen zu können, werden Gateways genutzt. (TODO Trumpf ref.)
-
-\section{Industrie 4.0}
-Der Begriff Industrie 4.0 wurde erstmals auf der Hannover Messe 2011 verwendet (\cite{drath2014}) und soll das Ergebnis der 4. industriellen Revolution darstellen. Der Grundgedanke hinter Industrie 4.0 ist die flächendeckende Vernetzung von Informations- und Kommunikationstechnik zu einem Internet der Dinge, Dienste und Daten (\cite{Spath2013}). Diese Vernetzung soll einen ständigen Informationsaustausch zwischen den Komponenten ermöglichen. Jede Komponente des \ac{IoT} soll als \ac{CPS} arbeiten. Ein \ac{CPS} besitzt neben seiner realen Identität eine digitale Identität, über welche es ständig mit anderen \ac{IoT}-Geräten kommunizieren kann. Kunden- und Maschinendaten werden miteinander vernetzt \cite{rami2016}.
+Im Gegensatz zur Industrie 3.0 sollen Maschinen autonom, auch über Unternehmensgrenzen hinweg, miteinander kommunizieren können um gesamte Geschäftsprozesse zu übernehmen. Dies setzt eine Öffnung der Unternehmen nach außen voraus und wird in \autoref{Grundlagen:Industrie4.0-Kommunikation} dargestellt.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{internet-der-dinge}
-  \caption{Das Internet der Dinge - \cite{rami2016}}
-  \label{Kap2:Das Internet der Dinge}
+  \includegraphics[width=15cm]{kommunikationsbeziehungen-i40}
+  \caption{Kommunikationsbeziehungen in einer Industrie 4.0 Umgebung}
+  \label{Grundlagen:Industrie4.0-Kommunikation}
 \end{figure}
 
 \clearpage
 
-\subsection{Automatisierungspyramide}
+\section{Automatisierungspyramide}
 \label{Grundlagen:Automatisierungspyramide}
-TODO - Zusammenfassen mit Industrie 4.0 -> Automatisierungspyramide ist Bestandteil. Fertig.
-Die Automatisierungspyramide stellt die beteiligten Systeme und Softwarekomponenten eines automatisierten Prozesses systematisch dar. Diese beginnen, ausgehend vom Kundenauftrag und der betriebswirtschaftlichen Planung der Produktion auf der Unternehmensebene im \ac{ERP} System. Die Ergebnisse der Planung werden an das \ac{MES} übergeben, welches die verschiedenen Fertigungs- oder Logistikaufträge generiert. Die Aufträge werden anschließend auf der Prozessleit- (\ac{SCADA}), Steuerungs- (\ac{SPS}) und Feldebene (Ein-/Ausgangssignale) bearbeitet.
+Die Automatisierungspyramide (\autoref{Grundlagen:Automatisierungspyramide-img}) stellt die beteiligten Systeme und Softwarekomponenten eines automatisierten Prozesses dar. In der Industrie 4.0 wird eine automatisierte und direkte Kommunikation zwischen allen Ebenen der Automatisierungspyramide angestrebt. Die beteiligten Systeme beginnen, ausgehend vom Kundenauftrag und der betriebswirtschaftlichen Planung der Produktion auf der Unternehmensebene beim \ac{ERP} System. Die Ergebnisse der Planung werden an das \ac{MES} übergeben, welches die verschiedenen Fertigungs- oder Logistikaufträge generiert. Die Aufträge werden anschließend auf der Prozessleit- (\ac{SCADA}), Steuerungs- (\ac{SPS}) und Feldebene (Ein-/Ausgangssignale) mit Hilfe von Steuerungen und Sensoren bearbeitet. Während die oberen Schichten der Pyramide (\ac{ERP} und \ac{MES}) durch Standardkomponenten bzw. -software der IT realisiert werden, zählen die unteren Schichten (Prozessleit- bis Feldebene) zur Automatisierung, welche die Steuerung und Kontrolle der technischen Anlagen übernimmt. Sie sind durch spezielle Hard- und Softwarelösungen umgesetzt. Die Integration von Sicherheitsmaßnahmen bei der Kommunikation dieser Systeme stellt oft eine große Herausforderung dar, da besondere Anforderungen vorliegen oder wenig Ressourcen zur Verfügung stehen.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=10cm]{automatisierungspyramide}
   \caption{Automatisierungspyramide - TODO ref. Langmann,2004}
-  \label{Kap2:Automatisierungspyramide}
+  \label{Grundlagen:Automatisierungspyramide-img}
 \end{figure}
 
 \clearpage
 
-Während die oberen Schichten der Pyramide (\ac{ERP} und \ac{MES}) durch Standardkomponenten bzw. -software der IT realisiert werden, zählen die unteren Schichten (Prozessleit- bis Feldebene) zur Automatisierung, welche die Steuerung und Kontrolle der technischen Anlagen übernimmt. Diese werden auch als Shop-Floor-Ebene bezeichnet. Sie sind durch spezielle Hard- und Softwarelösungen umgesetzt. Die Integration von Sicherheitsmaßnahmen bei der Kommunikation dieser Systeme stellt oft eine große Herausforderung dar.
-
-TODO - siehe vertikale Integration in Analyse
-
-\subsection{Kommunikation in der Industrie 4.0}
-Für Unternehmen bedeutet dies einen Wechsel von einer linearen Prozesskette hin zu einem vermaschten Netzwerk, in dem jede Komponente mit dem gesamten Netzwerk kommunizieren kann. Dies beinhaltet die Vernetzung der Komponenten auf horizontaler und vertikaler Ebene. Die vertikale Ebene stellt die technischen Komponenten dar und wird durch die Automatisierungspyramide beschrieben. Die horizontale Ebene beschreibt die wirtschaftlichen Geschäfts- bzw. Produktionsprozesse und besteht u. a. aus: Einkauf, Lieferanten, Produktionsplanung, Logistik, Sequenzierung und Lagerverwaltung. Das Ziel ist die Vernetzung aller Beteiligten.
+\section{Industrie 4.0}
+Der Begriff Industrie 4.0 wurde erstmals auf der Hannover Messe 2011 verwendet (\cite{drath2014}) und soll das Ergebnis der 4. industriellen Revolution darstellen. Der Grundgedanke hinter Industrie 4.0 ist die flächendeckende Vernetzung von Informations- und Kommunikationstechnik zu einem Internet der Dinge, Dienste und Daten (\cite{Spath2013}). Diese Vernetzung soll einen ständigen Informationsaustausch zwischen den Komponenten ermöglichen. Jede Komponente des \ac{IoT} soll als \ac{CPS} arbeiten. Ein \ac{CPS} besitzt neben seiner realen Identität eine digitale Identität, über welche es ständig mit anderen \ac{IoT}-Geräten kommunizieren kann. Kunden- und Maschinendaten werden miteinander vernetzt (\cite{rami2016}). Dieser Prozess beschreibt auch einen Wandel in der Strukturierung und Organisation der Produktion in Unternehmen. Durch die fortschreitende Automatisierung wird die Umsetzung einer immer höheren Individualisierung bei geringerer produzierter Stückzahl rentabel. \autoref{Grundlagen:Das Internet der Dinge} zeigt die Vernetzung der verschiedenen Industriesektoren und Komponenten über das \ac{IoT}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{horizontalevertikaleIntegration}
-  \caption{horizontale und vertikale Integration - TODO ref. HP Industry-of-things siehe bookmark}
-  \label{Kap2:horizontale und vertikale Integration}
+  \includegraphics[width=15cm]{internet-der-dinge}
+  \caption{Das Internet der Dinge}
+  \label{Grundlagen:Das Internet der Dinge}
 \end{figure}
 
 \clearpage
 
-\subsubsection{Kommunikationsstrukturen}
-\label{Grundlagen:Kommunikationsstrukturen}
-TODO
-
-\paragraph{End2End}
-\label{Grundlagen:End2End}
-Die Komponenten der Industrie 4.0 Umgebung kommunizieren über einen direkten Kanal miteinander. Dies setzt voraus, dass sich beide Teilnehmer in einem Netzwerk befinden, welches die benötigten Dienste wie z. B. \ac{IP} und \ac{DNS} zur Kommunikation bereitstellt. Des weiteren müssen beide Systeme diese Dienste und Protokolle unterstützen.
-
-\paragraph{Gateways}
-Um existierende Systeme, welche selbst nicht Industrie 4.0 konform kommunizieren oder zu wenig Rechenleistung besitzen, in die Industrie 4.0 Welt zu integrieren, werden Industrie 4.0 Gateways genutzt. Dabei ist jedoch zu beachten, dass die Systeme hinter den Gateways nicht als Industrie 4.0 Komponenten entwickelt wurden und somit auch keine oder nur wenige dieser Eigenschaften besitzen. Des Weiteren ist es möglich, dass die Kommunikation aus Leistungsgründen oder besonderer Anforderungen über optimierte, proprietäre Protokolle stattfindet. Die Gateways müssen auf die Systeme und deren Protokolle individuell konfiguriert werden, um die Funktionalitäten im Industrie 4.0 Netz bereitstellen zu können, und die Kommunikation zu schützen.
-
-\paragraph{Publish-Subscribe}
-\label{Grundlagen:Publish-Subscribe}
-Das Publish-Subscribe Modell bietet die Möglichkeit Informationen an mehrere Teilnehmer zu verteilen. Hierbei melden sich die Empfänger beim Verteiler an und wählen aus, über welche Nachrichtentypen sie informiert werden möchten. Diese Verteildienste nutzen zur besseren Skalierung und Reduzierung der Netzlast häufig Datagramme wie \ac{UDP}. Durch die Nutzung von Datagrammen geht jedoch die Fehlertoleranz verloren. Somit muss entweder dafür gesorgt werden, dass eine sehr zuverlässige Netzwerkinfrastruktur vorhanden ist und hohe Bandbreitenreserven geschaffen werden, um die Dienstgüte (\ac{QoS}) sicherzustellen oder dieses Modell nur für fehlertolerante Kommunikation wie z. B. Audio- und Video-Anwendungen oder Businessprozesse zu nutzen. 
-
-TODO - Netzlast bei 
-
-\paragraph{Kommunikation mit Netzwerk als Partner}
-Zeitkritische Automatisierungsanwendungen verlangen besondere Netzwerkeigenschaften. Sie können auf Latenz oder Jitter angewiesen sein. Um diese Eigenschaften sicherzustellen, ist es sinnvoll in diese Netze eine Industrie 4.0 Schnittstelle zu integrieren. Somit ist es den Teilnehmern möglich, über die Verwaltungsschale sicherzustellen, dass das Netzwerk die erforderlichen Anforderungen bereitstellt. \cite{sichKom2017}
-
-TODO - Bilder -> sichere-kommunikation-i40
-TODO - mehr Analyse.
-
 \subsection{Internet of Things/Industrial Internet of Things}
 \label{Grundlagen:IoT/IIoT}
-\ac{IoT} beschreibt ein verbraucherorientiertes Konzept für die Nutzung von digitalisierten und vernetzten Systemen. Hierbei werden die physischen Systeme virtuell abgebildet. Dies wird genutzt, um die Effektivität der Systeme zu verbessern und intelligente Services zu nutzen. Das \ac{IIoT} beschreibt den Gebrauch von \ac{IoT}-Technologien im industriellen Raum.
+Die fortschreitende Vernetzung der Komponenten spiegelt sich im \ac{IoT} bzw. \ac{IIoT} wieder. Das \ac{IoT} beschreibt im Gegensatz zum \ac{IIoT} ein verbraucherorientiertes Konzept für die Nutzung von digitalisierten und vernetzten Systemen. Hierbei werden die physischen Systeme virtuell abgebildet. Dies wird genutzt, um die Effektivität der Systeme zu verbessern und intelligente Services zu nutzen.
 
-Das \ac{IoT} ist ein wesentlicher Bestandteil der Industrie 4.0, welche Netzwerke aus Systemen, Daten und Dienstleistungen herstellt, in denen diese Komponenten miteinander kommunizieren. Für die Kommunikation haben sich, je nach Anforderungen, verschiedene Protokolle, wie \ac{HTTP} und \ac{XMPP} etabliert. Jedes dieser Protokolle besitzt für spezifische Anforderungen wie Skalierbarkeit, vorhandene Ressourcen, Echtzeitkommunikation oder Sicherheit Vor- und Nachteile. 
+Das \ac{IoT} ist ein wesentlicher Bestandteil der Industrie 4.0, welche Netzwerke aus Systemen, Daten und Dienstleistungen herstellt, in denen diese Komponenten miteinander kommunizieren. Im Verbraucherbereich und für die Kommunikation zwischen Mensch und Maschine findet das Protokoll \ac{HTTP} und dessen \ac{REST} Programmierparadigma breite Anwendung. 
 
-TODO - \ac{IIoT}
-Im \ac{IIoT} stellt vorallem die M2M-Kommunikation eine wichtige Rolle dar.
-Das Protokoll \ac{CoAP} wird im Rahmen des \ac{IETF} im RFC 7252\footnote{Link - https://tools.ietf.org/html/rfc7252} standadisiert.
-\ac{CoAP}, \ac{MQTT}
-und erfüllt die Bedinungen für \ac{M2M} Kommunikation in 
+Das \ac{IIoT} beschreibt den Gebrauch von \ac{IoT}-Technologien im industriellen Raum. Diese Systeme können besondere Anforderung an die Kommunikation im Netzwerk wie Skalierbarkeit, Ressourcenverbauch, Echtzeitkommunikation oder Sicherheit stellen. Des Weiteren findet in Industrie 4.0 Umgebungen \ac{M2M} Kommunikation statt. Um diesen Problemen entgegenzuwirken, wurden neue Protokolle zur Übermittlung von Daten im Netzwerk entwickelt. Hierbei erfahren vor allem die Protokolle \ac{MQTT} und \ac{CoAP} ein hohes Maß an Beachtung. Diese Protokolle wurden für eine ressourcenschonende Kommunikation zwischen Maschinen entwickelt.
 
-\section{Normen und Standards}
-\label{Grundlagen:Normen und Standards}
-Im Gegensatz zur Industrie 3.0, in welcher Daten auf lokaler Ebene oder zwischen einzelnen internen Unternehmensebenen ausgetauscht wurden, stellt der Datenaustausch und Informationsfluss im vermaschten Industrie 4.0 Netzwerk einen wesentlichen Bestandteil dar. Aktuell gibt es zwei Architekturmodelle zur Umsetzung von Industrie 4.0 Umgebungen. Diese setzen sich aus dem von der Plattform Industrie 4.0 entwickelten \ac{RAMI4.0} und der \ac{IIRA} der \ac{IIC} zusammen. Beide Modelle verfolgen verschiedene Integrationsansätze.
+\subsection{Referenzarchitekturen}
+Um eine flächendeckende Vernetzung der digitalen Komponenten zu ermöglichen, muss eine einheitliche Kommunikation geschaffen werden. Diese beschränkt sich nicht nur auf die Form der Nachrichten im Netzwerk und deren Gewährleistung der Sicherheit, sondern beinhaltet auch die Struktur und Bereitstellung von Informationen im Netzwerk. In der Folge wurden verschiedene Referenzarchitekturmodelle entwickelt, um Standards für die Kommunikation und Interaktion von Netzwerkkomponenten innerhalb einer Industrie 4.0 Umgebung zu definieren.
 
-Des Weiteren findet die Kommunikation in der Industrie 4.0 nicht mehr über einzelne, vorgegebene Schnittstellen statt, sondern direkt von den Produktionssystemen, also den unteren Ebenen der Automatisierungspyramide. Um dies zu ermöglichen, ist es notwendig, eine einheitliche Kommunikation durch Normen und Standards herzustellen, um eine unternehmensübergreifende Kommunikation aller Komponenten zu ermöglichen. 
-
-\subsection{TCP/IP Referenzmodell}
-\label{Grundlagen:TCP/IP Referenzmodell}
-TODO - Das \ac{TCP}/\ac{IP} Referenzmodell stellt die Basis für moderne Kommunikationsnetze dar.
-Unternehmensübergreifende Kommunikation in Industrie 4.0 Umgebungen findet im wesentlichen über IP-Netze statt. Diese basieren auf dem TCP/IP Referenzmodell, welches ein Schichtenmodell ist und die vier Schichten der Internetprotokollfamilie beschreibt. Sie setzen sich aus Application-, Transport-, Internet- und Link-Layer zusammen. Die Schichten des TCP/IP Referenzmodells überlagern sich mit den Schichten des ISO/OSI Referenzmodells. 
-
-\subsubsection{Application Layer}
-Die Anwendungsschicht ist für die Übertragung der Nutzdaten zwischen verschiedenen Anwendungen zuständig. Dabei kann es sich um entfernte Anwendungen handeln. Diese sollen sich für den Benutzer verhalten, als würden sie lokal ausgeführt werden.
-
-TODO - Prozess- und Businesslogik
-
-\subsubsection{Transport Layer}
-Die Transportschicht sorgt für die Kommunikation zwischen Prozessen. Die Transportschicht nutzt Ports um verschiedene Dienste zu adressieren. Sie beeinflusst, ob es sich um eine zuverlässige Verbindung ( TCP ) oder nicht ( UDP ) handelt.
-
-TODO - End2End Security
-
-\subsubsection{Internet Layer}
-Die Internetschicht wird genutzt, um Daten von einem Teilnehmer im Netzwerk zum anderen zu übertragen. Die Endpunkte im Netzwerk werden durch IP Adressen beschrieben.
-
-\subsubsection{Link Layer}
-Der Bitübertragungsschicht beschreibt die Topologie des Netzwerks. Sie stellt die physikalische Verbindung der Netzwerkteilnehmer zur Verfügung.
-
-TODO - Bild Internetprotokollfamilie
-TODO - Mit Bild nur kurz erklären und referenzieren, Überschriften entfernen.
-
-\subsection{Industrie 4.0 Referenzarchitekturen}
 \subsubsection{\ac{RAMI4.0}}
 \label{Grundlagen:RAMI4.0}
-Um eine flächendeckende Vernetzung zu ermöglichen, muss eine einheitliche Kommunikation geschaffen werden. Die \ac{RAMI4.0} ist eine dreidimensionale Darstellung aller Teilnehmer einer Industrie 4.0 Umgebung und stellt ein Modell einer \ac{SOA} dar. Sie soll eine Verwaltungsschale für Teilnehmer bilden, um eine standardisierte Kommunikation und einfache Inbetriebnahme neuer Komponenten ermöglichen. \cite{rami2016} Die Achsen des \ac{RAMI4.0} bestehen aus:
+Das \ac{RAMI4.0} wird in der DIN SPEC 91345 beschrieben und dient als Konzept zur strukturierten Umsetzung der grundlegenden Idee hinter dem Begriff Industrie 4.0. Die Aufgabe des Architekturmodells ist es, die Ziele einer Industrie 4.0 Umgebung, die vollständige Vernetzung der physischer Wertgegenstände, umzusetzen. Diese Gegenstände werden im Rahmen der \ac{RAMI4.0} als \textit{Assets} bezeichnet. Jedes \textit{Asset} besitzt seine eigene Verwaltungsschalte, welche als Schnittstelle zum Austausch von Informationen dient. Die Verwaltungsschale soll eine standardisierte Kommunikation und einfache Inbetriebnahme neuer Komponenten ermöglichen (\cite{rami2016}). Mit Hilfe der \ac{RAMI4.0} soll es möglich  den Status eines \textit{Assets} zu jedem Zeitpunkt im Lebenszyklus nachweisen zu können. Die \ac{RAMI4.0} ist in \autoref{Grundlagen:RAMI4.0-img} dargestellt und wird durch ein Modell aus sechs Schichten und drei Achsen dargestellt. (\cite{RAMISpec})
 
-\begin{itemize}
-  \item Achse 1 - Die Hierarchie zeigt die Anlagen, Maschinen sowie das Endprodukt, welche miteinander Vernetzt sind. In diesem Netzwerk werden Funktionen bereitgestellt und Daten ausgetauscht.
-  \item Achse 2 - Die Architektur beschreibt - TODO
-  \item Achse 3 - Der Produktlebenszyklus wird im Gegensatz zur Industrie 3.0 in das Netzwerk mit eingebunden. Der gesamte Prozess der Produktion, Wartung bis hin zur Verschrottung soll digital erfasst werden.
-\end{itemize}
+Auf der Architekturachse werden sechs Schichten beschrieben. Auf der untersten Schicht wird der Gegenstand der physischen Welt dargestellt. Alle zu ihm relevanten Information werden in den darüberliegenden Schichten gespeichert. Darüber stellt die \textit{Integration} Schicht das Bindeglied zwischen der physischen und digitalen Welt bereit, indem sie die Eigenschaften des \textit{Assets} für Computersysteme erreichbar macht (\cite{BMWiNeCon2016}). Die \textit{Communication} Schicht beschreibt den Zugriff auf die Ressourcen und Funktionen der Komponente und stellt die Dienste einer \ac{SOA} bereit. Auf der \textit{Information} Schicht wird die Funktionalität des \textit{Assets} gespeichert und die Datenintegrität gewährleistet. Die \textit{Functional} Schicht beschreibt die Form, wie und mit welchen Parametern ein Funktionsaufruf stattfinden kann. In der \textit{Business} Schicht werden die geschäftsrelevanten Daten gehalten. (\cite{RAMISpec})
+
+Die Hierarchieachse zeigt die Anlagen, Maschinen sowie das Endprodukt, welche miteinander Vernetzt sind. Die in \autoref{Grundlagen:Automatisierungspyramide} beschriebene Automatisierungspyramide findet sich in der Hierarchieebene der \ac{RAMI4.0} wieder. Sie wurde dort auf der niedrigsten Ebene um das Produkt (\textit{Product}) sowie auf der höchsten Ebene um die Stufe \textit{Connected World} erweitert. Die \textit{Connected World} beschreibt den Zusammenhang zwischen einem Asset oder einer Assetkombination und einem anderen Asset oder einer Assetkombination, also einem Fabrikverbund. (\cite{RAMISpec})
+
+Der Produktlebenszyklus wird im Gegensatz zur Industrie 3.0 in das Netzwerk mit eingebunden. Der gesamte Prozess der Produktion, Wartung bis hin zur Verschrottung wird digital erfasst. Somit könnten ständig Informationen über vorhandene \textit{Assets} gesammelt und zur Optimierung des Werschöpfungsprozesses analysiert werden. (\cite{RAMISpec})
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=15cm]{rami40}
-  \caption{RAMI 4.0 - \cite{rami2016}}
-  \label{Kap2:RAMI 4.0}
+  \caption{RAMI 4.0}
+  \label{Grundlagen:RAMI4.0-img}
 \end{figure}
 
 \clearpage
 
-Nach dem \ac{RAMI4.0} stellt der Communication Layer das Bindeglied zwischen dem Integration Layer, welcher Eigenschaften der physischen Welt für Computersysteme erreichbar macht, und dem Information Layer, welcher die Funktionsbezogenen Daten beinhaltet, dar (\cite{BMWiNeCon2016}). Jeder Teilnehmer der Architektur wird als Asset bezeichnet und besitzt seine eigene Verwaltungsschale, welche als Schnittstelle zum Austausch von Informationen dient. Die Verwaltungsschale ist der Übergang zwischen der physischen zur digitalen Welt.
-
-TODO - Kommunikation beschreiben - Assets, Verwaltungsschale
-TODO - genauer auf die einzelnen Komponenten eingehen! - Assets, Architektur, Komponenten, Verwaltungsschale
-TODO - Architektur wichtig SOA beschreiben -> Angriffsvektoren
-TODO - siehe DIN 91345
-TODO - Anforderungen an diese Komponenten unterschiedlich
-
 \subsubsection{IIRA}
 \label{Grundlagen:IIRA}
-Das \ac{IIC} veröffentlichte im Jahr 2015 die \ac{IIRA}. Sie beschreibt eine standardbasierte, offene Referenzarchitektur für \ac{IIoT}, welches auf dem \ac{IIAF} basiert. Das \ac{IIAF} unterstützt die Unternehmen bei der Entwicklung, Dokumentation, Kommunikation und Bereitstellung von Systemen im \ac{IIoT} Bereich (\cite{iira2017}). Die Beschreibung der Architektur findet mit einem hohen Maß an Abstraktion statt, um das breite Feld der verschiedenen Industrielösungen abdecken zu können und standardisierte Vorgehensweisen zu ermöglichen. Das \ac{IIAF} folgt der Vorgehensweise des ISO/IEC/IEEE Standard 42010:2011\footnote{ISO/IEC/IEEE Standard 42010:2011 - Systems and Software Engineering–Architecture Description}. Die Anforderungen beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und \ac{QoS}.
+Das \ac{IIC} veröffentlichte im Jahr 2015 die \ac{IIRA}. Die \ac{IIRA} beschreibt eine standardbasierte, offene Referenzarchitektur für \ac{IIoT}, welches auf dem \ac{IIAF} basiert. Das \ac{IIAF} unterstützt die Unternehmen bei der Entwicklung, Dokumentation, Kommunikation und Bereitstellung von Systemen im \ac{IIoT} Bereich (\cite{iira2017}). Die Beschreibung der Architektur findet mit einem hohen Maß an Abstraktion statt, um das breite Feld der verschiedenen Industrielösungen abdecken zu können und standardisierte Vorgehensweisen zu ermöglichen. Das \ac{IIAF} folgt der Vorgehensweise des ISO/IEC/IEEE Standard 42010:2011\footnote{ISO/IEC/IEEE Standard 42010:2011 - Systems and Software Engineering–Architecture Description}. Hieraus werden die grundlegenden Architekturbeschreibungskonstrukte \textit{Concern}, \textit{Stakeholder} und \textit{Viewpoint} übernommen. Die \textit{Viewpoints} sind die grundlegenden Ebenden beim Aufbau der \ac{IIRA}. Dabei werden vier \textit{Viewpoints} für die Beschreibung festgelegt. (\cite{heidrich2016})
 
-Die \ac{IIRA} ist das Ergebnis der Anwendung des \ac{IIAF} auf die \ac{IIoT} Systeme eines Unternehmens. Sie beschreibt bekannte Risiken beim Betrieb von \ac{IIoT} Systemen in verschiedensten Industriebereichen und Klassifiziert diese mit ihren zugehörigen Stakeholdern in Viewpoints. Anschließend dient die Referenzarchitektur der Beschreibung, Analyse und Behebung dieser Bedenken/Risiken in den einzelnen Viewpoints. \autoref{Kap2:IIAF/IIRA - Übersicht} beschreibt die grundlegende Idee und den Aufbau der \ac{IIRA}.
+Der \textit{Business Viewpoint} beinhaltet die betriebswirtschaftlichen \textit{Concerns} bei der Umsetzung eines \ac{IIS} sowie die entstehenden Rahmenbedingungen. Es werden die Systemeigenschafen definiert, welche an die Geschäftsziele gekoppelt sind. Die \textit{Stakeholder} dieses \textit{Viewpoints} bestehen aus Führungskräften, Produktmangern und Systemingenieuren.
+
+Im \textit{Usage Viewpoint} werden die \textit{Concerns} bei der Nutzung eines \ac{IIS} beschrieben. Dies beinhaltet die Beschreibung der Bedienabläufe.
+
+Der \textit{Functional Viewpoint} beschreibt die funktionalen Komponenten des \ac{IIS}. Es werden Zusammenhänge, Struktur, Schnittstellen und Interaktionen mit Systemen im Netzwerk sowie der Außenwelt beschrieben.
+
+Der \textit{Implementation Viewpoint} beinhaltet die Technologien zur Umsetzung des \ac{IIS}. Es werden die funktionalen Komponenten, deren Vernetzung, Kommunikationsschnittstellen sowie deren Produktlebenszyklen dargestellt. Diese \textit{Concerns} sind wichtige Ansatzpunkte für Komponentendesigner, Systementwickler und Integratoren. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=15cm]{iira}
-  \caption{IIAF/IIRA - Übersicht} 
-  \label{Kap2:IIAF/IIRA - Übersicht}
+  \caption{Die Grundebenen der IIRA} 
+  \label{Grundlagen:IIAF/IIRA - Übersicht}
 \end{figure}
 
 \clearpage
 
-Die \ac{IIRA} ist ein anerkannter, in der Industrie verbreiteter Standard. Da die Analyse der Netzwerksicherheit Testsystem (\cite{Weber2018}) durchgeführt werden soll, welches den Kommunikationsstandard \ac{OPC UA} implementiert und sich am Referenzarchitekturmodell \ac{RAMI4.0} orientiert, wird sich im weiteren Verlauf der Thesis ausschließlich auf die in der IEC 62541\footnote{IEC 62541 - Link: TODO - RAMI4.0} beschriebene Architektur als Referenzmodell bezogen.
+Die Anforderungen des Referenzarchitekturmodells beinhalten niedrige Latenzen und Schwankungen, einen hohen Durchsatz, Skalierbarkeit, Ausfallsicherheit, Datensicherheit und \ac{QoS}. Die \ac{IIRA} stellt einen softwaretechnischen Ansatz der Darstellung einer Referenzarchitektur bereit.
 
-\subsection{Protokollstandards}
-Durch die vorausgesetzte M2M-Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen. Hierbei haben sich bzgl. der Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} die \ac{M2M}-Kommunikationsstandards \ac{OPC UA} und \ac{DDS} etabliert.
+\subsection{Kommunikationsstrukturen}
+\label{Grundlagen:Kommunikationsstrukturen}
+TODO
+
+\subsubsection{End2End}
+\label{Grundlagen:End2End}
+Die Komponenten der Industrie 4.0 Umgebung kommunizieren über einen direkten Kanal miteinander. Dies setzt voraus, dass sich beide Teilnehmer in einem Netzwerk befinden, welches die benötigten Dienste wie z. B. \ac{IP} und \ac{DNS} zur Kommunikation bereitstellt. Des weiteren müssen beide Systeme diese Dienste und Protokolle unterstützen.
+
+\subsubsection{Gateways}
+Um existierende Systeme, welche selbst nicht Industrie 4.0 konform kommunizieren oder zu wenig Rechenleistung besitzen, in die Industrie 4.0 Welt zu integrieren, werden Industrie 4.0 Gateways genutzt. Dabei ist jedoch zu beachten, dass die Systeme hinter den Gateways nicht als Industrie 4.0 Komponenten entwickelt wurden und somit auch keine oder nur wenige dieser Eigenschaften besitzen. Des Weiteren ist es möglich, dass die Kommunikation aus Leistungsgründen oder besonderer Anforderungen über optimierte, proprietäre Protokolle stattfindet. Die Gateways müssen auf die Systeme und deren Protokolle individuell konfiguriert werden, um die Funktionalitäten im Industrie 4.0 Netz bereitstellen zu können, und die Kommunikation zu schützen.
+
+\subsubsection{Publish-Subscribe}
+\label{Grundlagen:Publish-Subscribe}
+Das Publish-Subscribe Modell bietet die Möglichkeit Informationen an mehrere Teilnehmer zu verteilen. Hierbei melden sich die Empfänger beim Verteiler an und wählen aus, über welche Nachrichtentypen sie informiert werden möchten. Diese Verteildienste nutzen zur besseren Skalierung und Reduzierung der Netzlast häufig Datagramme wie \ac{UDP}. Durch die Nutzung von Datagrammen geht jedoch die Fehlertoleranz verloren. Somit muss entweder dafür gesorgt werden, dass eine sehr zuverlässige Netzwerkinfrastruktur vorhanden ist und hohe Bandbreitenreserven geschaffen werden, um die Dienstgüte (\ac{QoS}) sicherzustellen oder dieses Modell nur für fehlertolerante Kommunikation wie z. B. Audio- und Video-Anwendungen oder Businessprozesse zu nutzen. 
+
+\subsubsection{Kommunikation mit Netzwerk als Partner}
+Zeitkritische Automatisierungsanwendungen verlangen besondere Netzwerkeigenschaften. Sie können auf Latenz oder Jitter angewiesen sein. Um diese Eigenschaften sicherzustellen, ist es sinnvoll in diese Netze eine Industrie 4.0 Schnittstelle zu integrieren. Somit ist es den Teilnehmern möglich, über die Verwaltungsschale sicherzustellen, dass das Netzwerk die erforderlichen Anforderungen bereitstellt. (\cite{sichKom2017})
+
+\subsection{Protokolle}
+Die Kommunikation in Industrie 4.0 Umgebungen findet nicht mehr über einzelne, vorgegebene Schnittstellen statt, sondern direkt von den Produktionssystemen, also den unteren Ebenen der Automatisierungspyramide. Um dies zu ermöglichen, ist es notwendig, eine einheitliche Kommunikation durch Normen und Standards herzustellen, um eine unternehmensübergreifende Kommunikation aller Komponenten zu ermöglichen. Durch die in der Industrie 4.0 benötigte \ac{M2M} Kommunikation wurde die Entwicklung neuer Protokolle zum effizienten Informationsaustausch vorangetrieben, welche es ermöglichen sollen, eine Standardisierung bereitzustellen und somit eine herstellerübergreifende und plattformunabhängige Kommunikation zu ermöglichen. Hierbei haben sich bzgl. der Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} die Protokolle \ac{OPC UA} und \ac{DDS} etabliert.
 
 \subsubsection{\ac{OPC UA}}
 \ac{OPC UA} ist in der \ac{IEC} 62541 als offener Standard definiert und erstreckt sich über Communication- und Information Layer des \ac{RAMI4.0}. Es vereint Daten- und Informationsdienste und stellt einen sicheren, zuverlässigen und plattformübergreifenden Informationsaustausch zwischen unterschiedlichen Geräten und Systemen der Industrie bereit. Die \ac{OPC UA} ermöglicht die Kommunikation über die verschiedenen Schichten der Automatisierungspyramide von der Feldebene bis zur Unternehmensebene. 
@@ -226,18 +163,14 @@ Im Jahr 2018 wurde der Standard zusätzlich um eine Spezifikation für das Publi
 \subsubsection{\ac{DDS}}
 \ac{DDS} ist ein weiterer offener Standard der \ac{OMG} und stellt eine \ac{MOM} zur Kommunikation in hochdynamischen verteilten Systemen dar. Er wurde für niedrige Latenzzeiten, einen hohen Datendurchsatz und eine skalierbare, belastbase und sichere Datenverteilung entwickelt, um die Kommunikation in Steuerungs- und Kontrollaufgaben zu realisieren. Der beschriebene Standard deckt alle Anforderungen der \ac{IIRA} ab und hat sich bereits in industriellen Systemen etabliert. Gegenüber \ac{OPC UA} beschreibt \ac{DDS} eine dezentralisierte Architektur. Es bietet ein Konnektivitäts-Framework, welches ein Kommunikationsparadigma basierend auf einem Shared Data Model, einen Standard für die Definition domain-spezifischer Informationsmodelle, ein starkes Sicherheitsmodell, Discovery und reichhal­tige APIs beinhaltet. Die Kommunikation findet direkt vom Publisher zum Subscriber statt. Dabei werden Latenzzeiten reduziert und durch die Nutzung von Broad- und Multicast die Netzlast beim Bereitstellen von Informationen an viele Empfänger gering gehalten. Es ist möglich die \ac{MOM} \ac{DDS} in eine \ac{OPC UA} Architektur zu integrieren und mit dem Informationsmodell nutzen.
 
-\section{Anforderungen an Industrie 4.0 Umgebungen}
-\label{Grundlagen:Anforderungen an Industrie 4.0 Umgebungen}
+\subsection{Anforderungen an die Netzwerkkommunikation}
+\label{Grundlagen:Anforderungen}
 Aufgrund der unterschiedlichen Einsatzbereiche von Industrie 4.0 Systemen, unterscheiden sich auch dementsprechend deren Anforderungen. Um eine sichere Kommunikation in diesen Umgebungen bereitzustellen dienen die Grundprinzipien der sicheren Kommunikation. Die Referenzmodelle \ac{RAMI4.0} und \ac{IIRA} beschreiben ebenfalls drei Anforderungen an den Übertragungskanal: Sicherheit, Verfügbarkeit und \ac{QoS} (\cite{BMWiNeCon2016}).
 
-TODO - End2End Kommunikation -> Ditialisierung, digitale Schnittstellen
-
-\subsection{Grundprinzipien der sicheren Kommunikation}
-\label{Grundlagen:Grundprinzipien der sicheren Kommunikation}
+TODO - grundprizipien der Sicheren Kommunikation kurz dann, auf anforderungen von RAMI und IIRA eingehen.!
 TODO - in Bezug auf Industrie 4.0 ... oder Anforderungen an Industrie 4.0 Umgebungen basieren auf Grundprinzipien der sicheren Kommunikation
 Die Grundprinzipien der sicheren Kommunikation beschreiben die Schutzziele im Bereich der Informationssicherheit. Diese verdeutlichen den Anspruch an die Sicherheit an ein zu implementierendes System oder ein Netzwerk. Sie stellen einen vereinbarten Umfang gegen Bedrohungen dar, welcher von den Kommunikationspartnern gewährleistet wird und nachgewiesen werden kann. Diese klassischen Schutzziele sind auch für Industrie 4.0 Umgebungen zutreffend. Die weitreichende Vernetzung der Systeme in der Industrie 4.0 erfordert jedoch weitere Schutzziele, um einen rechtskonformen Umgang oder besondere Anforderungen sicherzustellen.
 
-\subsubsection{klassische Schutzziele}
 TODO - Hierunter fallen die Bereiche Netzsicherheit und Datensicherheit, Sichere Identitäten und funktionale Sicherheit. Netzsicherheit und Datensicherheit werden in der AG3 der Plattform Industrie 4.0 adressiert. Die UAG Netzkommunikation arbeitet bzgl. dieser Punkte mit der AG3 zusammen. Zum Thema „Security und funktionale Sicherheit“ arbeitet die AG3 mit dem DKE-TBINK AK IT Security und Security by Design zusammen. Hinsichtlich funktionaler Sicherheit gibt es Anforderungen von Seiten IEC 61784-3. Diese müssen bei der Definition neuer Systeme berücksichtigt werden. - TODO
 
 \begin{itemize}
@@ -247,13 +180,6 @@ TODO - Hierunter fallen die Bereiche Netzsicherheit und Datensicherheit, Sichere
   \item Verfügbarkeit
 \end{itemize}
 
-\subsubsection{weitere Schutzziele}
-\begin{itemize}
-  \item Verbindlichkeit/Nichtabstreitbarkeit: TODO - z.B. rechtliche Anforderungen
-  \item Anonymität
-\end{itemize}
-
-\subsection{Anforderungen der Referenzmodelle}
 \subsubsection{Sicherheit}
 \begin{itemize}
     \item Netzsicherheit und Datensicherheit
@@ -271,21 +197,47 @@ TODO - Verfügbarkeit gewährleisten durch...
 \subsubsection{\ac{QoS}}
 TODO - \ac{QoS}
 
-\subsection{Security by Design}
-\label{Grundlagen:Security by Design}
-In der Vergangenheit wurden Sicherheitsmechanismen üblicherweise nachträglich und reaktiv in die Entwicklung von Komponenten mit einbezogen. Industrie 4.0 Umgebungen erfordern umfassende Maßnahmen, um die in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} beschriebenen Schutzziele zu erfüllen und eine sichere Kommunikation zu gewährleisten. Dies gilt vor allem für Maschinenbau- und Fertigungsunternehmen, welche häufig proprietäre Individualsoftware zur Steuerung der Maschinen einsetzen \cite{DTAG2016}. Aus der Notwendigkeit, Sicherheitsaspekte bereits in die Softwareentwicklung mit einzubeziehen und einen Schutz der Kommunikation zu gewährleisten, hat sich der Begriff Security by Design entwickelt.
+\section{TCP/IP Referenzmodell}
+\label{Grundlagen:TCP/IP Referenzmodell}
+TODO - Das \ac{TCP}/\ac{IP} Referenzmodell stellt die Basis für moderne Kommunikationsnetze dar.
+Unternehmensübergreifende Kommunikation in Industrie 4.0 Umgebungen findet im wesentlichen über IP-Netze statt. Diese basieren auf dem TCP/IP Referenzmodell, welches ein Schichtenmodell ist und die vier Schichten der Internetprotokollfamilie beschreibt. Sie setzen sich aus Application-, Transport-, Internet- und Link-Layer zusammen. Die Schichten des TCP/IP Referenzmodells überlagern sich mit den Schichten des ISO/OSI Referenzmodells. 
 
-Die Methoden und Ziele der Angreifer stehen jedoch auch unter einem ständigen Wandel. Somit ist es nicht möglich, eine Sicherheitsimplementierung zu entwickeln und diese wiederholt einzusetzen. Vielmehr ist es notwendig, die Sicherheit durch \textit{Security by Design} so weit als möglich proaktiv herzustellen und gleichzeitig im Schadensfall flexibel zu reagieren, um das Schadensausmaß zu begrenzen. Es sind Maßnahmen zur Prävention, Detektion und Reaktion erforderlich (\cite{Umsetzung2015}). Die Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} sowie die in den Architekturmodellen genutzten Techniken \ac{OPC UA} und \ac{DDS} haben das Konzept des \textit{Security by Design} in ihre Kernbestandteile mit aufgenommen (\cite{iirasec2017} und \cite{opcpt2}).
+\subsubsection{Application Layer}
+Die Anwendungsschicht ist für die Übertragung der Nutzdaten zwischen verschiedenen Anwendungen zuständig. Dabei kann es sich um entfernte Anwendungen handeln. Diese sollen sich für den Benutzer verhalten, als würden sie lokal ausgeführt werden.
+
+TODO - Prozess- und Businesslogik
+
+\subsubsection{Transport Layer}
+Die Transportschicht sorgt für die Kommunikation zwischen Prozessen. Die Transportschicht nutzt Ports um verschiedene Dienste zu adressieren. Sie beeinflusst, ob es sich um eine zuverlässige Verbindung ( TCP ) oder nicht ( UDP ) handelt.
+
+TODO - End2End Security
+
+\subsubsection{Internet Layer}
+Die Internetschicht wird genutzt, um Daten von einem Teilnehmer im Netzwerk zum anderen zu übertragen. Die Endpunkte im Netzwerk werden durch IP Adressen beschrieben.
+
+\subsubsection{Link Layer}
+Der Bitübertragungsschicht beschreibt die Topologie des Netzwerks. Sie stellt die physikalische Verbindung der Netzwerkteilnehmer zur Verfügung.
+
+TODO - Bild Internetprotokollfamilie
+TODO - Mit Bild nur kurz erklären und referenzieren, Überschriften entfernen.
+
+\section{Security by Design}
+\label{Grundlagen:Security by Design}
+In der Vergangenheit wurden Sicherheitsmechanismen üblicherweise nachträglich und reaktiv in die Entwicklung von Komponenten mit einbezogen. Industrie 4.0 Umgebungen erfordern umfassende Maßnahmen, um die in \autoref{Grundlagen:Anforderungen} beschriebenen Schutzziele zu erfüllen und eine sichere Kommunikation zu gewährleisten. Dies gilt vor allem für Maschinenbau- und Fertigungsunternehmen, welche häufig proprietäre Individualsoftware zur Steuerung der Maschinen einsetzen (\cite{DTAG2016}). Aus der Notwendigkeit, Sicherheitsaspekte bereits in die Softwareentwicklung mit einzubeziehen und einen Schutz der Kommunikation zu gewährleisten, hat sich der Begriff \textit{Securiy by Design} entwickelt.
+
+Die Methoden und Ziele der Angreifer stehen unter einem ständigen Wandel. Somit ist es nicht möglich, eine Sicherheitsimplementierung zu entwickeln und diese wiederholt einzusetzen. Vielmehr ist es notwendig, die Sicherheit durch \textit{Security by Design} so weit als möglich proaktiv herzustellen und gleichzeitig im Schadensfall flexibel zu reagieren, um das Schadensausmaß zu begrenzen. Es sind Maßnahmen zur Prävention, Detektion und Reaktion erforderlich (\cite{Umsetzung2015}). 
+
+Das Konzept \textit{Security by Design} wird von \ac{RAMI4.0} und \ac{IIRA} sowie von den darin genutzten Protokollen \ac{OPC UA} und \ac{DDS} verfolgt. Die Absicherung der Kommunikation im Netzwerk gehört zu den Kernbestandteilen der Referenzarchitekturen (\cite{iirasec2017} und \cite{opcpt2}).
 
 \section{Testsystem}
 \label{Grundlagen:Testsystem}
-Die aus der Analyse hervorgehenden möglichen Schwachstellen und Bedrohungen im Bereich der Netzwerksicherheit in Industrie 4.0 Umgebungen und deren Auswirkungen sollen anhand eines vorhandenen, prototypischen Industrie 4.0 Testsystems \cite{Weber2018} veranschaulicht werden. Das vorhandene System setzt die drei Schichten der Software-Architektur (Verteilungs-, Baustein- und Laufzeitschicht) nach Starke / Hruschka um. Die Netzwerkkommunikation wird über das Protokoll \ac{OPC UA} realisiert, welches die Anforderungen der Industrie 4.0 und \ac{RAMI4.0} umsetzt.
+TODO - kürzer
+Die aus der Analyse hervorgehenden möglichen Schwachstellen und Bedrohungen im Bereich der Netzwerksicherheit in Industrie 4.0 Umgebungen und deren Auswirkungen sollen anhand eines vorhandenen, prototypischen Industrie 4.0 Testsystems (\cite{Weber2018}) veranschaulicht werden. Das vorhandene System setzt die drei Schichten der Software-Architektur (Verteilungs-, Baustein- und Laufzeitschicht) nach Starke / Hruschka um. Die Netzwerkkommunikation wird über das Protokoll \ac{OPC UA} realisiert, welches die Anforderungen der Industrie 4.0 und \ac{RAMI4.0} umsetzt.
 
 \subsection{Architektur}
 Das vorhandene System ist, aufgrund der vorgesehenen Einsatzgebiete Lehre, Integrations- und Sicherheitstests, als \ac{VM} umgesetzt worden. Dies ermöglicht es die Testinfrastruktur vom restlichen Netz zu kapseln. Das Betriebssystem der \ac{VM} stellt eine Firewall bereit, welche unerwünschten Netzwerktraffic von oder zu dem System verhindert. Um eine gute Erweiterbarkeit der Testumgebung und Modularisierung der Komponenten zu erreichen, werden die einzelnen Industrie 4.0 Komponenten mit Hilfe der Containerlösung Docker isoliert ausgeführt, verwaltet und deren Netzwerkkommunikation sichergestellt. Durch den zusätzlichen Einsatz des Deploymentsystems Kubernetes wird ein verteiltes Ausführen des Systems ermöglicht und somit eine gute Skalierbarkeit erreicht. 
 
 \subsection{Komponenten}
-
 \subsubsection{Repository}
 \subsubsection{Discovery Server}
 \subsubsection{\ac{PKI}}
