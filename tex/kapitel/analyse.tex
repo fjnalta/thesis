@@ -72,8 +72,6 @@ Zu den Aufgaben der Internetschicht gehört das Bereitstellen von Adressen, das 
   \label{Analyse:ARP Paket}
 \end{figure}
 
-\clearpage
-
 Die simple Architektur des \ac{ARP} ermöglicht es, die Kommunikation im Netzwerk zu manipulieren und einen \ac{MitM} Angriff im Netzwerk durchzuführen. Da im Protokoll keine Mechanismen zur Überprüfung der empfangenen Daten wie Checksum o. Ä. vorhanden sind und die Pakete über die Broadcast Adresse im Netzwerk verteilt werden, können die Pakete von jedem Teilnehmer im Netzwerk eingesehen und darauf geantwortet werden. Die Angriffsform des \textit{\ac{ARP} Spoofing} nutzt diese Schwachstelle im Protokoll aus. Der Angreifer versendet gefälschte \ac{ARP} Pakete im Netzwerk. Diese beinhalten die MAC-Adresse der Netzwerkschnittstelle des Angreifers als Zuordnung zu den \ac{IP} Adressen im Netzwerk. Der angegriffene Host sendet die Netzwerkpakete zur im Paket angegebenen \ac{IP} Adresse zukünftig über den Host des Angreifers. Dies lässt den Angreifer die Pakete zwar empfangen, stellt aber die Funktionalität des Netzwerks ein. Um dies zu verhindern, muss der Angreifer die Pakete nun mit Hilfe seiner \ac{ARP} Tabelle zum eigentlichen Empfänger weiterleiten.
 
 Moderne \ac{IDS} können \textit{\ac{ARP} Spoofing} anhand von Mustererkennung identifizieren und Maßnahmen zur Sperre dieser Netzwerkpakete einleiten. Aufgrund der geringen Gültigkeitsdauer des \ac{ARP} Cache ist eine effiziente Erkennung und Vermeidung eines Angriffs in der Praxis nur schwer umzusetzen. Eine weitere Schutzmaßname gegen diese Form des Eingriffs in das Netzwerk kann durch das Arbeiten mit statischen Tabellen erreicht werden. Dies kann jedoch aufgrund des hohen Administrationsaufwands nur in kleinen Netzwerkinfrastrukturen zum Einsatz kommen.
@@ -113,12 +111,10 @@ Ein wichtiger Bestandteil des \ac{TCP} Verbindungsmanagements und der Fehlerkont
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{tcp-verbindungsaufbau}
+    \includegraphics[width=10cm]{tcp-verbindungsaufbau}
     \caption{TCP Verbindungsaufbau}
     \label{Analyse:TCP Verbindungsaufbau}
-  \end{figure}
-  
-\clearpage
+\end{figure}
 
 \subsubsection{SYN-Flood}
 Der Mechanismus des 3-Wege-Handshakes kann durch einen SYN-Flood Angriff ausgenutzt werden und somit die Netz- und Systemlast manipuliert werden. Der SYN-Flood stellt eine Form des \ac{DoS} bzw. \ac{DDoS} Angriffs dar. Dabei werden zu einem gezielten \ac{TCP} Dienst große Menge an Paketen mit gesetztem SYN \textit{Flag} gesendet, um einen Verbindungsaufbau zum Server vorzutäuschen. Nach Erhalt des Pakets sendet der Server dem Client ein SYN-ACK Paket um den Verbindungsaufbau zu initiieren und wartet auf Bestätigung. Diese Bestätigung wird vom Angreifer unterschlagen. Somit bleiben auf dem angegriffenen System Ressourcen dieser halb offenen Verbindung bis zum erreichen eines Timouts belegt. Ein verteilter Angriff auf ein System kann dessen Ressourcen schnell komplett beanspruchen und somit zur Ablehnung jeglicher weiterer Verbindungen führen.
@@ -136,12 +132,10 @@ Im Gegensatz zum SYN-Flood stellt \textit{sockstress} eine vollständige Verbind
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{sockstress}
+  \includegraphics[width=10cm]{sockstress}
   \caption{Sockstress Sequenzdiagramm}
   \label{Analyse:Sockstress-Sequenzdiagramm}
 \end{figure}
-
-\clearpage
 
 \subsection{\ac{UDP}}
 Das von der \ac{IETF} im \ac{RFC} 768\footnote{Link - https://tools.ietf.org/html/rfc768} definierte Datagramm \ac{UDP} ist ein verbindungsloses\footnote{verbindungslos - TODO}, nicht-zuverlässiges\footnote{nicht zuverlässig - TODO} Übertragungsprotokoll. Der \ac{UDP} Header ist im Gegensatz zum \ac{TCP} Header (20 Bytes) nur 8 Byte lang und bietet somit einen sehr geringen \textit{Overhead}\footnote{Overhead - TODO} beim Versenden von \ac{IP} Paketen. \ac{UDP} wurde als Alternative zu \ac{TCP} entwickelt, um die Kommunikation mit niedrigeren Latenzen für Dienste wie \ac{SNMP} oder \ac{DNS}oder \ac{VoIP} zu ermöglichen (\cite{UDP2003}). Es wird auf den für die Latenz kritischen 3-Wege-Handshake verzichtet und das \textit{Fire-and-Forget}\footnote{Fire-and-Forget - TODO} Prinzip angewandt, wobei keine Verbindung zwischen zwei Kommunikationspartnern hergestellt wird, sondern die Pakete ohne Flusskontrolle von Sender zu Empfänger gesendet werden.
@@ -167,12 +161,10 @@ Um \ac{DNS} Spoofing erfolgreich durchzuführen muss die gefälschte \ac{DNS} Re
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{dns-response-request}
+    \includegraphics[width=12cm]{dns-response-request}
     \caption{Wireshark - ID im DNS Header}
     \label{Analyse:DNS Request Response}
-  \end{figure}
-  
-\clearpage
+\end{figure}
 
 \subsubsection{\ac{DNS} Amplification}
 \label{Analyse:DNS Amplification}
@@ -184,12 +176,10 @@ Mit der Erweiterung des \ac{DNS} in der \ac{IETF} \ac{RFC} 2617\footnote{Link - 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{dns-amplification}
+    \includegraphics[width=12cm]{dns-amplification}
     \caption{Schematisches Beispiel: DNS Amplification}
     \label{Analyse:DNS Amplification Beispiel}
-  \end{figure}
-  
-\clearpage
+\end{figure}
 
 Diese Form des Angriffs kann aus dem internen Netz sowie von extern auf öffentlich zugängliche Systeme durchgeführt werden. \ac{DoS} Attacken stellen besonders für Industrie 4.0 Netzwerke, deren komplexe Kommunikation und Anforderungen eine hohe Bedrohung dar. Durch den erheblichen \ac{BAF} können diese Angriffe mit wenig Bandbreite beim Angreifer durchgeführt werden und gleichzeitig das Netzwerk des Opfers voll auslasten. Wie in \autoref{Analyse:DNS Amplification am Beispiel von isc.org} dargestellt, kann durch die Abfrage der Zone \textit{isc.org} eine 3385 Byte große Antwort vom Nameserver provoziert werden. Dies führt zu einem \ac{BAF} von ca. 56. \autoref{Analyse:Netzlast bei DNS Amplification} beschreibt die Netzlast während eines \ac{DNS} Amplification Angriffs im Quell- und Zielnetz. Auf der X-Achse wird die Anzahl der gesendeten Pakete pro Sekunde dargestellt, die Y-Achse zeigt die Netzlast in Gigabit pro Sekunde. Es ist eine lineare Steigerung der Netzlast in beiden Netzen zu erkennen, entscheidend ist jedoch der \ac{BAF}. Beim Versandt von 10000 Paketen pro Sekunde müssen im Quellnetz nur ca. 4,8 Megabit/s an Daten transferiert werden, im Zielnetzwerk wird mit 287 Megabit/s eine wesentlich höhere Last erzeugt. Es ist möglich, mit einer vergleichsweise geringen Bandbreite im Quellnetz ein Netzwerk mit hoher Bandbreite im Zielnetz auszulasten.
 
@@ -202,12 +192,10 @@ Diese Form des Angriffs kann aus dem internen Netz sowie von extern auf öffentl
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{gnuplot-dnsamplification}
+    \includegraphics[width=12cm]{gnuplot-dnsamplification}
     \caption{Netzlast bei DNS Amplification}
     \label{Analyse:Netzlast bei DNS Amplification}
 \end{figure}
-  
-\clearpage
 
 Der \ac{DNS} bietet weitere Angriffsmöglichkeiten wie \ac{DNS} Fast Fluxing oder \ac{DNS} Information Leakage. Diese Angriffe dienen zum \textit{Phishing} von Daten oder der Spionage der Netzwerkstruktur. Sie nehmen initial keinen Einfluss auf den Netzwerkverkehr und dienen der Vorbereitung von Folgeangriffen und dem Sammeln von Informationen. Die Analyse der Sicherheit der Netzwerkkommunikation beschränkt sich auf Angriffe, welche direkten Einfluss in die Kommunikation im Netzwerk haben.
 
@@ -236,8 +224,6 @@ In der \textit{Session} werden die Sicherheitsbestandteile Benutzerauthentifizie
   \label{Analyse:OPC UA Security Architecture}
 \end{figure}
 
-\clearpage
-
 Aufgrund der verschiedenen Anforderungen der Industrie an ihre Systeme werden von \ac{OPC UA} mehrere \textit{Security Policies} im \textit{Secure Channel} zur Informationsübertragung zur Verfügung gestellt. Dies ist notwendig, da die Verwendung von Verschlüsselungsalgorithmen und Kodierungsverfahren Ressourcen benötigt und Latenzen verursacht, welche unter Umständen nicht vorhanden sind oder nicht geleistet werden können. Eine Fehlkonfiguration des Protokolls kann jedoch Auswirkungen auf den Betrieb des Netzwerks und der Komponenten haben sowie die Integrität der Daten gefährden. Die Bezeichnungen der geöffneten Verbindungen können irreführend sein, da bei der Verwendung der \textit{Security Policy} "`none"' zwar ein \textit{Secure Channel} hergestellt wird, welcher jedoch keine Sicherheitsprofile bereitstellt und somit die unverschlüsselte Kommunikation der Komponenten zulässt (\cite{opcpt7}).
 
 Auf der Transportschicht beschreibt die Spezifikation von \ac{OPC UA} mit dem \ac{UACP} ein abstraktes Protokoll zur Herstellung einer Vollduplexverbindung in einer Client-Server Architektur. Implementierungen dieses Protokolls können über jede Middleware, welche den Austausch von Nachrichten im Vollduplexverfahren über \ac{TCP}/\ac{IP} und \textit{Websockets} unterstützt, durchgeführt werden. Somit ist das von \ac{OPC UA} spezifizierte Protokoll für die Zukunft flexibel. Die Spezifikation des abstrakten Protokolls \ac{UACP} wird im 5. Teil der \ac{OPC UA} Spezifikation\footnote{OPC Unified Architecture Specification Part 6: Mappings} (\cite{opcpt5}) beschrieben und beinhaltet die Form der Nachricht, den Verbindungsaufbau, die Kommunikation und die Fehlerbehandlung.
@@ -252,8 +238,6 @@ In \autoref{Analyse:OPC UA Kommunikationswege} werden die von \ac{OPC UA} bereit
   \caption{OPC UA Kommunikationswege} 
   \label{Analyse:OPC UA Kommunikationswege}
 \end{figure}
-
-\clearpage
 
 Die beschriebenen Protokollstacks (\autoref{Analyse:OPC UA Kommunikationswege}) bilden mit ihren Sicherheitsmechanismen die Grundlage für eine sichere Datenübertragung. Die Form der Datenübertragung über \ac{SOAP}/\ac{HTTP} wurde ab Version 1.03 der Spezifikation als veraltet angesehen, da es in der Industrie nicht umgesetzt wurde (\cite{opcpt5}) und wird im weiteren Verlauf der Thesis nicht beschrieben. Die Protokolle \ac{UA} Binary über \ac{TCP} und die Hybridform aus den Protokollen \ac{UA} Binary und \ac{HTTPS} Webservice werden produktiv genutzt und im folgenden näher erläutert.
 
@@ -279,8 +263,6 @@ Um den in \autoref{Grundlagen:IoT/IIoT} beschriebenen Einsatzmöglichkeiten in r
   \label{Analyse:CoAP Message Format}
 \end{figure}
 
-\clearpage
-
 Die Nutzung des Protokolls \ac{UDP} macht es weiterhin möglich Multicast Nachrichten im Netzwerk zu verbreiten. Dies ermöglicht das Auffinden von Ressourcen im Netzwerk und ist für \ac{M2M} Kommunikation in Industrie 4.0 Umgebungen von großer Bedeutung. \ac{CoAP} Server werden mit Hilfe ihrer \ac{URI} referenziert. Werden neue Server im Netzwerk integriert, so ist es möglich, den Server mit Hilfe eines Broad- oder Multicast im Netz oder Teilnetzen bekannt zu machen. (\cite{trapickin2013})
 
 \ac{UDP} verhindert jedoch, dass eine Verschlüsselung der Nutzdaten über \ac{TLS} bereitgestellt werden kann. \ac{TLS} benötigt eine zuverlässige Übertagung der Pakete\footnote{TODO - in }, da es auf einer sequenziellen Integritätsprüfung\footnote{TODO - was ist das} der Daten beruht. Diese Anforderungen werden vom unzuverlässigen Datargramm \ac{UDP} nicht erfüllt. Eine Sicherung der Datenübertragung muss mit Hilfe von \ac{DTLS}\footnote{TODO - was ist DTLS} hergestellt werden.
@@ -290,6 +272,4 @@ Das Ziel einer weitreichenden Vernetzung aller Komponenten in Industrie 4.0 Umge
 
 Der Fokus der Weiterentwicklung der Kommunikation im Netzwerk liegt auf der Etablierung neuer Anwendungsprotokolle zur effizienten Nachrichtenübermittlung. Darunter zählt die umfangreichen Industrielösungen \ac{OPC UA} sowie ressourcenschonende Protokolle für integrierte Lösungen wie \ac{CoAP}. \ac{OPC UA} stellt ein zukunftsorientiertes, generisches Protokoll zur Kommunikation im Netzwerk bereit. Durch die hohe Flexibilität, welche durch die weitreichenden Anforderungen der Industrie erforderlich ist, erfordert die Umsetzung einer Infrastruktur mit diesem Protokoll ein hohes Maß an administrativem Aufwand und kann bei Fehlkonfiguration eine Schwachstelle im Netzwerk darstellen. 
 
-Um den in \autoref{Grundlagen:Grundprinzipien der sicheren Kommunikation} genannten Schutzzielen gerecht zu werden und einen ausreichenden Schutz gegen die in \autoref{Analyse:Bedrohungen} genannten Bedrohungen bereitzustellen, muss eine sichere Datenübertragung durch das Zusammenwirken mehrerer Schichten im Netzwerkstack hergestellt werden.
-
-Im folgenden Teil der Thesis werden die in der Analyse gewonnenen Erkenntnisse und deren Auswirkungen auf das Netzwerk und dessen Kommunikation durch die Darstellung verschiedener Bedrohungsszenarien am Testsystem (\cite{Weber2018}) untersucht.
+Um den in \autoref{Grundlagen:Anforderungen} genannten Schutzzielen gerecht zu werden und einen ausreichenden Schutz gegen die in \autoref{Analyse:Bedrohungen} genannten Bedrohungen bereitzustellen, muss eine sichere Datenübertragung durch das Zusammenwirken mehrerer Schichten im Netzwerkstack hergestellt werden.

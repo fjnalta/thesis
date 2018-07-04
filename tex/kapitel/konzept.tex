@@ -15,12 +15,10 @@ Das Konzept der Netzwerkinfrastruktur ist in \autoref{Konzept:Netzwerkkonzept} i
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{netzwerk}
+  \includegraphics[width=12cm]{netzwerk}
   \caption{Netzwerkinfrastruktur} 
   \label{Konzept:Netzwerkkonzept}
 \end{figure}
-
-\clearpage
 
 Die Kapselung und Sicherheit des Testsystems ist durch die Erweiterung um zusätzliche \ac{VM}s und Dienste weiterhin gegeben. Die Kommunikation mit dem Hostsystem und externen Netzen findet ausschließlich über die Netzwerkschnittstelle des Routers statt und dient der Installation und Konfiguration der Komponenten. Diese kann im Betrieb deaktiviert werden, um eine vollständige Isolation der Umgebung zu erzielen.
 
@@ -42,7 +40,7 @@ In \autoref{Konzept:Virtuelle Maschinen} werden die \ac{VM}s sowie deren Dienste
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{vm}
+  \includegraphics[width=12cm]{vm}
   \caption{Virtuelle Maschinen und Dienste} 
   \label{Konzept:Virtuelle Maschinen}
 \end{figure}
@@ -52,7 +50,7 @@ Die Routingfunktionalitäten werden auf der \ac{VM} "`mgmt"' umgesetzt. Die \ac{
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{router}
+  \includegraphics[width=12cm]{router}
   \caption{Routerkomponente} 
   \label{Konzept:Routerkomponente}
 \end{figure}
@@ -64,7 +62,7 @@ Die Dienste \ac{DHCP} und \ac{DNS} werden zusammen auf der \ac{VM} "`mgmt"' konf
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{dhcpdns}
+  \includegraphics[width=12cm]{dhcpdns}
   \caption{DHCP und DNS Server} 
   \label{Konzept:DHCP und DNS Server}
 \end{figure}
@@ -76,14 +74,14 @@ Die Komponenten \ac{CoAP} Client und \ac{CoAP} Server dienen der Erweiterung des
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{coapClient}
+  \includegraphics[width=12cm]{coapClient}
   \caption{CoAP Client} 
   \label{Konzept:CoAP Client}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{coapServer}
+  \includegraphics[width=12cm]{coapServer}
   \caption{CoAP Server} 
   \label{Konzept:CoAP Server}
 \end{figure}
@@ -93,7 +91,7 @@ Die Bereitstellung des Rogue \ac{DHCP} Servers findet auf der bestehenden \ac{VM
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{rogueDhcp}
+  \includegraphics[width=12cm]{rogueDhcp}
   \caption{Rogue DHCP Server} 
   \label{Konzept:Rogue DHCP Server}
 \end{figure}
@@ -105,7 +103,7 @@ Das \ac{CoAP} Manipulationssystem versendet Netzwerkpakete mit gefälschten Date
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{coapManipulation}
+  \includegraphics[width=12cm]{coapManipulation}
   \caption{CoAP Manipulationssystem} 
   \label{Konzept:CoAP Manipulationssystem}
 \end{figure}
@@ -128,7 +126,7 @@ Um vollständige Funktionalität des Clients im Netzwerk bereitzustellen, werden
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{dhcpdnsseq}
+  \includegraphics[width=12cm]{dhcpdnsseq}
   \caption{Dynamische Hostkonfiguration mit DHCP und DNS} 
   \label{Konzept:Dynamische Hostkonfiguration mit DHCP und DNS}
 \end{figure}
@@ -140,14 +138,14 @@ Die genutzte Form der Namensauflösung hat auf die Umsetzung des Konzepts keinen
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{dnsrekseq}
+  \includegraphics[width=12cm]{dnsrekseq}
   \caption{Rekursive DNS Namensauflösung} 
   \label{Konzept:Rekursive DNS Namensauflösung}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{dnsitseq}
+  \includegraphics[width=12cm]{dnsitseq}
   \caption{Iterative DNS Namensauflösung} 
   \label{Konzept:Iterative DNS Namensauflösung}
 \end{figure}
@@ -157,7 +155,7 @@ Das Zusammenspiel der bisher beschriebenen Komponenten wird für die Kommunikati
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{coapseq}
+  \includegraphics[width=12cm]{coapseq}
   \caption{Initialisierung von CoAP Client und Kommunikation zwischen CoAP Client und CoAP Server} 
   \label{Konzept:CoAP Client und Server}
 \end{figure}
@@ -167,7 +165,7 @@ Durch die Aktivierung der Rogue \ac{DHCP} Komponente auf der \ac{VM} "`i40"' wir
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{coapMani}
+  \includegraphics[width=12cm]{coapMani}
   \caption{Umleitung der Netzwerkkommunikation durch Manipulation des Gateways} 
   \label{Konzept:Umleitung der Netzwerkkommunikation durch Manipulation des Gateways}
 \end{figure}
