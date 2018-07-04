@@ -11,4 +11,3 @@ set xrange [0:15000]
 plot "60bytes.dat" title "Quellnetz" with lines, "3385bytes.dat" title "Zielnetz" with lines
 
 # Output File
-
