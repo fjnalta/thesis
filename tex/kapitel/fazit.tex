@@ -1,44 +1,14 @@
 \chapter{Fazit}
-Da die grundlegende Netzwerkstruktur der \ac{TCP}/\ac{IP} Netzwerke für Industrie 4.0 Kommunikation übernommen wird, sind auch die damit zusammenhängenden Voraussetzungen und Sicherheitsgedanken zu beachten. \cite{sichKom2017}
+Die Ziele der durchgeführten Arbeiten bestanden zum Einen aus der Analyse der Netzwerkkommunikation in Industrie 4.0 Netzen und zum Anderen aus der Erweiterung des Testsystems anhand der Ergebnisse der Analyse. Die Darstellung der Ergebnisse der Analyse durch verschiedene Anwendungsszenarien war mit Hilfe des vorhandenen Softwarestacks im Testsystem nur  begrenzt möglich. Um das Angriffsszenario eines \ac{MitM} Angriffs mit Hilfe eines Rogue \ac{DHCP} Servers darstellen zu können, wurde die Netzwerkkommunikation der in den Ergebnissen dargestellten Komponenten durch die Virtualisierung von zwei Netzwerken umgesetzt. Die Netzwerke beinhalten zwei weitere \ac{VM}s welche die verschiedenen Komponenten des Netzwerks repräsentieren. Diese bestehen aus \ac{DHCP}, \ac{DNS}, \ac{CoAP} Client und Server sowie Maniplations- und Monitoringsystem. Der \ac{DHCP} stellt die Netzwerkkonfiguration bereit und ermöglicht den Betrieb der weiteren Komponenten. Durch die eigene Verwaltung des \ac{DNS} Servers ist es in Zukunft möglich weitere Anwendungsszenarien am Testsystem darzustellen. Dazu gehören u. A. der in \autoref{Analyse:DNS Amplification} beschriebene Angriff der \ac{DNS} Amplification durch die Generierung eigener Zonen mit extrem vielen \ac{RR}, um eine möglichst große \ac{DNS} Response zu provozieren sowie das \ac{DNS} Spoofing und die Analyse der Sicherheitsmechanismen von \ac{DNSSEC}. Die \ac{CoAP} Komponenten werden zur Durchführung und Visualisierung der Kommunikation im Netzwerk genutzt.
 
-Vielzahl von Angriffen auf die verschiedenen Schichten des \ac{TCP}/\ac{IP} Referenzmodells, welches in Industrie 4.0 Umgebungen genutzt wird.
-In der Thesis wurden nur wenige Beispielhafte Angriffe dargestellt und durchgeführt.
+Die Angriffsszenarien sowie die Änderungen am Testsystem wurden zuerst konzipiert und anschließend durchgeführt. Die Erweiterung des Testsystems nimmt, mit Ausnahme der Implementierung eines Verschlüsselungsverfahrens während dem Nachrichtenaustausch der Komponenten, keinen Einfluss auf den bisher implementierten Produktionsprozess und dessen Containervirtualisierung. 
 
-Analyse der Netzwerkkommunikation in Industrie 4.0 Umgebungen und Erweiterung einer protoypischen Security Testumgebung zur Darstellung verschiedener Berohungsfaktoren
+Die Skalierbarkeit des Testsystems bleibt hinsichtlich weiterer dargestellter Komponenten und Prozesse durch das Protokoll \ac{OPC UA} sowie der Erweiterung des virtuellen Netzwerks um weitere \ac{VM}s und zur Analyse neuer Technologien erhalten. 
 
-Security Mechanismen sind nicht umsonst und beeinträchtigen die Performance. Security sollte daher nur dort zur Anwendung kommen, wo sie auch benötigt wird. Diese Entscheidung soll aber nicht der Entwickler / Produktmanager treffen, sondern der Anlagenbetreiber (Systemadministration).
+Die Analyse der Kommunikation in Industrie 4.0 Umgebungen ergab, dass die Übertragung der Daten in diesen Umgebungen auf dem Protokoll \ac{IP} basiert. In Verbindung mit dem Protokoll \ac{IP} werden die Transportprotokolle \ac{TCP} und \ac{UDP} genutzt. Auf diesem vorhandenen Netzwerkstack setzen die beispielhaft analysierten Protokolle der Industrie 4.0 wie \ac{OCP UA}, \ac{DDS} und \ac{CoAP} auf. Die Protokolle \ac{OPC UA} und \ac{DDS} erfüllen die Anforderungen der \ac{RAMI4.0} bzw. \ac{IIRA} und wurden nach dem Prinzip \textit{Security by Design} entwickelt. Diese Protokolle sind abstrakt beschrieben, um den verschiedenen Anforderungen der Industrie 4.0 gerecht zu werden und durch den Verzicht auf Features Latenzen zu optimieren oder den Ressourcenverbrauch minimieren zu können. Diese Konfigurationsmöglichkeiten müssen während der Integration der Komponenten beachtet werden und u. U. durch weitere Sicherheitsmaßnahmen wie der Abschottung des Netzes unterstützt werden, um die \ac{IT}-Sicherheit zu gewährleisten.
 
-Die Nutzung von \ac{OPC UA} bietet keinen automatischen Schutz der IT-Infrastruktur - Konfiguration ist notwendig. Obwohl Securiy by Design. Basiert auf Unteren Schichten.
+Die im Rahmen dieser Arbeit gewählten Anwendungsszenarien sollen die mit der geschichteten Kommunikation im Netzwerk einhergehenden Probleme anhand von bekannten Bedrohungsformen der niedrigen Schichten des \ac{TCP}/\ac{IP} Referenzmodells verdeutlichen und die Auswirkungen während der Nutzung von Industrie 4.0 Protokollen auf der Anwendungsschicht darstellen. Das Testsystem ermöglicht es dies mit Hilfe der eingeführten Konfigurationsparameter und des bereitgestellten \ac{GUI}.
 
-TODO - Applikationssicherheit != Netzwerksicherheit != Betriebssystemsicherheit
-TODO - Schutz auf allen Ebenen -> z.B. OPC UA basiert auf IP-Netz -> Angriffsvektoren von IP und genutzten Diensten immer noch zutreffend
+Die durchgeführte Analyse der Netzwerkkommunikation beschränkt sich auf beispielhafte Protokolle und deren Dienste als Vertreter der Schichten im \ac{TCP}/\ac{IP} Referenzmodell. In den heterogenen Industrie 4.0 Umgebungen werden weitere Technologien wie \ac{MQTT}, \ac{LDAP} und \ac{SSL} genutzt oder Authentifizierungsmechanismen wie \ac{OAuth} und ein Zertifikatsmanagement mit Hilfe einer \ac{PKI} bereitgestellt. Diese wurden im Rahmen der Arbeit nicht beschrieben und bieten Ansatzpunkte für nachfolgende Arbeiten. Durch die Implementierung eines Authentifizierungsmechanismus wäre die Möglichkeit gegeben, die Angriffsform des \textit{Bruteforce} sowie weiterer Techniken des Herausfinden von Benutzerdaten in Bezug auf das Protokoll \ac{OPC UA} zu untersuchen. Des Weiteren setzt das genutzte Testsystem die Kommunikation mit \ac{IP}v4 voraus. Dies ist für heutige Industrienetzwerke noch zutreffend, jedoch wird eine stetige Migration zum Protokoll \ac{IP}v6 stattfinden. Eine Migration des Systems zum Protokoll \ac{IP}v6 stellt ebenfalls eine Erweiterung des Testsystems dar.
 
-Die Referenzarchitekturen \ac{RAMI4.0} und \ac{IIRA} beschreiben den logischen Aufbau von Systemen und deren Prozessen in einem \ac{IIoT} Umfeld. Der Fokus der Referenzarchitekturen liegt auf der Definition von Abstraktionsebenen und semantischen Zusammenhängen. Bei dieser Betrachtung wird die Abbildung der logischen Architekturen auf verteilte Informations- und Kommunikationssysteme nicht beachtet. 
-
-TODO -
-LDAP -
-Firewall -
-CoAP Auth -
-SSL -
-OPC UA System Erweitern - Zertifikatsmanagement, PKI, IdM - 
-weitere Angriffsmethoden - DNS Amplification, SYN-Flood, ARP Spoofing, usw.
-Ipv6
-QoS
-TSN
-
-TODO - das hier ist referenziert im Konzept!
-Durch die eigene Verwaltung des \ac{DNS} Servers ist es in Zukunft möglich weitere Anwendungsszenarien am Testsystem darzustellen. Dazu gehören u. A. der in \autoref{Analyse:DNS Amplification} beschriebene Angriff der \ac{DNS} Amplification durch die Generierung eigener Zonen mit extrem vielen \ac{RR}, um eine möglichst große \ac{DNS} Response zu provozieren sowie das \ac{DNS} Spoofing und die Analyse der Sicherheitsmechanismen von \ac{DNSSEC}.
-
-TODO - Defense in Depth
-Auf der Netzzugangsschicht fallen, wie auf allen anderen Schichten, Betriebsdaten an, welche genutzt werden können, um Angriffe oder unregelmäßige Aktivitäten im Netzwerk zu erkennen. Es kann protokolliert werden, wann ein Gerät mit den Netzwerk verbunden war und welche Pakete andere Netzwerkteilnehmer von diesem Gerät erhalten haben (\cite{sichKom2017}). Die Norm IEC 62443\footnote{ref. IEC 62443} definiert die Defense in Depth Strategie. Sie stellt ein Konzept bereit, um die IT-Sicherheit der Anlagen, die Netzwerksicherheit und Systemintegrität nach dem Stand der Technik zu schützen. Sie gliedert eine Unternehmensinfrastruktur in multiple und redundante Sicherheitsschichten (Zonen), um ein höchstmögliches Sicherheitsniveau zu erreichen. Die unabhängigen Verteidigungslinien sollen Angriffe verzögern, um Zeit für Gegenmaßnahmen zu gewinnen. Die Kommunikation erfolgt in separierten Netzsegmenten, welche zusätzlich mit \ac{IDS} nutzen, um Angriffe schnell zu erfassen und Gegenmaßnahmen einleiten zu können. Somit wird der Aufwand, um die unteren Netzwerkebenen zu kompromittieren durch den Einsatz von \ac{DMZ}, \ac{IDS}, Paketfilter und Time Access Control wesentlich erhöht. Zusätzlich ist das "`Zone and Conduit"' Modell eines der zentralen Elemente der Defense in Depth Strategie. Die verschiedenen Zonen können nur mittels spezieller Leitungen (Conduits) miteinander kommunizieren.  
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=15cm]{defense-in-depth-strategie}
-    \caption{Defense in Depth Strategie - \cite{kuipers2006}}
-    \label{Kap3:Defense-in-Depth}
-\end{figure}
-
-\clearpage
-
-Das Defense in Depth Konzept stellt ein Konzept dar, um Industrieanlagen und Unternehmensnetzwerke vor Angriffen zu schützen. Bei der sich ständig ändernden Bedrohungslage in den komplexen Netzen wird bei dieser Strategie jedoch weniger ein vollständiger Schutz bereitgestellt, als eine Strategie zur Schadensbegrenzung im Falle eines Angriffs.
+Der Prozess der 4. industriellen Revolution ist nicht abgeschlossen. Es ist abzuwarten, welche Technologien sich in Zukunft, vor allem im Bereich der \ac{M2M} Kommunikation, in der Industrie etablieren werden. Das Testsystem bietet mit seiner gekapselten Umgebung und der Nutzung von virtuellen Maschinen gute Voraussetzungen für zukünftige Technologien anwendbar und erweiterbar zu sein.
