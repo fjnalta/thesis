@@ -33,3 +33,4 @@ temp/
 # Node
 src/CoAP_Client/node_modules
 src/CoAP_Server/node_modules
+src/CoAP_Manipulation/node_modules
