@@ -74,12 +74,17 @@ Der Quellcode der \ac{OPC UA} Clients in den Containern \textit{scheduler} und \
 
 Der \ac{CoAP} Client besteht aus einem Server, welcher einen Temperatursensor einer Gießmaschine simuliert. Die Temperatur wird alle fünf Sekunden zum zuständigen Überwachungssystem übermittelt. Die Übertragung erfolgt unverschlüsselt über das Transportprotokoll \ac{UDP}, welches es möglich macht die Kommunikation im Netzwerk auch ohne Server analysieren zu können. Der Client sendet alle fünf Sekunden die Temperatur eines Sensors einer Gießmaschine zu einer in der Datei \textit{config.json} konfigurierten \ac{URL}. Der \ac{CoAP} Client wurde auf der \ac{VM} "`comp"' bereitgestellt.
 
-Der \ac{CoAP} Server stellt den Empfänger der Nachrichten dar. Er stellt ein Webinterface bereit, um die empfangenen Daten zu visualisieren. Aufgrund der Simplizität der bereitgestellten Funktionalitäten wurde zur Implementierung des Systems ausschließlich ein \textit{Pen-and-Paper-Protoyping} durchgeführt. Der \ac{CoAP} Server bietet in der Datei \textit{config.json} die Möglichkeit die \ac{IP} Adresse, auf welche der Socket des Webservers gebunden wird zu bestimmen. Da das System auf der \ac{VM} "`mgmt"' ausgeführt wird und um dem Server im Testsystem das Netzwerk "`i40-monitoring"' zuzuweisen, wurde die \ac{IP} Adresse 10.0.10.1 in der Konfiguration gesetzt. Das \ac{GUI} des Webinterface wird in \autoref{arg} dargestellt.
+Der \ac{CoAP} Server stellt den Empfänger der Nachrichten dar. Er stellt ein Webinterface bereit, um die empfangenen Daten zu visualisieren. Aufgrund der Simplizität der bereitgestellten Funktionalitäten wurde zur Implementierung des Systems ausschließlich ein \textit{Pen-and-Paper-Protoyping} durchgeführt. Der \ac{CoAP} Server bietet in der Datei \textit{config.json} die Möglichkeit die \ac{IP} Adresse, auf welche der Socket des Webservers gebunden wird zu bestimmen. Da das System auf der \ac{VM} "`mgmt"' ausgeführt wird und um dem Server im Testsystem das Netzwerk "`i40-monitoring"' zuzuweisen, wurde die \ac{IP} Adresse 10.0.10.1 in der Konfiguration gesetzt. Das \ac{GUI} des Webinterface wird in \autoref{Umsetzung:Screenshot Monitoringsystem} dargestellt.
 
-TODO - Screenshot GUI
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{i40-monitoring}
+    \caption{Screenshot I4.0 Monitoringsystem} 
+    \label{Umsetzung:Screenshot Monitoringsystem}
+\end{figure}  
 
 \subsection{\ac{CoAP} Manipulationssystem}
-TODO - Implementierung u. Beschreibung
+Als Grundlage der Implementierung des \ac{CoAP} Manipulationssystems, diente der zuvor erstelle \ac{CoAP} Client. Dieser wurde so geändert, dass der Zielserver, der Titel der Nachricht sowie das Intervall, in welchem Daten zum Ziel gesendet werden sollen, beim Start des Servers über die Kommandozeile ermittelt werden können.
 
 \section{Quellcode}
 Der erstellte Quellcode ist im öffentlichen GitHub Repository\footnote{https://github.com/fjnalta/i40-testbed} unter der \ac{MIT} Lizenz verfügbar. Das Lizenzierungsmodell erlaubt die freie Nutzung und Änderung der Software durch Dritte.

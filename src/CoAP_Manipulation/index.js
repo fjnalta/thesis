@@ -1,9 +1,17 @@
 'use strict';
 var coap = require('coap');
-var config = require('./config');
+
+if(process.argv.length == 2 || process.argv.length != 5) {
+    console.log('Usage: node index.js [DESTINATION URL] [PAYLOAD TITLE] [INTERVAL]');
+    process.exit(0);
+}
+
+var destination = process.argv[2];
+var payload = process.argv[3];
+var interval = process.argv[4];
 
 function fireRequest(sensor, temp) {
-    var req = coap.request(config.destination);
+    var req = coap.request(destination);
     var payload = {
         title: sensor,
         body: temp
@@ -19,8 +27,6 @@ function fireRequest(sensor, temp) {
         });
     });
     req.end();
- }
+}
 
-setInterval(function() { fireRequest('Temperatursensor_#1', Math.floor(Math.random() * 25) + 250); }, 2*1000);
-setInterval(function() { fireRequest('Temperatursensor_#2', Math.floor(Math.random() * 50) + 50); }, 5*1000);
-setInterval(function() { fireRequest('Temperatursensor_#3', Math.floor(Math.random() * 100) + 650); }, 3*1000);
+setInterval(function() { fireRequest(payload, Math.floor(Math.random() * 25) + 950); }, interval*1000);

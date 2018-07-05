@@ -1,0 +1,27 @@
+<% include partials/header.ejs %>   
+<% include partials/sidebar.ejs %>
+
+<!-- Page Content  -->
+<div id="content">
+    <h2>Dashboard</h2>
+    <script src="../public/js/client.js"></script>
+    <div class="line"></div>
+    <div class="card">
+        <div class="card-header">Gießmaschine #1</div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Service</th>
+                    <th scope="col">Temperatur</th>
+                    <th scope="col">Information</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="moldingmachine1"></tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>

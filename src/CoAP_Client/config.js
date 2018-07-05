@@ -1,5 +1,5 @@
 config = {};
 
-config.destination = 'coap://ezlife.eu/moldingmachine/1';
+config.destination = 'coap://localhost/moldingmachine/1';
 
 module.exports = config;
