@@ -24,7 +24,7 @@ function updateData() {
 function setStatus(temp) {
     if(temp <= 750) {
         return '<div class="text-center"><font color="green"><b>OK</b></font></div>';
-    }
+    }arg
     if(temp > 750 && temp <= 900) {
         return '<div class="text-center"><font color="orange"><b>WARNING</b></font></div>';
     } else {

@@ -39,8 +39,13 @@ In den Darstellungen \autoref{Analyse:opcua-secure-sha-req} und \autoref{Analyse
   \label{Analyse:opcua-secure-sha-res}
 \end{figure}
 
-Das in \autoref{Anwendungsszenarien:MitM} beschriebene Anwendungsszenario des \ac{MitM} Angriffs kann ebenfalls mit Hilfe eine Paketanalyse durchgeführt werden. Hierzu müssen die Pakete der Netzwerkschnittstelle des Netzwerks "`i40-network"' der \ac{VM} "`i40"' abgehört werden. Nach Aktivierung des Rogue \ac{DHCP} Servers, der Aktualisierung der \ac{DHCP} Konfiguration des Netzwerkadapters der \ac{VM} "`comp"' und der gleichzeitigen Änderung des Standardgateways ist es möglich die Netzwerkpakete des in der \ac{VM} simulierten Temperatursensors und dessen Empfängeradresse mitzulesen. \autoref{arg} stellt den Zugriff auf die Netzwerkpakete, welche für ein anderes Netz bestimmt sind, dar.
+Das in \autoref{Anwendungsszenarien:MitM} beschriebene Anwendungsszenario des \ac{MitM} Angriffs kann ebenfalls mit Hilfe eine Paketanalyse durchgeführt und validiert werden. Hierzu müssen die Pakete der Netzwerkschnittstelle des Netzwerks "`i40-network"' der \ac{VM} "`i40"' abgehört werden. Nach Aktivierung des Rogue \ac{DHCP} Servers, der Aktualisierung der \ac{DHCP} Konfiguration des Netzwerkadapters der \ac{VM} "`comp"' und der gleichzeitigen Änderung des Standardgateways ist es möglich die Netzwerkpakete des in der \ac{VM} simulierten Temperatursensors und dessen Empfängeradresse mitzulesen. \autoref{Analyse:Rogue DHCP} stellt den Zugriff auf die Netzwerkpakete, welche für ein anderes Netz bestimmt sind, dar. Es ist zu erkennen, dass die Pakete von der \ac{IP} Adresse 10.0.0.100 (\ac{IP} Adresse der \ac{VM} "`comp"' in der Rogue \ac{DHCP} Range) zur Adresse 10.0.10.1 (\ac{CoAP} Monitoringsystem) bestimmt sind. Das System "`i40"', auf welchem die Pakete analysiert werden, besitzt die \ac{IP} Adresse 10.0.0.254, wie im unteren Teil der Darstellung zu erkennen ist. Es leitet die Pakete weiter und dient als \ac{MitM}.
 
-TODO - Screenshot
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=14cm]{rogueDhcp-validation}
+  \caption{Paketanalyse Rogue DHCP - Nachweis des Man-in-the-Middle} 
+  \label{Analyse:Rogue DHCP}
+\end{figure}
 
 Das Anwendungsszenario der Manipulation des Monitoringsystems (\autoref{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr}) dient der Visualisierung der Auswirkungen eines \ac{MitM} Angriffs und der Darstellung eines Angriffsszenarios durch die gewonnen Daten. Die durch die \ac{MitM} gewonnene Empfängeradresse des \ac{CoAP} Servers wird genutzt, um diesem selbst Pakete unter dem selben Topic zuzusenden und somit die Temperaturdaten des Sensors im Monitoringsystem zu beeinflussen. Dem Monitoringsystem werden hohe Temperaturen des Sensors zugesendet, um dort einen Alarm auszulösen und somit den Produktionsprozess zu manipulieren. Die Funktionalität dieses Eingriffs kann anhand der Visualisierungen im Monitoringsystem nachvollzogen werden.
