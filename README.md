@@ -22,6 +22,7 @@ Als Grundlage der Darstellung von Bedrohungsfaktoren in Industrie 4.0 Umgebungen
 * [NodeJS](https://github.com/nodejs)
 * [node-opcua](https://github.com/node-opcua)
 * [node-coap](https://github.com/mcollina/node-coap)
+* [Wireshark](https://www.wireshark.org/)
 
 ## Installation
 Die Darstellung von Bedrohungsfaktoren im Industrie 4.0 Testsystem erfordert die Erstellung neuer virtueller Maschinen, deren Konfiguration sowie die Bereitstellung einer Netzwerkinfrastruktur. Die Erstellung dieser Maschinen, deren Konfiguration sowie die Bereitstellung der Netzwerkarchitektur und deren Dienste werden im Ordner ```./doc``` in der folgenden Reihenfolge erläutert:
@@ -38,9 +39,9 @@ Nach der Konfiguration der virtuellen Maschinen und der Kommunikation im Netzwer
 ## Durchführung der Anwendungsszenarien
 Die vollständige Installation des Systems und der zugehörigen Komponenten ermöglicht es die folgenden Anwendungsszenarien durchzuführen. Die Dokumentation der Anwendungsszenarien und eine Erläuterung der Durchführung ist ebenfalls im Ordner ```./doc``` beschrieben.
 
-* [Darstellung verschlüsselter und unverschlüsselter Kommunikation der OPC UA Komponenten](https://github.com/fjnalta/thesis/tree/master/doc/20_OPCUA_Kommunikation.md)
-* [Manipulation einer Gatewayadresse mit Hilfe eines Rogue DHCP und anschließendem Man-in-the-Middle](https://github.com/fjnalta/thesis/tree/master/doc/21_Gateway_MitM.md)
-* [Manipulation unidirektionaler, ungesicherter CoAP Kommunikation](https://github.com/fjnalta/thesis/tree/master/doc/22_CoAP_Manipulation.md)
+* [Darstellung verschlüsselter und unverschlüsselter Kommunikation der OPC UA Komponenten](https://github.com/fjnalta/thesis/tree/master/doc/7_OPCUA_Kommunikation.md)
+* [Manipulation einer Gatewayadresse mit Hilfe eines Rogue DHCP und anschließendem Man-in-the-Middle](https://github.com/fjnalta/thesis/tree/master/doc/8_Gateway_MitM.md)
+* [Manipulation ungesicherter CoAP Kommunikation](https://github.com/fjnalta/thesis/tree/master/doc/9_CoAP_Manipulation.md)
 
 ## Kompatibilität
 
