@@ -48,4 +48,11 @@ Das in \autoref{Anwendungsszenarien:MitM} beschriebene Anwendungsszenario des \a
   \label{Analyse:Rogue DHCP}
 \end{figure}
 
-Das Anwendungsszenario der Manipulation des Monitoringsystems (\autoref{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr}) dient der Visualisierung der Auswirkungen eines \ac{MitM} Angriffs und der Darstellung eines Angriffsszenarios durch die gewonnen Daten. Die durch die \ac{MitM} gewonnene Empfängeradresse des \ac{CoAP} Servers wird genutzt, um diesem selbst Pakete unter dem selben Topic zuzusenden und somit die Temperaturdaten des Sensors im Monitoringsystem zu beeinflussen. Dem Monitoringsystem werden hohe Temperaturen des Sensors zugesendet, um dort einen Alarm auszulösen und somit den Produktionsprozess zu manipulieren. Die Funktionalität dieses Eingriffs kann anhand der Visualisierungen im Monitoringsystem nachvollzogen werden.
+Das Anwendungsszenario der Manipulation des Monitoringsystems (\autoref{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr}) dient der Visualisierung der Auswirkungen eines \ac{MitM} Angriffs und der Darstellung eines Angriffsszenarios durch die gewonnen Daten. Die durch die \ac{MitM} gewonnene Empfängeradresse des \ac{CoAP} Servers wird genutzt, um diesem selbst Pakete unter dem selben Topic zuzusenden und somit die Temperaturdaten des Sensors im Monitoringsystem zu beeinflussen. Dem Monitoringsystem werden hohe Temperaturen des Sensors zugesendet, um dort einen Alarm auszulösen und somit den Produktionsprozess zu manipulieren. Die Funktionalität dieses Eingriffs kann anhand der Visualisierungen im Monitoringsystem nachvollzogen werden und wird in \autoref{Validierung:Monitoringsystem} dargestellt.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=14cm]{coap-monitoring}
+  \caption{Manipulation des Monitoringsystems} 
+  \label{Validierung:Monitoringsystem}
+\end{figure}
