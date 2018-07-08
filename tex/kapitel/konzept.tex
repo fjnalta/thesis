@@ -67,7 +67,7 @@ Die Dienste \ac{DHCP} und \ac{DNS} werden zusammen auf der \ac{VM} "`mgmt"' konf
   \label{Konzept:DHCP und DNS Server}
 \end{figure}
 
-\subsection{CoAP Client/CoAP Server}
+\subsection{\ac{CoAP} Client/\ac{CoAP} Server}
 Die Komponenten \ac{CoAP} Client und \ac{CoAP} Server dienen der Erweiterung des Testsystems um ein weiteres \ac{IIoT} Protokoll zur Darstellung des in \autoref{Anwendungsszenarien:Manipulation von ungesichertem Netzwerkverkehr} beschriebenen Szenarios. Die Komponenten simulieren einen Temperatursensor sowie ein Monitoringsystem, welches ein Webinterface zur Darstellung der gemessenen Temperatur besitzt. Der \ac{CoAP} Client wird auf der \ac{VM} "`comp"' realisiert und befindet sich im Netzwerk "`i40-network"'. Er sendet die gemessenen Daten zum zuständigen \ac{CoAP} Server im Netzwerk "`i40-monitoring"'. Der \ac{CoAP} Server wird, da er den einzigen Dienst in diesem Netzwerk darstellt, auf der \ac{VM} "`mgmt"' bereitgestellt. Die \ac{VM} "`mgmt"' besitzt bereits ein Interface im Netzwerk "`i40-monitoring"'. Der Dienst kann auf die Adresse der Schnittstelle gebunden werden. Es muss keine weitere \ac{VM} zum Netzwerk hinzugefügt werden.
 
 \autoref{Konzept:CoAP Client} und \autoref{Konzept:CoAP Server} visualisieren die Bestandteile der betroffenen Komponenten, deren bereitgestellte Dienste und die genutzten Schnittstellen.
@@ -86,7 +86,7 @@ Die Komponenten \ac{CoAP} Client und \ac{CoAP} Server dienen der Erweiterung des
   \label{Konzept:CoAP Server}
 \end{figure}
 
-\subsection{Rogue DHCP Server}
+\subsection{Rogue \ac{DHCP} Server}
 Die Bereitstellung des Rogue \ac{DHCP} Servers findet auf der bestehenden \ac{VM} "`i40"' statt. Die bestehende virtuelle Maschine stellt bereits Tools zu Analyse der Netzwerkkommunikation für das Dockernetzwerk bereit. Eine Erweiterung dieses Systems ermöglicht es die bereitgestellten Anwendungen zur Analyse in den Anwendungsszenarien des Netzwerks der \ac{VM}s ebenfalls zu nutzen. Dies wird durch die Trennung der Netzwerkschnittstellen ermöglicht. Die Analyse der Pakete findet fortan auf der Schnittstelle "`enp0s8"' statt der Docker Netzwerkbrücke statt. Um die Netzwerkpakete der anderen Teilnehmer über die Schnittstelle der \ac{VM} zu leiten, muss die Maschine selbst als Gateway für die Kommunikation zwischen den Netzen genutzt werden. Der Rogue \ac{DHCP} Server ermöglicht die Änderung des Standardgateways bei Erneuerung des \ac{DHCP} \textit{lease} der Client und kann somit den Verkehr auf das lokale System umleiten. \autoref{rogueDhcp} zeigt die Eingliederung des Dienstes in das vorhandene System. Der Dienst muss im Netzwerk "`i40-network"' agieren und wird somit auf das Interface "`enp0s8"' gebunden.
 
 \begin{figure}[h]
@@ -96,7 +96,7 @@ Die Bereitstellung des Rogue \ac{DHCP} Servers findet auf der bestehenden \ac{VM
   \label{Konzept:Rogue DHCP Server}
 \end{figure}
 
-\subsection{CoAP Manipulationssystem}
+\subsection{\ac{CoAP} Manipulationssystem}
 Das \ac{CoAP} Manipulationssystem wird genutzt, um das \ac{CoAP} Monitoringsystem durch falsche bzw. unzulässige Netzwerkpakete zu beeinflussen. Es wird ebenfalls auf der \ac{VM} "`i40"' bereitgestellt. Dies ermöglicht die weiterhin die zentrale Verwaltung des Systems und die Durchführung der Anwendungsszenarien. Eine Bereitstellung des Manipulationsdienstes auf dem gleichen System wie der Rogue \ac{DHCP} Server und die Anwendungen zur Netzwerkanalyse ist sinnvoll, da die Umleitung der Netzwerkpakete durch den Rogue \ac{DHCP} Server und die anschließende Analyse des Verkehrs die Grundlage für die Manipulation des Monitoringsystems darstellt und voneinander abhängig ist.
 
 Das \ac{CoAP} Manipulationssystem versendet Netzwerkpakete mit gefälschten Daten zum \ac{CoAP} Monitoringsystem. Diese werden über die Netzwerkschnittstelle "`enp0s8"' in das "`i40-network"' versandt. Die Verbindung in das Netzwerk "`i40-monitoring"' wird über die Routingfunktionalitäten der \ac{VM} "`mgmt"' bereitgestellt. \autoref{Konzept:CoAP Manipulationssystem} beschreibt den Aufbau der Komponente.
@@ -117,7 +117,7 @@ Die Laufzeitsicht dient der Darstellung der Kommunikation zwischen des einzelnen
 \subsection{Routing}
 Um eine Verbindung zwischen den Netzwerken "`i40-network"' und "`i40-monitoring"' herzustellen und die Kommunikation der \ac{CoAP} Komponenten im Netzwerk zu gewährleisten, muss die \ac{VM} "`mgmt"', welche als einziges System eine Schnittstelle in beiden Netzwerken bereitstellt, Routingfunktionalitäten übernehmen. Dabei müssen eine Weiterleitung der Pakete zwischen den Netzwerkschnittstellen der \ac{VM} stattfinden.
 
-\subsection{DHCP}
+\subsection{\ac{DHCP}}
 Im Netzwerk "`i40-network"' werden die Dienste \ac{DHCP} und \ac{DNS} zur dynamischen Konfiguration und Namensauflösung der Hosts genutzt. \autoref{Konzept:Dynamische Hostkonfiguration mit DHCP und DNS} zeigt die Konfiguration eines Hosts beim Bezug der Netzwerkkonfiguration im "`i40-network"' mit Hilfe des zuständigen \ac{DHCP} Servers. Die Netzwerknachrichten der \ac{DHCP} Konfiguration werden, da der Client zum Zeitpunkt der dynamischen Konfiguration noch keine \ac{IP} Adresse im Netzwerk besitzt, über den Broadcast im Netzwerk versandt. Die Pakete werden ausschließlich von \ac{DHCP} Servern angenommen und verarbeitet, weitere Clients im Netzwerk verwerfen die Pakete. Im Sequenzdiagramm ist, um die Übersichtlichkeit zu gewährleisten nur die Kommunikation zwischen den aktiven Beteiligten während der dynamischen Konfiguration des Hosts dargestellt.
 
 Um vollständige Funktionalität des Clients im Netzwerk bereitzustellen, werden \ac{IP} Adresse, Netzwerkmaske, \ac{DNS} sowie ein Gateway zur Verbindung in andere Netze benötigt. Nach dem DHCPDISCOVER des Clients bietet der \ac{DHCP} Server mit Hilfe des DHCPOFFER Netzwerkkonfigurationen für den Client an. Dieser bestätigt die Konfiguration mit einem DHCPREQUEST. Ist die vom Server angebotene Konfiguration gültig und die \ac{IP} Adresse weiterhin frei, wird vom Server ein DHCPACK gesendet, um die Konfiguration zu bestätigen.
@@ -131,7 +131,7 @@ Um vollständige Funktionalität des Clients im Netzwerk bereitzustellen, werden
   \label{Konzept:Dynamische Hostkonfiguration mit DHCP und DNS}
 \end{figure}
 
-\subsection{DNS}
+\subsection{\ac{DNS}}
 Die Namensauflösung der internen Adressen findet direkt auf dem \ac{DNS} Server statt. Bei einem \ac{DNS} Request werden die lokalen Zonendateien durchsucht und in der Answer Section der \ac{DNS} Response die gewünschten \ac{RR} bereitgestellt. Das interne Netzwerk "`i40-network"' besitzt eine Zone auf dem Nameserver. Dort müssen alle statischen Adressen zur Namensauflösung eingetragen werden. Die dynamischen Adressen werden ebenfalls in dieser Zone temporär hinterlegt. Um eine Namensauflösung in externe Netze zu gewährleisten, muss der \ac{DNS} Server weitere Nameserver kennen, um Domainnamen, welche nicht in der Datenbank des lokalen Servers vorhanden sind, aufzulösen. Das \ac{DNS} System nutzt Rekursion oder Iteration, um den \textit{authorativen} Server im Netzwerk zu bestimmen und die Namensauflösung bereitzustellen. Der Ablauf der Namensauflösung wird vom zuständigen Nameserver bestimmt. \autoref{Konzept:Rekursive DNS Namensauflösung} stellt den Ablauf der rekursiven Namensauflösung einer externen \ac{DNS} Zone vereinfacht dar. Der lokale \ac{DNS} Server arbeitet als \ac{DNS}-Forwarder. Er leitet die Anfrage zur unbekannten Zone an einen externen \ac{DNS} weiter, welcher die Adresse auflöst und dem internen Nameserver das Ergebnis mitteilt. Die Rekursion der Befragung weiterer \ac{DNS} Server findet solange statt, bis ein für die Domain zuständiger Nameserver gefunden wurde, welcher die Adresse auflöst. Bei der iterativen Namensauflösung sendet der \ac{DNS} Server dem Client die Adresse des \textit{authorativen} \ac{DNS} Servers zu. Dieser führt dann einen erneuten \ac{DNS} Query bei diesem Server durch. Der Ablauf der iterativen Namensauflösung wird in \autoref{Konzept:Iterative DNS Namensauflösung} dargestellt.
 
 Die genutzte Form der Namensauflösung hat auf die Umsetzung des Konzepts keinen Einfluss. Um eine Namensauflösung in externe Netze bereitzustellen muss der \ac{DNS} Server lediglich eine erreichbare \ac{DNS} Forward-Adresse besitzen.  

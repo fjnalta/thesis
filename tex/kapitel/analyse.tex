@@ -90,7 +90,7 @@ Für die Beurteilung und Bereitstellung der Dienstgüte in \ac{IP}-Netzen müsse
 
 All diese Faktoren haben in einem paketorientierten Netzwerk, in welchem die Datenpakete nach dem \textit{Best-Effort-Prinzip} versendet werden, auf die fehlerfreie Kommunikation aufgrund der durch \textit{Ethernet} und \ac{IP} bereitgestellten Fehler- und Flusskontrolle wenig Einfluss. Sie spielen jedoch bei zeitkritischen Anwendungen der Industrie 4.0 eine wichtige Rolle. Auf den niedrigeren Schichten des \ac{TCP}/\ac{IP} Referenzmodells ist es nicht möglich zwischen verschiedenen Datenpaketen der höheren Schichten zu unterscheiden. Um dieses Problem zu lösen werden auf Dienste mit besonderer Güte in \ac{VLAN}s aufgenommen und somit deren Pakete bereits auf der Netzzugangsschicht kenntlich gemacht (\autoref{Analyse:VLAN}), um die Dienstqualität sicherzustellen. Des Weiteren müssen, um \ac{QoS} in einem Netzwerk anzuwenden, diese Mechanismen auf der gesamten Übertragungsstrecke implementiert werden. Der Transport von Daten unterschiedlicher Priorität in Netzwerken wird in \ac{IEEE} 802.1p und \ac{IEEE} 802.1Q\footnote{IEEE Std 802.1Q - IEEE Standard for Local and metropolitan area networks--Bridges and Bridged Networks} beschrieben.
 
-\subsection{IPsec}
+\subsection{\ac{IPsec}}
 Die \ac{IETF} beschreibt im \ac{RFC} 4301\footnote{IETF RFC 4301 - Security Architecture for the Internet Protocol} die Architektur von \ac{IPsec}. \ac{IPsec} ermöglicht es die Schutzziele Vertraulichkeit, Authentizität und Integrität bereits auf der Internetschicht des \ac{TCP}/\ac{IP} Referenzmodells zu umzusetzen. Um alle Schutzziele umzusetzen, wird das Protokoll \ac{IP} um die Bestandteile \ac{AH}, \ac{ESP} und IKE\footnote{IKE - Protokoll zur Verwaltung der Security Association} erweitert.
 
 \ac{IPsec} wurde in der Industrie zur Bereitstellung von dauerhaften Site-to-Site \ac{VPN} Verbindungen genutzt. Aufgrund der immer weiteren Öffnung der Unternehmen und der direkten Kommunikation der Komponenten miteinander finden dauerhafte diese Verbindungsformen in Industrie 4.0 Umgebungen jedoch immer seltener Anwendung. Seit der Verbreitung der Verschlüsselung der Anwendungsdaten über \ac{TLS} werden für die Bereitstellung von getunneltem Netzwerkverkehr aufgrund der besseren Handhabbarkeit und der einfacheren Konfiguration für Administrator und Anwender bevorzugt \ac{SSL}-\ac{VPN} Lösungen verwendet.
@@ -268,8 +268,40 @@ Die Nutzung des Protokolls \ac{UDP} macht es weiterhin möglich Multicast Nachri
 \ac{UDP} verhindert jedoch, dass eine Verschlüsselung der Nutzdaten über \ac{TLS} bereitgestellt werden kann. \ac{TLS} benötigt eine zuverlässige Übertagung der Pakete, da es auf einer sequenziellen Integritätsprüfung der Daten beruht. Diese Anforderungen werden vom unzuverlässigen Datargramm \ac{UDP} nicht erfüllt. Eine Sicherung der Datenübertragung muss mit Hilfe von \ac{DTLS} hergestellt werden.
 
 \section{Zwischenfazit}
+\label{Analyse:Zwischenfazit}
 Das Ziel einer weitreichenden Vernetzung aller Komponenten in Industrie 4.0 Umgebungen erfordert ein hohes Maß an Kommunikation zwischen den Komponenten. Neue Industrie 4.0 Netze basieren auf etablierten Technologien wie \ac{TCP}, \ac{UDP} und \ac{IP} und deren Dienste und Übernehmen deren Eigenschaften sowie Vor- und Nachteile der unteren Ebenen des \ac{TCP}/\ac{IP} Referenzmodells. Durch die Vereinheitlichung der Netzwerkkommunikation über den \ac{IP} Stack und der Vernetzung von Industriekomponenten mit Business- und Anwendungsprozessen, spielt die Bereitstellung einer sicheren Kommunikation im Netzwerk und der Schutz der Produktionssysteme vor unbefugten Zugriffen eine zentrale Rolle.
 
-Der Fokus der Weiterentwicklung der Kommunikation im Netzwerk liegt auf der Etablierung neuer Anwendungsprotokolle zur effizienten Nachrichtenübermittlung. Darunter zählt die umfangreichen Industrielösungen \ac{OPC UA} sowie ressourcenschonende Protokolle für integrierte Lösungen wie \ac{CoAP}. \ac{OPC UA} stellt ein zukunftsorientiertes, generisches Protokoll zur Kommunikation im Netzwerk bereit. Durch die hohe Flexibilität, welche durch die weitreichenden Anforderungen der Industrie erforderlich ist, erfordert die Umsetzung einer Infrastruktur mit diesem Protokoll ein hohes Maß an administrativem Aufwand und kann bei Fehlkonfiguration eine Schwachstelle im Netzwerk darstellen. 
+Der Fokus der Weiterentwicklung der Kommunikation in Industrie 4.0 Netzwerken liegt auf der Etablierung neuer Anwendungsprotokolle zur effizienten Nachrichtenübermittlung. Darunter zählt die umfangreiche Industrielösung \ac{OPC UA} sowie ressourcenschonende Protokolle für integrierte Lösungen wie \ac{CoAP}. \ac{OPC UA} stellt ein zukunftsorientiertes, generisches Protokoll zur Kommunikation im Netzwerk bereit. Durch die hohe Flexibilität, welche durch die weitreichenden Anforderungen der Industrie erforderlich ist, erfordert die Umsetzung einer Infrastruktur mit diesem Protokoll ein hohes Maß an administrativem Aufwand und kann bei Fehlkonfiguration eine Schwachstelle im Netzwerk darstellen.
 
-Um den in \autoref{Grundlagen:Anforderungen} genannten Schutzzielen gerecht zu werden und einen ausreichenden Schutz gegen die in \autoref{Analyse:Bedrohungen} genannten Bedrohungen bereitzustellen, muss eine sichere Datenübertragung durch das Zusammenwirken mehrerer Schichten im Netzwerkstack hergestellt werden.
+Die in \autoref{Analyse} überprüften Angriffsszenarien werden in \autoref{Analyse:Angriffsszenarien} mit deren zuständigen Ebenen des \ac{TCP}/\ac{IP} Referenzmodells dargestellt. 
+
+\begin{table}[h]
+    \caption{Angriffsszenarien und Ebenen des TCP/IP Referenzmodells}
+    \label{Analyse:Angriffsszenarien}
+    \renewcommand{\arraystretch}{1.2}
+    \centering
+    \sffamily
+    \begin{footnotesize}
+      \begin{tabular}{l l l}
+      \toprule
+      \textbf{Angriff} & \textbf{Ebene} & \textbf{Angriffsziel}\\
+      \midrule
+      ARP Spoofing & Netzzugangs-, Internetschicht & Datenspionage\\
+      DHCP Spoofing & Netzzugangs-, Internetschicht, Anwendungsschicht & Datenspionage\\
+      SYN-Flood & Transportschicht & Denial of Service\\
+      Sockstress & Transportschicht & Denial of Service\\
+      DNS Amplification & Transport-, Anwendungsschicht & Denial of Service\\
+      DNS Spoofing & Transport-, Anwendungsschicht & Datenspionage\\
+      CoAP Kommunikation & Transport-, Anwendungsschicht & Datenspionage\\
+      OPC UA Secure Channel & Anwendungsschicht & Datenspionage\\
+      \bottomrule
+      \end{tabular}
+    \end{footnotesize}
+    \rmfamily
+\end{table}
+
+Es ist zu erkennen, dass verschiedene Angriffsszenarien einen Eingriff in die Netzwerkkommunikation auf unterschiedliche bzw. mehrere Ebenen des \ac{TCP}/\ac{IP} Referenzmodells beinhalten. Aufgrund der Entwicklung der Industrie 4.0 Netzwerke auf Basis vorhandener Technologien genügt es nicht, ausschließlich die Sicherheit der neuen Anwendungsprotokolle zu betrachten. Um den in \autoref{Grundlagen:Anforderungen} genannten Schutzzielen auch in der Industrie 4.0 gerecht zu werden und einen ausreichenden Schutz gegen die in \autoref{Analyse:Bedrohungen} genannten Bedrohungen bereitzustellen, muss die Sicherheit auf allen Schichten Ebenen des Netzwerkstacks bereitgestellt werden.
+
+Die Ziele dieser Angriffe sind einerseits der \ac{DoS}, welcher einen Ausfall eines Dienstes oder Systems im Netzwerk provozieren soll, um die Kommunikation zu beeinträchtigen oder Stillzulegen. Diese Angriffe sind durch das dauerhafte Eintreffen von Netzwerkpaketen zu erkennen. Sie können durch \textit{Blacklisting}, \ac{IDS} oder das Stoppen des Routings dieser Pakete beim \ac{ISP} unterbunden werden. 
+
+Andererseits dienen die beschrieben Angriffe der Datenspionage, welche aus der Manipulation der Wegfindung der Pakete im Netzwerk und der damit hervorgehenden Abhörung des Netzwerkverkehrs besteht. Diese Angriffe beschreiben einen großen Teil der in \autoref{Analyse:Bedrohungen} beschriebenen Bedrohungsszenarien und stellen für Industrie 4.0 Netze eine hohe Bedrohung dar, da sie, ohne die Produktivität des Netzwerks beeinschränken zu müssen, agieren können. Der Abfluss von Produktions-, Firmen- und Kundendaten sowie die Manipulation des Netzwerkverkehrs von Produktionssystemen kann erhebliche finanzielle Verluste sowie einen Imageschaden nach sich ziehen. Die Angriffsformen arbeiten Entweder direkt auf der Anwendungsschicht und analysieren und manipulieren Pakete und Nutzdaten oder sie nutzen die Architektur des im Netzwerk zugrundeliegenden Protkolls \ac{IP} und dessen Dienste. Dies macht Industrie 4.0 Umgebungen zu einem Ziel für diese Angriffsformen. Es müssen Maßnahmen auf allen Ebenen des \ac{TCP}/\ac{IP} Referenzmodells wie die Unterbindung von physikalischem Zugang, die Bereitstellung einer vor Manipulation gesicherten Netzwekinfrastruktur sowie die Nutzung anforderungsgerechter Protokolle und Verschlüsselungsalgorithmen getroffen werden.
