@@ -5,8 +5,6 @@ Die Installation des Security Patch beinhaltet die Änderung des Quellcodes des 
 
 In diesem Verzeichnis wird die Verzeichnisstruktur des vorhandenen Testsystems abgebildet und die aktualisierten Versionen der benötigten Dateien bereitgestellt. Zur Installation ist nur ein Kopieren des vorhandenen Ordners ```dockers``` über den Bestehenden Ordner im vorhandenen Testsystem nötig.
 
-
-
 ## Konfiguration
 Die Sicherheitskonfiguration der OPC UA Komponenten kann in den jeweiligen Konfigurationsdateien der Container ```scheduler``` und ```control``` geändert werden. Hierzu muss der Parameter ```config.secure``` geändert werden.
 
