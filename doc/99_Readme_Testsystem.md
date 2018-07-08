@@ -13,6 +13,10 @@ Beim Import ist es wichtig, darauf zu achten, dass keine neuen MAC-Adressen für
 ![Appliance Importieren](https://github.com/fjnalta/thesis/blob/master/doc/img/appliance-importieren.png)
 
 # Start
+Der Benutzer sowie das Passwort für alle virtuellen Maschinen lautet:
+* Benutzername: i40
+* Passwort: industrie40
+
 Nach dem Start der virtuellen Maschinen steht folgende Netzwerkkonfiguration bereit.
 
 * VM i40:
