@@ -31,20 +31,90 @@ Nach dem Start der virtuellen Maschinen steht folgende Netzwerkkonfiguration ber
 * VM comp:
     - enp0s8: 10.0.0.0/24 (DHCP)
 
-Die Dienste des Industrie 4.0 Systems, CoAP Monitoringsystems und CoAP Clients sowie die für das Netzwerk benötigten Dienste DHCP und DNS werden automatisch gestartet und sind unter folgenden Adressen erreichbar.
+Die Dienste des CoAP Monitoringsystems, CoAP Clients sowie die für das Netzwerk benötigten Dienste DHCP und DNS werden automatisch gestartet und sind unter folgenden Adressen erreichbar.
 
 * DHCP/DNS/Gateway:
     - 10.0.0.1
-
-* Industrie 4.0 System: 
-    - Docker Containernetzwerk
-    - Webinterface 10.0.0.254:8080
 
 * CoAP Monitoringsystem: 
     - CoAP Server: 10.0.10.1:5683
     - Monitoringsystem Webinterface: 10.0.10.1:9999
 
-# Darstellung der Bedrohungsfaktoren
-Die Darstellung der Bedrohungsfaktoren findet auf der Ubuntu 18.04 LTS Client VM i40 statt. Dort befinden sich das bestehende, aktualisierte OPC UA Industrie 4.0 Testsystem sowie der CoAP Manipulationsclient im Home Verzeichnis des Benutzers i40. 
+## Start und Konfiguration des Industrie 4.0 Testsystems
+Das aktualisierte Testsystem ist im Verzeichnis "home/i40/i40-testbed" des Ubuntu 18.04 LTS Clients installiert. Es kann mit Hilfe der im Verzeichnis ```scripts``` beigelegten Scripte gesteuert werden.
 
-Zur Analyse der Netzwerkkommunikation wurde das Netzwerkanalysetool Wireshark auf dem System vorinstalliert. Um die Sicherheitskonfiguration des Industrie 4.0 Testsystems zu analysieren muss die Netzwerkschnittstelle der Docker Bridge abgehört werden. Die Analyse der Netzwerkkommunikation während des Man-in-the-Middle Angriffs findet auf der Netzwerkschnittstelle enp0s8 statt.
+* ./scripts/startDockers.sh: Container starten
+* ./scripts/stopContainers.sh: Container stoppen
+* ./scripts/changeSecurityMode.sh: Sicherheitskonfiguration ändern
+
+Vor der Änderung der Sicherheitskonfiguration der OPC UA Kommunikation, müssen die Container beendet werden.
+
+```bash
+./scripts/stopContainers.sh
+```
+
+Mit dem Script ```changeSecurityMode.sh``` kann die Sicherheitskonfiguration des schedulers und des control Dockers angepasst werden. 
+
+```bash
+./scripts/changeSecurityMode.sh [true/false]
+```
+
+Die Container werden vom Script nach Änderung der Konfiguration automatisch neu gebaut. Anschließend müssen diese neu gestartet werden.
+
+```bash
+./scripts/startDockers.sh
+```
+
+Nach dem Start besitzt das System die folgende Netzwerkkonfiguration
+
+* Industrie 4.0 System: 
+    - Docker-Netzwerk 172.18.0.0/16
+    - Webinterface 10.0.0.254:8080
+
+## Rogue DHCP Server
+Der Rogue DHCP Server ist auf dem Ubuntu 18.04 LTS Client installiert und wird nicht automatisch gestartet, damit die Kommunikation im Netzwerk bei normaler Nutzung nicht gestört wird. 
+
+### VM i40
+Zum Angriff muss der Dienst des DHCP Servers mit Hilfe von ```systemctl``` gestartet werden.
+
+```bash
+systemctl start isc-dhcp-server
+```
+
+### VM mgmt
+Des Weiteren kann, um die Chancen einer Zuweisung der IP Adresse des Rogue DHCP Servers im Netzwerk zu erhöhen ein Delay auf den Netzwerkadapter des für das Netzwerk zuständigen DHCP Servers gelegt werden, um die Paketvermittlung zu manipulieren. Dies geschieht am Netzwerkadapter des DHCP Servers auf der virtuellen Maschine "mgmt". Es wird dafür im "home" Verzeichnis des Benutzers "i40" das Script ```setNetworkDelay.sh``` bereitgestellt.
+
+```bash
+./scripts/setNetworkDelay.sh
+```
+
+Alternativ kann das Delay auch manuell gesetzt werden.
+
+```bash
+tc qdisc add dev enp0s8 root netem delay 500ms
+```
+
+### VM comp
+Um nun einen Neubezug der DHCP Adresse im Netzwerk darzustellen, kann die VM "comp" dazu bewegt werden, sich eine neue IP Adresse per DHCP zuweisen zu lassen.
+```bash
+netplan apply
+```
+
+## CoAP Manipulation
+Zur Manipulation des CoAP Systems steht im "home" Verzeichnis des Benutzers "i40" auf der virtuellen Maschine "i40" das Verzeichnis "CoAP_Manipulation" mit einem Client bereit. Der CoAP Server des Monitoringsystems ist im Testsystem unter der IP Adresse 10.0.10.1 erreichbar. Der Client kann mit den folgenden Parametern gestartet werden:
+```
+node index.js [DESTINATION URL] [PAYLOAD TITLE] [INTERVAL]
+```
+* Destination URL: Zieladresse der Pakete. Format: ```coap://host/address```
+* Payload Title: Titel des CoAP Payload
+* Interval: Intervall der Paketsendung in Sekunden
+
+Beispiel:
+```
+node index.js coap://10.0.10.1/moldingmachine/1 Temperatursensor_#2 0.5
+```
+
+# Darstellung der Bedrohungsfaktoren
+Zur Analyse der Netzwerkkommunikation wurde das Netzwerkanalysetool Wireshark auf der virtuellen Maschine "i40" vorinstalliert. Um die Sicherheitskonfiguration des Industrie 4.0 Testsystems zu analysieren muss die Netzwerkschnittstelle der Docker Bridge abgehört werden. Die Analyse der Netzwerkkommunikation während des Man-in-the-Middle Angriffs findet auf der Netzwerkschnittstelle enp0s8 statt.
+
+Die Darstellung der Manipulation der CoAP Kommunikation wird mit Hilfe des Monitoringsystems visualisiert.
