@@ -63,7 +63,7 @@ Die Implementierung umfasst die Erweiterung und Anpassung des vorhandenen System
 
 Das Testsystem wurde um ein zusätzliches Monitoringsystem erweitert, welches eine \ac{CoAP} Komponente überwacht. Die Ausführung dieser Architektur dient der Analyse eines weiteren \ac{IIoT} Protokolls in Bezug auf die Manipulation von Netzwerktraffic und Verdeutlichung der Auswirkungen dieser Bedrohung.
 
-\subsection{\ac{OPC UA} Secure Channel}
+\subsection{OPC UA Secure Channel}
 \label{Umsetzung:OPC UA Secure Channel}
 Um die Verwendung verschiedener Sicherheitsrichtlinien im \ac{OPC UA} \textit{Secure Channel} bereitzustellen muss die Form des Verbindungsaufbaus der vorhandenen \ac{OPC UA} Clients im Quellcode geändert werden. Die \ac{OPC UA} Server des Testsystems stellen die verschiedenen Sicherheitsprofile \textit{None}, \textit{Basic128Rsa15}, \textit{Basic256} und \textit{Basic256Sha256} bereit. Diese beinhalten den für die Nachrichtenübermittlung genutzten Verschlüsselungsalgorithmus. Bei der Übertragung der Daten im \textit{Secure Channel} wird der \ac{OPC UA} \textit{MessageSecurityMode} auf das Sicherheitsprofil angewandt. Hierbei stehen die Optionen NONE, SIGN und SIGNANDENCRYPT zur Verfügung. Im Testsystem werden keine Zertifikate verwaltet. Das Signieren der Nachrichten mit dem privaten Schlüssel des Absenders ermöglicht einen Zuwachs der Sicherheit der Netzwerkkommunikation, da dies die Integrität der Nachrichten sicherstellt. Da im Testsystem keine Verwaltung der Zertifikate stattfindet, ist kein Signieren der Nachrichten möglich. Im gegebenen System wurde jedoch die Verschlüsselung der Nachricht auf Anwendungsebene durch den Algorithmus \textit{Basic256Sha256} implementiert.
 
