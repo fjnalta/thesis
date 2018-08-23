@@ -1,4 +1,4 @@
-# Analyse der Netzwerkkommunikation in Industrie 4.0 Umgebungen und Erweiterung einer protoypischen Security Testumgebung zur Darstellung von Bedrohungsfaktoren
+# Analyse der Netzwerkkommunikation in Industrie 4.0 Umgebungen und Erweiterung einer prototypischen Security Testumgebung zur Darstellung von Bedrohungsfaktoren
 
 Das GitHub Repository dient der Bereitstellung und Erläuterung der Inbetriebnahme des praktischen Teils der zum Thema zugehörigen [schriftlichen Ausarbeitung](https://github.com/fjnalta/thesis/blob/master/thesis.pdf).
 
